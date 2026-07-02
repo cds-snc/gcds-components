@@ -176,6 +176,7 @@ export const GcdsDateInput: StencilVueComponent<JSX.GcdsDateInput, JSX.GcdsDateI
   'hint',
   'errorMessage',
   'disabled',
+  'autocomplete',
   'autofocus',
   'max',
   'min',

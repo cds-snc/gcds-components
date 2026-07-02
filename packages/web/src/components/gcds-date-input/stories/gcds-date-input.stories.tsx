@@ -80,6 +80,13 @@ export default {
         defaultValue: { summary: '-' },
       },
     },
+    autocomplete: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
     form: {
       control: 'text',
       table: {
@@ -156,6 +163,7 @@ const Template = args =>
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
+  ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.validateOn ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
@@ -175,6 +183,7 @@ const Template = args =>
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
+  ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
@@ -194,6 +203,7 @@ const TemplatePlayground = args => `
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
+  ${args.autocomplete ? `autofocus="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
@@ -473,6 +483,57 @@ CompactMax.args = {
   lang: 'en',
   validateOn: '',
   max: '2000-01'
+};
+
+// ------ Date input Format autocomplete="off" ISO ------
+
+export const AutoCompleteOff = Template.bind({});
+AutoCompleteOff.args = {
+  name: 'auto-complete-off-default',
+  legend: 'Date input',
+  format: 'iso',
+  autocomplete: 'off',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+};
+
+// ------ Date input Format autocomplete="on" ISO ------
+
+export const AutoCompleteOn = Template.bind({});
+AutoCompleteOn.args = {
+  name: 'auto-complete-on-default',
+  legend: 'Date input',
+  format: 'iso',
+  autocomplete: 'on',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
+};
+
+// ------ Date input Format autocomplete="bday" ISO ------
+
+export const AutoCompleteBday = Template.bind({});
+AutoCompleteBday.args = {
+  name: 'auto-complete-on-default',
+  legend: 'Date input',
+  format: 'iso',
+  autocomplete: 'bday',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  lang: 'en',
+  validateOn: '',
 };
 
 // ------ Date input Format Props ------

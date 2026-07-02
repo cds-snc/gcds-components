@@ -160,6 +160,72 @@ describe('gcds-date-input', () => {
     `);
   });
 
+  it('renders - iso - autocomplete off', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateInput],
+      html: `<gcds-date-input legend="Date input" name="date" format="iso" autocomplete="off" lang="en"></gcds-date-input>`,
+    });
+
+    expect(page.root).toEqualHtml(`
+      <gcds-date-input format="iso" legend="Date input" autocomplete="off" name="date">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
+            <legend id="date-input-legend">
+              Date input
+            </legend>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" inputmode="numeric" type="text" validate-on="other" value="" autocomplete="off"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Month" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value="" autocomplete="off"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" inputmode="numeric" type="text" validate-on="other" type="text" value="" autocomplete="off"></gcds-input>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-date-input>
+    `);
+  })
+
+  it('renders - iso - autocomplete on', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateInput],
+      html: `<gcds-date-input legend="Date input" name="date" format="iso" autocomplete="on" lang="en"></gcds-date-input>`,
+    });
+
+    expect(page.root).toEqualHtml(`
+      <gcds-date-input format="iso" legend="Date input" autocomplete="on" name="date">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
+            <legend id="date-input-legend">
+              Date input
+            </legend>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" inputmode="numeric" type="text" validate-on="other" value="" autocomplete="on"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Month" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value="" autocomplete="on"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" inputmode="numeric" type="text" validate-on="other" type="text" value="" autocomplete="on"></gcds-input>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-date-input>
+    `);
+  })
+
+  it('renders - iso - autocomplete bday', async () => {
+    const page = await newSpecPage({
+      components: [GcdsDateInput],
+      html: `<gcds-date-input legend="Date input" name="date" format="iso" autocomplete="bday" lang="en"></gcds-date-input>`,
+    });
+
+    expect(page.root).toEqualHtml(`
+      <gcds-date-input format="iso" autocomplete="bday" legend="Date input" name="date">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
+            <legend id="date-input-legend">
+              Date input
+            </legend>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" inputmode="numeric" type="text" validate-on="other" value="" autocomplete="bday-year"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Month" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value="" autocomplete="bday-month"></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" inputmode="numeric" type="text" validate-on="other" type="text" value="" autocomplete="bday-day"></gcds-input>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-date-input>
+    `);
+  })
+
   it('renders - compact', async () => {
     const page = await newSpecPage({
       components: [GcdsDateInput],
