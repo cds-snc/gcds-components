@@ -597,6 +597,7 @@ export class GcdsTable {
             {/* Table status */}
             <span
               class="gcds-table__page-info"
+              id="status"
               role="status"
               aria-live="polite"
             >
@@ -618,6 +619,7 @@ export class GcdsTable {
                 ? 'gcds-table__caption'
                 : undefined
             }
+            aria-describedby="status"
             ref={el => {
               if (el) this.shadowElement = el;
             }}

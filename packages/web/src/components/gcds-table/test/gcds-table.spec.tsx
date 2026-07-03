@@ -78,11 +78,11 @@ describe('gcds-table', () => {
             <section class="gcds-table">
               <div class="gcds-table__active-pills"></div>
               <div class="gcds-table__row-management">
-                <span aria-live="polite" class="gcds-table__page-info" role="status">
+                <span aria-live="polite" class="gcds-table__page-info" id="status" role="status">
                   No rows to show
                 </span>
               </div>
-            <table class="gcds-table__table" tabindex="-1">
+            <table class="gcds-table__table" tabindex="-1" aria-describedby="status">
               <thead>
                 <tr></tr>
               </thead>
@@ -169,7 +169,7 @@ describe('gcds-table', () => {
     expect(errorSpy).toHaveBeenCalled();
     expect(page.root?.shadowRoot?.querySelector('tbody')).not.toBeNull();
     expect(page.root?.shadowRoot?.querySelector('table')).toEqualHtml(`
-      <table class="gcds-table__table" tabindex="-1">
+      <table class="gcds-table__table" aria-describedby="status" tabindex="-1">
         <thead>
           <tr></tr>
         </thead>
