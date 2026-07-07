@@ -35,6 +35,17 @@ export const test = base.extend({
       { timeout: 30000 },
     );
 
+    // The gcds-icons glyph font is requested only once components hydrate and
+    // render their .gcds-icon elements — after the font wait above. Force it to
+    // load now, otherwise ::before renders the raw \fXXX codepoint instead of
+    // the icon. Capped on the Node side so a slow/failed CDN request can't hang.
+    await Promise.race([
+      page.evaluate(() =>
+        document.fonts.load('1em "gcds-icons"').then(() => document.fonts.ready),
+      ),
+      page.waitForTimeout(10000),
+    ]);
+
     await use(page);
   },
 });
