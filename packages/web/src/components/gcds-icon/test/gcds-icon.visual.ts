@@ -39,4 +39,36 @@ test.describe('gcds-icon', () => {
       page.locator('[data-variant="size-text-small"] .preview-component'),
     ).toHaveScreenshot('size-text-small.png');
   });
+
+  // One screenshot per icon so a regression in a single glyph is caught
+  const iconNames = [
+    'arrow-down',
+    'arrow-up',
+    'arrow-up-down',
+    'checkmark-circle',
+    'chevron-down',
+    'chevron-left',
+    'chevron-right',
+    'chevron-up',
+    'close',
+    'download',
+    'email',
+    'exclamation-circle',
+    'external',
+    'filter',
+    'info-circle',
+    'phone',
+    'search',
+    'sort',
+    'tune',
+    'warning-triangle',
+  ];
+
+  for (const name of iconNames) {
+    test(`icon-${name}`, async ({ page }) => {
+      await expect(
+        page.locator(`[data-variant="icon-${name}"] .preview-component`),
+      ).toHaveScreenshot(`icon-${name}.png`);
+    });
+  }
 });

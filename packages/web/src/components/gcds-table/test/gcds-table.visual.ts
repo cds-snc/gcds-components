@@ -33,4 +33,10 @@ test.describe('gcds-table', () => {
       page.locator('[data-variant="sort"] .preview-component'),
     ).toHaveScreenshot('sort.png');
   });
+
+  test('filter-sort', async ({ page }) => {
+    await expect(
+      page.locator('[data-variant="filter-sort"] .preview-component'),
+    ).toHaveScreenshot('filter-sort.png');
+  });
 });

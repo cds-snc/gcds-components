@@ -111,6 +111,20 @@
           </gcds-table>
         </div>
       </section>
+
+      <section data-variant="filter-sort" class="preview-variant">
+        <gcds-heading tag="h2">Filter and sort</gcds-heading>
+        <div class="preview-component">
+          <gcds-table
+            filter="true"
+            sort="true"
+            columns='[{ "field": "name", "header": "Name" }, { "field": "department", "header": "Department" }, { "field": "province", "header": "Province" }]'
+            data='[{ "name": "Alex Tremblay", "department": "Finance", "province": "Ontario" }, { "name": "Jordan Singh", "department": "Health", "province": "Quebec" }, { "name": "Sam Patel", "department": "Transport", "province": "Alberta" }]'
+          >
+            <div slot="caption">Table caption</div>
+          </gcds-table>
+        </div>
+      </section>
     </main>
   </body>
 </html>
