@@ -13,13 +13,13 @@ export const test = base.extend({
       waitUntil: 'domcontentloaded',
     });
 
-    // Wait for fonts, but don't hang the test if a font request stalls
-    await page.evaluate(() =>
-      Promise.race([
-        document.fonts.ready,
-        new Promise(resolve => setTimeout(resolve, 10000)),
-      ]),
-    );
+    // Wait for fonts, but cap the wait on the Node side. An in-page timer
+    // can't fire if the page's main thread is busy, so race page.evaluate
+    // against a Playwright timeout that runs in Node, independent of the page.
+    await Promise.race([
+      page.evaluate(() => document.fonts.ready),
+      page.waitForTimeout(10000),
+    ]);
 
     // Wait for all GCDS components inside the preview regions to hydrate
     await page.waitForFunction(
