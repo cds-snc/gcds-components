@@ -16,7 +16,10 @@ describe('gcds-topic-menu', () => {
             <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
               Main menu
             </gcds-sr-only>
-            <button aria-expanded="false" aria-haspopup="true" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.">
+            <p id="gcds-topic-menu-desc" hidden="">
+              Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.
+            </p>
+            <button aria-expanded="false" aria-haspopup="true" aria-describedby="gcds-topic-menu-desc">
               <gcds-sr-only tag="span">
                 Main
               </gcds-sr-only>
@@ -96,7 +99,10 @@ describe('gcds-topic-menu', () => {
             <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
               Menu principal
             </gcds-sr-only>
-            <button aria-expanded="false" aria-haspopup="true" aria-label="Appuyez sur la barre d'espacement pour ouvrir ou sur la touche d'échappement pour fermer le menu. Utilisez les flèches haut et bas pour choisir un élément de sous-menu. Appuyez sur la touche Entrée ou sur la flèche vers la droite pour le développer, ou sur la flèche vers la gauche ou la touche Échap pour le réduire. Utilisez les flèches haut et bas pour choisir un élément de ce niveau et la touche Entrée pour y accéder.">
+            <p id="gcds-topic-menu-desc" hidden="">
+              Appuyez sur la barre d'espacement pour ouvrir ou sur la touche d'échappement pour fermer le menu. Utilisez les flèches haut et bas pour choisir un élément de sous-menu. Appuyez sur la touche Entrée ou sur la flèche vers la droite pour le développer, ou sur la flèche vers la gauche ou la touche Échap pour le réduire. Utilisez les flèches haut et bas pour choisir un élément de ce niveau et la touche Entrée pour y accéder.
+            </p>
+            <button aria-expanded="false" aria-haspopup="true" aria-describedby="gcds-topic-menu-desc">
               Menu
               <gcds-sr-only tag="span">
                 principal
@@ -176,7 +182,10 @@ describe('gcds-topic-menu', () => {
             <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
               Main menu
             </gcds-sr-only>
-            <button aria-expanded="false" aria-haspopup="true" class="gcds-topic-menu--home" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.">
+            <p id="gcds-topic-menu-desc" hidden="">
+              Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.
+            </p>
+            <button aria-expanded="false" aria-haspopup="true" class="gcds-topic-menu--home" aria-describedby="gcds-topic-menu-desc">
               <gcds-sr-only tag="span">
                 Main
               </gcds-sr-only>
