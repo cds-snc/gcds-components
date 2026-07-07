@@ -7,7 +7,11 @@ export default createConfig({
   retries: 0, // Don't retry visual tests, retries mask real regressions
   testDir: './src',
   testMatch: '*.visual.ts',
-  timeout: 60000,
+  // Heavier interactive components (date-input, file-uploader, details) can
+  // exceed 60s during page setup under CI load — font wait (≤10s) + hydration
+  // (≤30s) + navigation leaves little margin. 120s gives headroom without
+  // touching screenshot strictness.
+  timeout: 120000,
 
   // Store baselines next to the test file so diffs are easy to find in PRs
   snapshotPathTemplate:
