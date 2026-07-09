@@ -214,12 +214,16 @@ const getSortValue = (sort: SortingState) => {
 
 const renderFilterSortModal = element => {
   const { filter, filterValue, lang } = element;
+  let justOpened = false;
   return (
     <div class="gcds-table__filters">
       <gcds-button
         size="small"
         button-role="primary"
-        onClick={() => element.filterSortModal.showModal()}
+        onClick={() => {
+          justOpened = true;
+          element.filterSortModal.showModal();
+        }}
       >
         <div>
           {element.filter && element.sortEnabled() ? (
@@ -285,6 +289,11 @@ const renderFilterSortModal = element => {
           class="gcds-table__modal-body"
           onKeyUp={ev => {
             if (ev.key === 'Enter') {
+              if (justOpened) {
+                justOpened = false;
+                return;
+              }
+
               if (document.activeElement?.shadowRoot?.activeElement === element.filterInput ||
                 document.activeElement?.shadowRoot?.activeElement === element.sortRadios
               ) {
