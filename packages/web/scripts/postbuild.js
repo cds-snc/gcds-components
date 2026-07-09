@@ -13,14 +13,14 @@ fs.copyFileSync('./dist/gcds/gcds.css', '../vue/gcds.css');
 // Also removes the timestamp to avoid unnecessary changes in git
 
 const COMPONENTS_FILE = '../specs/components.json';
-const WORKSPACE_ROOT = path.resolve(__dirname, '../..');
+const WORKSPACE_ROOT = path.posix.resolve(__dirname, '../..');
 
 // Paths that need sanitization
 const PATH_FIELDS = ['filePath', 'dirPath', 'readmePath', 'usagesDir'];
 
 // Sanitize a single path by removing workspace root
 function sanitizePath(filePath) {
-  return filePath?.replace(WORKSPACE_ROOT, '') || filePath;
+  return filePath?.split(WORKSPACE_ROOT).at(-1) || filePath;
 }
 
 // Sanitize all component paths
@@ -60,7 +60,11 @@ function sanitizeComponentsFile() {
     delete components.timestamp;
 
     sanitizeComponentPaths(components.components);
-    fs.writeFileSync(componentsPath, JSON.stringify(components, null, 2));
+    const sanitizedJsonStr = JSON.stringify(components, null, 2)
+      // normalize eol for Windows
+      .replaceAll('\\r', '')
+
+    fs.writeFileSync(componentsPath, sanitizedJsonStr);
 
     console.log('✅ Paths sanitized and timestamp removed in components.json');
   } catch (error) {
