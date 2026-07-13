@@ -120,7 +120,7 @@ const renderTableStatus = (
       )
       .replace('{total}', totalRows);
 
-    // No rows avalable
+    // No rows available
   } else if (table.getRowCount() === 0) {
     return I18N[lang].showingNoRows;
     // Rows on one page
