@@ -253,4 +253,32 @@ describe('gcds-topic-menu', () => {
       </gcds-topic-menu>
     `);
   });
+
+  it('falls back to backup data when fetch fails', async () => {
+    const originalFetch = global.fetch;
+    global.fetch = jest.fn().mockRejectedValue(new Error('Network error')) as unknown as typeof fetch;
+
+    const page = await newSpecPage({
+      components: [GcdsTopicMenu],
+      html: `<gcds-topic-menu></gcds-topic-menu>`,
+    });
+
+    expect(page.root).toBeTruthy();
+    expect(page.root).toEqualHtml(`
+      <gcds-topic-menu>
+        <mock:shadow-root>
+          <nav class="gcds-topic-menu" aria-labelledby="gcds-topic-menu__heading">
+            <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
+              Main menu
+            </gcds-sr-only>
+            <p id="gcds-topic-menu-desc" hidden="">
+              Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.
+            </p>
+          </nav>
+        </mock:shadow-root>
+      </gcds-topic-menu>
+    `);
+
+    global.fetch = originalFetch;
+  });
 });
