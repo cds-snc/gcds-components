@@ -340,10 +340,10 @@
     max-height: var(--gcds-table-modal-max-height-desktop);
     min-height: var(--gcds-table-modal-min-height);
     border: 0;
-    padding: 0;
     background: var(--gcds-table-modal-background);
     border-radius: var(--gcds-table-modal-border-radius-desktop);
     box-shadow: var(--gcds-table-modal-box-shadow);
+    padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -430,12 +430,9 @@
       position: sticky;
       bottom: 0;
       z-index: 2;
-
       display: flex;
       gap: var(--gcds-table-modal-spacing);
-
       padding: var(--gcds-table-modal-spacing);
-
       background-color: var(--gcds-table-modal-background);
       box-shadow: var(--gcds-table-modal-footer-box-shadow);
 
