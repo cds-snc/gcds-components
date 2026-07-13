@@ -169,6 +169,13 @@ describe('gcds-topic-menu', () => {
         </mock:shadow-root>
       </gcds-topic-menu>
     `);
+
+    const frenchContent = page.root?.shadowRoot?.textContent || '';
+    expect(frenchContent).toContain('Menu principal');
+    expect(frenchContent).toContain(
+      "Appuyez sur la barre d'espacement pour ouvrir ou sur la touche d'échappement pour fermer le menu.",
+    );
+    expect(frenchContent).not.toContain('Main menu');
   });
   it('renders - Home', async () => {
     const page = await newSpecPage({
