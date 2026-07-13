@@ -316,7 +316,9 @@ const renderFilterSortModal = element => {
               if (sortValue === 'null') {
                 element.sorting = [];
               } else {
-                const [direction, field] = sortValue.split('-');
+                const separatorIndex = sortValue.indexOf('-');
+                const direction = separatorIndex === -1 ? sortValue : sortValue.slice(0, separatorIndex);
+                const field = separatorIndex === -1 ? '' : sortValue.slice(separatorIndex + 1);
                 element.sorting = [
                   {
                     id: field,
