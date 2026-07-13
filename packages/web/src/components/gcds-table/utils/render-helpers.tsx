@@ -94,7 +94,7 @@ const renderTableStatus = (
       .replace('{start}', currentPageIndex * paginationSize + 1)
       .replace(
         '{end}',
-        Math.min((currentPageIndex + 1) * paginationSize, totalRows),
+        Math.min((currentPageIndex + 1) * paginationSize, filteredRows),
       )
       .replace('{filtered}', filteredRows);
 
