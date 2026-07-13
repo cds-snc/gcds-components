@@ -87,6 +87,37 @@ describe('gcds-topic-menu', () => {
       </gcds-topic-menu>
     `);
   });
+
+  it('supports interactive keyboard and toggle behavior', async () => {
+    const page = await newSpecPage({
+      components: [GcdsTopicMenu],
+      html: `<gcds-topic-menu></gcds-topic-menu>`,
+    });
+
+    const root = page.root.shadowRoot as ShadowRoot;
+    const menuToggle = root.querySelector('button') as HTMLButtonElement;
+    const firstMenuItem = root.querySelector('a[role="menuitem"]') as HTMLAnchorElement;
+
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('false');
+
+    menuToggle.click();
+    await page.waitForChanges();
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('true');
+
+    menuToggle.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    await page.waitForChanges();
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('false');
+
+    firstMenuItem.focus();
+    firstMenuItem.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    await page.waitForChanges();
+
+    expect(firstMenuItem.getAttribute('aria-expanded')).toBe('true');
+
+    firstMenuItem.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    await page.waitForChanges();
+    expect(root.activeElement).toBeTruthy();
+  });
   it('renders - French', async () => {
     const page = await newSpecPage({
       components: [GcdsTopicMenu],
