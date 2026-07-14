@@ -337,7 +337,7 @@ const renderFilterSortModal = element => {
               <gcds-input
                 class="gcds-table__modal-filter"
                 type="search"
-                label={I18N[lang].filter}
+                label={I18N[lang].filterInputLabel}
                 name="filter"
                 inputId="gcds-table-filter"
                 autoFocus

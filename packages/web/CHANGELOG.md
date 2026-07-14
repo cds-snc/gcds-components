@@ -161,7 +161,7 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 
 # Journal des modifications
 
-## [v1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 
 Version publiée le&nbsp;: 2026-05-27
 
