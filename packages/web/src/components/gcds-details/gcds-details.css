@@ -37,7 +37,7 @@
     .details__summary {
       position: relative;
       padding: var(--gcds-details-summary-padding);
-      color: var(--gcds-details-default-text);
+      color: red;
       font: var(--gcds-details-font-desktop);
       text-align: left;
       text-decoration-style: solid;
