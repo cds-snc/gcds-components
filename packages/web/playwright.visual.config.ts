@@ -4,7 +4,10 @@ import { matchers, createConfig } from '@stencil/playwright';
 expect.extend(matchers);
 
 export default createConfig({
-  retries: 2, // EXPERIMENT: measure deterministic noise floor
+  // Retries rescue non-deterministic *setup* failures (a stalled hydration or
+  // font load re-runs cleanly). They do NOT hide visual regressions: a real
+  // pixel change is deterministic and fails every retry. See maxDiffPixelRatio.
+  retries: 2,
   testDir: './src',
   testMatch: '*.visual.ts',
   // Heavier interactive components (date-input, file-uploader, details) can
@@ -31,11 +34,12 @@ export default createConfig({
   expect: {
     toHaveScreenshot: {
       animations: 'disabled',
-      // 2% pixel tolerance handles the irreducible sub-pixel anti-aliasing
-      // noise floor (GPU rasterization isn't bit-exact run-to-run) without
-      // letting real changes through — those shift far more than 2% or change
-      // the image dimensions, which fails regardless of ratio. Use a ratio,
-      // not a flat pixel count, so the tolerance scales with element size.
+      // 0.5% tolerance. Measured: with baselines and comparison both on Linux
+      // CI, every component renders within 0.5% of its baseline (178/178 pass).
+      // This is tight enough to catch small changes — e.g. a summary text-colour
+      // change measures ~2% — while clearing the render noise floor. Baselines
+      // MUST be regenerated on Linux CI; a local (macOS) render differs by ~1%.
+      // A ratio, not a flat pixel count, so tolerance scales with element size.
       maxDiffPixelRatio: 0.005,
     },
   },
