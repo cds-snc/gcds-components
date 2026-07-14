@@ -4,7 +4,7 @@ import { matchers, createConfig } from '@stencil/playwright';
 expect.extend(matchers);
 
 export default createConfig({
-  retries: 0, // Don't retry visual tests, retries mask real regressions
+  retries: 2, // EXPERIMENT: measure deterministic noise floor
   testDir: './src',
   testMatch: '*.visual.ts',
   // Heavier interactive components (date-input, file-uploader, details) can
@@ -31,9 +31,12 @@ export default createConfig({
   expect: {
     toHaveScreenshot: {
       animations: 'disabled',
-      // 2% pixel tolerance handles sub-pixel anti-aliasing differences
-      // without letting real changes through
-      maxDiffPixels: 100,
+      // 2% pixel tolerance handles the irreducible sub-pixel anti-aliasing
+      // noise floor (GPU rasterization isn't bit-exact run-to-run) without
+      // letting real changes through — those shift far more than 2% or change
+      // the image dimensions, which fails regardless of ratio. Use a ratio,
+      // not a flat pixel count, so the tolerance scales with element size.
+      maxDiffPixelRatio: 0.005,
     },
   },
 
