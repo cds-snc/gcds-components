@@ -228,7 +228,7 @@ test(`Error summary`, async ({ page }) => {
 
   await page.locator('button[type="submit"]').click();
 
-  await page.waitForTimeout(500); // Wait for error summary to render
+  await expect(page.locator('gcds-error-summary gcds-link')).toHaveCount(0);
 
   errorLinks = await page.locator('gcds-error-summary gcds-link').all();
 

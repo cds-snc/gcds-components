@@ -344,11 +344,8 @@
     border-radius: var(--gcds-table-modal-border-radius-desktop);
     box-shadow: var(--gcds-table-modal-box-shadow);
     padding: 0;
-
-    &[open] {
-      display: flex;
-      flex-direction: column;
-    }
+    overflow-y: auto;
+    overflow-x: hidden;
 
     &::backdrop {
       background-color: var(--gcds-table-modal-backdrop-background);
@@ -363,19 +360,20 @@
         height: var(--gcds-table-modal-height-mobile);
         max-height: var(--gcds-table-modal-height-mobile);
         margin: 0;
-        overflow-y: scroll;
         border-radius: var(--gcds-table-modal-border-radius-mobile);
       }
     }
 
-    /* Reduce gcds-button desktop font size to match table typography and spacing. */
     gcds-button {
       --gcds-button-font-desktop: var(--gcds-button-font-mobile);
     }
 
     .gcds-table__modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
       display: flex;
-      flex: 0 0 auto;
+      background-color: var(--gcds-table-modal-background);
       align-items: center;
       justify-content: space-between;
       padding: var(--gcds-table-modal-spacing);
@@ -386,21 +384,11 @@
     }
 
     .gcds-table__modal-body {
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      min-height: 0; /* Important for overflow */
-    }
-
-    .gcds-table__modal-content,
-    .gcds-table__modal-footer {
-      padding: var(--gcds-table-modal-spacing);
+      display: block;
     }
 
     .gcds-table__modal-content {
-      flex: 1 1 auto;
-      overflow-y: auto;
-      min-height: 0;
+      padding: var(--gcds-table-modal-spacing);
 
       .gcds-table__modal-filter + .gcds-table__modal-sort {
         border-block-start: var(--gcds-table-modal-border);
@@ -439,9 +427,12 @@
     }
 
     .gcds-table__modal-footer {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
       display: flex;
-      flex: 0 0 auto;
       gap: var(--gcds-table-modal-spacing);
+      padding: var(--gcds-table-modal-spacing);
       background-color: var(--gcds-table-modal-background);
       box-shadow: var(--gcds-table-modal-footer-box-shadow);
 

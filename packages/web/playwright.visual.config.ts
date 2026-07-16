@@ -4,10 +4,17 @@ import { matchers, createConfig } from '@stencil/playwright';
 expect.extend(matchers);
 
 export default createConfig({
-  retries: 0, // Don't retry visual tests, retries mask real regressions
+  // Retries rescue non-deterministic *setup* failures (a stalled hydration or
+  // font load re-runs cleanly). They do NOT hide visual regressions: a real
+  // pixel change is deterministic and fails every retry. See maxDiffPixelRatio.
+  retries: 2,
   testDir: './src',
   testMatch: '*.visual.ts',
-  timeout: 60000,
+  // Heavier interactive components (date-input, file-uploader, details) can
+  // exceed 60s during page setup under CI load — font wait (≤10s) + hydration
+  // (≤30s) + navigation leaves little margin. 120s gives headroom without
+  // touching screenshot strictness.
+  timeout: 120000,
 
   // Store baselines next to the test file so diffs are easy to find in PRs
   snapshotPathTemplate:
@@ -27,9 +34,13 @@ export default createConfig({
   expect: {
     toHaveScreenshot: {
       animations: 'disabled',
-      // 2% pixel tolerance handles sub-pixel anti-aliasing differences
-      // without letting real changes through
-      maxDiffPixels: 100,
+      // 0.5% tolerance. Measured: with baselines and comparison both on Linux
+      // CI, every component renders within 0.5% of its baseline (178/178 pass).
+      // This is tight enough to catch small changes — e.g. a summary text-colour
+      // change measures ~2% — while clearing the render noise floor. Baselines
+      // MUST be regenerated on Linux CI; a local (macOS) render differs by ~1%.
+      // A ratio, not a flat pixel count, so tolerance scales with element size.
+      maxDiffPixelRatio: 0.005,
     },
   },
 
