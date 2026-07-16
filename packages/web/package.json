@@ -44,11 +44,6 @@
     "docs:diagram": "node ./scripts/generate-mermaid-diagram.js"
   },
   "dependencies": {
-    "@stencil/core": "^4.43.4",
-    "@storybook/addon-a11y": "^8.0.9",
-    "@storybook/addons": "^7.6.17",
-    "@storybook/test": "^8.0.9",
-    "@storybook/theming": "^8.0.9",
     "@tanstack/table-core": "^8.21.3"
   },
   "devDependencies": {
@@ -76,6 +71,11 @@
     "@storybook/blocks": "^8.0.9",
     "@storybook/html": "^8.0.9",
     "@storybook/html-webpack5": "^8.0.9",
+    "@stencil/core": "^4.43.4",
+    "@storybook/addon-a11y": "^8.0.9",
+    "@storybook/addons": "^7.6.17",
+    "@storybook/test": "^8.0.9",
+    "@storybook/theming": "^8.0.9",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
