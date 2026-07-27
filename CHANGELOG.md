@@ -1,7 +1,9 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0)
+
+Released on: 2026-07-27
 
 
 ### :rocket: New Features
@@ -11,13 +13,16 @@
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-table:** Add status to table description ([#1323](https://github.com/cds-snc/gcds-components/issues/1323)) ([ad8174d](https://github.com/cds-snc/gcds-components/commit/ad8174d0166df29859fb507840c1b9545d2a2219))
-* **gcds-table:** Pressing Enter correctly opens filter dialog ([#1320](https://github.com/cds-snc/gcds-components/issues/1320)) ([7607e62](https://github.com/cds-snc/gcds-components/commit/7607e62d195ea6586de7775f9f8b8593dd0efe5b))
-* **gcds-table:** Scrolling modal with Voice Control ([#1329](https://github.com/cds-snc/gcds-components/issues/1329)) ([2ca44fb](https://github.com/cds-snc/gcds-components/commit/2ca44fb7e7ca246264cc74cdf3ef7d1b906f154c))
-* **gcds-table:** Update filter input label ([#1327](https://github.com/cds-snc/gcds-components/issues/1327)) ([fe493a5](https://github.com/cds-snc/gcds-components/commit/fe493a50682f65041d591b2e5068fb2832303fb1))
+* **gcds-table:** 
+  * Add status to table description ([#1323](https://github.com/cds-snc/gcds-components/issues/1323)) ([ad8174d](https://github.com/cds-snc/gcds-components/commit/ad8174d0166df29859fb507840c1b9545d2a2219))
+  * Pressing Enter correctly opens filter dialog ([#1320](https://github.com/cds-snc/gcds-components/issues/1320)) ([7607e62](https://github.com/cds-snc/gcds-components/commit/7607e62d195ea6586de7775f9f8b8593dd0efe5b))
+  * Update filter input label ([#1327](https://github.com/cds-snc/gcds-components/issues/1327)) ([fe493a5](https://github.com/cds-snc/gcds-components/commit/fe493a50682f65041d591b2e5068fb2832303fb1))
+  * Update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 * **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1)
+
+Released on: 2026-06-08
 
 
 ### :bug: :wrench: Bug Fixes
@@ -27,7 +32,8 @@
 * Load proper language in Vue and React based on the lang attribute ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
 * update french validation-errors.ts ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
 
-## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0)
+
 Released on: 2026-05-27
 
 
