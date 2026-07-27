@@ -1,6 +1,23 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
+
+
+### :rocket: New Features
+
+* add visual regression tests for all components ([#1302](https://github.com/cds-snc/gcds-components/issues/1302)) ([095b170](https://github.com/cds-snc/gcds-components/commit/095b1708ebd06bf614bf9ae47b2d5d88147d4218))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-table:** 
+  * Add status to table description ([#1323](https://github.com/cds-snc/gcds-components/issues/1323)) ([ad8174d](https://github.com/cds-snc/gcds-components/commit/ad8174d0166df29859fb507840c1b9545d2a2219))
+  * Pressing Enter correctly opens filter dialog ([#1320](https://github.com/cds-snc/gcds-components/issues/1320)) ([7607e62](https://github.com/cds-snc/gcds-components/commit/7607e62d195ea6586de7775f9f8b8593dd0efe5b))
+  * Update filter input label ([#1327](https://github.com/cds-snc/gcds-components/issues/1327)) ([fe493a5](https://github.com/cds-snc/gcds-components/commit/fe493a50682f65041d591b2e5068fb2832303fb1))
+  * Update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
+* **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
+
 ## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
 
 
