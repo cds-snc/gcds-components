@@ -117,7 +117,11 @@ export class GcdsAlert {
             class={`gcds-alert alert--role-${alertRole} ${
               isFixed ? 'alert--is-fixed' : ''
             }`}
-            role="alert"
+            role={
+              alertRole === 'info' || alertRole === 'success'
+                ? 'status'
+                : 'alert'
+            }
             aria-label={
               alertRole === 'danger'
                 ? i18n[lang].label.danger
