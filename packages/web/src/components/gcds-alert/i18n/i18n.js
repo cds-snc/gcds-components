@@ -6,7 +6,7 @@ const I18N = {
       success: 'This is a success alert.',
       warning: 'This is a warning alert.',
     },
-    closeBtn: 'Close alert.',
+    closeBtn: 'Dismiss',
   },
   fr: {
     label: {
@@ -15,7 +15,7 @@ const I18N = {
       success: 'Ceci est une alerte de succès.',
       warning: "Ceci est une alerte d'avertissement.",
     },
-    closeBtn: "Fermer l'alerte.",
+    closeBtn: 'Fermer',
   },
 };
 

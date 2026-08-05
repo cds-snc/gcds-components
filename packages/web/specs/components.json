@@ -252,11 +252,16 @@
       "dependents": [],
       "dependencies": [
         "gcds-container",
-        "gcds-icon"
+        "gcds-icon",
+        "gcds-button"
       ],
       "dependencyGraph": {
         "gcds-alert": [
           "gcds-container",
+          "gcds-icon",
+          "gcds-button"
+        ],
+        "gcds-button": [
           "gcds-icon"
         ]
       }
@@ -817,6 +822,7 @@
       "parts": [],
       "states": [],
       "dependents": [
+        "gcds-alert",
         "gcds-search",
         "gcds-table"
       ],
@@ -826,6 +832,9 @@
       "dependencyGraph": {
         "gcds-button": [
           "gcds-icon"
+        ],
+        "gcds-alert": [
+          "gcds-button"
         ],
         "gcds-search": [
           "gcds-button"
