@@ -283,7 +283,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="full">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
@@ -345,7 +345,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" container="full" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="full">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
@@ -374,7 +374,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" container="xl" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="xl">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
@@ -403,7 +403,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" container="lg" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="lg">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
@@ -432,7 +432,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" container="md" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="md">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
@@ -461,7 +461,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" container="sm" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="sm">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
@@ -490,7 +490,7 @@ describe('gcds-alert', () => {
     expect(page.root).toEqualHtml(`
       <gcds-alert heading="Main notification title" container="xs" is-fixed>
         <mock:shadow-root>
-          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="alert">
+          <div aria-label="This is an info alert." class="gcds-alert alert--role-info alert--is-fixed" role="status">
             <gcds-container alignment="center" size="xs">
               <div class="alert__container">
                 <gcds-icon aria-hidden="true" class="alert__icon" name="info-circle" size="text"></gcds-icon>
