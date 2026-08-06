@@ -33,9 +33,11 @@ A card is a box containing structured, actionable content on a single topic.
 
 ## Slots
 
-| Slot        | Description                                                                 |
-| ----------- | --------------------------------------------------------------------------- |
-| `"default"` | Slot for the card description. Will overwrite the description prop if used. |
+| Slot                 | Description                                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"card-description"` | Internal. Filled automatically from the description prop for the same reason. Not used when the default slot is populated.                         |
+| `"card-title"`       | Internal. Filled automatically from the card-title prop so the title text exists in the light DOM and stays readable by DOM-text extraction tools. |
+| `"default"`          | Slot for the card description. Will overwrite the description prop if used.                                                                        |
 
 
 ## Dependencies
