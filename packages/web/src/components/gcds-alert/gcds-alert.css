@@ -77,6 +77,10 @@
         padding: 0;
       }
     }
+
+    gcds-button::part(button) {
+      width: var(--gcds-button-width);
+    }
   }
 }
 
