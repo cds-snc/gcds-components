@@ -24,21 +24,39 @@
 @layer default {
   :host .gcds-alert {
     container: component alert / inline-size;
-    font: var(--gcds-alert-font);
+    font: var(--gcds-alert-font-desktop);
     color: var(--gcds-alert-text);
-    padding: var(--gcds-alert-padding);
+    padding: var(--gcds-alert-padding-desktop);
     border-radius: var(--gcds-alert-border-radius);
 
+    @media only screen and (width < 48em) {
+      font: var(--gcds-alert-font-mobile);
+      padding: var(--gcds-alert-padding-mobile);
+    }
+
     gcds-icon {
-      margin: var(--gcds-alert-icon-margin);
+      margin: var(--gcds-alert-icon-margin-desktop);
+
+      @media only screen and (width < 48em) {
+        margin: var(--gcds-alert-icon-margin-mobile);
+      }
     }
 
     .alert__content {
-      margin: var(--gcds-alert-content-margin);
+      margin: var(--gcds-alert-content-margin-desktop);
+
+      @media only screen and (width < 48em) {
+        margin: var(--gcds-alert-content-margin-mobile);
+      }
 
       .alert__heading {
-        font: var(--gcds-alert-content-heading-font);
-        margin: var(--gcds-alert-content-heading-margin);
+        font: var(--gcds-alert-content-heading-font-desktop);
+        margin: var(--gcds-alert-content-heading-margin-desktop);
+
+        @media only screen and (width < 48em) {
+          font: var(--gcds-alert-content-heading-font-mobile);
+          margin: var(--gcds-alert-content-heading-margin-mobile);
+        }
       }
 
       ::slotted(*) {
