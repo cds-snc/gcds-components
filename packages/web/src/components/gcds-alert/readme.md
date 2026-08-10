@@ -41,12 +41,15 @@ Alert displays an alert message with an optional heading, icon, and close button
 
 - [gcds-container](../gcds-container)
 - [gcds-icon](../gcds-icon)
+- [gcds-button](../gcds-button)
 
 ### Graph
 ```mermaid
 graph TD;
   gcds-alert --> gcds-container
   gcds-alert --> gcds-icon
+  gcds-alert --> gcds-button
+  gcds-button --> gcds-icon
   style gcds-alert fill:#26374a,stroke:#333,stroke-width:4px
 ```
 
