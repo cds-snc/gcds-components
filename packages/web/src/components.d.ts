@@ -298,7 +298,7 @@ export namespace Components {
         /**
           * String to have autocomplete enabled.
          */
-        "autocomplete"?: 'cc-exp' | 'bday' | 'off';
+        "autocomplete"?: 'cc-exp' | 'bday' | 'off' | 'on';
         /**
           * If true, the date-input will be focused on component render
          */
@@ -2738,7 +2738,7 @@ declare namespace LocalJSX {
         /**
           * String to have autocomplete enabled.
          */
-        "autocomplete"?: 'cc-exp' | 'bday' | 'off';
+        "autocomplete"?: 'cc-exp' | 'bday' | 'off' | 'on';
         /**
           * If true, the date-input will be focused on component render
          */
@@ -4279,7 +4279,7 @@ declare namespace LocalJSX {
         "hint": string;
         "errorMessage": string;
         "disabled": boolean;
-        "autocomplete": 'cc-exp' | 'bday' | 'off';
+        "autocomplete": 'cc-exp' | 'bday' | 'off' | 'on';
         "autofocus": boolean;
         "max": string;
         "min": string;

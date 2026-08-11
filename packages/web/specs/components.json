@@ -2327,10 +2327,10 @@
       "props": [
         {
           "name": "autocomplete",
-          "type": "\"bday\" | \"cc-exp\" | \"off\"",
+          "type": "\"bday\" | \"cc-exp\" | \"off\" | \"on\"",
           "complexType": {
-            "original": "'cc-exp' | 'bday' | 'off'",
-            "resolved": "\"bday\" | \"cc-exp\" | \"off\"",
+            "original": "'cc-exp' | 'bday' | 'off' | 'on'",
+            "resolved": "\"bday\" | \"cc-exp\" | \"off\" | \"on\"",
             "references": {}
           },
           "mutable": false,
@@ -2349,6 +2349,10 @@
             },
             {
               "value": "off",
+              "type": "string"
+            },
+            {
+              "value": "on",
               "type": "string"
             }
           ],
