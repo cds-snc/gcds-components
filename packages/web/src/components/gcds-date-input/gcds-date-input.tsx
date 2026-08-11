@@ -141,7 +141,7 @@ export class GcdsDateInput {
   /**
    * String to have autocomplete enabled.
    */
-  @Prop() autocomplete?: string;
+  @Prop() autocomplete?: 'cc-exp' | 'bday' | 'off';
 
   /**
    * If true, the date-input will be focused on component render
@@ -688,9 +688,15 @@ export class GcdsDateInput {
       i + 1 < 10 ? `0${i + 1}` : `${i + 1}`,
     ) : null;
 
-    const autocompleteDay = autocomplete && autocomplete !== 'off' && autocomplete !== 'on' ? `${autocomplete}-day` : autocomplete
-    const autocompleteMonth = autocomplete && autocomplete !== 'off' && autocomplete !== 'on' ? `${autocomplete}-month` : autocomplete
-    const autocompleteYear = autocomplete && autocomplete !== 'off' && autocomplete !== 'on' ? `${autocomplete}-year` : autocomplete
+    let autocompleteToUse = autocomplete
+    if (autocomplete != null && autocomplete != 'off' && autocomplete != 'bday' && autocomplete != 'cc-exp') {
+      console.error('Invalid autocomplete set for date')
+      autocompleteToUse = undefined
+    }
+
+    const autocompleteDay = autocompleteToUse && autocompleteToUse !== 'off' ? `${autocompleteToUse}-day` : autocompleteToUse
+    const autocompleteMonth = autocompleteToUse && autocompleteToUse !== 'off' ? `${autocompleteToUse}-month` : autocompleteToUse
+    const autocompleteYear = autocompleteToUse && autocompleteToUse !== 'off' ? `${autocompleteToUse}-year` : autocompleteToUse
 
     const month = this.format !== 'iso' ? (
       <gcds-select

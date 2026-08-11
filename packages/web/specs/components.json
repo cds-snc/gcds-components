@@ -2326,6 +2326,38 @@
       "usage": {},
       "props": [
         {
+          "name": "autocomplete",
+          "type": "\"bday\" | \"cc-exp\" | \"off\"",
+          "complexType": {
+            "original": "'cc-exp' | 'bday' | 'off'",
+            "resolved": "\"bday\" | \"cc-exp\" | \"off\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autocomplete",
+          "reflectToAttr": false,
+          "docs": "String to have autocomplete enabled.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "bday",
+              "type": "string"
+            },
+            {
+              "value": "cc-exp",
+              "type": "string"
+            },
+            {
+              "value": "off",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "autofocus",
           "type": "boolean",
           "complexType": {
