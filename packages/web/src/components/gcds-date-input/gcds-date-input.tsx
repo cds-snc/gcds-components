@@ -689,7 +689,9 @@ export class GcdsDateInput {
     ) : null;
 
     let autocompleteToUse = autocomplete
-    if (autocomplete != null && autocomplete !== 'off' && autocomplete !== 'on' && autocomplete !== 'bday' && autocomplete !== 'cc-exp') {
+    if ((autocomplete != null && autocomplete !== 'off' && autocomplete !== 'on' && autocomplete !== 'bday' && autocomplete !== 'cc-exp') // don't allow unspecified values
+      || (autocomplete === 'cc-exp' && format !== 'compact')) // don't allow cc-exp if format is not compact
+     {
       console.error('Invalid autocomplete set for date')
       autocompleteToUse = undefined
     }

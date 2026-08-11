@@ -284,6 +284,32 @@ describe('gcds-date-input', () => {
     `);
   })
 
+   it('renders - iso - autocomplete cc-exp invalid', async () => {
+    const errorSpy = jest.spyOn(console, 'error');
+
+    const page = await newSpecPage({
+      components: [GcdsDateInput],
+      html: `<gcds-date-input legend="Date input" name="date" format="iso" autocomplete="cc-exp" lang="en"></gcds-date-input>`,
+    });
+
+    expect(page.root).toEqualHtml(`
+      <gcds-date-input format="iso" autocomplete="cc-exp" legend="Date input" lang="en" name="date">
+        <mock:shadow-root shadowrootdelegatesfocus>
+          <fieldset aria-labelledby="date-input-legend" class="gcds-date-input__fieldset" tabindex="-1">
+            <legend id="date-input-legend">
+              Date input
+            </legend>
+            <gcds-input aria-invalid="false" class="gcds-date-input__year" inputid="year" label="Year" name="year" size="4" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__month" inputid="month" label="Month" name="month" size="2" inputmode="numeric" type="text" validate-on="other" value=""></gcds-input>
+            <gcds-input aria-invalid="false" class="gcds-date-input__day" inputid="day" label="Day" name="day" size="2" inputmode="numeric" type="text" validate-on="other" type="text" value=""></gcds-input>
+          </fieldset>
+        </mock:shadow-root>
+      </gcds-date-input>
+    `);
+
+    expect(errorSpy).toBeCalled();
+  })
+
   it('renders - iso - autocomplete invalid', async () => {
     const errorSpy = jest.spyOn(console, 'error');
 
