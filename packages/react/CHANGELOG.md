@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.4.0...@gcds-core/components-react-v1.5.0) (2026-08-12)
+
+
+### :rocket: New Features
+
+* trigger minor version bump ([#1387](https://github.com/cds-snc/gcds-components/issues/1387)) ([61b4f73](https://github.com/cds-snc/gcds-components/commit/61b4f73ce8b1c6e02f2c4c25e3a89d803b2457c9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.4.0 to ^1.5.0
+
 ## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.3.1...@gcds-core/components-react-v1.4.0) (2026-07-27)
 
 
