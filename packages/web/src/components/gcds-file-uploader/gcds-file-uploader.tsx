@@ -193,6 +193,11 @@ export class GcdsFileUploader {
   @State() inheritedAttributes: Object = {};
 
   /**
+   * Message announced to assistive technology when a file is removed.
+   */
+  @State() removedFileMessage: string = '';
+
+  /**
    * Language of rendered component
    */
   @State() lang: string;
@@ -288,6 +293,7 @@ export class GcdsFileUploader {
     }
 
     this.value = [...filesContainer];
+    this.removedFileMessage = `${i18n[this.lang].fileRemoved} ${fileName}`;
     this.gcdsRemoveFile.emit(this.value);
     this.gcdsChange.emit(this.value);
     this.el.dispatchEvent(
@@ -492,6 +498,7 @@ export class GcdsFileUploader {
       autofocus,
       form,
       inheritedAttributes,
+      removedFileMessage,
     } = this;
 
     const attrsInput = {
@@ -582,6 +589,9 @@ export class GcdsFileUploader {
                 {i18n[lang].summary.unselected}
               </gcds-sr-only>
             )}
+            <gcds-sr-only role="status" aria-live="polite">
+              {removedFileMessage}
+            </gcds-sr-only>
           </div>
 
           {value.length > 0
