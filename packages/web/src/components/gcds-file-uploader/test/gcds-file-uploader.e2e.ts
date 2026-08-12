@@ -100,6 +100,13 @@ test.describe('gcds-file-uploader', () => {
         el => (el as HTMLGcdsFileUploaderElement).files.length,
       ),
     ).toBe(0);
+
+    // A screen reader should be told a file was removed (#1363)
+    const liveRegionText = await element.evaluate(el =>
+      el.shadowRoot.querySelector('gcds-sr-only[aria-live]').textContent.trim(),
+    );
+
+    expect(liveRegionText).toBe('File removed: gcds-file-uploader.e2e.html');
   });
   test('set files manually', async ({ page }) => {
     const element = page.locator('gcds-file-uploader');
