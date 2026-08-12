@@ -210,8 +210,8 @@ Version publiée le&nbsp;: 2026-06-08
 ### :bug: :wrench: Corrections de bogues
 
 * **gcds-table:** Correction du statut lors de l’application d’un filtre ([#1289](https://github.com/cds-snc/gcds-components/issues/1289)) ([d09e0f5](https://github.com/cds-snc/gcds-components/commit/d09e0f5012d5a85e7b50c22f9998b7791bdbd49a))
-* **gcds-table:** Focus, intéraction et problèmes d'affichage ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
-* Afficher la bonne langue avec Vue et React basé sur l'attribut de langue ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
+* **gcds-table:** Focus, interaction et problèmes d'affichage ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
+* Afficher la bonne langue avec Vue et React basé sur l'attribut lang ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
 * Mise à jour des messages de validation en français dans validation-errors.ts ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
 
 ## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
