@@ -18,6 +18,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -44,6 +45,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" disabled="" aria-invalid="false" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -73,6 +75,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="true" aria-describedby="error-message-file-uploader file-uploader__summary" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -100,6 +103,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" aria-describedby="hint-file-uploader file-uploader__summary" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -126,6 +130,7 @@ describe('gcds-file-uploader', () => {
             </button>
             <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" />
             <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+            <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
           </div>
         </div>
         </mock:shadow-root>
@@ -152,6 +157,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -178,6 +184,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -204,6 +211,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" required="" />
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -230,6 +238,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" autofocus/>
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>
@@ -256,6 +265,7 @@ describe('gcds-file-uploader', () => {
               </button>
               <input aria-describedby="file-uploader__summary" id="file-uploader" name="file-uploader-name" type="file" value="" aria-invalid="false" form="formID"/>
               <gcds-sr-only id="file-uploader__summary">No file currently selected.</gcds-sr-only>
+              <gcds-sr-only aria-live="polite" role="status"></gcds-sr-only>
             </div>
           </div>
         </mock:shadow-root>

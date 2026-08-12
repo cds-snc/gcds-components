@@ -9,6 +9,7 @@ const I18N = {
       unselected: 'No file currently selected.',
     },
     removeFile: 'Remove file',
+    fileRemoved: 'File removed:',
     droppedError:
       'One or more of the dropped files is unable to be uploaded. Accepted file types:',
   },
@@ -22,6 +23,7 @@ const I18N = {
       unselected: 'Aucun fichier actuellement sélectionné.',
     },
     removeFile: 'Supprimer le fichier',
+    fileRemoved: 'Fichier supprimé :',
     droppedError:
       'Un ou plusieurs fichiers déposés ne peuvent pas être téléversés. Types de fichiers acceptés :',
   },
