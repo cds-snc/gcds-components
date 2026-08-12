@@ -81,7 +81,8 @@ export default {
       },
     },
     autocomplete: {
-      control: 'text',
+      control: { type: 'select' },
+      options: ['on', 'off', 'bday', 'cc-exp'],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
@@ -203,7 +204,7 @@ const TemplatePlayground = args => `
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
-  ${args.autocomplete ? `autofocus="${args.autocomplete}"` : null}
+  ${args.autocomplete ? `autocomplete="${args.autocomplete}"` : null}
   ${args.autofocus ? `autofocus` : null}
   ${args.validateOn != 'blur' ? `validate-on="${args.validateOn}"` : null}
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
