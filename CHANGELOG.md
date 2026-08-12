@@ -1,8 +1,25 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0)
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0)
+Released on: 2026-08-12
 
+
+### :rocket: New Features
+
+* **gcds-alert:** Updated alert styling and accessibility behaviour, with `role="status"` for `info` and `success` alerts and `role="alert"` for `warning` and `danger` alerts based on the `alertRole` property. ([#1373](https://github.com/cds-snc/gcds-components/issues/1373)) ([04a2de5](https://github.com/cds-snc/gcds-components/commit/04a2de5abca183609b49c7daf94c97d9013f001b))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-file-uploader:** Fixed an accessibility issue where file removal was not announced to screen readers. ([#1386](https://github.com/cds-snc/gcds-components/issues/1386)) ([0536c3f](https://github.com/cds-snc/gcds-components/commit/0536c3f7eacfb08301ac6f1d94eb5da6ad431898)), closes [#1363](https://github.com/cds-snc/gcds-components/issues/1363)
+
+
+### :art: Styles
+
+* **gcds-signature:** Adjusted signature sizing to align with FIP requirements ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
+
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) 
 Released on: 2026-07-27
 
 
@@ -20,9 +37,7 @@ Released on: 2026-07-27
   * Update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 * **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1)
-
-Released on: 2026-06-08
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
 
 
 ### :bug: :wrench: Bug Fixes
@@ -32,8 +47,7 @@ Released on: 2026-06-08
 * Load proper language in Vue and React based on the lang attribute ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
 * update french validation-errors.ts ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
 
-## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0)
-
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 Released on: 2026-05-27
 
 
