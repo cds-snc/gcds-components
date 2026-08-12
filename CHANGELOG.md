@@ -1,9 +1,25 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0)
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) (2026-08-12)
 
-Released on: 2026-07-27
+
+### :rocket: New Features
+
+* trigger minor version bump ([#1387](https://github.com/cds-snc/gcds-components/issues/1387)) ([61b4f73](https://github.com/cds-snc/gcds-components/commit/61b4f73ce8b1c6e02f2c4c25e3a89d803b2457c9))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-file-uploader:** announce file removal to screen readers ([#1386](https://github.com/cds-snc/gcds-components/issues/1386)) ([0536c3f](https://github.com/cds-snc/gcds-components/commit/0536c3f7eacfb08301ac6f1d94eb5da6ad431898)), closes [#1363](https://github.com/cds-snc/gcds-components/issues/1363)
+* **gcds-signature:** adjust sizing of signature ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
+
+
+### :art: Styles
+
+* **gcds-alert:** update alert component styling ([#1373](https://github.com/cds-snc/gcds-components/issues/1373)) ([04a2de5](https://github.com/cds-snc/gcds-components/commit/04a2de5abca183609b49c7daf94c97d9013f001b))
+
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
 
 
 ### :rocket: New Features
@@ -20,9 +36,7 @@ Released on: 2026-07-27
   * Update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 * **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1)
-
-Released on: 2026-06-08
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
 
 
 ### :bug: :wrench: Bug Fixes
@@ -32,8 +46,7 @@ Released on: 2026-06-08
 * Load proper language in Vue and React based on the lang attribute ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
 * update french validation-errors.ts ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
 
-## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0)
-
+## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 Released on: 2026-05-27
 
 
@@ -182,37 +195,6 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 ---
 
 # Journal des modifications
-
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0)
-
-Version publiée le&nbsp;: 2026-07-27
-
-
-### :rocket: Nouvelles fonctionnalités
-
-* Ajout de tests de régression pour tous les composants ([#1302](https://github.com/cds-snc/gcds-components/issues/1302)) ([095b170](https://github.com/cds-snc/gcds-components/commit/095b1708ebd06bf614bf9ae47b2d5d88147d4218))
-
-
-### :bug: :wrench: Corrections de bogues
-
-* **gcds-table:** 
-  * AJout du statut à la description du tableau ([#1323](https://github.com/cds-snc/gcds-components/issues/1323)) ([ad8174d](https://github.com/cds-snc/gcds-components/commit/ad8174d0166df29859fb507840c1b9545d2a2219))
-  * Prévenir la fermeture de la boîte de dialogue de filtres lorsque la touche de retour est appuyée ([#1320](https://github.com/cds-snc/gcds-components/issues/1320)) ([7607e62](https://github.com/cds-snc/gcds-components/commit/7607e62d195ea6586de7775f9f8b8593dd0efe5b))
-  * Mise à jour de l’étiquette du champ de filtre ([#1327](https://github.com/cds-snc/gcds-components/issues/1327)) ([fe493a5](https://github.com/cds-snc/gcds-components/commit/fe493a50682f65041d591b2e5068fb2832303fb1))
-  * Mise à jour des instructions dans aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
-* **gcds-topic-menu:** Mise à jour des instructions dans aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
-
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1)
-
-Version publiée le&nbsp;: 2026-06-08
-
-
-### :bug: :wrench: Corrections de bogues
-
-* **gcds-table:** Correction du statut lors de l’application d’un filtre ([#1289](https://github.com/cds-snc/gcds-components/issues/1289)) ([d09e0f5](https://github.com/cds-snc/gcds-components/commit/d09e0f5012d5a85e7b50c22f9998b7791bdbd49a))
-* **gcds-table:** Focus, intéraction et problèmes d'affichage ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
-* Afficher la bonne langue avec Vue et React basé sur l'attribut de langue ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
-* Mise à jour des messages de validation en français dans validation-errors.ts ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
 
 ## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 
