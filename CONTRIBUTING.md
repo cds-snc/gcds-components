@@ -31,6 +31,27 @@ You can test the Angular, Vue and React packages locally as this repository is s
 
 In the root directory, run `npm run build`. All five packages will be compiled.
 
+#### Running the visual regression tests
+
+The visual regression suite screenshots each component and compares it against a baseline image committed to the repo. Those baselines are generated on our Linux CI runners, and **CI is the source of truth for these tests** — that is where a pass or a failure is meaningful.
+
+You can still run the suite locally to see whether a change moves any rendering. These are the same steps CI runs:
+
+```sh
+npm ci                                       # repo root
+npx playwright install --with-deps chromium  # in packages/web, first run only
+npm run build                                # repo root
+npm run test:visual                          # repo root
+```
+
+`npm run test:visual` does not build for you, so re-run `npm run build` after any source change. You don't need to start a dev server yourself — Playwright starts Stencil's on `localhost:3333` and stops it when the run finishes.
+
+**Expect components you haven't touched to fail when you run this off Linux.** There is a single shared set of baselines rather than one per platform, and a local macOS render differs from a Linux baseline by roughly 1% where the suite allows 0.5%. On a clean checkout that is enough to fail several unrelated components. Read the result for the component you changed, and let CI decide the rest.
+
+**Don't commit baselines generated locally.** `npm run test:visual:update` overwrites the baseline images with renders from your own machine, which breaks the suite for everyone if those renders aren't from Linux. To update baselines after an intentional visual change, run the **Update visual snapshots** workflow in GitHub Actions on your branch. If you're working from a fork, that workflow can't check out your branch — ask a reviewer on the pull request to run it for you.
+
+When the visual check fails on a pull request, download the `visual-regression-report-<run number>` artifact from the workflow run and open `index.html`. It shows expected, actual, and a diff side by side for every failing screenshot.
+
 ### Submitting contributions to “next priorities”
 
 In the [Get Involved](https://design-system.canada.ca/en/get-involved/) page of our site, we'll be posting about our “next priorities”.  These will typically be the components or patterns that we’ve identified as priorities in our roadmap to work on next. Before developing them, we want to ensure that the community has an opportunity to submit contributions that can accelerate and inform design and delivery.
@@ -148,6 +169,27 @@ Vous pouvez tester localement les paquets Angular, Vue et React puisque ce réf�
 ### Compilation de tous les paquets
 
 Dans le répertoire racine, exécutez `npm run build`. Les cinq paquets seront alors compilés.
+
+### Exécuter les tests de régression visuelle
+
+La suite de tests de régression visuelle prend une capture d’écran de chaque composant et la compare à une image de référence archivée dans le référentiel. Ces images de référence sont générées sur nos exécuteurs Linux d’intégration continue, et **l’intégration continue fait autorité pour ces tests** : c’est là qu’un succès ou un échec est significatif.
+
+Vous pouvez tout de même exécuter la suite localement pour voir si une modification change le rendu. Voici les mêmes étapes que celles exécutées par l’intégration continue :
+
+```sh
+npm ci                                       # racine du référentiel
+npx playwright install --with-deps chromium  # dans packages/web, à la première exécution seulement
+npm run build                                # racine du référentiel
+npm run test:visual                          # racine du référentiel
+```
+
+`npm run test:visual` ne compile pas le projet : exécutez de nouveau `npm run build` après toute modification du code source. Vous n’avez pas à démarrer vous-même un serveur de développement — Playwright démarre celui de Stencil sur `localhost:3333` et l’arrête à la fin de l’exécution.
+
+**Attendez-vous à ce que des composants que vous n’avez pas modifiés échouent lorsque vous exécutez la suite ailleurs que sous Linux.** Il n’existe qu’un seul jeu d’images de référence, et non un jeu par plateforme : un rendu local sous macOS diffère d’environ 1 % d’une image de référence générée sous Linux, alors que la tolérance de la suite est de 0,5 %. Sur une copie propre du référentiel, cela suffit à faire échouer plusieurs composants sans lien avec vos modifications. Fiez-vous au résultat du composant que vous avez modifié et laissez l’intégration continue trancher pour le reste.
+
+**Ne versionnez pas d’images de référence générées localement.** `npm run test:visual:update` remplace les images de référence par des rendus provenant de votre machine, ce qui brise la suite pour tout le monde si ces rendus ne proviennent pas de Linux. Pour mettre à jour les images de référence après un changement visuel intentionnel, exécutez le flux de travail **Update visual snapshots** dans GitHub Actions sur votre branche. Si vous travaillez à partir d’une duplication (fork), ce flux de travail ne peut pas accéder à votre branche : demandez à une personne réviseure de l’exécuter pour vous.
+
+Lorsque la vérification visuelle échoue dans une demande de tirage, téléchargez l’artéfact `visual-regression-report-<numéro d’exécution>` de l’exécution et ouvrez `index.html`. Il présente côte à côte l’image attendue, l’image obtenue et leur différence pour chaque capture en échec.
 
 ### Contribuer aux « prochaines priorités »
 
