@@ -197,6 +197,25 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 
 # Journal des modifications
 
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0)
+Version publiée le&nbsp;: 2026-08-12
+
+
+### :rocket: Nouvelles fonctionnalités
+
+* **gcds-alert:** Mise à jour des styles et des comportements d'accessibilité, avec `role="status"` pour `info` et alerte `success` et `role="alert"` pour `warning` et alerte de `danger` basée sur la propriété `alertRole`. ([#1373](https://github.com/cds-snc/gcds-components/issues/1373)) ([04a2de5](https://github.com/cds-snc/gcds-components/commit/04a2de5abca183609b49c7daf94c97d9013f001b))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-file-uploader:** Correction d'un problème d'accessibilité où le retrait d'un fichier n'était pas annoncé au lecteurs d'écran. ([#1386](https://github.com/cds-snc/gcds-components/issues/1386)) ([0536c3f](https://github.com/cds-snc/gcds-components/commit/0536c3f7eacfb08301ac6f1d94eb5da6ad431898)), ferme [#1363](https://github.com/cds-snc/gcds-components/issues/1363)
+
+
+### :art: Styles
+
+* **gcds-signature:** Ajustement de la grandeur de la signature afin de s'aligner avec les critères du Programme de coordination de l'image de marque ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
+
+
 ## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0)
 
 Version publiée le&nbsp;: 2026-07-27
