@@ -50,7 +50,7 @@ test.describe('gcds-card a11y tests', () => {
   });
 
   test('Keyboard focus', async ({ page }) => {
-    const linkText = await page.locator('.gcds-card__title').innerText();
+    const linkText = await page.locator('.gcds-card__title').textContent();
 
     await page.keyboard.press('Tab');
 
