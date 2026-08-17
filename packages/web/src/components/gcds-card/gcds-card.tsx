@@ -15,11 +15,13 @@ import i18n from './i18n/i18n';
 /**
  * A card is a box containing structured, actionable content on a single topic.
  *
- * @slot default - Slot for the card description. Will overwrite the description prop if used.
- * @slot card-title - Internal. Filled automatically from the card-title prop so the title
- * text exists in the light DOM and stays readable by DOM-text extraction tools.
- * @slot card-description - Internal. Filled automatically from the description prop for the
- * same reason. Not used when the default slot is populated.
+ * @slot title - Slot for the card title. Accepts rich text, so markup such as
+ * `<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to
+ * the card-title prop, which is mirrored into the light DOM so the title text stays
+ * readable by DOM-text extraction tools.
+ * @slot default - Slot for the card description. Accepts rich text and overwrites the
+ * description prop if used. The description prop is mirrored into this slot for the same
+ * DOM-text reason when nothing is slotted.
  */
 @Component({
   tag: 'gcds-card',
@@ -158,11 +160,42 @@ export class GcdsCard {
   }
 
   /**
-   * Whether the consumer supplied their own description via the default slot.
+   * Whether the consumer supplied their own title or description through a slot.
    * Captured once, before any mirror node is added, so that the mirrors this
    * component writes into the light DOM can never be mistaken for author content.
    */
+  private hasSlottedTitle = false;
   private hasSlottedDescription = false;
+
+  /*
+   * Author content assigned to one slot, ignoring this component's own mirrors.
+   *
+   * Checking `innerHTML` is not sufficient once `title` is a public slot: a card
+   * that slots only a title would read as having a slotted description too, and
+   * the description prop would be silently dropped.
+   */
+  private hasSlottedContent(slotName?: string) {
+    return Array.from(this.el.childNodes).some(node => {
+      // Numeric node types — Stencil's mock-doc does not expose the Node constants.
+      if (node.nodeType === 3) {
+        return !slotName && !!node.textContent?.trim();
+      }
+
+      if (node.nodeType !== 1) {
+        return false;
+      }
+
+      const child = node as Element;
+
+      if (child.hasAttribute('data-gcds-text-mirror')) {
+        return false;
+      }
+
+      const assigned = child.getAttribute('slot');
+
+      return slotName ? assigned === slotName : !assigned;
+    });
+  }
 
   async componentWillLoad() {
     // Define lang attribute
@@ -173,7 +206,8 @@ export class GcdsCard {
     this.validateBadge();
 
     // Must be read before syncTextMirrors() adds anything to the light DOM.
-    this.hasSlottedDescription = this.el.innerHTML.trim() != '';
+    this.hasSlottedTitle = this.hasSlottedContent('title');
+    this.hasSlottedDescription = this.hasSlottedContent();
 
     const valid = this.validateRequiredProps();
 
@@ -209,15 +243,19 @@ export class GcdsCard {
   private syncTextMirrors() {
     const active = this.shouldMirrorText;
 
-    this.upsertTextMirror('card-title', active ? this.cardTitle : undefined);
-    // Only mirror the description prop when the consumer has not slotted their own.
+    // Only mirror a prop when the consumer has not slotted their own content,
+    // otherwise the card would render the author's markup and the prop text.
     this.upsertTextMirror(
-      'card-description',
+      'title',
+      active && !this.hasSlottedTitle ? this.cardTitle : undefined,
+    );
+    this.upsertTextMirror(
+      undefined,
       active && !this.hasSlottedDescription ? this.description : undefined,
     );
   }
 
-  private upsertTextMirror(slot: string, value?: string) {
+  private upsertTextMirror(slot: string | undefined, value?: string) {
     const doc = this.el.ownerDocument;
     if (!doc) {
       return;
@@ -227,7 +265,7 @@ export class GcdsCard {
     // engine does not support that pseudo-class.
     const existing = Array.from(this.el.children).find(
       child =>
-        child.getAttribute('slot') === slot &&
+        (slot ? child.getAttribute('slot') === slot : !child.getAttribute('slot')) &&
         child.hasAttribute('data-gcds-text-mirror'),
     );
 
@@ -244,7 +282,9 @@ export class GcdsCard {
     }
 
     const mirror = doc.createElement('span');
-    mirror.setAttribute('slot', slot);
+    if (slot) {
+      mirror.setAttribute('slot', slot);
+    }
     mirror.setAttribute('data-gcds-text-mirror', '');
     mirror.textContent = value;
     this.el.appendChild(mirror);
@@ -261,7 +301,7 @@ export class GcdsCard {
       return (
         <div class="gcds-card__description">
           <gcds-text margin-bottom="0">
-            <slot name="card-description">{this.description}</slot>
+            <slot>{this.description}</slot>
           </gcds-text>
         </div>
       );
@@ -321,7 +361,7 @@ export class GcdsCard {
             {Element ? (
               <Element class="gcds-card__title" {...taggedAttr}>
                 <gcds-link href={href}>
-                  <slot name="card-title">{cardTitle}</slot>
+                  <slot name="title">{cardTitle}</slot>
                 </gcds-link>
               </Element>
             ) : (
@@ -332,7 +372,7 @@ export class GcdsCard {
                 target={target}
                 {...taggedAttr}
               >
-                <slot name="card-title">{cardTitle}</slot>
+                <slot name="title">{cardTitle}</slot>
               </gcds-link>
             )}
             {renderDescription}

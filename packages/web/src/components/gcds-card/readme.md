@@ -33,11 +33,10 @@ A card is a box containing structured, actionable content on a single topic.
 
 ## Slots
 
-| Slot                 | Description                                                                                                                                        |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"card-description"` | Internal. Filled automatically from the description prop for the same reason. Not used when the default slot is populated.                         |
-| `"card-title"`       | Internal. Filled automatically from the card-title prop so the title text exists in the light DOM and stays readable by DOM-text extraction tools. |
-| `"default"`          | Slot for the card description. Will overwrite the description prop if used.                                                                        |
+| Slot        | Description                                                                                                                                                                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `"default"` | Slot for the card description. Accepts rich text and overwrites the description prop if used. The description prop is mirrored into this slot for the same DOM-text reason when nothing is slotted.                                                                            |
+| `"title"`   | Slot for the card title. Accepts rich text, so markup such as `<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to the card-title prop, which is mirrored into the light DOM so the title text stays readable by DOM-text extraction tools. |
 
 
 ## Dependencies

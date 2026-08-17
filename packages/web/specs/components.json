@@ -1,5 +1,4 @@
 {
-  "timestamp": "2026-08-06T18:30:25",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.43.4",
@@ -845,15 +844,11 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "default - Slot for the card description. Will overwrite the description prop if used."
+          "text": "title - Slot for the card title. Accepts rich text, so markup such as\n`<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to\nthe card-title prop, which is mirrored into the light DOM so the title text stays\nreadable by DOM-text extraction tools."
         },
         {
           "name": "slot",
-          "text": "card-title - Internal. Filled automatically from the card-title prop so the title\ntext exists in the light DOM and stays readable by DOM-text extraction tools."
-        },
-        {
-          "name": "slot",
-          "text": "card-description - Internal. Filled automatically from the description prop for the\nsame reason. Not used when the default slot is populated."
+          "text": "default - Slot for the card description. Accepts rich text and overwrites the\ndescription prop if used. The description prop is mirrored into this slot for the same\nDOM-text reason when nothing is slotted."
         }
       ],
       "usage": {},
@@ -1128,16 +1123,12 @@
       "styles": [],
       "slots": [
         {
-          "name": "card-description",
-          "docs": "Internal. Filled automatically from the description prop for the\nsame reason. Not used when the default slot is populated."
-        },
-        {
-          "name": "card-title",
-          "docs": "Internal. Filled automatically from the card-title prop so the title\ntext exists in the light DOM and stays readable by DOM-text extraction tools."
-        },
-        {
           "name": "default",
-          "docs": "Slot for the card description. Will overwrite the description prop if used."
+          "docs": "Slot for the card description. Accepts rich text and overwrites the\ndescription prop if used. The description prop is mirrored into this slot for the same\nDOM-text reason when nothing is slotted."
+        },
+        {
+          "name": "title",
+          "docs": "Slot for the card title. Accepts rich text, so markup such as\n`<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to\nthe card-title prop, which is mirrored into the light DOM so the title text stays\nreadable by DOM-text extraction tools."
         }
       ],
       "parts": [],
@@ -4478,7 +4469,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -4780,7 +4771,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4876,7 +4867,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -4966,7 +4957,7 @@
             "references": {
               "GridGapValues": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::GridGapValues"
               }
             }
@@ -5056,7 +5047,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -5146,7 +5137,7 @@
             "references": {
               "ContentValues": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-grid/gcds-grid.tsx",
+                "path": "/web/src/components/gcds-grid/gcds-grid.tsx",
                 "id": "src/components/gcds-grid/gcds-grid.tsx::ContentValues"
               }
             }
@@ -6624,7 +6615,7 @@
             "references": {
               "IconNames": {
                 "location": "local",
-                "path": "/Users/kenbritton/src/oss/gcds-components/packages/web/src/components/gcds-icon/gcds-icon.tsx",
+                "path": "/web/src/components/gcds-icon/gcds-icon.tsx",
                 "id": "src/components/gcds-icon/gcds-icon.tsx::IconNames"
               }
             }
