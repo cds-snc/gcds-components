@@ -94,6 +94,16 @@ export default {
         category: 'Slots | Fentes',
       },
     },
+    title: {
+      control: {
+        type: 'text',
+      },
+      description:
+        'Customize the content or include additional elements. | Personnalisez le contenu ou ajoutez des éléments supplémentaires.',
+      table: {
+        category: 'Slots | Fentes',
+      },
+    },
 
     // Events
     gcdsClick: {
@@ -127,6 +137,7 @@ const Template = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default ? `<gcds-text>${args.default}</gcds-text>` : null}
+  ${args.title ? `<span slot="title">${args.title}</span>` : null}
 </gcds-card>
 
 <!-- React code -->
@@ -143,6 +154,7 @@ const Template = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default ? `<GcdsText>${args.default}</GcdsText>` : null}
+  ${args.title ? `<span slot="title">${args.title}</span>` : null}
 </GcdsCard>
 `.replace(/\s\snull\n/g, '');
 
@@ -162,6 +174,7 @@ const TemplatePlayground = args =>
   ${args.lang != 'en' ? `lang="${args.lang}"` : null}
 >
   ${args.default ? `<gcds-text>${args.default}</gcds-text>` : null}
+  ${args.title ? `<span slot="title">${args.title}</span>` : null}
 </gcds-card>
 `.replace(/\s\snull\n/g, '');
 
@@ -174,6 +187,7 @@ Default.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   lang: 'en',
 };
 
@@ -187,6 +201,7 @@ CardTitleTag.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   lang: 'en',
 };
 
@@ -199,6 +214,7 @@ Description.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   lang: 'en',
 };
 
@@ -223,6 +239,7 @@ Badge.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   lang: 'en',
 };
 
@@ -235,6 +252,7 @@ Image.args = {
   imgSrc: 'https://picsum.photos/480/270',
   imgAlt: 'An image with the card component',
   default: '',
+  title: '',
   lang: 'en',
 };
 
@@ -248,6 +266,7 @@ Rel.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   rel: 'noopener noreferrer',
   lang: 'en',
 };
@@ -262,6 +281,7 @@ Target.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   target: '_blank',
   lang: 'en',
 };
@@ -275,6 +295,7 @@ Props.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   rel: '',
   target: '_self',
   lang: 'en',
@@ -289,6 +310,7 @@ Playground.args = {
   imgSrc: '',
   imgAlt: '',
   default: '',
+  title: '',
   rel: '',
   target: '_self',
   lang: 'en',

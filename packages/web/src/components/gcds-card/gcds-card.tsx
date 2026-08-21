@@ -37,7 +37,7 @@ export class GcdsCard {
   @Prop({ reflect: true }) cardTitle!: string;
   @Watch('cardTitle')
   validateCardTitle() {
-    if (!this.cardTitle || this.cardTitle.trim() == '') {
+    if ((!this.cardTitle || this.cardTitle.trim() == '') && !this.el.querySelector('[slot="title"]')) {
       this.errors.push('cardTitle');
     } else if (this.errors.includes('cardTitle')) {
       this.errors.splice(this.errors.indexOf('cardTitle'), 1);
