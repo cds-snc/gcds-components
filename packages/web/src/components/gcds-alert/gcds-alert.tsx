@@ -114,6 +114,10 @@ export class GcdsAlert {
     window.setTimeout(() => {
       region.textContent = message;
     }, 350);
+    // clean up live region
+    window .setTimeout(() => {
+      region.textContent = '';
+    }, 5000);
   }
 
   /*
@@ -136,7 +140,7 @@ export class GcdsAlert {
   }
 
   componentDidLoad() {
-    if (this.alertRole === 'info' || this.alertRole === 'success') {
+    if (window && (this.alertRole === 'info' || this.alertRole === 'success')) {
       const message = `${this.heading}. ${this.el.textContent.trim()}`;
       this.announce(message);
     }
