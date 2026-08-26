@@ -66,6 +66,137 @@
           <gcds-header lang-href="#" skip-to-href="#main"></gcds-header>
         </div>
       </section>
+
+      <section data-variant="search" class="preview-variant">
+        <gcds-heading tag="h2">Search</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-search slot="search"></gcds-search>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="menu" class="preview-variant">
+        <gcds-heading tag="h2">Menu</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-top-nav slot="menu" label="Top navigation" alignment="end">
+              <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
+              <gcds-nav-link href="#">Nav link</gcds-nav-link>
+
+              <gcds-nav-group
+                open-trigger="Nav group trigger"
+                menu-label="Nav group trigger"
+              >
+                <gcds-nav-link href="#" current>Nav link</gcds-nav-link>
+                <gcds-nav-link href="#">Nav link</gcds-nav-link>
+                <gcds-nav-link href="#">Nav link</gcds-nav-link>
+                <gcds-nav-link href="#">Nav link</gcds-nav-link>
+              </gcds-nav-group>
+
+              <gcds-nav-link href="#">Nav link</gcds-nav-link>
+            </gcds-top-nav>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="topic-menu" class="preview-variant">
+        <gcds-heading tag="h2">Topic menu</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-topic-menu slot="menu"></gcds-topic-menu>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="breadcrumbs" class="preview-variant">
+        <gcds-heading tag="h2">Breadcrumbs</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-breadcrumbs slot="breadcrumb">
+              <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
+              <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
+            </gcds-breadcrumbs>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="account" class="preview-variant">
+        <gcds-heading tag="h2">Account</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="breadcrumbs-account" class="preview-variant">
+        <gcds-heading tag="h2">Breadcrumbs + account</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-breadcrumbs slot="breadcrumb">
+              <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
+              <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
+            </gcds-breadcrumbs>
+            <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="topicmenu-account" class="preview-variant">
+        <gcds-heading tag="h2">Topic menu + account</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-topic-menu slot="menu"></gcds-topic-menu>
+            <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="all-slots-topnav" class="preview-variant">
+        <gcds-heading tag="h2">All slots (top-nav)</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-search slot="search"></gcds-search>
+            <gcds-top-nav slot="menu" label="Top navigation" alignment="end">
+              <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
+              <gcds-nav-link href="#">Nav link</gcds-nav-link>
+
+              <gcds-nav-group
+                open-trigger="Nav group trigger"
+                menu-label="Nav group trigger"
+              >
+                <gcds-nav-link href="#" current>Nav link</gcds-nav-link>
+                <gcds-nav-link href="#">Nav link</gcds-nav-link>
+                <gcds-nav-link href="#">Nav link</gcds-nav-link>
+                <gcds-nav-link href="#">Nav link</gcds-nav-link>
+              </gcds-nav-group>
+
+              <gcds-nav-link href="#">Nav link</gcds-nav-link>
+            </gcds-top-nav>
+            <gcds-breadcrumbs slot="breadcrumb">
+              <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
+              <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
+            </gcds-breadcrumbs>
+            <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
+          </gcds-header>
+        </div>
+      </section>
+
+      <section data-variant="all-slots-topicmenu" class="preview-variant">
+        <gcds-heading tag="h2">All slots (topic menu)</gcds-heading>
+        <div class="preview-component">
+          <gcds-header lang-href="#" skip-to-href="#main">
+            <gcds-search slot="search"></gcds-search>
+            <gcds-topic-menu slot="menu"></gcds-topic-menu>
+            <gcds-breadcrumbs slot="breadcrumb">
+              <gcds-breadcrumbs-item href="#">Design System</gcds-breadcrumbs-item>
+              <gcds-breadcrumbs-item href="#">Components</gcds-breadcrumbs-item>
+            </gcds-breadcrumbs>
+            <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
+          </gcds-header>
+        </div>
+      </section>
     </main>
   </body>
 </html>
