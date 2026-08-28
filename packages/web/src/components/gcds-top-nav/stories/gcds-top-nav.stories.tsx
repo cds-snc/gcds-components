@@ -83,7 +83,7 @@ const Template = args =>
     <gcds-nav-link href="#">Send messages automatically</gcds-nav-link>
   </gcds-nav-group>
 
-  <gcds-nav-link href="#">Contact us</gcds-nav-link>`
+  <gcds-nav-link href="#" external='true'>Contact us</gcds-nav-link>`
   }
 </gcds-top-nav>
 
