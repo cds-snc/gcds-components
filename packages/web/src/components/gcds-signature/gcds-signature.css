@@ -27,13 +27,14 @@
 @layer type.signature {
   :host(:not([type='wordmark'])) svg {
     height: var(--gcds-signature-signature-height);
+    width: var(--gcds-signature-signature-width);
   }
 }
 
 @layer type.wordmark {
   :host([type='wordmark']) svg {
     height: var(--gcds-signature-wordmark-height);
-    width: auto;
+    width: var(--gcds-signature-wordmark-width);
   }
 }
 
@@ -58,6 +59,14 @@
   :host(:not([type='wordmark'])) svg {
     @media screen and (width >= 64em) {
       height: var(--gcds-signature-signature-height-desktop);
+      width: var(--gcds-signature-signature-width-desktop);
+    }
+  }
+
+  :host([type='wordmark']) svg {
+    @media screen and (width >= 64em) {
+      height: var(--gcds-signature-wordmark-height-desktop);
+      width: var(--gcds-signature-wordmark-width-desktop);
     }
   }
 }

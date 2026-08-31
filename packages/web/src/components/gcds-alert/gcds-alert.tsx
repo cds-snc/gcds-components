@@ -114,9 +114,14 @@ export class GcdsAlert {
       <Host>
         {isOpen ? (
           <div
-            class={`gcds-alert alert--role-${alertRole} ${isFixed ? 'alert--is-fixed' : ''
-              }`}
-            role="alert"
+            class={`gcds-alert alert--role-${alertRole} ${
+              isFixed ? 'alert--is-fixed' : ''
+            }`}
+            role={
+              alertRole === 'info' || alertRole === 'success'
+                ? 'status'
+                : 'alert'
+            }
             aria-label={
               alertRole === 'danger'
                 ? i18n[lang].label.danger
@@ -138,8 +143,7 @@ export class GcdsAlert {
                   <gcds-icon
                     aria-hidden="true"
                     class="alert__icon"
-                    size="h5"
-                    margin-right="175"
+                    size="h6"
                     name={
                       (alertRole === 'danger'
                         ? 'exclamation-circle'
@@ -162,18 +166,18 @@ export class GcdsAlert {
                 </div>
 
                 {!hideCloseBtn && (
-                  <button
-                    class="alert__close-btn"
+                  <gcds-button
+                    button-role="secondary"
+                    size="small"
                     onClick={e => {
                       const event = emitEvent(e, this.gcdsDismiss);
                       if (event) {
                         this.isOpen = false;
                       }
                     }}
-                    aria-label={i18n[lang].closeBtn}
                   >
-                    <gcds-icon aria-hidden="true" name="close" size="text" />
-                  </button>
+                    {i18n[lang].closeBtn}
+                  </gcds-button>
                 )}
               </div>
             </gcds-container>

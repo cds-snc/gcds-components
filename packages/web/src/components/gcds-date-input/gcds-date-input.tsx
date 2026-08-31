@@ -139,6 +139,11 @@ export class GcdsDateInput {
   @Prop({ mutable: true }) disabled?: boolean = false;
 
   /**
+   * String to have autocomplete enabled.
+   */
+  @Prop() autocomplete?: 'cc-exp' | 'bday' | 'off' | 'on';
+
+  /**
    * If true, the date-input will be focused on component render
    */
   @Prop({ reflect: true }) autofocus: boolean;
@@ -657,6 +662,7 @@ export class GcdsDateInput {
       disabled,
       lang,
       hasError,
+      autocomplete,
       form,
     } = this;
 
@@ -678,9 +684,21 @@ export class GcdsDateInput {
     }
 
     // Array of months 01 - 12
-    const options = Array.from({ length: 12 }, (_, i) =>
+    const options = this.format !== 'iso' ? Array.from({ length: 12 }, (_, i) =>
       i + 1 < 10 ? `0${i + 1}` : `${i + 1}`,
-    );
+    ) : null;
+
+    let autocompleteToUse = autocomplete
+    if ((autocomplete != null && autocomplete !== 'off' && autocomplete !== 'on' && autocomplete !== 'bday' && autocomplete !== 'cc-exp') // don't allow unspecified values
+      || (autocomplete === 'cc-exp' && format !== 'compact')) // don't allow cc-exp if format is not compact
+     {
+      console.error('Invalid autocomplete set for date')
+      autocompleteToUse = undefined
+    }
+
+    const autocompleteDay = autocompleteToUse && autocompleteToUse !== 'off' && autocompleteToUse !== 'on' ? `${autocompleteToUse}-day` : autocompleteToUse
+    const autocompleteMonth = autocompleteToUse && autocompleteToUse !== 'off' && autocompleteToUse !== 'on' ? `${autocompleteToUse}-month` : autocompleteToUse
+    const autocompleteYear = autocompleteToUse && autocompleteToUse !== 'off' && autocompleteToUse !== 'on' ? `${autocompleteToUse}-year` : autocompleteToUse
 
     const month = this.format !== 'iso' ? (
       <gcds-select
@@ -688,6 +706,7 @@ export class GcdsDateInput {
         selectId="month"
         name="month"
         defaultValue={i18n[lang].selectmonth}
+        autocomplete={autocompleteMonth}
         disabled={disabled}
         onInput={e => this.handleInput(e, 'month')}
         onChange={e => this.handleInput(e, 'month')}
@@ -699,7 +718,7 @@ export class GcdsDateInput {
         form={form}
         ref={el => (this.monthInput = el as HTMLGcdsSelectElement)}
       >
-        {options.map(option => (
+        {options!.map(option => (
           <option key={option} value={option}>
             {i18n[lang]['months'][option]}
           </option>
@@ -713,6 +732,7 @@ export class GcdsDateInput {
         type="text"
         inputmode="numeric"
         size={2}
+        autocomplete={autocompleteMonth}
         disabled={disabled}
         value={this.monthValue}
         onInput={e => this.handleInput(e, 'month')}
@@ -736,6 +756,7 @@ export class GcdsDateInput {
         type="text"
         inputmode="numeric"
         size={4}
+        autocomplete={autocompleteYear}
         disabled={disabled}
         value={this.yearValue}
         onInput={e => this.handleInput(e, 'year')}
@@ -759,6 +780,7 @@ export class GcdsDateInput {
         type="text"
         inputmode="numeric"
         size={2}
+        autocomplete={autocompleteDay}
         disabled={disabled}
         value={this.dayValue}
         onInput={e => this.handleInput(e, 'day')}

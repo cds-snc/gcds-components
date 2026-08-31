@@ -44,6 +44,7 @@ The button is an interactive object that emphasizes an action.
 
 ### Used by
 
+ - [gcds-alert](../gcds-alert)
  - [gcds-search](../gcds-search)
  - [gcds-table](../gcds-table)
 
@@ -55,6 +56,7 @@ The button is an interactive object that emphasizes an action.
 ```mermaid
 graph TD;
   gcds-button --> gcds-icon
+  gcds-alert --> gcds-button
   gcds-search --> gcds-button
   gcds-table --> gcds-button
   style gcds-button fill:#26374a,stroke:#333,stroke-width:4px

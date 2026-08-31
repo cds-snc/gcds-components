@@ -252,11 +252,16 @@
       "dependents": [],
       "dependencies": [
         "gcds-container",
-        "gcds-icon"
+        "gcds-icon",
+        "gcds-button"
       ],
       "dependencyGraph": {
         "gcds-alert": [
           "gcds-container",
+          "gcds-icon",
+          "gcds-button"
+        ],
+        "gcds-button": [
           "gcds-icon"
         ]
       }
@@ -817,6 +822,7 @@
       "parts": [],
       "states": [],
       "dependents": [
+        "gcds-alert",
         "gcds-search",
         "gcds-table"
       ],
@@ -826,6 +832,9 @@
       "dependencyGraph": {
         "gcds-button": [
           "gcds-icon"
+        ],
+        "gcds-alert": [
+          "gcds-button"
         ],
         "gcds-search": [
           "gcds-button"
@@ -844,7 +853,11 @@
       "docsTags": [
         {
           "name": "slot",
-          "text": "default - Slot for the card description. Will overwrite the description prop if used."
+          "text": "title - Slot for the card title. Accepts rich text, so markup such as\n`<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to\nthe card-title prop, which is mirrored into the light DOM so the title text stays\nreadable by DOM-text extraction tools."
+        },
+        {
+          "name": "slot",
+          "text": "default - Slot for the card description. Accepts rich text and overwrites the\ndescription prop if used. The description prop is mirrored into this slot for the same\nDOM-text reason when nothing is slotted."
         }
       ],
       "usage": {},
@@ -1120,7 +1133,11 @@
       "slots": [
         {
           "name": "default",
-          "docs": "Slot for the card description. Will overwrite the description prop if used."
+          "docs": "Slot for the card description. Accepts rich text and overwrites the\ndescription prop if used. The description prop is mirrored into this slot for the same\nDOM-text reason when nothing is slotted."
+        },
+        {
+          "name": "title",
+          "docs": "Slot for the card title. Accepts rich text, so markup such as\n`<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to\nthe card-title prop, which is mirrored into the light DOM so the title text stays\nreadable by DOM-text extraction tools."
         }
       ],
       "parts": [],
@@ -2316,6 +2333,42 @@
       "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "autocomplete",
+          "type": "\"bday\" | \"cc-exp\" | \"off\" | \"on\"",
+          "complexType": {
+            "original": "'cc-exp' | 'bday' | 'off' | 'on'",
+            "resolved": "\"bday\" | \"cc-exp\" | \"off\" | \"on\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autocomplete",
+          "reflectToAttr": false,
+          "docs": "String to have autocomplete enabled.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "bday",
+              "type": "string"
+            },
+            {
+              "value": "cc-exp",
+              "type": "string"
+            },
+            {
+              "value": "off",
+              "type": "string"
+            },
+            {
+              "value": "on",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
         {
           "name": "autofocus",
           "type": "boolean",

@@ -15,10 +15,15 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card">
           <gcds-link class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -45,10 +50,15 @@ describe('gcds-card', () => {
             </strong>
           </gcds-text>
           <gcds-link aria-describedby="gcds-badge" class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -68,10 +78,15 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <img alt="" class="gcds-card__image" src="https://picsum.photos/480/270">
           <gcds-link class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -92,10 +107,15 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <img alt="Randomly generated picture" class="gcds-card__image" src="https://picsum.photos/480/270">
           <gcds-link class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -114,15 +134,25 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card">
           <gcds-link class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
           <div class="gcds-card__description">
             <gcds-text margin-bottom="0">
-              Card description
+              <slot>
+                Card description
+              </slot>
             </gcds-text>
           </div>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
+      <span data-gcds-text-mirror>
+        Card description
+      </span>
     </gcds-card
     `);
   });
@@ -142,7 +172,9 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card">
           <gcds-link class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
           <div class="gcds-card__description">
             <slot></slot>
@@ -150,6 +182,9 @@ describe('gcds-card', () => {
         </div>
       </mock:shadow-root>
       <p>Card description</p>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -169,12 +204,17 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <h3 class="gcds-card__title">
             <gcds-link href="#card">
-              Card
+              <slot name="title">
+                Card
+              </slot>
             </gcds-link>
           </h3>
           </div>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -194,12 +234,17 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <h4 class="gcds-card__title">
             <gcds-link href="#card">
-              Card
+              <slot name="title">
+                Card
+              </slot>
             </gcds-link>
           </h4>
           </div>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -219,12 +264,17 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <h5 class="gcds-card__title">
             <gcds-link href="#card">
-              Card
+              <slot name="title">
+                Card
+              </slot>
             </gcds-link>
           </h5>
           </div>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -244,11 +294,16 @@ describe('gcds-card', () => {
         <div class="gcds-card">
           <h6 class="gcds-card__title">
             <gcds-link href="#card">
-              Card
+              <slot name="title">
+                Card
+              </slot>
             </gcds-link>
           </h6>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -267,10 +322,15 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card">
           <gcds-link aria-describedby="gcds-badge" class="gcds-card__title" href="#card">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -289,10 +349,15 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card">
           <gcds-link class="gcds-card__title" href="#card" rel="noopener noreferrer">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -311,10 +376,15 @@ describe('gcds-card', () => {
       <mock:shadow-root>
         <div class="gcds-card">
           <gcds-link class="gcds-card__title" href="#card" target="_blank">
-            Card
+            <slot name="title">
+              Card
+            </slot>
           </gcds-link>
         </div>
       </mock:shadow-root>
+      <span data-gcds-text-mirror slot="title">
+        Card
+      </span>
     </gcds-card
     `);
   });
@@ -347,5 +417,141 @@ describe('gcds-card', () => {
       </mock:shadow-root>
     </gcds-card
     `);
+  });
+
+  /*
+   * The bug these cover is defined in terms of textContent, so they assert what a
+   * caller observes rather than markup shape. Text that lives only in the shadow
+   * root is invisible to DOM-text extraction, which is what the browser-native
+   * read-aloud features on Android and iOS use.
+   */
+  describe('text is readable from the light DOM', () => {
+    it('exposes a title given as an attribute', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="Plan your departure" href="#card"></gcds-card>`,
+      });
+
+      expect(page.root.textContent).toContain('Plan your departure');
+    });
+
+    it('exposes a description given as an attribute', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card
+          card-title="Plan your departure"
+          href="#card"
+          description="Timeline, medical exams, financial planning."
+        ></gcds-card>`,
+      });
+
+      expect(page.root.textContent).toContain('Plan your departure');
+      expect(page.root.textContent).toContain(
+        'Timeline, medical exams, financial planning.',
+      );
+    });
+
+    it('still renders an attribute description once the title is mirrored', async () => {
+      // Regression guard: mirroring the title puts a node in the light DOM. If the
+      // description branch keyed off light-DOM emptiness, it would flip to the
+      // default slot here and drop the description entirely.
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card
+          card-title="Plan your departure"
+          href="#card"
+          description="Timeline, medical exams, financial planning."
+        ></gcds-card>`,
+      });
+
+      const description = page.root.shadowRoot.querySelector(
+        '.gcds-card__description',
+      );
+      expect(description).not.toBeNull();
+      expect(description.textContent).toContain(
+        'Timeline, medical exams, financial planning.',
+      );
+    });
+
+    it('does not duplicate a description supplied through the default slot', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="Plan your departure" href="#card">
+          <p>Timeline, medical exams.</p>
+        </gcds-card>`,
+      });
+
+      const occurrences =
+        page.root.textContent.split('Timeline, medical exams.').length - 1;
+      expect(occurrences).toBe(1);
+      expect(page.root.textContent).toContain('Plan your departure');
+    });
+
+    it('leaves no text behind for a card that fails validation', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="Plan your departure"></gcds-card>`,
+      });
+
+      expect(page.root.textContent.trim()).toBe('');
+    });
+
+    it('tracks a title changed after first render', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="Before" href="#card"></gcds-card>`,
+      });
+
+      page.root.cardTitle = 'After';
+      await page.waitForChanges();
+
+      expect(page.root.textContent).toContain('After');
+      expect(page.root.textContent).not.toContain('Before');
+    });
+  });
+
+  describe('rich text through the title and default slots (#1004)', () => {
+    it('renders a slotted title without mirroring the prop over it', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="GC design system" href="#card"
+          ><span slot="title"><abbr title="Government of Canada">GC</abbr> design system</span
+        ></gcds-card>`,
+      });
+
+      // The author's markup survives, so rich text in the title is possible at all.
+      expect(page.root.querySelector('abbr')).not.toBeNull();
+
+      // And the prop is not mirrored on top of it, which would render the title twice.
+      expect(
+        page.root.querySelector('[data-gcds-text-mirror][slot="title"]'),
+      ).toBeNull();
+      expect(page.root.textContent.split('design system').length - 1).toBe(1);
+    });
+
+    it('still mirrors the description prop when only the title is slotted', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="Passports" href="#card" description="Renew online."
+          ><span slot="title">Passports</span
+        ></gcds-card>`,
+      });
+
+      // A slotted title must not read as slotted description content: that would
+      // drop the description prop entirely and silently.
+      expect(page.root.textContent).toContain('Renew online.');
+    });
+
+    it('treats default-slot content as the description, as before', async () => {
+      const page = await newSpecPage({
+        components: [GcdsCard],
+        html: `<gcds-card card-title="Passports" href="#card" description="Ignored."
+          ><p>Renew <em>online</em>.</p></gcds-card
+        >`,
+      });
+
+      expect(page.root.querySelector('em')).not.toBeNull();
+      expect(page.root.textContent).not.toContain('Ignored.');
+    });
   });
 });

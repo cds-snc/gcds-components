@@ -15,7 +15,13 @@ import i18n from './i18n/i18n';
 /**
  * A card is a box containing structured, actionable content on a single topic.
  *
- * @slot default - Slot for the card description. Will overwrite the description prop if used.
+ * @slot title - Slot for the card title. Accepts rich text, so markup such as
+ * `<abbr>`, `<em>` or an icon can be used where the card-title prop cannot. Falls back to
+ * the card-title prop, which is mirrored into the light DOM so the title text stays
+ * readable by DOM-text extraction tools.
+ * @slot default - Slot for the card description. Accepts rich text and overwrites the
+ * description prop if used. The description prop is mirrored into this slot for the same
+ * DOM-text reason when nothing is slotted.
  */
 @Component({
   tag: 'gcds-card',
@@ -153,6 +159,44 @@ export class GcdsCard {
     return true;
   }
 
+  /**
+   * Whether the consumer supplied their own title or description through a slot.
+   * Captured once, before any mirror node is added, so that the mirrors this
+   * component writes into the light DOM can never be mistaken for author content.
+   */
+  private hasSlottedTitle = false;
+  private hasSlottedDescription = false;
+
+  /*
+   * Author content assigned to one slot, ignoring this component's own mirrors.
+   *
+   * Checking `innerHTML` is not sufficient once `title` is a public slot: a card
+   * that slots only a title would read as having a slotted description too, and
+   * the description prop would be silently dropped.
+   */
+  private hasSlottedContent(slotName?: string) {
+    return Array.from(this.el.childNodes).some(node => {
+      // Numeric node types — Stencil's mock-doc does not expose the Node constants.
+      if (node.nodeType === 3) {
+        return !slotName && !!node.textContent?.trim();
+      }
+
+      if (node.nodeType !== 1) {
+        return false;
+      }
+
+      const child = node as Element;
+
+      if (child.hasAttribute('data-gcds-text-mirror')) {
+        return false;
+      }
+
+      const assigned = child.getAttribute('slot');
+
+      return slotName ? assigned === slotName : !assigned;
+    });
+  }
+
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
@@ -161,15 +205,93 @@ export class GcdsCard {
 
     this.validateBadge();
 
+    // Must be read before syncTextMirrors() adds anything to the light DOM.
+    this.hasSlottedTitle = this.hasSlottedContent('title');
+    this.hasSlottedDescription = this.hasSlottedContent();
+
     const valid = this.validateRequiredProps();
 
     if (!valid) {
       logError('gcds-card', this.errors, ['badge']);
     }
+
+    this.syncTextMirrors();
+  }
+
+  componentWillUpdate() {
+    this.syncTextMirrors();
+  }
+
+  /*
+   * A card that fails validation renders nothing, so it must not leave mirror
+   * text behind in the light DOM for textContent to pick up.
+   */
+  private get shouldMirrorText() {
+    return !this.errors.includes('href') && !this.errors.includes('cardTitle');
+  }
+
+  /*
+   * Mirror attribute-provided text into the light DOM.
+   *
+   * card-title and description are rendered through named slots, so without a
+   * light DOM node to fill them the text only ever exists inside the shadow root.
+   * textContent does not pierce a shadow root, which makes the card invisible to
+   * DOM-text extraction — including the browser-native read-aloud features on
+   * Android and iOS, which stop at the first unreadable card. The ARIA tree is
+   * unaffected either way, so screen readers behave the same before and after.
+   */
+  private syncTextMirrors() {
+    const active = this.shouldMirrorText;
+
+    // Only mirror a prop when the consumer has not slotted their own content,
+    // otherwise the card would render the author's markup and the prop text.
+    this.upsertTextMirror(
+      'title',
+      active && !this.hasSlottedTitle ? this.cardTitle : undefined,
+    );
+    this.upsertTextMirror(
+      undefined,
+      active && !this.hasSlottedDescription ? this.description : undefined,
+    );
+  }
+
+  private upsertTextMirror(slot: string | undefined, value?: string) {
+    const doc = this.el.ownerDocument;
+    if (!doc) {
+      return;
+    }
+
+    // Direct children only, and without :scope — Stencil's mock-doc selector
+    // engine does not support that pseudo-class.
+    const existing = Array.from(this.el.children).find(
+      child =>
+        (slot ? child.getAttribute('slot') === slot : !child.getAttribute('slot')) &&
+        child.hasAttribute('data-gcds-text-mirror'),
+    );
+
+    if (!value) {
+      existing?.remove();
+      return;
+    }
+
+    if (existing) {
+      if (existing.textContent !== value) {
+        existing.textContent = value;
+      }
+      return;
+    }
+
+    const mirror = doc.createElement('span');
+    if (slot) {
+      mirror.setAttribute('slot', slot);
+    }
+    mirror.setAttribute('data-gcds-text-mirror', '');
+    mirror.textContent = value;
+    this.el.appendChild(mirror);
   }
 
   private get renderDescription() {
-    if (this.el.innerHTML.trim() != '') {
+    if (this.hasSlottedDescription) {
       return (
         <div class="gcds-card__description">
           <slot></slot>
@@ -178,7 +300,9 @@ export class GcdsCard {
     } else if (this.description) {
       return (
         <div class="gcds-card__description">
-          <gcds-text margin-bottom="0">{this.description}</gcds-text>
+          <gcds-text margin-bottom="0">
+            <slot>{this.description}</slot>
+          </gcds-text>
         </div>
       );
     } else {
@@ -236,7 +360,9 @@ export class GcdsCard {
             )}
             {Element ? (
               <Element class="gcds-card__title" {...taggedAttr}>
-                <gcds-link href={href}>{cardTitle}</gcds-link>
+                <gcds-link href={href}>
+                  <slot name="title">{cardTitle}</slot>
+                </gcds-link>
               </Element>
             ) : (
               <gcds-link
@@ -246,7 +372,7 @@ export class GcdsCard {
                 target={target}
                 {...taggedAttr}
               >
-                {cardTitle}
+                <slot name="title">{cardTitle}</slot>
               </gcds-link>
             )}
             {renderDescription}

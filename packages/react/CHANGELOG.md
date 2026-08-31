@@ -1,6 +1,29 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.4.0...@gcds-core/components-react-v1.5.0) (2026-08-12)
+
+### :rocket: New Features
+
+* **gcds-alert:** Updated alert styling and accessibility behaviour, with `role="status"` for `info` and `success` alerts and `role="alert"` for `warning` and `danger` alerts based on the `alertRole` property. ([#1373](https://github.com/cds-snc/gcds-components/issues/1373)) ([04a2de5](https://github.com/cds-snc/gcds-components/commit/04a2de5abca183609b49c7daf94c97d9013f001b))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-file-uploader:** Fixed an accessibility issue where file removal was not announced to screen readers. ([#1386](https://github.com/cds-snc/gcds-components/issues/1386)) ([0536c3f](https://github.com/cds-snc/gcds-components/commit/0536c3f7eacfb08301ac6f1d94eb5da6ad431898)), closes [#1363](https://github.com/cds-snc/gcds-components/issues/1363)
+
+
+### :art: Styles
+
+* **gcds-signature:** Adjusted signature sizing to align with FIP requirements ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.4.0 to ^1.5.0
+
 ## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-react-v1.3.1...@gcds-core/components-react-v1.4.0) (2026-07-27)
 
 
