@@ -27,7 +27,7 @@ const tests = [
  */
 /*
  * Since the header has a lot of unique styling depending on screen size
- * test the ehader on desktop, tablet and mobile sizing.
+ * test the header on desktop, tablet and mobile sizing.
  */
 test.describe('gcds-header - desktop', () => {
   test.use({ viewport: { width: 1280, height: 1080 } });
