@@ -8,7 +8,6 @@ import { test } from '../../../../tests/base.visual';
 
 const tests = [
   'default',
-  // 'search',
   'menu',
   'topic-menu',
   'breadcrumbs',
