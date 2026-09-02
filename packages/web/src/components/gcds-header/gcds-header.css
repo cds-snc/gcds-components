@@ -1,4 +1,4 @@
-@layer reset, default, brand, menu, wide;
+@layer reset, default, brand, menu, wide, mobile;
 
 @layer reset {
   :host {
@@ -119,10 +119,6 @@
         grid-area: search;
         max-width: 100%;
         display: block;
-
-        & ::slotted(gcds-search) {
-          --gcds-search-input-width: 35ch;
-        }
       }
     }
   }
@@ -148,6 +144,33 @@
       slot[name='search'] {
         width: fit-content;
         margin-inline-start: auto;
+
+        & ::slotted(gcds-search) {
+          --gcds-search-input-width: 35ch;
+        }
+      }
+    }
+  }
+}
+
+@layer mobile {
+  @media only screen and (width <= 30em) {
+    :host {
+      .gcds-header__container--breadcrumbs {
+        display: block;
+      }
+      .gcds-header__container--menu {
+        :is(slot[name=account]) {
+          position: relative;
+        }
+
+        ::slotted(gcds-topic-menu[slot='menu']) {
+          --gcds-topic-menu-mobile-width: 100%;
+        }
+
+        ::slotted(gcds-button[slot='account']) {
+          margin-block-start: var(--gcds-spacing-100) !important;
+        }
       }
     }
   }

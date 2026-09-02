@@ -7,6 +7,7 @@ import {
   State,
   Event,
   EventEmitter,
+  Fragment,
 } from '@stencil/core';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import i18n from './i18n/i18n';
@@ -30,6 +31,8 @@ import i18n from './i18n/i18n';
 })
 export class GcdsHeader {
   @Element() el: HTMLElement;
+
+  private mql: MediaQueryList | undefined;
 
   /**
    * Props
@@ -74,6 +77,11 @@ export class GcdsHeader {
    */
   @State() lang: string;
 
+  /**
+   * Current size state based on widnow size
+   */
+  @State() navSize: 'desktop' | 'mobile' = 'mobile';
+
   /*
    * Observe lang attribute change
    */
@@ -91,6 +99,33 @@ export class GcdsHeader {
     this.lang = assignLanguage(this.el);
 
     this.updateLang();
+
+    if (this.isBrowser) {
+      this.mql = window.matchMedia('(max-width: 480px)');
+      this.mql.addEventListener('change', this.updateOrder);
+  
+      this.updateOrder();
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.mql) {
+      this.mql.removeEventListener('change', this.updateOrder);
+    }
+  }
+
+  private updateOrder = () => {
+    if (!this.isBrowser) return;
+
+    if (this.mql?.matches) {
+      this.navSize = 'mobile';
+    } else {
+      this.navSize = 'desktop';
+    }
+  };
+
+  private get isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof window.matchMedia === 'function';
   }
 
   private get renderSkipToNav() {
@@ -210,8 +245,17 @@ export class GcdsHeader {
 
         {hasBreadcrumb || (!hasBreadcrumb && !hasThemeTopicMenu && hasAccount) ? (
           <div class="gcds-header__container--breadcrumbs">
-            {hasBreadcrumb ? <slot name="breadcrumb"></slot> : null}
-            {hasAccount && !hasThemeTopicMenu ? <slot name="account"></slot> : null}
+            {this.navSize === 'mobile' ? (
+              <Fragment>
+                {hasAccount && !hasThemeTopicMenu ? <slot name="account"></slot> : null}
+                {hasBreadcrumb ? <slot name="breadcrumb"></slot> : null}
+              </Fragment>
+            ) : (
+              <Fragment>
+                {hasBreadcrumb ? <slot name="breadcrumb"></slot> : null}
+                {hasAccount && !hasThemeTopicMenu ? <slot name="account"></slot> : null}
+              </Fragment>
+            )}
           </div>
         ) : null}
       </Host>
