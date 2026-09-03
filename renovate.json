@@ -2,7 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["local>cds-snc/renovate-config"],
   "lockFileMaintenance": {
-    "schedule": ["before 6am on the first day of the month"]
+    "enabled": true,
+    "schedule": [
+      "before 6am on the 1st day of the month",
+      "before 6am on the 15th day of the month"
+    ]
   },
   "baseBranchPatterns": ["main"]
 }
