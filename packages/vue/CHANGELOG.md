@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.5.0...@gcds-core/components-vue-v1.6.0) (2026-09-04)
+
+
+### :rocket: New Features
+
+* **gcds-date-input:** add `autocomplete` support ([#1299](https://github.com/cds-snc/gcds-components/issues/1299)) ([ab00260](https://github.com/cds-snc/gcds-components/commit/ab002601e99497eea8667860bb7ceb1c11e959dc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @gcds-core/components bumped from ^1.5.0 to ^1.6.0
+
 ## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-vue-v1.4.0...@gcds-core/components-vue-v1.5.0) (2026-08-12)
 
 

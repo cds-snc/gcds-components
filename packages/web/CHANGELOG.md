@@ -1,6 +1,21 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) (2026-09-04)
+
+
+### :rocket: New Features
+
+* **gcds-card:** text being skipped by Android and iOS read-aloud ([#1380](https://github.com/cds-snc/gcds-components/issues/1380)) ([747d289](https://github.com/cds-snc/gcds-components/commit/747d289a9dda9ee1a8c38537e433b117091f675a))
+* **gcds-date-input:** add `autocomplete` support ([#1299](https://github.com/cds-snc/gcds-components/issues/1299)) ([ab00260](https://github.com/cds-snc/gcds-components/commit/ab002601e99497eea8667860bb7ceb1c11e959dc))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-alert:** Add function to announce dynamically added success/info alerts ([#1393](https://github.com/cds-snc/gcds-components/issues/1393)) ([d6a4701](https://github.com/cds-snc/gcds-components/commit/d6a4701ad3439c89393aa687ccde6e4f872c387a))
+* **gcds-card:** Add check for slot in validateCardTitle ([#1392](https://github.com/cds-snc/gcds-components/issues/1392)) ([d7535e7](https://github.com/cds-snc/gcds-components/commit/d7535e731c189f58607e19b48d74d343dcba6b56))
+* **gcds-header:** Responsive styling of account slot ([#1394](https://github.com/cds-snc/gcds-components/issues/1394)) ([9ce7927](https://github.com/cds-snc/gcds-components/commit/9ce79274f91d91a4dfad4670cf10f9a4b3560bfa))
+
 ## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) (2026-08-12)
 
 
