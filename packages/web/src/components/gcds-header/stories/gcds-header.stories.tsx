@@ -92,6 +92,16 @@ export default {
         category: 'Slots | Fentes',
       },
     },
+    account: {
+      control: {
+        type: 'text',
+      },
+      description:
+        "Use this slot to add accoutn control to the header. | Utilisez cet emplacement pour ajouter les commandes de compte à l'en-tête.",
+      table: {
+        category: 'Slots | Fentes',
+      },
+    },
     skipTo: {
       name: 'skip-to-nav',
       control: {
@@ -138,6 +148,7 @@ const Template = args =>
   ${args.skipTo ? `<div slot="skip-to-nav">${args.skipTo}</div>` : null}
   ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
   ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}
+  ${args.account ? `<gcds-button type="link" href="#" slot="account">${args.account}</gcds-button>` : null}
 </gcds-header>
 
 <!-- React code -->
@@ -156,6 +167,7 @@ const Template = args =>
   ${args.skipTo ? `<div slot="skip-to-nav">${args.skipTo}</div>` : null}
   ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
   ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}
+  ${args.account ? `<GcdsButton type="link" href="#" slot="account">${args.account}</GcdsButton>` : null}
 </GcdsHeader>
 `.replace(/\s\snull\n/g, '');
 
@@ -175,7 +187,7 @@ const TemplatePlayground = args =>
   ${args.breadcrumb ? `<div slot="breadcrumb">${args.breadcrumb}</div>` : null}
   ${args.search ? `<div slot="search">${args.search}</div>` : null}
   ${args.toggle ? `<div slot="toggle">${args.toggle}</div>` : null}
-  ${args.banner ? `<div slot="banner">${args.banner}</div>` : null}
+  ${args.account ? `<gcds-button type="link" href="#" slot="account">${args.account}</gcds-button>` : null}
 </gcds-header>
 `.replace(/\s\snull\n/g, '');
 
@@ -190,6 +202,7 @@ Default.args = {
   skipTo: '',
   toggle: '',
   banner: '',
+  account: '',
   lang: 'en',
 };
 
@@ -199,6 +212,15 @@ SkipTo.args = {
   skipToHref: '#',
   signatureHasLink: true,
   skipTo: 'Skip-to-nav slot',
+  lang: 'en',
+};
+
+export const Account = Template.bind({});
+Account.args = {
+  langHref: '#',
+  skipToHref: '#',
+  signatureHasLink: true,
+  account: 'Account slot',
   lang: 'en',
 };
 
@@ -248,6 +270,7 @@ All.args = {
   toggle: 'Toggle slot',
   menu: 'Menu slot',
   breadcrumb: 'Breadcrumbs slot',
+  account: 'Account slot',
   lang: 'en',
 };
 
@@ -262,6 +285,7 @@ Props.args = {
   skipTo: '',
   toggle: '',
   banner: '',
+  account: '',
   lang: 'en',
 };
 
@@ -276,5 +300,6 @@ Playground.args = {
   skipTo: '',
   toggle: '',
   banner: '',
+  account: '',
   lang: 'en',
 };
