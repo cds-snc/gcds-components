@@ -1,8 +1,22 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0)
-Released on: 2026-08-12
+## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) (2026-09-04)
+
+
+### :rocket: New Features
+
+* **gcds-card:** text being skipped by Android and iOS read-aloud ([#1380](https://github.com/cds-snc/gcds-components/issues/1380)) ([747d289](https://github.com/cds-snc/gcds-components/commit/747d289a9dda9ee1a8c38537e433b117091f675a))
+* **gcds-date-input:** add `autocomplete` support ([#1299](https://github.com/cds-snc/gcds-components/issues/1299)) ([ab00260](https://github.com/cds-snc/gcds-components/commit/ab002601e99497eea8667860bb7ceb1c11e959dc))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-alert:** Add function to announce dynamically added success/info alerts ([#1393](https://github.com/cds-snc/gcds-components/issues/1393)) ([d6a4701](https://github.com/cds-snc/gcds-components/commit/d6a4701ad3439c89393aa687ccde6e4f872c387a))
+* **gcds-card:** Add check for slot in validateCardTitle ([#1392](https://github.com/cds-snc/gcds-components/issues/1392)) ([d7535e7](https://github.com/cds-snc/gcds-components/commit/d7535e731c189f58607e19b48d74d343dcba6b56))
+* **gcds-header:** Responsive styling of account slot ([#1394](https://github.com/cds-snc/gcds-components/issues/1394)) ([9ce7927](https://github.com/cds-snc/gcds-components/commit/9ce79274f91d91a4dfad4670cf10f9a4b3560bfa))
+
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) (2026-08-12)
 
 
 ### :rocket: New Features
@@ -19,8 +33,7 @@ Released on: 2026-08-12
 
 * **gcds-signature:** Adjusted signature sizing to align with FIP requirements ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
 
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) 
-Released on: 2026-07-27
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
 
 
 ### :rocket: New Features
@@ -196,56 +209,6 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 ---
 
 # Journal des modifications
-
-## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0)
-Version publiée le&nbsp;: 2026-08-12
-
-
-### :rocket: Nouvelles fonctionnalités
-
-* **gcds-alert:** Mise à jour des styles et des comportements d'accessibilité, avec `role="status"` pour `info` et alerte `success` et `role="alert"` pour `warning` et alerte de `danger` basée sur la propriété `alertRole`. ([#1373](https://github.com/cds-snc/gcds-components/issues/1373)) ([04a2de5](https://github.com/cds-snc/gcds-components/commit/04a2de5abca183609b49c7daf94c97d9013f001b))
-
-
-### :bug: :wrench: Corrections de bogues
-
-* **gcds-file-uploader:** Correction d'un problème d'accessibilité où le retrait d'un fichier n'était pas annoncé au lecteurs d'écran. ([#1386](https://github.com/cds-snc/gcds-components/issues/1386)) ([0536c3f](https://github.com/cds-snc/gcds-components/commit/0536c3f7eacfb08301ac6f1d94eb5da6ad431898)), ferme [#1363](https://github.com/cds-snc/gcds-components/issues/1363)
-
-
-### :art: Styles
-
-* **gcds-signature:** Ajustement de la grandeur de la signature afin de s'aligner avec les critères du Programme de coordination de l'image de marque ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
-
-
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0)
-
-Version publiée le&nbsp;: 2026-07-27
-
-
-### :rocket: Nouvelles fonctionnalités
-
-* Ajout de tests de régression pour tous les composants ([#1302](https://github.com/cds-snc/gcds-components/issues/1302)) ([095b170](https://github.com/cds-snc/gcds-components/commit/095b1708ebd06bf614bf9ae47b2d5d88147d4218))
-
-
-### :bug: :wrench: Corrections de bogues
-
-* **gcds-table:** 
-  * AJout du statut à la description du tableau ([#1323](https://github.com/cds-snc/gcds-components/issues/1323)) ([ad8174d](https://github.com/cds-snc/gcds-components/commit/ad8174d0166df29859fb507840c1b9545d2a2219))
-  * Prévenir la fermeture de la boîte de dialogue de filtres lorsque la touche de retour est appuyée ([#1320](https://github.com/cds-snc/gcds-components/issues/1320)) ([7607e62](https://github.com/cds-snc/gcds-components/commit/7607e62d195ea6586de7775f9f8b8593dd0efe5b))
-  * Mise à jour de l’étiquette du champ de filtre ([#1327](https://github.com/cds-snc/gcds-components/issues/1327)) ([fe493a5](https://github.com/cds-snc/gcds-components/commit/fe493a50682f65041d591b2e5068fb2832303fb1))
-  * Mise à jour des instructions dans aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
-* **gcds-topic-menu:** Mise à jour des instructions dans aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
-
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1)
-
-Version publiée le&nbsp;: 2026-06-08
-
-
-### :bug: :wrench: Corrections de bogues
-
-* **gcds-table:** Correction du statut lors de l’application d’un filtre ([#1289](https://github.com/cds-snc/gcds-components/issues/1289)) ([d09e0f5](https://github.com/cds-snc/gcds-components/commit/d09e0f5012d5a85e7b50c22f9998b7791bdbd49a))
-* **gcds-table:** Focus, interaction et problèmes d'affichage ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
-* Afficher la bonne langue avec Vue et React basé sur l'attribut lang ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
-* Mise à jour des messages de validation en français dans validation-errors.ts ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
 
 ## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 
