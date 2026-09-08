@@ -11,10 +11,11 @@ Navigation link within a navigation group or menu, allowing users to navigate to
 
 ## Properties
 
-| Property            | Attribute | Description       | Type      | Default     |
-| ------------------- | --------- | ----------------- | --------- | ----------- |
-| `current`           | `current` | Current page flag | `boolean` | `undefined` |
-| `href` _(required)_ | `href`    | Link href         | `string`  | `undefined` |
+| Property            | Attribute  | Description                         | Type      | Default     |
+| ------------------- | ---------- | ----------------------------------- | --------- | ----------- |
+| `current`           | `current`  | Current page flag                   | `boolean` | `undefined` |
+| `external`          | `external` | Whether the link is external or not | `boolean` | `false`     |
+| `href` _(required)_ | `href`     | Link href                           | `string`  | `undefined` |
 
 
 ## Events
@@ -45,6 +46,19 @@ Type: `Promise<void>`
 | ----------- | ------------------------------------- |
 | `"default"` | Slot for the navigation link content. |
 
+
+## Dependencies
+
+### Depends on
+
+- [gcds-icon](../gcds-icon)
+
+### Graph
+```mermaid
+graph TD;
+  gcds-nav-link --> gcds-icon
+  style gcds-nav-link fill:#26374a,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
