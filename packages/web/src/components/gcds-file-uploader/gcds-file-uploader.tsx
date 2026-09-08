@@ -43,6 +43,7 @@ export class GcdsFileUploader {
   internals: ElementInternals;
 
   private shadowElement?: HTMLInputElement;
+  private uploadedFiles: HTMLButtonElement[] = [];
 
   private inputTitle: string = '';
 
@@ -291,6 +292,21 @@ export class GcdsFileUploader {
       this.files = dt.files;
       this.addFilesToFormData(Array.from(this.shadowElement.files));
     }
+
+    /* 
+     * Provide focus management for removing files.
+     * If there are multiple files, focus the first file.
+     * If there is only one file, focus the file input.
+     */
+    let eventElement = e.target.closest('.file-uploader__uploaded-file').querySelector('button');
+    const removeButton = this.uploadedFiles.indexOf(eventElement);
+    if (this.uploadedFiles.length > 1) {
+      this.uploadedFiles[removeButton !== 0 ? 0 : removeButton].focus();
+    } else {
+      this.shadowElement?.focus();
+    }
+    // reset uploadedFiles since render will repolulate the list of buttons
+    this.uploadedFiles = [];
 
     this.value = [...filesContainer];
     this.removedFileMessage = `${i18n[this.lang].fileRemoved} ${fileName}`;
@@ -601,7 +617,14 @@ export class GcdsFileUploader {
                 aria-label={`${i18n[lang].removeFile} ${file}.`}
               >
                 <gcds-text margin-bottom="0">{file}</gcds-text>
-                <button onClick={e => this.removeFile(e)}>
+                <button
+                  onClick={e => this.removeFile(e)}
+                  ref={element => {
+                    if (element && !this.uploadedFiles.includes(element)) {
+                      this.uploadedFiles = [...this.uploadedFiles, element];
+                    }
+                  }}
+                >
                   <span>{i18n[lang].button.remove}</span>
                   <gcds-icon name="close" size="text" margin-left="150" />
                 </button>
