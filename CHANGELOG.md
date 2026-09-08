@@ -7,7 +7,7 @@ Released on 2026-09-08
 
 ### :rocket: New Features
 
-* **gcds-card:** text being skipped by Android and iOS read-aloud ([#1380](https://github.com/cds-snc/gcds-components/issues/1380)) ([747d289](https://github.com/cds-snc/gcds-components/commit/747d289a9dda9ee1a8c38537e433b117091f675a))
+* **gcds-card:** Add new `title` slot to card with text mirroring from attributes to fix text being skipped by Android and iOS read-aloud ([#1380](https://github.com/cds-snc/gcds-components/issues/1380)) ([747d289](https://github.com/cds-snc/gcds-components/commit/747d289a9dda9ee1a8c38537e433b117091f675a))
 * **gcds-date-input:** add `autocomplete` support ([#1299](https://github.com/cds-snc/gcds-components/issues/1299)) ([ab00260](https://github.com/cds-snc/gcds-components/commit/ab002601e99497eea8667860bb7ceb1c11e959dc))
 
 
