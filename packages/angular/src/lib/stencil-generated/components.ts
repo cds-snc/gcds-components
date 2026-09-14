@@ -1642,7 +1642,7 @@ export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
 
 
 @ProxyCmp({
-  inputs: ['current', 'href'],
+  inputs: ['current', 'external', 'href'],
   methods: ['focusLink'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']
 })
@@ -1651,7 +1651,7 @@ export declare interface GcdsNavGroup extends Components.GcdsNavGroup {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['current', 'href'],
+  inputs: ['current', 'external', 'href'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur'],
   standalone: false,
 })
@@ -1665,6 +1665,10 @@ export class GcdsNavLink {
    * Current page flag
    */
   set current(_: Components.GcdsNavLink['current']) {};
+    /**
+   * Whether the link is external or not @default false
+   */
+  set external(_: Components.GcdsNavLink['external']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;

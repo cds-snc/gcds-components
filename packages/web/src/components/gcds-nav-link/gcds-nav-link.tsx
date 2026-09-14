@@ -10,6 +10,7 @@ import {
   h,
 } from '@stencil/core';
 import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
+import gcdsLinkI18n from '../gcds-link/i18n/i18n'
 
 /**
  * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
@@ -35,6 +36,11 @@ export class GcdsNavLink {
    * Current page flag
    */
   @Prop({ reflect: true }) current: boolean;
+
+  /**
+   * Whether the link is external or not
+   */
+  @Prop() external?: boolean = false;
 
   /**
    * Emitted when the link has been clicked.
@@ -98,8 +104,23 @@ export class GcdsNavLink {
     }
   }
 
+  /**
+   * Returns the correct icon for the link, if applicable.
+   * If none of these conditions match, no icon is rendered.
+   */
+  private getIcon() {
+    const { external, lang } = this;
+    const isExternal = external;
+
+    if (isExternal) {
+      return <gcds-icon name="external" label={gcdsLinkI18n[lang].external} />;
+    }
+
+    return null;
+  }
+
   render() {
-    const { current, href } = this;
+    const { current, external, href } = this;
 
     const linkAttrs = {};
 
@@ -114,12 +135,17 @@ export class GcdsNavLink {
           href={href}
           {...linkAttrs}
           tabIndex={0}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
           onBlur={() => this.gcdsBlur.emit()}
           onFocus={() => this.gcdsFocus.emit()}
           onClick={e => emitEvent(e, this.gcdsClick, href)}
           ref={element => (this.linkElement = element as HTMLElement)}
         >
           <slot></slot>
+          {this.getIcon() && (
+            <span class="text-icon-group">&nbsp;{this.getIcon()}</span>
+          )}
         </a>
       </Host>
     );
