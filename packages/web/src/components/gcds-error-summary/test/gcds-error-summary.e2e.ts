@@ -81,6 +81,64 @@ test.describe('gcds-error-summary', () => {
       ),
     ).toEqual(4);
   });
+
+  test('list markers use the same responsive typography as links', async ({
+    page,
+  }) => {
+    const setupErrorSummary = async () => {
+      await page.locator('body').evaluate(element => {
+        element.style.fontFamily = 'serif';
+      });
+
+      const element = page.locator('gcds-error-summary');
+      await element.evaluate(
+        el =>
+          ((el as HTMLGcdsErrorSummaryElement).errorLinks =
+            '{"#link1":"First error","#link2":"Second error"}'),
+      );
+      await page.waitForChanges();
+    };
+
+    const getTypography = () =>
+      page.evaluate(() => {
+        const errorSummary = document.querySelector('gcds-error-summary');
+        const listItem = errorSummary.shadowRoot.querySelector('li');
+        const link = listItem.querySelector('gcds-link');
+        const anchor = link.shadowRoot.querySelector('a');
+        const markerStyles = window.getComputedStyle(listItem, '::marker');
+        const linkStyles = window.getComputedStyle(anchor);
+
+        return {
+          marker: {
+            fontFamily: markerStyles.fontFamily,
+            fontSize: markerStyles.fontSize,
+            fontWeight: markerStyles.fontWeight,
+            lineHeight: markerStyles.lineHeight,
+          },
+          link: {
+            fontFamily: linkStyles.fontFamily,
+            fontSize: linkStyles.fontSize,
+            fontWeight: linkStyles.fontWeight,
+            lineHeight: linkStyles.lineHeight,
+          },
+        };
+      });
+
+    await page.setViewportSize({ width: 1024, height: 768 });
+    await setupErrorSummary();
+    const desktopTypography = await getTypography();
+    expect(desktopTypography.marker).toEqual(desktopTypography.link);
+
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForFunction(() => {
+      const element = document.querySelector('gcds-error-summary');
+      return element && element.shadowRoot;
+    });
+    await setupErrorSummary();
+    const mobileTypography = await getTypography();
+    expect(mobileTypography.marker).toEqual(mobileTypography.link);
+  });
 });
 
 test.describe('gcds-error-summary a11y tests', () => {
