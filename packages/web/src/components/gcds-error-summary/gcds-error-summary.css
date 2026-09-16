@@ -33,6 +33,14 @@
         .summary__listitem {
           max-width: var(--gcds-error-summary-max-width);
 
+          &::marker {
+            font: var(--gcds-link-font-regular-desktop);
+
+            @media only screen and (width < 48em) {
+              font: var(--gcds-link-font-regular-mobile);
+            }
+          }
+
           &:not(:last-child) {
             padding: var(--gcds-error-summary-list-item-padding);
           }
