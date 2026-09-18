@@ -1,6 +1,20 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.6.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.6.0...@gcds-core/components-angular-v1.6.1) (2026-09-17)
+
+
+### Patch
+
+* **@gcds-core/components-angular:** Synchronize GCDS Components versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * peerDependencies
+    * @gcds-core/components bumped from ^1.6.0 to ^1.6.1
+
 ## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-angular-v1.5.0...@gcds-core/components-angular-v1.6.0) (2026-09-08)
 
 
