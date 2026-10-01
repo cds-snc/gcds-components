@@ -1,6 +1,19 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) (2026-10-01)
+
+
+### :rocket: New Features
+
+* update error message icon ([96d30c9](https://github.com/cds-snc/gcds-components/commit/96d30c990afae671572bb4430d9b2859352d51a9))
+
+
+### :bug: :wrench: Bug Fixes
+
+* **gcds-error-summary:** Adding missing styling to the markers on the error summary component ([#1421](https://github.com/cds-snc/gcds-components/issues/1421)) ([a688ca0](https://github.com/cds-snc/gcds-components/commit/a688ca0fd80fb62a76958ceeb1b95366ec57866a))
+* update error message icon ([#1430](https://github.com/cds-snc/gcds-components/issues/1430)) ([96d30c9](https://github.com/cds-snc/gcds-components/commit/96d30c990afae671572bb4430d9b2859352d51a9))
+
 ## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) (2026-09-08)
 
 
