@@ -110,5 +110,7 @@ export const config: Config = {
     experimentalScopedSlotChanges: true,
     experimentalSlotFixes: true,
     addGlobalStyleToComponents: false,
+    additionalTagTransformers: true,
+    tagNameTransform: true,
   },
 };
