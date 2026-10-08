@@ -1,0 +1,115 @@
+/* eslint-env node */
+const fs = require('fs');
+const path = require('path');
+
+// ============================================================================
+// VS CODE CUSTOM DATA GENERATOR
+// ============================================================================
+// VS Code's built-in HTML language service doesn't read the Custom Elements
+// Manifest, but it does read "HTML custom data" files listed in the
+// `html.customData` setting:
+// https://code.visualstudio.com/api/extension-guides/custom-data-extension
+//
+// This converts specs/custom-elements.json into that format. Projects enable it
+// with this in .vscode/settings.json:
+//   { "html.customData": ["./node_modules/@gcds-core/components/specs/vscode-data.json"] }
+//
+// Runs after postbuild.js so "(required)" labels are already in the manifest.
+
+const MANIFEST_FILE = '../specs/custom-elements.json';
+const OUTPUT_FILE = '../specs/vscode-data.json';
+
+// '"email" | "number"' -> ['email', 'number'] (only for pure string-literal unions)
+function getEnumValues(typeText) {
+  if (!typeText) return [];
+  const parts = typeText
+    .split('|')
+    .map(part => part.trim())
+    .filter(part => part !== 'undefined');
+  const literals = parts.filter(part => /^(['"]).*\1$/.test(part));
+  if (!literals.length || literals.length !== parts.length) return [];
+  return literals.map(part => part.slice(1, -1));
+}
+
+function toAttribute(attribute) {
+  const typeText = attribute.type?.text;
+  const enumValues = getEnumValues(typeText);
+  const details = [attribute.description, typeText && `Type: \`${typeText}\``]
+    .filter(Boolean)
+    .join('\n\n');
+
+  const result = {
+    name: attribute.name,
+    description: { kind: 'markdown', value: details },
+  };
+
+  if (typeText === 'boolean') {
+    // "v" = void: VS Code completes the attribute without ="..."
+    result.valueSet = 'v';
+  } else if (enumValues.length) {
+    result.values = enumValues.map(name => ({ name }));
+  }
+
+  return result;
+}
+
+// VS Code custom data has no fields for slots or events, so list them in the
+// tag description, which is shown on hover and in completions.
+function toTagDescription(declaration) {
+  const sections = [declaration.description];
+
+  const slots = (declaration.slots || []).filter(slot => slot.name);
+  if (slots.length) {
+    sections.push(
+      '**Slots**\n' +
+        slots
+          .map(
+            slot =>
+              `- \`${slot.name}\`${slot.description ? `: ${slot.description}` : ''}`,
+          )
+          .join('\n'),
+    );
+  }
+
+  const events = declaration.events || [];
+  if (events.length) {
+    sections.push(
+      '**Events**\n' + events.map(event => `- \`${event.name}\``).join('\n'),
+    );
+  }
+
+  return { kind: 'markdown', value: sections.filter(Boolean).join('\n\n') };
+}
+
+function generateVsCodeData() {
+  const manifestPath = path.join(__dirname, MANIFEST_FILE);
+  const outputPath = path.join(__dirname, OUTPUT_FILE);
+
+  if (!fs.existsSync(manifestPath)) {
+    console.log('⚠️  custom-elements.json not found, skipping vscode-data');
+    return;
+  }
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+
+  const tags = manifest.modules
+    .flatMap(module => module.declarations || [])
+    .filter(declaration => declaration.tagName)
+    .map(declaration => ({
+      name: declaration.tagName,
+      description: toTagDescription(declaration),
+      attributes: (declaration.attributes || []).map(toAttribute),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const customData = { version: 1.1, tags };
+
+  fs.writeFileSync(outputPath, JSON.stringify(customData, null, 2) + '\n');
+  console.log(`✅ Generated vscode-data.json for ${tags.length} elements`);
+}
+
+try {
+  generateVsCodeData();
+} catch (error) {
+  console.error('❌ Error generating vscode-data.json:', error.message);
+}

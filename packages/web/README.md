@@ -112,6 +112,30 @@ Please reference [GC Design System Components – Angular](../angular/README.md)
 
 Please reference [GC Design System Components – Vue](../vue/README.md)
 
+## Editor support
+
+The package includes data files that give your code editor autocomplete and inline documentation for GC Design System components: tag names, attributes, allowed values and descriptions. Required attributes are marked `(required)`.
+
+### VS Code
+
+Add the following to `.vscode/settings.json` in your project, then reload the window (**Cmd/Ctrl+Shift+P** → **Developer: Reload Window**):
+
+```json
+{
+  "html.customData": ["./node_modules/@gcds-core/components/specs/vscode-data.json"]
+}
+```
+
+The path is relative to the folder you open in VS Code. This works in HTML files.
+
+### WebStorm and other JetBrains IDEs
+
+No setup needed. JetBrains IDEs (WebStorm, IntelliJ IDEA, PhpStorm and others) detect the components automatically once the package is installed. If suggestions don't appear, right-click `node_modules/@gcds-core/components` and select **Reload from Disk**.
+
+### Other tools
+
+The package includes a [Custom Elements Manifest](https://github.com/webcomponents/custom-elements-manifest) at `specs/custom-elements.json`, referenced by the `customElements` field in `package.json`. Tools that support the manifest, such as Storybook, linters and language servers, can use it to read the components' API.
+
 ## How to contribute
 
 If you are interested in contributing to GC Design System Components, please read our [contributing guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
@@ -233,6 +257,30 @@ Veuillez faire référence [Composants de Système de design GC – Angular](../
 ### Vue
 
 Veuillez faire référence [Composants de Système de design GC – Vue](../vue/README.md)
+
+## Prise en charge des éditeurs
+
+Le paquet comprend des fichiers de données qui offrent, dans votre éditeur de code, la saisie semi-automatique et la documentation intégrée des composants de Système de design GC : noms des balises, attributs, valeurs permises et descriptions. Les attributs obligatoires sont indiqués par `(required)`.
+
+### VS Code
+
+Ajoutez ce qui suit au fichier `.vscode/settings.json` de votre projet, puis rechargez la fenêtre (**Cmd/Ctrl+Maj+P** → **Developer: Reload Window**) :
+
+```json
+{
+  "html.customData": ["./node_modules/@gcds-core/components/specs/vscode-data.json"]
+}
+```
+
+Le chemin est relatif au dossier ouvert dans VS Code. Cette fonctionnalité est offerte dans les fichiers HTML.
+
+### WebStorm et autres environnements de développement JetBrains
+
+Aucune configuration n'est nécessaire. Les environnements de développement JetBrains (WebStorm, IntelliJ IDEA, PhpStorm et autres) détectent automatiquement les composants une fois le paquet installé. Si les suggestions ne s'affichent pas, faites un clic droit sur `node_modules/@gcds-core/components` et sélectionnez **Reload from Disk**.
+
+### Autres outils
+
+Le paquet comprend un [manifeste d'éléments personnalisés](https://github.com/webcomponents/custom-elements-manifest) (en anglais) au chemin `specs/custom-elements.json`, référencé par le champ `customElements` du fichier `package.json`. Les outils qui prennent en charge ce manifeste, comme Storybook, les linters et les serveurs de langage, peuvent l'utiliser pour lire l'API des composants.
 
 ## Apportez votre contribution
 

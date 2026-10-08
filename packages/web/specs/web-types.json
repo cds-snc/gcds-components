@@ -67,6 +67,7 @@
               "name": "heading",
               "description": "(required) Defines the alert heading.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -191,6 +192,7 @@
               "name": "href",
               "description": "(required) Specifies the href of the breadcrumb item.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -462,6 +464,7 @@
               "name": "card-title",
               "description": "(required) The card title attribute specifies the title that appears on the card",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -501,6 +504,7 @@
               "name": "href",
               "description": "(required) The href attribute specifies the URL of the page the link goes to",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -690,6 +694,7 @@
               "name": "name",
               "description": "(required) Name attribute for a checkboxes element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -699,6 +704,7 @@
               "name": "options",
               "description": "(required) Options to render checkboxes buttons",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "CheckboxObject[] | string",
                 "required": true
@@ -1273,6 +1279,7 @@
               "name": "format",
               "description": "(required) Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "\"compact\" | \"full\" | \"iso\"",
                 "required": true
@@ -1301,6 +1308,7 @@
               "name": "legend",
               "description": "(required) Fieldset legend",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1326,6 +1334,7 @@
               "name": "name",
               "description": "(required) Name attribute for the date input.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1541,6 +1550,7 @@
               "name": "details-title",
               "description": "(required) The details title summarizes the panel content.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1602,6 +1612,7 @@
               "name": "message-id",
               "description": "(required) Id attribute for the error message.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1713,6 +1724,7 @@
               "name": "legend",
               "description": "(required) The title for the contents of the fieldset",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1722,6 +1734,7 @@
               "name": "legend-size",
               "description": "(required) Sets the appropriate font size for the fieldset legend.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "\"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
                 "required": true
@@ -1837,6 +1850,7 @@
               "name": "label",
               "description": "(required) Form field label.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1854,6 +1868,7 @@
               "name": "name",
               "description": "(required) Name attribute for file input element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -1872,6 +1887,7 @@
               "name": "uploader-id",
               "description": "(required) Id attribute for a file uploader element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -2773,6 +2789,7 @@
               "name": "lang-href",
               "description": "(required) GcdsLangToggle - The href attribute specifies the URL of the opposite language page",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -2791,6 +2808,7 @@
               "name": "skip-to-href",
               "description": "(required) Top navigation - Skip to content href",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -3117,6 +3135,7 @@
               "name": "tag",
               "description": "(required) Sets the appropriate HTML tag for the selected level.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
                 "required": true
@@ -3437,6 +3456,7 @@
               "name": "name",
               "description": "(required) Name of the icon.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
                 "required": true
@@ -3646,6 +3666,7 @@
               "name": "input-id",
               "description": "(required) Id  attribute for an input element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -3690,6 +3711,7 @@
               "name": "label",
               "description": "(required) Form field label",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -3731,6 +3753,7 @@
               "name": "name",
               "description": "(required) Name attribute for an input element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4104,6 +4127,7 @@
               "name": "href",
               "description": "(required) The href attribute specifies the URL of the opposite language page",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4184,6 +4208,7 @@
               "name": "href",
               "description": "(required) The href attribute specifies the URL of the page the link goes to",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4345,6 +4370,7 @@
               "name": "menu-label",
               "description": "(required) Label for the nav group menu",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4363,6 +4389,7 @@
               "name": "open-trigger",
               "description": "(required) Label for the collapsed button trigger",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4433,6 +4460,7 @@
               "name": "href",
               "description": "(required) Link href",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4484,6 +4512,7 @@
               "name": "notice-role",
               "description": "(required) The notice role property specifies the style of notice to be displayed.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
                 "required": true
@@ -4507,6 +4536,7 @@
               "name": "notice-title",
               "description": "(required) Set the notice title.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4516,6 +4546,7 @@
               "name": "notice-title-tag",
               "description": "(required) The notice title tag property specifies the HTML heading element for the title.\nThis property does not modify the font size. It is used to assign the heading level\nin order to maintain heading hierarchy and accessibility for assistive technologies.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "\"h2\" | \"h3\" | \"h4\" | \"h5\"",
                 "required": true
@@ -4595,6 +4626,7 @@
               "name": "label",
               "description": "(required) Navigation element label",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4779,6 +4811,7 @@
               "name": "legend",
               "description": "(required) Label or legend for the group of radio elements",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4788,6 +4821,7 @@
               "name": "name",
               "description": "(required) The `name` attribute for the radios, used to group radio elements together",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -4797,6 +4831,7 @@
               "name": "options",
               "description": "(required) Options to render radio buttons",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "RadioObject[] | string",
                 "required": true
@@ -5178,6 +5213,7 @@
               "name": "label",
               "description": "(required) Form field label.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -5187,6 +5223,7 @@
               "name": "name",
               "description": "(required) Name attribute for select form element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -5205,6 +5242,7 @@
               "name": "select-id",
               "description": "(required) Id attribute for a select element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -5377,6 +5415,7 @@
               "name": "label",
               "description": "(required) Label for navigation landmark",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -5546,6 +5585,7 @@
               "name": "current-step",
               "description": "(required) Defines the current step.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "number",
                 "required": true
@@ -5575,6 +5615,7 @@
               "name": "total-steps",
               "description": "(required) Defines the total amount of steps.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "number",
                 "required": true
@@ -6187,6 +6228,7 @@
               "name": "label",
               "description": "(required) Form field label",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -6212,6 +6254,7 @@
               "name": "name",
               "description": "(required) Name attribute for a textarea element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -6239,6 +6282,7 @@
               "name": "textarea-id",
               "description": "(required) Id attribute for a textarea element.",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true
@@ -6441,6 +6485,7 @@
               "name": "label",
               "description": "(required) Label for navigation landmark",
               "required": true,
+              "priority": "highest",
               "value": {
                 "type": "string",
                 "required": true

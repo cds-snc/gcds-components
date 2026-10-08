@@ -40,11 +40,14 @@ function toAttribute(attribute, member) {
   const description = attribute.description || '';
   const enumValues = getEnumValues(typeText);
   const isBoolean = typeText === 'boolean';
+  const isRequired = description.startsWith(REQUIRED_PREFIX);
 
   const result = {
     name: attribute.name,
     description,
-    required: description.startsWith(REQUIRED_PREFIX) || undefined,
+    required: isRequired || undefined,
+    // List required attributes first in completion suggestions
+    priority: isRequired ? 'highest' : undefined,
     default: attribute.default ?? member?.default,
     value: {
       type: typeText,

@@ -19,7 +19,8 @@
     "loader/",
     "hydrate",
     "specs/custom-elements.json",
-    "specs/web-types.json"
+    "specs/web-types.json",
+    "specs/vscode-data.json"
   ],
   "publishConfig": {
     "access": "public"
@@ -30,7 +31,7 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "postbuild": "node ./scripts/postbuild.js && node ./scripts/generate-web-types.js",
+    "postbuild": "node ./scripts/postbuild.js && node ./scripts/generate-web-types.js && node ./scripts/generate-vscode-data.js",
     "start": "stencil build --dev --watch --serve",
     "pretest": "cd ../.. && npm run patch:stenciljs && npm run build",
     "test": "npm run test:unit && npm run test:e2e",
