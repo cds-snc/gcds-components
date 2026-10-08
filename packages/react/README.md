@@ -36,6 +36,28 @@ import '@gcds-core/components-react/gcds.css';
 
 Once you've installed the design system, start building! Browse our available [components](https://design-system.canada.ca/en/components/) and [templates](https://design-system.canada.ca/en/page-templates/) to pull the code you need into your project.
 
+## Navigation with React Router or Next.js
+
+Wrap your app once with `GcdsRouterProvider`. Every `GcdsNav` then uses client side navigation for internal links (new tab clicks and external links are left to the browser) and highlights the current page.
+
+```jsx
+import { useLocation, useNavigate } from 'react-router-dom';
+import { GcdsNav, GcdsRouterProvider } from '@gcds-core/components-react';
+
+function Layout() {
+  return (
+    <GcdsRouterProvider navigate={useNavigate()} currentHref={useLocation().pathname}>
+      <GcdsNav variant="top" label="Main navigation" items={[
+        { label: 'Home', href: '/', home: true },
+        { label: 'About', href: '/about' },
+      ]} />
+    </GcdsRouterProvider>
+  );
+}
+```
+
+With Next.js, pass `navigate={useRouter().push}`, `prefetch={useRouter().prefetch}` and `currentHref={usePathname()}`. Use `basename` when the app is not served from the domain root.
+
 ## How to contribute
 
 If you are interested in contributing to GC Design System Components, please read our [contributing guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).

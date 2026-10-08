@@ -15,6 +15,8 @@ import I18N from './i18n/i18n';
 /**
  * A top navigation is a horizontal list of page links.
  *
+ * Deprecated: use <gcds-nav variant="top"> instead. Keep the same child elements and rename the tag.
+ *
  * @slot home - Slot for the home link or site title.
  * @slot default - Slot for the navigation groups and navigation links.
  */

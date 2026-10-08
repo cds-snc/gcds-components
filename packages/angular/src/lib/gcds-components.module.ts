@@ -14,7 +14,6 @@ const DECLARATIONS = [
   // ngModel Accessors
   SelectValueAccessor,
   TextValueAccessor,
-  GcdsRouterDirective,
   GcdsCellDirective,
   GcdsTableWithSlotsComponent,
 ];
@@ -22,8 +21,9 @@ const DECLARATIONS = [
 defineCustomElements(window);
 
 @NgModule({
-  imports: [CommonModule],
+  // GcdsRouterDirective is standalone so it can also be imported directly in standalone components
+  imports: [CommonModule, GcdsRouterDirective],
   declarations: DECLARATIONS,
-  exports: DECLARATIONS,
+  exports: [...DECLARATIONS, GcdsRouterDirective],
 })
 export class GcdsComponentsModule {}

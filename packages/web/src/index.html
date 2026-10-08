@@ -101,11 +101,33 @@
         background: #a61e4d;
       }
     </style>
+    <style>
+      /* Side navigation next to the page content */
+      .page-layout {
+        display: flex;
+        gap: 2rem;
+        width: 90%;
+        max-width: 71.25rem;
+        margin-inline: auto;
+      }
+      .page-layout > .side-nav {
+        flex: 0 0 18rem;
+        top: 1rem;
+      }
+      .page-layout > gcds-container {
+        flex: 1;
+        min-width: 0;
+      }
+      @media (max-width: 47.9375em) {
+        .page-layout {
+          display: block;
+        }
+      }
+    </style>
   </head>
 
   <body style="margin: 0">
     <!-- ------------- Header ------------- -->
-
     <gcds-header
       lang="en"
       lang-href="en"
@@ -116,26 +138,44 @@
 
       <gcds-search slot="search"></gcds-search>
 
-      <!-- ------------- Top nav ------------- -->
-
-      <!-- <gcds-top-nav slot="menu" label="Top navigation" alignment="end">
-        <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
-        <gcds-nav-link href="#">Nav link</gcds-nav-link>
-
-        <gcds-nav-group
-          open-trigger="Nav group trigger"
-          menu-label="Nav group trigger"
+      <!-- ------------- Top nav (gcds-nav) ------------- -->
+      <gcds-nav
+        variant="top"
+        label="Top navigation"
+        alignment="end"
+        slot="menu"
+      >
+        <gcds-nav-link href="https://digital.canada.ca/" slot="home"
+          >Canadian Digital Service</gcds-nav-link
         >
-          <gcds-nav-link href="#" current>Nav link</gcds-nav-link>
-          <gcds-nav-link href="#">Nav link</gcds-nav-link>
-          <gcds-nav-link href="#">Nav link</gcds-nav-link>
-          <gcds-nav-link href="#">Nav link</gcds-nav-link>
-        </gcds-nav-group>
 
-        <gcds-nav-link href="#">Nav link</gcds-nav-link>
-      </gcds-top-nav> -->
+        <gcds-nav-link
+          href="/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: Products"
+          >Products</gcds-nav-link
+        >
 
-      <gcds-topic-menu slot="menu"></gcds-topic-menu>
+        <gcds-nav-link
+          href="/about/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: About"
+          >About</gcds-nav-link
+        >
+
+        <gcds-nav-link
+          href="/blog/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: Blog"
+          >Blog</gcds-nav-link
+        >
+
+        <gcds-nav-link
+          href="/jobs/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: Jobs at CDS"
+          >Jobs at CDS</gcds-nav-link
+        >
+      </gcds-nav>
+
+      <!-- The header menu slot holds one menu, topic menu disabled while testing gcds-nav -->
+      <!-- <gcds-topic-menu slot="menu"></gcds-topic-menu> -->
 
       <!-- ------------- Breadcrumbs ------------- -->
 
@@ -156,998 +196,1288 @@
       <gcds-button slot="account" type="link" href="#">Sign In</gcds-button>
     </gcds-header>
 
-    <gcds-container layout="page" tag="main">
-      <gcds-heading tag="h1">GC Design System</gcds-heading>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Alerts ------------- -->
-
-      <gcds-heading tag="h2">Alerts</gcds-heading>
-      <gcds-alert heading="Success alert" alert-role="success">
-        <p>Example content</p>
-      </gcds-alert>
-      <gcds-alert heading="Info alert" alert-role="info">
-        <p>Example content</p>
-      </gcds-alert>
-      <gcds-alert heading="Warning alert" alert-role="warning">
-        <p>Example content</p>
-      </gcds-alert>
-      <gcds-alert heading="Danger alert" alert-role="danger">
-        <p>Example content</p>
-      </gcds-alert>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Buttons ------------- -->
-
-      <gcds-heading tag="h2">Buttons</gcds-heading>
-
-      <ul>
-        <li class="mb-300">
-          <gcds-button button-role="start">Start</gcds-button>
-          <gcds-button button-role="start" disabled>
-            Start (disabled)
-          </gcds-button>
-        </li>
-        <li class="mb-300">
-          <gcds-button button-role="primary">Primary</gcds-button>
-          <gcds-button button-role="primary" size="small">
-            Primary (small)
-          </gcds-button>
-          <gcds-button button-role="primary" disabled>
-            Primary (disabled)
-          </gcds-button>
-          <gcds-button button-role="primary" size="small" disabled>
-            Primary (small, disabled)
-          </gcds-button>
-        </li>
-        <li class="mb-300">
-          <gcds-button button-role="secondary">Secondary</gcds-button>
-          <gcds-button button-role="secondary" size="small">
-            Secondary (small)
-          </gcds-button>
-          <gcds-button button-role="secondary" disabled>
-            Secondary (disabled)
-          </gcds-button>
-          <gcds-button button-role="secondary" size="small" disabled>
-            Secondary (small, disabled)
-          </gcds-button>
-        </li>
-        <li class="mb-300">
-          <gcds-button button-role="danger">Danger</gcds-button>
-          <gcds-button button-role="danger" size="small">
-            Danger (small)
-          </gcds-button>
-          <gcds-button button-role="danger" disabled>
-            Danger (disabled)
-          </gcds-button>
-          <gcds-button button-role="danger" size="small" disabled>
-            Danger (small, disabled)
-          </gcds-button>
-        </li>
-      </ul>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Cards ------------- -->
-
-      <gcds-heading tag="h2">Cards</gcds-heading>
-
-      <gcds-grid
-        tag="div"
-        columns-desktop="1fr 1fr 1fr"
-        columns-tablet="1fr 1fr"
-        columns="1fr"
+    <div class="page-layout">
+      <!-- ------------- Side nav (gcds-nav) ------------- -->
+      <gcds-nav
+        variant="side"
+        label="GC Design System"
+        current-href="/en/components/side-navigation/"
+        class="side-nav lg:position-sticky box-border overflow-x-visible align-self-start px-75"
       >
-        <gcds-card
-          card-title="Link card number 1"
-          card-title-tag="h3"
-          href="#red"
-          description="This is a card"
-          badge="New"
-          img-src="https://picsum.photos/480/270"
-          img-alt="Random image from picsum"
+        <gcds-nav-link slot="home" href="/en">GC Design System</gcds-nav-link>
+        <gcds-nav-link href="/en/start-to-use">Start to use</gcds-nav-link>
+
+        <gcds-nav-group
+          menu-label="Page templates"
+          open-trigger="Page templates"
         >
-        </gcds-card>
-        <gcds-card
-          card-title="Link card number 2"
-          card-title-tag="h4"
-          href="#red"
-          badge="New"
-          img-src="https://picsum.photos/480/270"
-          img-alt="Random image from picsum"
-        >
-        </gcds-card>
-        <gcds-card
-          card-title="Link card number 3 with a really long title for some reason"
-          card-title-tag="h5"
-          href="#red"
-          description="This is a card with an img and possibly more"
-          img-src="https://picsum.photos/480/270"
-          img-alt="Random image from picsum"
-        >
-        </gcds-card>
-        <gcds-card
-          card-title="Link card number 4"
-          card-title-tag="h6"
-          href="#red"
-          badge="Card with badge that is too long"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
-          img-src="https://picsum.photos/480/270"
-          img-alt="Random image from picsum"
-        >
-          Text passed by the slot.
-        </gcds-card>
-      </gcds-grid>
-
-      <gcds-card
-        class="mt-400"
-        card-title="Card not in column"
-        href="#red"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
-      >
-      </gcds-card>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Containers ------------- -->
-
-      <gcds-heading tag="h2">Containers</gcds-heading>
-      <gcds-container size="full" border padding="300">
-        <p>
-          I'm a responsive container. My size is only limited by the size of my
-          parent container.
-        </p>
-      </gcds-container>
-      <br />
-      <gcds-container size="lg" alignment="start" border padding="400">
-        <p>
-          I'm a large container, aligned at the start of my parent container. My
-          max size is 64rem (1024px).
-        </p>
-      </gcds-container>
-      <br />
-      <gcds-container size="lg" alignment="center" border padding="400">
-        <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
-      </gcds-container>
-      <br />
-      <gcds-container size="lg" alignment="end" border padding="400">
-        <p>
-          I'm a large container, aligned at the end of my parent container. My
-          max size is 64rem (1024px).
-        </p>
-      </gcds-container>
-      <br />
-      <gcds-container size="xs" border padding="400">
-        <p>I'm an extra-small container. My max size is 20rem (320px).</p>
-      </gcds-container>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Details ------------- -->
-
-      <gcds-heading tag="h2">Details</gcds-heading>
-      <gcds-details details-title="Find out more">
-        <p>Details about stuff.</p>
-        <ul class="list-disc">
-          <li>List item</li>
-          <li>List item</li>
-          <li>List item</li>
-        </ul>
-        <p>Details about stuff.</p>
-        <ul class="list-disc">
-          <li>List item</li>
-          <li>List item</li>
-          <li>List item</li>
-        </ul>
-      </gcds-details>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Stepper + Form Elements ------------- -->
-
-      <gcds-heading tag="h2">
-        Form elements (including stepper and error summary)
-      </gcds-heading>
-
-      <gcds-stepper current-step="1" total-steps="4" tag="h2">
-        Section title
-      </gcds-stepper>
-
-      <form novalidate>
-        <gcds-error-summary listen></gcds-error-summary>
-
-        <gcds-input
-          input-id="form-name"
-          label="Name"
-          hint="Please enter your full name."
-          required
-        ></gcds-input>
-
-        <gcds-input
-          input-id="form-email"
-          label="Email"
-          type="email"
-          hint="Please enter your email."
-          required
-        ></gcds-input>
-
-        <gcds-date-input
-          legend="Date input"
-          name="date-input"
-          format="full"
-          hint="Formatted: YYYY-MM-DD"
-          required
-        ></gcds-date-input>
-
-        <gcds-input
-          input-id="form-number"
-          type="number"
-          size="10"
-          label="Phone number"
-          hint="Please enter a 10 digits number."
-          required
-        ></gcds-input>
-
-        <gcds-textarea
-          textarea-id="form-message"
-          label="Message"
-          hint="This is a hint."
-          maxlength="400"
-          name="message"
-          required
-        ></gcds-textarea>
-
-        <gcds-checkboxes
-          name="singlecheck"
-          required
-          options='[{ "label": "Do you like pizza?", "id": "form-checkbox", "value": "yes", "hint": "This answer is yes."}]'
-          class="value-check"
-        ></gcds-checkboxes>
-
-        <gcds-radios
-          name="radio"
-          legend="Radios"
-          hint="Rendered with options attribute"
-          required
-          options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
-        ></gcds-radios>
-
-        <gcds-radios
-          name="radios-object"
-          legend="Radios with JS"
-          hint="Radios options added by JavaScript"
-          required
-        ></gcds-radios>
-
-        <script>
-          // Create radio options array
-          const radioOptions = [
-            {
-              label: 'Radio 1 label',
-              id: 'radio1',
-              value: 'radio1',
-              hint: 'Set with JS',
-            },
-            {
-              label: 'Radio 2 label',
-              id: 'radio2',
-              value: 'radio2',
-              hint: 'Set with JS',
-            },
-          ];
-
-          // Find the gcds-radios element
-          const radios = document.querySelector(
-            'gcds-radios[name="radios-object"]',
-          );
-
-          // Assign radio options to options property
-          radios.options = radioOptions;
-        </script>
-
-        <gcds-checkboxes
-          legend="Checkbox group"
-          name="checkgroup"
-          hint="Select all that apply."
-          required
-          options='[{ "label": "Checkbox 1 label", "id": "check1", "value": "check1"}, { "label": "Checkbox 2 label", "id": "check2", "value": "check2"}, { "label": "Checkbox 3 label", "id": "check3", "value": "check3"}]'
-        ></gcds-checkboxes>
-
-        <gcds-checkboxes
-          legend="Checkboxes"
-          name="jsoptions"
-          hint="Set with JS."
-          required
-          id="jscheck"
-        ></gcds-checkboxes>
-
-        <script>
-          const checkboxOptions = [
-            {
-              label: 'Checkbox 1 label',
-              id: 'checkbox1',
-              value: 'checkbox1',
-            },
-            {
-              label: 'Checkbox 2 label',
-              id: 'checkbox2',
-              value: 'checkbox2',
-            },
-          ];
-
-          let check = document.getElementById('jscheck');
-
-          check.options = checkboxOptions;
-        </script>
-
-        <gcds-select
-          select-id="form-select"
-          label="Name"
-          hint="Please enter your full name."
-          required
-          default-value="Please select an option"
-        >
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </gcds-select>
-
-        <gcds-file-uploader
-          uploader-id="form-uploader"
-          label="Upload file"
-          hint="You can upload multiple files, but they have to be png's."
-          accept="image/png"
-          multiple
-          required
-        ></gcds-file-uploader>
-
-        <br />
-
-        <gcds-button type="submit"> Submit </gcds-button>
-      </form>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Grid ------------- -->
-
-      <gcds-heading tag="h2">Grids</gcds-heading>
-
-      <gcds-heading tag="h3">Simple grids</gcds-heading>
-
-      <gcds-heading tag="h4">Fluid grid</gcds-heading>
-      <gcds-text>
-        Each grid column takes up a fractional amount of space within the grid
-        and has no fixed width restrictions. The grid and its columns scale to
-        the size of the viewport. This example has 4 columns for large
-        viewports, 2 columns for medium viewports, and 1 column for smaller
-        viewports.
-      </gcds-text>
-      <gcds-grid
-        columns-desktop="1fr 1fr 1fr"
-        columns-tablet="1fr 1fr"
-        columns="1fr"
-      >
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-      </gcds-grid>
-
-      <gcds-heading tag="h4">Fixed grid</gcds-heading>
-      <gcds-text>
-        In fixed width grids each grid column has a fixed minimum and a maximum
-        width to limit how wide they will span on any screen size. The columns
-        scale until they either reach their minimum or their maximum width. Once
-        a grid column reaches its minimum width, it gets moved to the next row
-        if the space on the current row becomes smaller than its minimum width.
-        In this example each grid column has a minimum width of 100px and a
-        maximum width of 300px.
-      </gcds-text>
-      <gcds-grid
-        alignment="center"
-        container="md"
-        columns="repeat(auto-fit, minmax(100px, 300px))"
-      >
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-      </gcds-grid>
-
-      <gcds-heading tag="h4">Hybrid grid</gcds-heading>
-      <gcds-text>
-        Hybrid grid columns include either a minimum or a maximum width and one
-        fractional width. In this example each grid column is responsive with a
-        minimum width of 400px and no maximum width which means it takes up the
-        available space.
-      </gcds-text>
-      <gcds-grid columns="repeat(auto-fit, minmax(400px, 1fr))">
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-        <p class="bg-primary text-light p-300">
-          This is some example content to display the grid component.
-        </p>
-      </gcds-grid>
-
-      <gcds-heading tag="h3">Individually sized grid</gcds-heading>
-      <gcds-text>
-        When using individually sized grid columns, the grid columns define
-        their own size. Each grid column can define a base, tablet (optional)
-        and desktop (optional) size.
-      </gcds-text>
-      <gcds-grid>
-        <gcds-grid-col tablet="3" desktop="6">
-          <p class="bg-primary text-light p-300">
-            Base: 1/1, tablet: 3/6, desktop: 6/12
-          </p>
-        </gcds-grid-col>
-        <gcds-grid-col tablet="3" desktop="6">
-          <p class="bg-primary text-light p-300">
-            Base: 1/1, tablet: 3/6, desktop: 6/12
-          </p>
-        </gcds-grid-col>
-
-        <gcds-grid-col tablet="6" desktop="4">
-          <p class="bg-primary text-light p-300">
-            Base: 1/1, tablet: 6/6, desktop: 4/12
-          </p>
-        </gcds-grid-col>
-        <gcds-grid-col tablet="6" desktop="4">
-          <p class="bg-primary text-light p-300">
-            Base: 1/1, tablet: 6/6, desktop: 4/12
-          </p>
-        </gcds-grid-col>
-        <gcds-grid-col tablet="6" desktop="4">
-          <p class="bg-primary text-light p-300">
-            Base: 1/1, tablet: 6/6, desktop: 4/12
-          </p>
-        </gcds-grid-col>
-
-        <gcds-grid-col tablet="2" desktop="3">
-          <p class="bg-primary text-light p-300">B: 1, t: 2, d: 3</p>
-        </gcds-grid-col>
-        <gcds-grid-col tablet="2" desktop="6">
-          <p class="bg-primary text-light p-300">
-            Base: 1/1, tablet: 2/6, desktop: 6/12
-          </p>
-        </gcds-grid-col>
-        <gcds-grid-col tablet="2" desktop="3">
-          <p class="bg-primary text-light p-300">B: 1, t: 2, d: 3</p>
-        </gcds-grid-col>
-
-        <gcds-grid-col>
-          <p class="bg-primary text-light p-300">
-            Base + tablet + desktop full width
-          </p>
-        </gcds-grid-col>
-      </gcds-grid>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Heading ------------- -->
-
-      <gcds-heading tag="h2">Heading</gcds-heading>
-      <gcds-heading tag="h1">Heading level 1</gcds-heading>
-      <gcds-heading tag="h2">Heading level 2</gcds-heading>
-      <gcds-heading tag="h3">Heading level 3</gcds-heading>
-      <gcds-heading tag="h4">Heading level 4</gcds-heading>
-      <gcds-heading tag="h5">Heading level 5</gcds-heading>
-      <gcds-heading tag="h6">Heading level 6</gcds-heading>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Notices ------------- -->
-
-      <gcds-heading tag="h2">Notices</gcds-heading>
-
-      <gcds-notice
-        notice-title-tag="h3"
-        notice-role="info"
-        notice-title="Info notice"
-      >
-        <gcds-text>Please pay attention to this notice.</gcds-text>
-        <ul class="mb-400 list-disc">
-          <li>Information 1</li>
-          <li>Information 2</li>
-        </ul>
-      </gcds-notice>
-      <gcds-notice
-        notice-title-tag="h3"
-        notice-role="success"
-        notice-title="Success notice"
-      >
-        <gcds-text>Please pay attention to this notice.</gcds-text>
-        <ol class="mb-400 list-decimal">
-          <li>Information</li>
-          <li>Information</li>
-        </ol>
-      </gcds-notice>
-      <gcds-notice
-        notice-title-tag="h3"
-        notice-role="danger"
-        notice-title="Danger notice"
-      >
-        <gcds-text>Please pay attention to this notice.</gcds-text>
-        <gcds-text>This line as well</gcds-text>
-      </gcds-notice>
-      <gcds-notice
-        notice-title-tag="h3"
-        notice-role="warning"
-        notice-title="Warning notice"
-      >
-        <gcds-text>Please pay attention to this notice.</gcds-text>
-      </gcds-notice>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Text ------------- -->
-
-      <gcds-heading tag="h2">Text</gcds-heading>
-      <gcds-text>
-        This text is primary text using the default body size. The margin bottom
-        is set to "400". The character limit is set to "true" (default value)
-        which means that the text will take up a maximum of 65 characters per
-        line.
-      </gcds-text>
-
-      <gcds-text character-limit="false">
-        This text is primary text using the default body size. The margin bottom
-        is set to "400". The characters limit is set to "false" which means that
-        the text will take up all available space.
-      </gcds-text>
-
-      <gcds-text text-role="secondary">
-        This text is secondary text using the default body size. The margin
-        bottom is set to "400". The character limit is set to "true" (default
-        value) which means that the text will take up a maximum of 65 characters
-        per line.
-      </gcds-text>
-
-      <div class="bg-dark mb-300 p-150">
-        <gcds-text margin-bottom="0" text-role="light">
-          This text is light text using the default body size. The character
-          limit is set to "true" (default value) which means that the text will
-          take up a maximum of 65 characters per line.
-        </gcds-text>
-      </div>
-
-      <gcds-text size="small">
-        This text is primary text using the small size. The margin bottom is set
-        to "400". The character limit is set to "true" (default value) which
-        means that the text will take up a maximum of 65 characters per line.
-      </gcds-text>
-
-      <gcds-text>
-        This text is primary text using the default body size
-        <strong>with some bold text included</strong>. The margin bottom is set
-        to "400". The character limit is set to "true" (default value) which
-        means that the text will take up a maximum of 65 characters per line.
-      </gcds-text>
-
-      <gcds-text>
-        This text is primary text using the default body size
-        <em>with some italic text included</em>. The margin bottom is set to
-        "400". The character limit is set to "true" (default value) which means
-        that the text will take up a maximum of 65 characters per line.
-      </gcds-text>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Icons ------------- -->
-
-      <gcds-heading tag="h2">Icons</gcds-heading>
-
-      <gcds-heading tag="h3">Icon names</gcds-heading>
-      <gcds-grid
-        columns-desktop="1fr 1fr 1fr 1fr"
-        columns-tablet="1fr 1fr"
-        columns="1fr"
-        tag="ul"
-        gap="150"
-      >
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="arrow-down" size="h2"></gcds-icon>
-          <p>arrow-down</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="arrow-up" size="h2"></gcds-icon>
-          <p>arrow-up</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="arrow-up-down" size="h2"></gcds-icon>
-          <p>arrow-up-down</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="checkmark-circle" size="h2"></gcds-icon>
-          <p>checkmark-circle</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="chevron-down" size="h2"></gcds-icon>
-          <p>chevron-down</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="chevron-left" size="h2"></gcds-icon>
-          <p>chevron-left</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="chevron-right" size="h2"></gcds-icon>
-          <p>chevron-right</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="chevron-up" size="h2"></gcds-icon>
-          <p>chevron-up</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="close" size="h2"></gcds-icon>
-          <p>close</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="download" size="h2"></gcds-icon>
-          <p>download</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="email" size="h2"></gcds-icon>
-          <p>email</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="exclamation-circle" size="h2"></gcds-icon>
-          <p>exclamation-circle</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="external" size="h2"></gcds-icon>
-          <p>external</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="filter" size="h2"></gcds-icon>
-          <p>filter</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="info-circle" size="h2"></gcds-icon>
-          <p>info-circle</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="phone" size="h2"></gcds-icon>
-          <p>phone</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="search" size="h2"></gcds-icon>
-          <p>search</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="sort" size="h2"></gcds-icon>
-          <p>sort</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="tune" size="h2"></gcds-icon>
-          <p>tune</p>
-        </li>
-        <li class="b-sm p-150 list-none text-center">
-          <gcds-icon name="warning-triangle" size="h2"></gcds-icon>
-          <p>warning-triangle</p>
-        </li>
-      </gcds-grid>
-
-      <gcds-heading tag="h3">Icon sizes</gcds-heading>
-      <ul class="b-sm">
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon
-            name="close"
-            size="text-small"
-            margin-right="150"
-          ></gcds-icon>
-          <span> Size: text-small</span>
-        </li>
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="text" margin-right="150"></gcds-icon>
-          <span> Size: text</span>
-        </li>
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="h6" margin-right="150"></gcds-icon>
-          <span> Size: h6</span>
-        </li>
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="h5" margin-right="150"></gcds-icon>
-          <span> Size: h5</span>
-        </li>
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="h4" margin-right="150"></gcds-icon>
-          <span> Size: h4</span>
-        </li>
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="h3" margin-right="150"></gcds-icon>
-          <span> Size: h3</span>
-        </li>
-        <li class="d-flex align-items-center bb-sm p-150">
-          <gcds-icon name="close" size="h2" margin-right="150"></gcds-icon>
-          <span> Size: h2</span>
-        </li>
-        <li class="d-flex align-items-center p-150">
-          <gcds-icon name="close" size="h1" margin-right="150"></gcds-icon>
-          <span> Size: h1</span>
-        </li>
-      </ul>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Links ------------- -->
-
-      <gcds-heading tag="h2">Links</gcds-heading>
-      <p class="mb-300">
-        This is a <gcds-link size="small" href="/">small link</gcds-link> if you
-        compare it to regular text.
-      </p>
-      <p class="mb-300">
-        <gcds-link
-          href="https://picsum.photos/480/270"
-          external
-          display="block"
-        >
-          This is an external link.
-        </gcds-link>
-      </p>
-      <p class="mb-300">
-        This is a
-        <gcds-link
-          href="https://picsum.photos/200/200.jpg"
-          download="random_image"
-          type="image/jpeg"
-          >download link (PDF, 1.3 MB)</gcds-link
-        >
-        with type indicated
-      </p>
-      <p class="mb-300">
-        Contact us
-        <gcds-link href="mailto:test@test.com?subject=Test%20email">
-          via email
-        </gcds-link>
-        or by phone.
-      </p>
-      <p class="mb-300">
-        Contact us <gcds-link href="tel:1234567890">by phone</gcds-link> or by
-        email.
-      </p>
-      <p class="mb-300">
-        There is text before and
-        <gcds-link href="/" display="inline-block">(sample link)</gcds-link>
-        after this link.
-      </p>
-      <p class="mb-300">
-        <gcds-link href="/" referrerpolicy="no-referrer" external>
-          This is a sample link with a referrerpolicy.
-        </gcds-link>
-      </p>
-      <p class="mb-300">
-        <gcds-link href="" onClick='window.alert("Thank you!")'>
-          Click me!
-        </gcds-link>
-      </p>
-      <div class="bg-dark mb-300 p-150">
-        <gcds-link link-role="light" href="/">
-          This is a link using the light link role.
-        </gcds-link>
-      </div>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Pagination ------------- -->
-
-      <gcds-heading tag="h2">Pagination</gcds-heading>
-      <gcds-pagination
-        display="list"
-        label="List pagination"
-        type="list"
-        total-pages="22"
-        current-page="8"
-        url='{"queryStrings": { "querystring::offset": 10 }, "fragment": "main" }'
-      ></gcds-pagination>
-
-      <gcds-pagination
-        display="simple"
-        label="Simple Pagination"
-        previous-href="#"
-        previous-label="Previous"
-        next-href="#"
-        next-label="Next page"
-      ></gcds-pagination>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Screen reader only ------------- -->
-
-      <gcds-heading tag="h2">Screen reader only</gcds-heading>
-      <gcds-text>There is invisible text below this</gcds-text>
-      <gcds-sr-only>
-        This text is only available to assistive technologies.
-      </gcds-sr-only>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Side nav ------------- -->
-
-      <gcds-heading tag="h2">Side navigation</gcds-heading>
-      <gcds-side-nav class="mt-700" label="Sidenav">
-        <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
-        <gcds-nav-link href="#installation">Installation</gcds-nav-link>
-        <gcds-nav-link href="#foundations" current>Foundations</gcds-nav-link>
-        <gcds-nav-link href="#components">Components</gcds-nav-link>
-        <gcds-nav-group menu-label="Contact submenu" open-trigger="Contact">
-          <gcds-nav-link href="#site1">Site</gcds-nav-link>
-          <gcds-nav-link href="#github1">GitHub</gcds-nav-link>
-          <gcds-nav-group
-            menu-label="Sub level submenu"
-            open-trigger="Sub level"
+          <gcds-nav-link href="/en/page-templates"
+            >Page templates overview</gcds-nav-link
           >
-            <gcds-nav-link href="#site2">Site</gcds-nav-link>
-            <gcds-nav-link href="#github2">GitHub</gcds-nav-link>
-            <gcds-nav-link href="#slack">Slack</gcds-nav-link>
+          <gcds-nav-link href="/en/page-templates/basic/"
+            >Basic page</gcds-nav-link
+          >
+        </gcds-nav-group>
+
+        <gcds-nav-group menu-label="Components" open-trigger="Components">
+          <gcds-nav-link href="/en/components"
+            >Components overview</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/alert/">Alert</gcds-nav-link>
+          <gcds-nav-link href="/en/components/breadcrumbs/"
+            >Breadcrumbs</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/button/">Button</gcds-nav-link>
+          <gcds-nav-link href="/en/components/card/">Card</gcds-nav-link>
+          <gcds-nav-link href="/en/components/checkboxes/"
+            >Checkboxes</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/container/"
+            >Container</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/date-input/"
+            >Date input</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/date-modified/"
+            >Date modified</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/details/">Details</gcds-nav-link>
+          <gcds-nav-link href="/en/components/error-message/"
+            >Error message</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/error-summary/"
+            >Error summary</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/fieldset/"
+            >Fieldset</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/file-uploader/"
+            >File uploader</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/footer/">Footer</gcds-nav-link>
+          <gcds-nav-link href="/en/components/grid/">Grid</gcds-nav-link>
+          <gcds-nav-link href="/en/components/header/">Header</gcds-nav-link>
+          <gcds-nav-link href="/en/components/heading/">Heading</gcds-nav-link>
+          <gcds-nav-link href="/en/components/icon/">Icon</gcds-nav-link>
+          <gcds-nav-link href="/en/components/input/">Input</gcds-nav-link>
+          <gcds-nav-link href="/en/components/language-toggle/"
+            >Language toggle</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/link/">Link</gcds-nav-link>
+          <gcds-nav-link href="/en/components/notice/">Notice</gcds-nav-link>
+          <gcds-nav-link href="/en/components/pagination/"
+            >Pagination</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/radios/">Radios</gcds-nav-link>
+          <gcds-nav-link href="/en/components/screenreader-only/"
+            >Screenreader-only</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/search/">Search</gcds-nav-link>
+          <gcds-nav-link href="/en/components/select/">Select</gcds-nav-link>
+          <gcds-nav-link href="/en/components/side-navigation/"
+            >Side navigation</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/signature/"
+            >Signature</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/stepper/">Stepper</gcds-nav-link>
+          <gcds-nav-link href="/en/components/table/">Table</gcds-nav-link>
+          <gcds-nav-link href="/en/components/text/">Text</gcds-nav-link>
+          <gcds-nav-link href="/en/components/textarea/"
+            >Textarea</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/theme-and-topic-menu/"
+            >Theme and topic menu</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/components/top-navigation/"
+            >Top navigation</gcds-nav-link
+          >
+        </gcds-nav-group>
+
+        <gcds-nav-group menu-label="CSS shortcuts" open-trigger="CSS shortcuts">
+          <gcds-nav-link href="/en/css-shortcuts"
+            >CSS shortcuts overview</gcds-nav-link
+          >
+
+          <gcds-nav-group menu-label="Defaults" open-trigger="Defaults">
+            <gcds-nav-link href="/en/css-shortcuts/reset-styles/"
+              >Reset styles</gcds-nav-link
+            >
+          </gcds-nav-group>
+
+          <gcds-nav-group
+            menu-label="Conditional styling"
+            open-trigger="Conditional styling"
+          >
+            <gcds-nav-link href="/en/css-shortcuts/responsive-layout/"
+              >Responsive layout</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/state/">State</gcds-nav-link>
+          </gcds-nav-group>
+
+          <gcds-nav-group menu-label="Layout" open-trigger="Layout">
+            <gcds-nav-link href="/en/css-shortcuts/box-sizing/"
+              >Box sizing</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/container-sizing/"
+              >Container sizing</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/display/"
+              >Display</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/overflow/"
+              >Overflow</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/position/"
+              >Position</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/visibility/"
+              >Visibility</gcds-nav-link
+            >
+          </gcds-nav-group>
+
+          <gcds-nav-group menu-label="Typography" open-trigger="Typography">
+            <gcds-nav-link href="/en/css-shortcuts/font/">Font</gcds-nav-link>
+            <gcds-nav-link href="/en/css-shortcuts/font-family/"
+              >Font family</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/font-size/"
+              >Font size</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/font-style/"
+              >Font style</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/font-weight/"
+              >Font weight</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/line-height/"
+              >Line height</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/link-colour/"
+              >Link colour</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/link-size/"
+              >Link size</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/link-text-decoration/"
+              >Link text decoration</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/list-style/"
+              >List style</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/text-align/"
+              >Text align</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/text-colour/"
+              >Text colour</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/text-overflow/"
+              >Text overflow</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/text-transform/"
+              >Text transform</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/word-break/"
+              >Word break</gcds-nav-link
+            >
+          </gcds-nav-group>
+
+          <gcds-nav-group menu-label="Spacing" open-trigger="Spacing">
+            <gcds-nav-link href="/en/css-shortcuts/margin/"
+              >Margin</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/padding/"
+              >Padding</gcds-nav-link
+            >
+          </gcds-nav-group>
+
+          <gcds-nav-group
+            menu-label="Flexbox and grid"
+            open-trigger="Flexbox and grid"
+          >
+            <gcds-nav-link href="/en/css-shortcuts/align-content/"
+              >Align content</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/align-items/"
+              >Align items</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/align-self/"
+              >Align self</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/flex/">Flex</gcds-nav-link>
+            <gcds-nav-link href="/en/css-shortcuts/flex-direction/"
+              >Flex direction</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/flex-grow/"
+              >Flex grow</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/flex-shrink/"
+              >Flex shrink</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/flex-wrap/"
+              >Flex wrap</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/gap/">Gap</gcds-nav-link>
+            <gcds-nav-link href="/en/css-shortcuts/grid-columns/"
+              >Grid columns</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/grid-rows/"
+              >Grid rows</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/justify-content/"
+              >Justify content</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/justify-items/"
+              >Justify items</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/justify-self/"
+              >Justify self</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/order/">Order</gcds-nav-link>
+            <gcds-nav-link href="/en/css-shortcuts/place-content/"
+              >Place content</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/place-items/"
+              >Place items</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/place-self/"
+              >Place self</gcds-nav-link
+            >
+          </gcds-nav-group>
+
+          <gcds-nav-group
+            menu-label="Background and border"
+            open-trigger="Background and border"
+          >
+            <gcds-nav-link href="/en/css-shortcuts/background-colour/"
+              >Background colour</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/border-colour/"
+              >Border colour</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/border-radius/"
+              >Border radius</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/border-style/"
+              >Border style</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/border-width/"
+              >Border width</gcds-nav-link
+            >
+          </gcds-nav-group>
+
+          <gcds-nav-group
+            menu-label="Icon and image"
+            open-trigger="Icon and image"
+          >
+            <gcds-nav-link href="/en/css-shortcuts/icon-names/"
+              >Icon names</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/icon-size/"
+              >Icon size</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/image/">Image</gcds-nav-link>
+          </gcds-nav-group>
+
+          <gcds-nav-group menu-label="Interactive" open-trigger="Interactive">
+            <gcds-nav-link href="/en/css-shortcuts/cursor/"
+              >Cursor</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/pointer-events/"
+              >Pointer events</gcds-nav-link
+            >
+            <gcds-nav-link href="/en/css-shortcuts/transition/"
+              >Transition</gcds-nav-link
+            >
           </gcds-nav-group>
         </gcds-nav-group>
-      </gcds-side-nav>
 
-      <hr class="my-550" />
-
-      <!-- ------------- Top nav ------------- -->
-
-      <gcds-heading tag="h2">Top navigation</gcds-heading>
-      <gcds-top-nav label="topbar" alignment="start" lang="en">
-        <gcds-nav-link href="#home" slot="home">Home</gcds-nav-link>
-        <gcds-nav-link href="#install">Installation</gcds-nav-link>
-        <gcds-nav-link href="#foundations">Foundations</gcds-nav-link>
-        <gcds-nav-link href="#components" current>Components</gcds-nav-link>
-        <gcds-nav-group
-          menu-label="Contact us submenu"
-          open-trigger="Contact us"
-        >
-          <gcds-nav-link href="#form">Form</gcds-nav-link>
-          <gcds-nav-link href="#github">GitHub</gcds-nav-link>
-          <gcds-nav-link href="#slack">Slack</gcds-nav-link>
-        </gcds-nav-group>
-      </gcds-top-nav>
-
-      <hr class="my-550" />
-
-      <!-- ------------- Table ------------- -->
-
-      <gcds-heading tag="h2">Table</gcds-heading>
-
-      <gcds-table
-        id="my-table"
-        sort="true"
-        pagination="true"
-        pagination-current-page="1"
-        pagination-size="5"
-        pagination-size-options="[1, 2, 3, 5, 15, 20, 0]"
-        filter="true"
-      >
-        <div slot="caption">
-          <h3>Pokémon</h3>
-          <p>Table of the best Pokémon (first generation).</p>
-        </div>
-        <template slot="cell:sprite">
-          <img
-            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
-            data-bind-alt="name"
-            src=""
-            alt=""
-            width="150"
-            height="150"
-          />
-        </template>
-        <template slot="cell:type">
-          <span
-            data-bind="type"
-            data-bind-template-class="pokemon-type {type}"
-          ></span>
-        </template>
-        <template slot="cell:actions">
-          <gcds-button
-            button-role="secondary"
-            size="small"
-            onclick="console.log(this.row)"
+        <gcds-nav-group menu-label="Styles" open-trigger="Styles">
+          <gcds-nav-link href="/en/styles">Styles overview</gcds-nav-link>
+          <gcds-nav-link href="/en/styles/design-tokens"
+            >Design tokens</gcds-nav-link
           >
-            Console log row data
-          </gcds-button>
-        </template>
-      </gcds-table>
+          <gcds-nav-link href="/en/styles/colour">Colour tokens</gcds-nav-link>
+          <gcds-nav-link href="/en/styles/spacing"
+            >Spacing tokens</gcds-nav-link
+          >
+          <gcds-nav-link href="/en/styles/typography"
+            >Typography tokens</gcds-nav-link
+          >
+        </gcds-nav-group>
 
-      <script>
-        // Load the first 151 pokemon by API
-        async function getFirst151Pokemon() {
-          try {
-            // Step 1: Get the first 151 Pokémon (just names + URLs)
-            const listResponse = await fetch(
-              'https://pokeapi.co/api/v2/pokemon?limit=151',
+        <gcds-nav-group menu-label="Contact" open-trigger="Contact">
+          <gcds-nav-link href="/en/contact">Contact us</gcds-nav-link>
+          <gcds-nav-link href="/en/get-involved">Get involved</gcds-nav-link>
+          <gcds-nav-link href="/en/register-for-a-demo"
+            >Find a demo</gcds-nav-link
+          >
+        </gcds-nav-group>
+      </gcds-nav>
+
+      <gcds-container tag="main">
+        <gcds-heading tag="h1">GC Design System</gcds-heading>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Alerts ------------- -->
+
+        <gcds-heading tag="h2">Alerts</gcds-heading>
+        <gcds-alert heading="Success alert" alert-role="success">
+          <p>Example content</p>
+        </gcds-alert>
+        <gcds-alert heading="Info alert" alert-role="info">
+          <p>Example content</p>
+        </gcds-alert>
+        <gcds-alert heading="Warning alert" alert-role="warning">
+          <p>Example content</p>
+        </gcds-alert>
+        <gcds-alert heading="Danger alert" alert-role="danger">
+          <p>Example content</p>
+        </gcds-alert>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Buttons ------------- -->
+
+        <gcds-heading tag="h2">Buttons</gcds-heading>
+
+        <ul>
+          <li class="mb-300">
+            <gcds-button button-role="start">Start</gcds-button>
+            <gcds-button button-role="start" disabled>
+              Start (disabled)
+            </gcds-button>
+          </li>
+          <li class="mb-300">
+            <gcds-button button-role="primary">Primary</gcds-button>
+            <gcds-button button-role="primary" size="small">
+              Primary (small)
+            </gcds-button>
+            <gcds-button button-role="primary" disabled>
+              Primary (disabled)
+            </gcds-button>
+            <gcds-button button-role="primary" size="small" disabled>
+              Primary (small, disabled)
+            </gcds-button>
+          </li>
+          <li class="mb-300">
+            <gcds-button button-role="secondary">Secondary</gcds-button>
+            <gcds-button button-role="secondary" size="small">
+              Secondary (small)
+            </gcds-button>
+            <gcds-button button-role="secondary" disabled>
+              Secondary (disabled)
+            </gcds-button>
+            <gcds-button button-role="secondary" size="small" disabled>
+              Secondary (small, disabled)
+            </gcds-button>
+          </li>
+          <li class="mb-300">
+            <gcds-button button-role="danger">Danger</gcds-button>
+            <gcds-button button-role="danger" size="small">
+              Danger (small)
+            </gcds-button>
+            <gcds-button button-role="danger" disabled>
+              Danger (disabled)
+            </gcds-button>
+            <gcds-button button-role="danger" size="small" disabled>
+              Danger (small, disabled)
+            </gcds-button>
+          </li>
+        </ul>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Cards ------------- -->
+
+        <gcds-heading tag="h2">Cards</gcds-heading>
+
+        <gcds-grid
+          tag="div"
+          columns-desktop="1fr 1fr 1fr"
+          columns-tablet="1fr 1fr"
+          columns="1fr"
+        >
+          <gcds-card
+            card-title="Link card number 1"
+            card-title-tag="h3"
+            href="#red"
+            description="This is a card"
+            badge="New"
+            img-src="https://picsum.photos/480/270"
+            img-alt="Random image from picsum"
+          >
+          </gcds-card>
+          <gcds-card
+            card-title="Link card number 2"
+            card-title-tag="h4"
+            href="#red"
+            badge="New"
+            img-src="https://picsum.photos/480/270"
+            img-alt="Random image from picsum"
+          >
+          </gcds-card>
+          <gcds-card
+            card-title="Link card number 3 with a really long title for some reason"
+            card-title-tag="h5"
+            href="#red"
+            description="This is a card with an img and possibly more"
+            img-src="https://picsum.photos/480/270"
+            img-alt="Random image from picsum"
+          >
+          </gcds-card>
+          <gcds-card
+            card-title="Link card number 4"
+            card-title-tag="h6"
+            href="#red"
+            badge="Card with badge that is too long"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+            img-src="https://picsum.photos/480/270"
+            img-alt="Random image from picsum"
+          >
+            Text passed by the slot.
+          </gcds-card>
+        </gcds-grid>
+
+        <gcds-card
+          class="mt-400"
+          card-title="Card not in column"
+          href="#red"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra ex at scelerisque vulputate. Morbi malesuada interdum augue. Nam id quam non orci aliquam malesuada sit amet ut magna. Integer hendrerit lorem sit amet risus dignissim aliquam."
+        >
+        </gcds-card>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Containers ------------- -->
+
+        <gcds-heading tag="h2">Containers</gcds-heading>
+        <gcds-container size="full" border padding="300">
+          <p>
+            I'm a responsive container. My size is only limited by the size of
+            my parent container.
+          </p>
+        </gcds-container>
+        <br />
+        <gcds-container size="lg" alignment="start" border padding="400">
+          <p>
+            I'm a large container, aligned at the start of my parent container.
+            My max size is 64rem (1024px).
+          </p>
+        </gcds-container>
+        <br />
+        <gcds-container size="lg" alignment="center" border padding="400">
+          <p>I'm a large, centred container. My max size is 64rem (1024px).</p>
+        </gcds-container>
+        <br />
+        <gcds-container size="lg" alignment="end" border padding="400">
+          <p>
+            I'm a large container, aligned at the end of my parent container. My
+            max size is 64rem (1024px).
+          </p>
+        </gcds-container>
+        <br />
+        <gcds-container size="xs" border padding="400">
+          <p>I'm an extra-small container. My max size is 20rem (320px).</p>
+        </gcds-container>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Details ------------- -->
+
+        <gcds-heading tag="h2">Details</gcds-heading>
+        <gcds-details details-title="Find out more">
+          <p>Details about stuff.</p>
+          <ul class="list-disc">
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+          </ul>
+          <p>Details about stuff.</p>
+          <ul class="list-disc">
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+          </ul>
+        </gcds-details>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Stepper + Form Elements ------------- -->
+
+        <gcds-heading tag="h2">
+          Form elements (including stepper and error summary)
+        </gcds-heading>
+
+        <gcds-stepper current-step="1" total-steps="4" tag="h2">
+          Section title
+        </gcds-stepper>
+
+        <form novalidate>
+          <gcds-error-summary listen></gcds-error-summary>
+
+          <gcds-input
+            input-id="form-name"
+            label="Name"
+            hint="Please enter your full name."
+            required
+          ></gcds-input>
+
+          <gcds-input
+            input-id="form-email"
+            label="Email"
+            type="email"
+            hint="Please enter your email."
+            required
+          ></gcds-input>
+
+          <gcds-date-input
+            legend="Date input"
+            name="date-input"
+            format="full"
+            hint="Formatted: YYYY-MM-DD"
+            required
+          ></gcds-date-input>
+
+          <gcds-input
+            input-id="form-number"
+            type="number"
+            size="10"
+            label="Phone number"
+            hint="Please enter a 10 digits number."
+            required
+          ></gcds-input>
+
+          <gcds-textarea
+            textarea-id="form-message"
+            label="Message"
+            hint="This is a hint."
+            maxlength="400"
+            name="message"
+            required
+          ></gcds-textarea>
+
+          <gcds-checkboxes
+            name="singlecheck"
+            required
+            options='[{ "label": "Do you like pizza?", "id": "form-checkbox", "value": "yes", "hint": "This answer is yes."}]'
+            class="value-check"
+          ></gcds-checkboxes>
+
+          <gcds-radios
+            name="radio"
+            legend="Radios"
+            hint="Rendered with options attribute"
+            required
+            options='[{ "label": "Radio 1 label", "id": "radio1", "value": "radio1"}, { "label": "Radio 2 label", "id": "radio2", "value": "radio2"}]'
+          ></gcds-radios>
+
+          <gcds-radios
+            name="radios-object"
+            legend="Radios with JS"
+            hint="Radios options added by JavaScript"
+            required
+          ></gcds-radios>
+
+          <script>
+            // Create radio options array
+            const radioOptions = [
+              {
+                label: 'Radio 1 label',
+                id: 'radio1',
+                value: 'radio1',
+                hint: 'Set with JS',
+              },
+              {
+                label: 'Radio 2 label',
+                id: 'radio2',
+                value: 'radio2',
+                hint: 'Set with JS',
+              },
+            ];
+
+            // Find the gcds-radios element
+            const radios = document.querySelector(
+              'gcds-radios[name="radios-object"]',
             );
-            const listData = await listResponse.json();
 
-            // Step 2: Fetch full details for each Pokémon
-            const pokemonDetails = await Promise.all(
-              listData.results.map(async pokemon => {
-                const res = await fetch(pokemon.url);
-                const data = await res.json();
+            // Assign radio options to options property
+            radios.options = radioOptions;
+          </script>
 
-                return {
-                  number: data.id,
-                  name: data.name,
-                  sprite: data.sprites.front_default,
-                  height: data.height,
-                  weight: data.weight,
-                  base_experience: data.base_experience,
-                  type: data.types[0]?.type?.name,
-                };
-              }),
-            );
+          <gcds-checkboxes
+            legend="Checkbox group"
+            name="checkgroup"
+            hint="Select all that apply."
+            required
+            options='[{ "label": "Checkbox 1 label", "id": "check1", "value": "check1"}, { "label": "Checkbox 2 label", "id": "check2", "value": "check2"}, { "label": "Checkbox 3 label", "id": "check3", "value": "check3"}]'
+          ></gcds-checkboxes>
 
-            return pokemonDetails;
-          } catch (error) {
-            console.error('Error fetching Pokémon:', error);
+          <gcds-checkboxes
+            legend="Checkboxes"
+            name="jsoptions"
+            hint="Set with JS."
+            required
+            id="jscheck"
+          ></gcds-checkboxes>
+
+          <script>
+            const checkboxOptions = [
+              {
+                label: 'Checkbox 1 label',
+                id: 'checkbox1',
+                value: 'checkbox1',
+              },
+              {
+                label: 'Checkbox 2 label',
+                id: 'checkbox2',
+                value: 'checkbox2',
+              },
+            ];
+
+            let check = document.getElementById('jscheck');
+
+            check.options = checkboxOptions;
+          </script>
+
+          <gcds-select
+            select-id="form-select"
+            label="Name"
+            hint="Please enter your full name."
+            required
+            default-value="Please select an option"
+          >
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </gcds-select>
+
+          <gcds-file-uploader
+            uploader-id="form-uploader"
+            label="Upload file"
+            hint="You can upload multiple files, but they have to be png's."
+            accept="image/png"
+            multiple
+            required
+          ></gcds-file-uploader>
+
+          <br />
+
+          <gcds-button type="submit"> Submit </gcds-button>
+        </form>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Grid ------------- -->
+
+        <gcds-heading tag="h2">Grids</gcds-heading>
+
+        <gcds-heading tag="h3">Simple grids</gcds-heading>
+
+        <gcds-heading tag="h4">Fluid grid</gcds-heading>
+        <gcds-text>
+          Each grid column takes up a fractional amount of space within the grid
+          and has no fixed width restrictions. The grid and its columns scale to
+          the size of the viewport. This example has 4 columns for large
+          viewports, 2 columns for medium viewports, and 1 column for smaller
+          viewports.
+        </gcds-text>
+        <gcds-grid
+          columns-desktop="1fr 1fr 1fr"
+          columns-tablet="1fr 1fr"
+          columns="1fr"
+        >
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+        </gcds-grid>
+
+        <gcds-heading tag="h4">Fixed grid</gcds-heading>
+        <gcds-text>
+          In fixed width grids each grid column has a fixed minimum and a
+          maximum width to limit how wide they will span on any screen size. The
+          columns scale until they either reach their minimum or their maximum
+          width. Once a grid column reaches its minimum width, it gets moved to
+          the next row if the space on the current row becomes smaller than its
+          minimum width. In this example each grid column has a minimum width of
+          100px and a maximum width of 300px.
+        </gcds-text>
+        <gcds-grid
+          alignment="center"
+          container="md"
+          columns="repeat(auto-fit, minmax(100px, 300px))"
+        >
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+        </gcds-grid>
+
+        <gcds-heading tag="h4">Hybrid grid</gcds-heading>
+        <gcds-text>
+          Hybrid grid columns include either a minimum or a maximum width and
+          one fractional width. In this example each grid column is responsive
+          with a minimum width of 400px and no maximum width which means it
+          takes up the available space.
+        </gcds-text>
+        <gcds-grid columns="repeat(auto-fit, minmax(400px, 1fr))">
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+          <p class="bg-primary text-light p-300">
+            This is some example content to display the grid component.
+          </p>
+        </gcds-grid>
+
+        <gcds-heading tag="h3">Individually sized grid</gcds-heading>
+        <gcds-text>
+          When using individually sized grid columns, the grid columns define
+          their own size. Each grid column can define a base, tablet (optional)
+          and desktop (optional) size.
+        </gcds-text>
+        <gcds-grid>
+          <gcds-grid-col tablet="3" desktop="6">
+            <p class="bg-primary text-light p-300">
+              Base: 1/1, tablet: 3/6, desktop: 6/12
+            </p>
+          </gcds-grid-col>
+          <gcds-grid-col tablet="3" desktop="6">
+            <p class="bg-primary text-light p-300">
+              Base: 1/1, tablet: 3/6, desktop: 6/12
+            </p>
+          </gcds-grid-col>
+
+          <gcds-grid-col tablet="6" desktop="4">
+            <p class="bg-primary text-light p-300">
+              Base: 1/1, tablet: 6/6, desktop: 4/12
+            </p>
+          </gcds-grid-col>
+          <gcds-grid-col tablet="6" desktop="4">
+            <p class="bg-primary text-light p-300">
+              Base: 1/1, tablet: 6/6, desktop: 4/12
+            </p>
+          </gcds-grid-col>
+          <gcds-grid-col tablet="6" desktop="4">
+            <p class="bg-primary text-light p-300">
+              Base: 1/1, tablet: 6/6, desktop: 4/12
+            </p>
+          </gcds-grid-col>
+
+          <gcds-grid-col tablet="2" desktop="3">
+            <p class="bg-primary text-light p-300">B: 1, t: 2, d: 3</p>
+          </gcds-grid-col>
+          <gcds-grid-col tablet="2" desktop="6">
+            <p class="bg-primary text-light p-300">
+              Base: 1/1, tablet: 2/6, desktop: 6/12
+            </p>
+          </gcds-grid-col>
+          <gcds-grid-col tablet="2" desktop="3">
+            <p class="bg-primary text-light p-300">B: 1, t: 2, d: 3</p>
+          </gcds-grid-col>
+
+          <gcds-grid-col>
+            <p class="bg-primary text-light p-300">
+              Base + tablet + desktop full width
+            </p>
+          </gcds-grid-col>
+        </gcds-grid>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Heading ------------- -->
+
+        <gcds-heading tag="h2">Heading</gcds-heading>
+        <gcds-heading tag="h1">Heading level 1</gcds-heading>
+        <gcds-heading tag="h2">Heading level 2</gcds-heading>
+        <gcds-heading tag="h3">Heading level 3</gcds-heading>
+        <gcds-heading tag="h4">Heading level 4</gcds-heading>
+        <gcds-heading tag="h5">Heading level 5</gcds-heading>
+        <gcds-heading tag="h6">Heading level 6</gcds-heading>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Notices ------------- -->
+
+        <gcds-heading tag="h2">Notices</gcds-heading>
+
+        <gcds-notice
+          notice-title-tag="h3"
+          notice-role="info"
+          notice-title="Info notice"
+        >
+          <gcds-text>Please pay attention to this notice.</gcds-text>
+          <ul class="mb-400 list-disc">
+            <li>Information 1</li>
+            <li>Information 2</li>
+          </ul>
+        </gcds-notice>
+        <gcds-notice
+          notice-title-tag="h3"
+          notice-role="success"
+          notice-title="Success notice"
+        >
+          <gcds-text>Please pay attention to this notice.</gcds-text>
+          <ol class="mb-400 list-decimal">
+            <li>Information</li>
+            <li>Information</li>
+          </ol>
+        </gcds-notice>
+        <gcds-notice
+          notice-title-tag="h3"
+          notice-role="danger"
+          notice-title="Danger notice"
+        >
+          <gcds-text>Please pay attention to this notice.</gcds-text>
+          <gcds-text>This line as well</gcds-text>
+        </gcds-notice>
+        <gcds-notice
+          notice-title-tag="h3"
+          notice-role="warning"
+          notice-title="Warning notice"
+        >
+          <gcds-text>Please pay attention to this notice.</gcds-text>
+        </gcds-notice>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Text ------------- -->
+
+        <gcds-heading tag="h2">Text</gcds-heading>
+        <gcds-text>
+          This text is primary text using the default body size. The margin
+          bottom is set to "400". The character limit is set to "true" (default
+          value) which means that the text will take up a maximum of 65
+          characters per line.
+        </gcds-text>
+
+        <gcds-text character-limit="false">
+          This text is primary text using the default body size. The margin
+          bottom is set to "400". The characters limit is set to "false" which
+          means that the text will take up all available space.
+        </gcds-text>
+
+        <gcds-text text-role="secondary">
+          This text is secondary text using the default body size. The margin
+          bottom is set to "400". The character limit is set to "true" (default
+          value) which means that the text will take up a maximum of 65
+          characters per line.
+        </gcds-text>
+
+        <div class="bg-dark mb-300 p-150">
+          <gcds-text margin-bottom="0" text-role="light">
+            This text is light text using the default body size. The character
+            limit is set to "true" (default value) which means that the text
+            will take up a maximum of 65 characters per line.
+          </gcds-text>
+        </div>
+
+        <gcds-text size="small">
+          This text is primary text using the small size. The margin bottom is
+          set to "400". The character limit is set to "true" (default value)
+          which means that the text will take up a maximum of 65 characters per
+          line.
+        </gcds-text>
+
+        <gcds-text>
+          This text is primary text using the default body size
+          <strong>with some bold text included</strong>. The margin bottom is
+          set to "400". The character limit is set to "true" (default value)
+          which means that the text will take up a maximum of 65 characters per
+          line.
+        </gcds-text>
+
+        <gcds-text>
+          This text is primary text using the default body size
+          <em>with some italic text included</em>. The margin bottom is set to
+          "400". The character limit is set to "true" (default value) which
+          means that the text will take up a maximum of 65 characters per line.
+        </gcds-text>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Icons ------------- -->
+
+        <gcds-heading tag="h2">Icons</gcds-heading>
+
+        <gcds-heading tag="h3">Icon names</gcds-heading>
+        <gcds-grid
+          columns-desktop="1fr 1fr 1fr 1fr"
+          columns-tablet="1fr 1fr"
+          columns="1fr"
+          tag="ul"
+          gap="150"
+        >
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="arrow-down" size="h2"></gcds-icon>
+            <p>arrow-down</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="arrow-up" size="h2"></gcds-icon>
+            <p>arrow-up</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="arrow-up-down" size="h2"></gcds-icon>
+            <p>arrow-up-down</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="checkmark-circle" size="h2"></gcds-icon>
+            <p>checkmark-circle</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="chevron-down" size="h2"></gcds-icon>
+            <p>chevron-down</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="chevron-left" size="h2"></gcds-icon>
+            <p>chevron-left</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="chevron-right" size="h2"></gcds-icon>
+            <p>chevron-right</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="chevron-up" size="h2"></gcds-icon>
+            <p>chevron-up</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="close" size="h2"></gcds-icon>
+            <p>close</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="download" size="h2"></gcds-icon>
+            <p>download</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="email" size="h2"></gcds-icon>
+            <p>email</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="exclamation-circle" size="h2"></gcds-icon>
+            <p>exclamation-circle</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="external" size="h2"></gcds-icon>
+            <p>external</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="filter" size="h2"></gcds-icon>
+            <p>filter</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="info-circle" size="h2"></gcds-icon>
+            <p>info-circle</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="phone" size="h2"></gcds-icon>
+            <p>phone</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="search" size="h2"></gcds-icon>
+            <p>search</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="sort" size="h2"></gcds-icon>
+            <p>sort</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="tune" size="h2"></gcds-icon>
+            <p>tune</p>
+          </li>
+          <li class="b-sm p-150 list-none text-center">
+            <gcds-icon name="warning-triangle" size="h2"></gcds-icon>
+            <p>warning-triangle</p>
+          </li>
+        </gcds-grid>
+
+        <gcds-heading tag="h3">Icon sizes</gcds-heading>
+        <ul class="b-sm">
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon
+              name="close"
+              size="text-small"
+              margin-right="150"
+            ></gcds-icon>
+            <span> Size: text-small</span>
+          </li>
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon name="close" size="text" margin-right="150"></gcds-icon>
+            <span> Size: text</span>
+          </li>
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon name="close" size="h6" margin-right="150"></gcds-icon>
+            <span> Size: h6</span>
+          </li>
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon name="close" size="h5" margin-right="150"></gcds-icon>
+            <span> Size: h5</span>
+          </li>
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon name="close" size="h4" margin-right="150"></gcds-icon>
+            <span> Size: h4</span>
+          </li>
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon name="close" size="h3" margin-right="150"></gcds-icon>
+            <span> Size: h3</span>
+          </li>
+          <li class="d-flex align-items-center bb-sm p-150">
+            <gcds-icon name="close" size="h2" margin-right="150"></gcds-icon>
+            <span> Size: h2</span>
+          </li>
+          <li class="d-flex align-items-center p-150">
+            <gcds-icon name="close" size="h1" margin-right="150"></gcds-icon>
+            <span> Size: h1</span>
+          </li>
+        </ul>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Links ------------- -->
+
+        <gcds-heading tag="h2">Links</gcds-heading>
+        <p class="mb-300">
+          This is a <gcds-link size="small" href="/">small link</gcds-link> if
+          you compare it to regular text.
+        </p>
+        <p class="mb-300">
+          <gcds-link
+            href="https://picsum.photos/480/270"
+            external
+            display="block"
+          >
+            This is an external link.
+          </gcds-link>
+        </p>
+        <p class="mb-300">
+          This is a
+          <gcds-link
+            href="https://picsum.photos/200/200.jpg"
+            download="random_image"
+            type="image/jpeg"
+            >download link (PDF, 1.3 MB)</gcds-link
+          >
+          with type indicated
+        </p>
+        <p class="mb-300">
+          Contact us
+          <gcds-link href="mailto:test@test.com?subject=Test%20email">
+            via email
+          </gcds-link>
+          or by phone.
+        </p>
+        <p class="mb-300">
+          Contact us <gcds-link href="tel:1234567890">by phone</gcds-link> or by
+          email.
+        </p>
+        <p class="mb-300">
+          There is text before and
+          <gcds-link href="/" display="inline-block">(sample link)</gcds-link>
+          after this link.
+        </p>
+        <p class="mb-300">
+          <gcds-link href="/" referrerpolicy="no-referrer" external>
+            This is a sample link with a referrerpolicy.
+          </gcds-link>
+        </p>
+        <p class="mb-300">
+          <gcds-link href="" onClick='window.alert("Thank you!")'>
+            Click me!
+          </gcds-link>
+        </p>
+        <div class="bg-dark mb-300 p-150">
+          <gcds-link link-role="light" href="/">
+            This is a link using the light link role.
+          </gcds-link>
+        </div>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Pagination ------------- -->
+
+        <gcds-heading tag="h2">Pagination</gcds-heading>
+        <gcds-pagination
+          display="list"
+          label="List pagination"
+          type="list"
+          total-pages="22"
+          current-page="8"
+          url='{"queryStrings": { "querystring::offset": 10 }, "fragment": "main" }'
+        ></gcds-pagination>
+
+        <gcds-pagination
+          display="simple"
+          label="Simple Pagination"
+          previous-href="#"
+          previous-label="Previous"
+          next-href="#"
+          next-label="Next page"
+        ></gcds-pagination>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Screen reader only ------------- -->
+
+        <gcds-heading tag="h2">Screen reader only</gcds-heading>
+        <gcds-text>There is invisible text below this</gcds-text>
+        <gcds-sr-only>
+          This text is only available to assistive technologies.
+        </gcds-sr-only>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Navigation ------------- -->
+
+        <gcds-heading tag="h2">Navigation</gcds-heading>
+        <gcds-text>
+          The top navigation in the header and the side navigation next to this
+          content both use gcds-nav. On small screens they are combined into one
+          menu button. The legacy gcds-top-nav and gcds-side-nav examples were
+          removed from this page because they would add their own menu buttons.
+        </gcds-text>
+
+        <hr class="my-550" />
+
+        <!-- ------------- Table ------------- -->
+
+        <gcds-heading tag="h2">Table</gcds-heading>
+
+        <gcds-table
+          id="my-table"
+          sort="true"
+          pagination="true"
+          pagination-current-page="1"
+          pagination-size="5"
+          pagination-size-options="[1, 2, 3, 5, 15, 20, 0]"
+          filter="true"
+        >
+          <div slot="caption">
+            <h3>Pokémon</h3>
+            <p>Table of the best Pokémon (first generation).</p>
+          </div>
+          <template slot="cell:sprite">
+            <img
+              data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+              data-bind-alt="name"
+              src=""
+              alt=""
+              width="150"
+              height="150"
+            />
+          </template>
+          <template slot="cell:type">
+            <span
+              data-bind="type"
+              data-bind-template-class="pokemon-type {type}"
+            ></span>
+          </template>
+          <template slot="cell:actions">
+            <gcds-button
+              button-role="secondary"
+              size="small"
+              onclick="console.log(this.row)"
+            >
+              Console log row data
+            </gcds-button>
+          </template>
+        </gcds-table>
+
+        <script>
+          // Load the first 151 pokemon by API
+          async function getFirst151Pokemon() {
+            try {
+              // Step 1: Get the first 151 Pokémon (just names + URLs)
+              const listResponse = await fetch(
+                'https://pokeapi.co/api/v2/pokemon?limit=151',
+              );
+              const listData = await listResponse.json();
+
+              // Step 2: Fetch full details for each Pokémon
+              const pokemonDetails = await Promise.all(
+                listData.results.map(async pokemon => {
+                  const res = await fetch(pokemon.url);
+                  const data = await res.json();
+
+                  return {
+                    number: data.id,
+                    name: data.name,
+                    sprite: data.sprites.front_default,
+                    height: data.height,
+                    weight: data.weight,
+                    base_experience: data.base_experience,
+                    type: data.types[0]?.type?.name,
+                  };
+                }),
+              );
+
+              return pokemonDetails;
+            } catch (error) {
+              console.error('Error fetching Pokémon:', error);
+            }
           }
-        }
-        const tableSlots = document.getElementById('my-table');
+          const tableSlots = document.getElementById('my-table');
 
-        // Populate the table columns
-        tableSlots.columns = [
-          {
-            field: 'number',
-            header: 'Pokédex',
-            alignment: 'end',
-            rowHeader: true,
-          },
-          {
-            field: 'name',
-            header: 'Name',
-            sortDirection: 'desc',
-          },
-          {
-            field: 'sprite',
-            header: 'Sprite',
-            alignment: 'center',
-            sort: false,
-            slotted: true,
-          },
-          { field: 'type', header: 'Type', slotted: true },
-          { field: 'height', header: 'Height', alignment: 'end' },
-          { field: 'weight', header: 'Weight', alignment: 'end' },
-          {
-            field: 'base_experience',
-            header: 'Base experience',
-            sort: false,
-            alignment: 'end',
-          },
-          {
-            field: 'actions',
-            header: 'Actions',
-            alignment: 'center',
-            sort: false,
-            slotted: true,
-          },
-        ];
+          // Populate the table columns
+          tableSlots.columns = [
+            {
+              field: 'number',
+              header: 'Pokédex',
+              alignment: 'end',
+              rowHeader: true,
+            },
+            {
+              field: 'name',
+              header: 'Name',
+              sortDirection: 'desc',
+            },
+            {
+              field: 'sprite',
+              header: 'Sprite',
+              alignment: 'center',
+              sort: false,
+              slotted: true,
+            },
+            { field: 'type', header: 'Type', slotted: true },
+            { field: 'height', header: 'Height', alignment: 'end' },
+            { field: 'weight', header: 'Weight', alignment: 'end' },
+            {
+              field: 'base_experience',
+              header: 'Base experience',
+              sort: false,
+              alignment: 'end',
+            },
+            {
+              field: 'actions',
+              header: 'Actions',
+              alignment: 'center',
+              sort: false,
+              slotted: true,
+            },
+          ];
 
-        // Populate the table rows with results from API
-        getFirst151Pokemon().then(pokemon => {
-          tableSlots.data = pokemon;
-        });
-      </script>
+          // Populate the table rows with results from API
+          getFirst151Pokemon().then(pokemon => {
+            tableSlots.data = pokemon;
+          });
+        </script>
 
-      <hr class="my-550" />
+        <hr class="my-550" />
 
-      <!-- ------------- Date Modified ------------- -->
+        <!-- ------------- Date Modified ------------- -->
 
-      <gcds-date-modified>2023-01-26</gcds-date-modified>
-    </gcds-container>
+        <gcds-date-modified>2023-01-26</gcds-date-modified>
+      </gcds-container>
+    </div>
 
     <gcds-footer
       display="full"

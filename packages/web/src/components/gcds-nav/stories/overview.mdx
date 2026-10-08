@@ -1,0 +1,54 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import * as Nav from './gcds-nav.stories';
+
+<Meta of={Nav} name="Overview" />
+
+# Navigation<br/>`<gcds-nav>`
+
+_Replaces: `<gcds-top-nav>` and `<gcds-side-nav>`._
+
+A navigation for a site or section. Use `variant="top"` for a horizontal navigation in the header
+and `variant="side"` for a vertical navigation next to the page content.
+On small screens, every navigation on the page is combined into one menu button.
+
+<Canvas of={Nav.Default} story={{ inline: true }} />
+
+## Examples
+
+<br />
+
+### Top navigation
+
+<Canvas of={Nav.Top} story={{ inline: true }} />
+
+### Side navigation
+
+<Canvas of={Nav.Side} story={{ inline: true }} />
+
+### Links as items
+
+Pass the links as an `items` array instead of child elements. In HTML, use the `items` attribute or a
+`<script type="application/json">` child. In React, Vue and Angular, pass an array to the `items` property.
+
+<Canvas of={Nav.Items} story={{ inline: true }} />
+
+### Top and side navigation on the same page
+
+<Canvas of={Nav.Combined} story={{ inline: true }} />
+
+## Migrating from gcds-top-nav and gcds-side-nav
+
+Rename the tag and keep the children:
+
+- `<gcds-top-nav>` → `<gcds-nav variant="top">`
+- `<gcds-side-nav>` → `<gcds-nav variant="side">`
+- `menu-label` on `<gcds-nav-group>` is no longer needed, `open-trigger` is the group label.
+
+## Single page apps
+
+Connect your router once and every navigation uses client side routing and highlights the current page:
+
+- React: `<GcdsRouterProvider navigate={useNavigate()} currentHref={useLocation().pathname}>`
+- Angular: `provideGcdsRouting()` in your application providers
+- Vue: `app.use(GcdsComponents, { router })`
+- Other frameworks: `setNavigationHandler()` and `setCurrentHref()` from `@gcds-core/components`

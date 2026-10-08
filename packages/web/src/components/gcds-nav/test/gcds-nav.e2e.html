@@ -1,0 +1,123 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>gcds-nav: top and side navigation</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local components -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+    <script nomodule src="/build/gcds.js"></script>
+
+    <style>
+      .layout {
+        display: flex;
+        gap: 2rem;
+        width: 90%;
+        max-width: 71.25rem;
+        margin: 2rem auto;
+      }
+      .layout gcds-nav {
+        flex: 0 0 18rem;
+      }
+      @media (max-width: 47.9375em) {
+        .layout {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <gcds-header lang-href="#" skip-to-href="#main-content">
+      <gcds-nav
+        id="top-nav"
+        variant="top"
+        label="Top navigation"
+        alignment="end"
+        slot="menu"
+      >
+        <gcds-nav-link href="https://digital.canada.ca/" slot="home"
+          >Canadian Digital Service</gcds-nav-link
+        >
+        <gcds-nav-link
+          href="/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: Products"
+          >Products</gcds-nav-link
+        >
+        <gcds-nav-link
+          href="/about/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: About"
+          >About</gcds-nav-link
+        >
+        <gcds-nav-group open-trigger="Resources" menu-label="Resources">
+          <gcds-nav-link href="/blog/">Blog</gcds-nav-link>
+          <gcds-nav-link href="/guides/">Guides</gcds-nav-link>
+        </gcds-nav-group>
+        <gcds-nav-link
+          href="/jobs/"
+          data-gc-analytics-navigation="header:Canadian Digital Service: Jobs at CDS"
+          >Jobs at CDS</gcds-nav-link
+        >
+      </gcds-nav>
+    </gcds-header>
+
+    <div class="layout">
+      <gcds-nav id="side-nav" variant="side" label="GC Design System">
+        <gcds-nav-link href="/en" slot="home">GC Design System</gcds-nav-link>
+        <gcds-nav-link href="/en/start-to-use">Start to use</gcds-nav-link>
+
+        <gcds-nav-group menu-label="Page templates" open-trigger="Page templates">
+          <gcds-nav-link href="/en/page-templates">Page templates overview</gcds-nav-link>
+          <gcds-nav-link href="/components/gcds-nav/test/gcds-nav.e2e.html">
+            Basic page
+          </gcds-nav-link>
+        </gcds-nav-group>
+
+        <gcds-nav-group menu-label="Components" open-trigger="Components">
+          <gcds-nav-link href="/en/components">Components overview</gcds-nav-link>
+          <gcds-nav-link href="/en/components/alert/">Alert</gcds-nav-link>
+          <gcds-nav-link href="/en/components/breadcrumbs/">Breadcrumbs</gcds-nav-link>
+          <gcds-nav-link href="/en/components/button/">Button</gcds-nav-link>
+        </gcds-nav-group>
+
+        <gcds-nav-group menu-label="CSS shortcuts" open-trigger="CSS shortcuts">
+          <gcds-nav-link href="/en/css-shortcuts">CSS shortcuts overview</gcds-nav-link>
+          <gcds-nav-group menu-label="Defaults" open-trigger="Defaults">
+            <gcds-nav-link href="/en/css-shortcuts/reset-styles/">Reset styles</gcds-nav-link>
+          </gcds-nav-group>
+          <gcds-nav-group menu-label="Layout" open-trigger="Layout">
+            <gcds-nav-link href="/en/css-shortcuts/box-sizing/">Box sizing</gcds-nav-link>
+            <gcds-nav-link href="/en/css-shortcuts/display/">Display</gcds-nav-link>
+          </gcds-nav-group>
+        </gcds-nav-group>
+
+        <gcds-nav-group menu-label="Contact" open-trigger="Contact">
+          <gcds-nav-link href="/en/contact">Contact us</gcds-nav-link>
+          <gcds-nav-link href="/en/get-involved">Get involved</gcds-nav-link>
+        </gcds-nav-group>
+      </gcds-nav>
+
+      <main id="main-content">
+        <h1>Basic page</h1>
+        <p>Both navigations are combined into one menu button on small screens.</p>
+      </main>
+    </div>
+  </body>
+</html>

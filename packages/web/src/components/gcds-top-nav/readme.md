@@ -9,6 +9,8 @@
 
 A top navigation is a horizontal list of page links.
 
+Deprecated: use <gcds-nav variant="top"> instead. Keep the same child elements and rename the tag.
+
 ## Properties
 
 | Property             | Attribute   | Description                   | Type               | Default     |

@@ -11,6 +11,7 @@ import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { IconNames } from "./components/gcds-icon/gcds-icon";
 import { SuggestionOption } from "./components/gcds-input/suggestion-option";
+import { GcdsNavClickDetail, NavItem, NavVariant } from "./utils/nav/types";
 import { RadioObject } from "./components/gcds-radios/radio";
 import { GcdsTableStateChange, TableColumn } from "./components/gcds-table/utils/table-helpers";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
@@ -19,6 +20,7 @@ export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { IconNames } from "./components/gcds-icon/gcds-icon";
 export { SuggestionOption } from "./components/gcds-input/suggestion-option";
+export { GcdsNavClickDetail, NavItem, NavVariant } from "./utils/nav/types";
 export { RadioObject } from "./components/gcds-radios/radio";
 export { GcdsTableStateChange, TableColumn } from "./components/gcds-table/utils/table-helpers";
 export namespace Components {
@@ -982,7 +984,44 @@ export namespace Components {
         "type"?: string | undefined;
     }
     /**
+     * Navigation for a site or section. Use `variant="top"` for a horizontal header navigation
+     * and `variant="side"` for a vertical navigation next to the page content.
+     * On small screens every gcds-nav on the page is combined into a single menu button.
+     * Links can be passed as `<gcds-nav-link>` and `<gcds-nav-group>` children,
+     * as an `items` array (property or JSON attribute), or as a `<script type="application/json">` child.
+     */
+    interface GcdsNav {
+        /**
+          * Alignment of the links in a top navigation
+          * @default 'start'
+         */
+        "alignment": 'start' | 'end';
+        /**
+          * URL of the current page. Defaults to the browser URL, or the value passed to setCurrentHref().
+         */
+        "currentHref"?: string;
+        /**
+          * Navigation items. Accepts an array (JavaScript property) or a JSON string (HTML attribute). Format: [{ "label": "About", "href": "/about" }, { "label": "Group", "children": [...] }]
+         */
+        "items"?: string | NavItem[];
+        /**
+          * Label for the navigation landmark
+         */
+        "label": string;
+        /**
+          * On small screens, combine this navigation with the other navigations on the page into one menu ("combined") or give it its own menu button ("separate").
+          * @default 'combined'
+         */
+        "mobileMenu": 'combined' | 'separate';
+        /**
+          * Navigation style: horizontal top navigation or vertical side navigation
+          * @default 'side'
+         */
+        "variant": NavVariant;
+    }
+    /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     * Inside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.
      */
     interface GcdsNavGroup {
         /**
@@ -1013,6 +1052,7 @@ export namespace Components {
     }
     /**
      * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     * Inside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.
      */
     interface GcdsNavLink {
         /**
@@ -1293,6 +1333,7 @@ export namespace Components {
     }
     /**
      * A side navigation is a vertical list of page links on the left side of the screen.
+     * Deprecated: use <gcds-nav variant="side"> instead. Keep the same child elements and rename the tag.
      */
     interface GcdsSideNav {
         "getNavSize": () => Promise<"desktop" | "mobile">;
@@ -1553,6 +1594,7 @@ export namespace Components {
     }
     /**
      * A top navigation is a horizontal list of page links.
+     * Deprecated: use <gcds-nav variant="top"> instead. Keep the same child elements and rename the tag.
      */
     interface GcdsTopNav {
         /**
@@ -1648,6 +1690,10 @@ export interface GcdsLangToggleCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsLinkCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsLinkElement;
+}
+export interface GcdsNavCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsNavElement;
 }
 export interface GcdsNavGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2102,6 +2148,30 @@ declare global {
         prototype: HTMLGcdsLinkElement;
         new (): HTMLGcdsLinkElement;
     };
+    interface HTMLGcdsNavElementEventMap {
+        "gcdsClick": GcdsNavClickDetail;
+    }
+    /**
+     * Navigation for a site or section. Use `variant="top"` for a horizontal header navigation
+     * and `variant="side"` for a vertical navigation next to the page content.
+     * On small screens every gcds-nav on the page is combined into a single menu button.
+     * Links can be passed as `<gcds-nav-link>` and `<gcds-nav-group>` children,
+     * as an `items` array (property or JSON attribute), or as a `<script type="application/json">` child.
+     */
+    interface HTMLGcdsNavElement extends Components.GcdsNav, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsNavElementEventMap>(type: K, listener: (this: HTMLGcdsNavElement, ev: GcdsNavCustomEvent<HTMLGcdsNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsNavElementEventMap>(type: K, listener: (this: HTMLGcdsNavElement, ev: GcdsNavCustomEvent<HTMLGcdsNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsNavElement: {
+        prototype: HTMLGcdsNavElement;
+        new (): HTMLGcdsNavElement;
+    };
     interface HTMLGcdsNavGroupElementEventMap {
         "gcdsClick": void;
         "gcdsFocus": void;
@@ -2109,6 +2179,7 @@ declare global {
     }
     /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     * Inside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.
      */
     interface HTMLGcdsNavGroupElement extends Components.GcdsNavGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavGroupElementEventMap>(type: K, listener: (this: HTMLGcdsNavGroupElement, ev: GcdsNavGroupCustomEvent<HTMLGcdsNavGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2131,6 +2202,7 @@ declare global {
     }
     /**
      * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     * Inside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.
      */
     interface HTMLGcdsNavLinkElement extends Components.GcdsNavLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsNavLinkElementEventMap>(type: K, listener: (this: HTMLGcdsNavLinkElement, ev: GcdsNavLinkCustomEvent<HTMLGcdsNavLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2253,6 +2325,7 @@ declare global {
     };
     /**
      * A side navigation is a vertical list of page links on the left side of the screen.
+     * Deprecated: use <gcds-nav variant="side"> instead. Keep the same child elements and rename the tag.
      */
     interface HTMLGcdsSideNavElement extends Components.GcdsSideNav, HTMLStencilElement {
     }
@@ -2343,6 +2416,7 @@ declare global {
     };
     /**
      * A top navigation is a horizontal list of page links.
+     * Deprecated: use <gcds-nav variant="top"> instead. Keep the same child elements and rename the tag.
      */
     interface HTMLGcdsTopNavElement extends Components.GcdsTopNav, HTMLStencilElement {
     }
@@ -2385,6 +2459,7 @@ declare global {
         "gcds-label": HTMLGcdsLabelElement;
         "gcds-lang-toggle": HTMLGcdsLangToggleElement;
         "gcds-link": HTMLGcdsLinkElement;
+        "gcds-nav": HTMLGcdsNavElement;
         "gcds-nav-group": HTMLGcdsNavGroupElement;
         "gcds-nav-link": HTMLGcdsNavLinkElement;
         "gcds-notice": HTMLGcdsNoticeElement;
@@ -3534,7 +3609,48 @@ declare namespace LocalJSX {
         "type"?: string | undefined;
     }
     /**
+     * Navigation for a site or section. Use `variant="top"` for a horizontal header navigation
+     * and `variant="side"` for a vertical navigation next to the page content.
+     * On small screens every gcds-nav on the page is combined into a single menu button.
+     * Links can be passed as `<gcds-nav-link>` and `<gcds-nav-group>` children,
+     * as an `items` array (property or JSON attribute), or as a `<script type="application/json">` child.
+     */
+    interface GcdsNav {
+        /**
+          * Alignment of the links in a top navigation
+          * @default 'start'
+         */
+        "alignment"?: 'start' | 'end';
+        /**
+          * URL of the current page. Defaults to the browser URL, or the value passed to setCurrentHref().
+         */
+        "currentHref"?: string;
+        /**
+          * Navigation items. Accepts an array (JavaScript property) or a JSON string (HTML attribute). Format: [{ "label": "About", "href": "/about" }, { "label": "Group", "children": [...] }]
+         */
+        "items"?: string | NavItem[];
+        /**
+          * Label for the navigation landmark
+         */
+        "label": string;
+        /**
+          * On small screens, combine this navigation with the other navigations on the page into one menu ("combined") or give it its own menu button ("separate").
+          * @default 'combined'
+         */
+        "mobileMenu"?: 'combined' | 'separate';
+        /**
+          * Emitted when a link is clicked. Fired on the source `<gcds-nav-link>` when links are passed as children, otherwise on gcds-nav. Call preventDefault() to handle navigation yourself.
+         */
+        "onGcdsClick"?: (event: GcdsNavCustomEvent<GcdsNavClickDetail>) => void;
+        /**
+          * Navigation style: horizontal top navigation or vertical side navigation
+          * @default 'side'
+         */
+        "variant"?: NavVariant;
+    }
+    /**
      * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+     * Inside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.
      */
     interface GcdsNavGroup {
         /**
@@ -3569,6 +3685,7 @@ declare namespace LocalJSX {
     }
     /**
      * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+     * Inside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.
      */
     interface GcdsNavLink {
         /**
@@ -3913,6 +4030,7 @@ declare namespace LocalJSX {
     }
     /**
      * A side navigation is a vertical list of page links on the left side of the screen.
+     * Deprecated: use <gcds-nav variant="side"> instead. Keep the same child elements and rename the tag.
      */
     interface GcdsSideNav {
         /**
@@ -4182,6 +4300,7 @@ declare namespace LocalJSX {
     }
     /**
      * A top navigation is a horizontal list of page links.
+     * Deprecated: use <gcds-nav variant="top"> instead. Keep the same child elements and rename the tag.
      */
     interface GcdsTopNav {
         /**
@@ -4453,6 +4572,14 @@ declare namespace LocalJSX {
         "download": string | undefined;
         "type": string | undefined;
     }
+    interface GcdsNavAttributes {
+        "variant": NavVariant;
+        "label": string;
+        "alignment": 'start' | 'end';
+        "items": string | NavItem[];
+        "mobileMenu": 'combined' | 'separate';
+        "currentHref": string;
+    }
     interface GcdsNavGroupAttributes {
         "closeTrigger": string;
         "menuLabel": string;
@@ -4618,6 +4745,7 @@ declare namespace LocalJSX {
         "gcds-label": Omit<GcdsLabel, keyof GcdsLabelAttributes> & { [K in keyof GcdsLabel & keyof GcdsLabelAttributes]?: GcdsLabel[K] } & { [K in keyof GcdsLabel & keyof GcdsLabelAttributes as `attr:${K}`]?: GcdsLabelAttributes[K] } & { [K in keyof GcdsLabel & keyof GcdsLabelAttributes as `prop:${K}`]?: GcdsLabel[K] };
         "gcds-lang-toggle": Omit<GcdsLangToggle, keyof GcdsLangToggleAttributes> & { [K in keyof GcdsLangToggle & keyof GcdsLangToggleAttributes]?: GcdsLangToggle[K] } & { [K in keyof GcdsLangToggle & keyof GcdsLangToggleAttributes as `attr:${K}`]?: GcdsLangToggleAttributes[K] } & { [K in keyof GcdsLangToggle & keyof GcdsLangToggleAttributes as `prop:${K}`]?: GcdsLangToggle[K] } & OneOf<"href", GcdsLangToggle["href"], GcdsLangToggleAttributes["href"]>;
         "gcds-link": Omit<GcdsLink, keyof GcdsLinkAttributes> & { [K in keyof GcdsLink & keyof GcdsLinkAttributes]?: GcdsLink[K] } & { [K in keyof GcdsLink & keyof GcdsLinkAttributes as `attr:${K}`]?: GcdsLinkAttributes[K] } & { [K in keyof GcdsLink & keyof GcdsLinkAttributes as `prop:${K}`]?: GcdsLink[K] } & OneOf<"href", GcdsLink["href"], GcdsLinkAttributes["href"]>;
+        "gcds-nav": Omit<GcdsNav, keyof GcdsNavAttributes> & { [K in keyof GcdsNav & keyof GcdsNavAttributes]?: GcdsNav[K] } & { [K in keyof GcdsNav & keyof GcdsNavAttributes as `attr:${K}`]?: GcdsNavAttributes[K] } & { [K in keyof GcdsNav & keyof GcdsNavAttributes as `prop:${K}`]?: GcdsNav[K] } & OneOf<"label", GcdsNav["label"], GcdsNavAttributes["label"]>;
         "gcds-nav-group": Omit<GcdsNavGroup, keyof GcdsNavGroupAttributes> & { [K in keyof GcdsNavGroup & keyof GcdsNavGroupAttributes]?: GcdsNavGroup[K] } & { [K in keyof GcdsNavGroup & keyof GcdsNavGroupAttributes as `attr:${K}`]?: GcdsNavGroupAttributes[K] } & { [K in keyof GcdsNavGroup & keyof GcdsNavGroupAttributes as `prop:${K}`]?: GcdsNavGroup[K] } & OneOf<"menuLabel", GcdsNavGroup["menuLabel"], GcdsNavGroupAttributes["menuLabel"]> & OneOf<"openTrigger", GcdsNavGroup["openTrigger"], GcdsNavGroupAttributes["openTrigger"]>;
         "gcds-nav-link": Omit<GcdsNavLink, keyof GcdsNavLinkAttributes> & { [K in keyof GcdsNavLink & keyof GcdsNavLinkAttributes]?: GcdsNavLink[K] } & { [K in keyof GcdsNavLink & keyof GcdsNavLinkAttributes as `attr:${K}`]?: GcdsNavLinkAttributes[K] } & { [K in keyof GcdsNavLink & keyof GcdsNavLinkAttributes as `prop:${K}`]?: GcdsNavLink[K] } & OneOf<"href", GcdsNavLink["href"], GcdsNavLinkAttributes["href"]>;
         "gcds-notice": Omit<GcdsNotice, keyof GcdsNoticeAttributes> & { [K in keyof GcdsNotice & keyof GcdsNoticeAttributes]?: GcdsNotice[K] } & { [K in keyof GcdsNotice & keyof GcdsNoticeAttributes as `attr:${K}`]?: GcdsNoticeAttributes[K] } & { [K in keyof GcdsNotice & keyof GcdsNoticeAttributes as `prop:${K}`]?: GcdsNotice[K] } & OneOf<"noticeRole", GcdsNotice["noticeRole"], GcdsNoticeAttributes["noticeRole"]> & OneOf<"noticeTitle", GcdsNotice["noticeTitle"], GcdsNoticeAttributes["noticeTitle"]> & OneOf<"noticeTitleTag", GcdsNotice["noticeTitleTag"], GcdsNoticeAttributes["noticeTitleTag"]>;
@@ -4741,11 +4869,21 @@ declare module "@stencil/core" {
              */
             "gcds-link": LocalJSX.IntrinsicElements["gcds-link"] & JSXBase.HTMLAttributes<HTMLGcdsLinkElement>;
             /**
+             * Navigation for a site or section. Use `variant="top"` for a horizontal header navigation
+             * and `variant="side"` for a vertical navigation next to the page content.
+             * On small screens every gcds-nav on the page is combined into a single menu button.
+             * Links can be passed as `<gcds-nav-link>` and `<gcds-nav-group>` children,
+             * as an `items` array (property or JSON attribute), or as a `<script type="application/json">` child.
+             */
+            "gcds-nav": LocalJSX.IntrinsicElements["gcds-nav"] & JSXBase.HTMLAttributes<HTMLGcdsNavElement>;
+            /**
              * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
+             * Inside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.
              */
             "gcds-nav-group": LocalJSX.IntrinsicElements["gcds-nav-group"] & JSXBase.HTMLAttributes<HTMLGcdsNavGroupElement>;
             /**
              * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
+             * Inside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.
              */
             "gcds-nav-link": LocalJSX.IntrinsicElements["gcds-nav-link"] & JSXBase.HTMLAttributes<HTMLGcdsNavLinkElement>;
             /**
@@ -4770,6 +4908,7 @@ declare module "@stencil/core" {
             "gcds-select": LocalJSX.IntrinsicElements["gcds-select"] & JSXBase.HTMLAttributes<HTMLGcdsSelectElement>;
             /**
              * A side navigation is a vertical list of page links on the left side of the screen.
+             * Deprecated: use <gcds-nav variant="side"> instead. Keep the same child elements and rename the tag.
              */
             "gcds-side-nav": LocalJSX.IntrinsicElements["gcds-side-nav"] & JSXBase.HTMLAttributes<HTMLGcdsSideNavElement>;
             /**
@@ -4798,6 +4937,7 @@ declare module "@stencil/core" {
             "gcds-textarea": LocalJSX.IntrinsicElements["gcds-textarea"] & JSXBase.HTMLAttributes<HTMLGcdsTextareaElement>;
             /**
              * A top navigation is a horizontal list of page links.
+             * Deprecated: use <gcds-nav variant="top"> instead. Keep the same child elements and rename the tag.
              */
             "gcds-top-nav": LocalJSX.IntrinsicElements["gcds-top-nav"] & JSXBase.HTMLAttributes<HTMLGcdsTopNavElement>;
             /**

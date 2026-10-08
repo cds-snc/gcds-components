@@ -15,6 +15,8 @@ import I18N from './i18n/i18n';
 /**
  * A side navigation is a vertical list of page links on the left side of the screen.
  *
+ * Deprecated: use <gcds-nav variant="side"> instead. Keep the same child elements and rename the tag.
+ *
  * @slot home - Slot for the home link or site title.
  * @slot default - Slot for the navigation groups and navigation links.
  */

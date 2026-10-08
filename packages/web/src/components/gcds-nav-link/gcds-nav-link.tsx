@@ -14,6 +14,8 @@ import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
 /**
  * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
  *
+ * Inside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.
+ *
  * @slot default - Slot for the navigation link content.
  */
 @Component({
@@ -62,11 +64,16 @@ export class GcdsNavLink {
   @State() navStyle: string;
 
   /**
+   * Inside gcds-nav the link is only data: gcds-nav reads it and renders the link itself
+   */
+  private dataMode = false;
+
+  /**
    * Focus the link element
    */
   @Method()
   async focusLink() {
-    this.linkElement.focus();
+    this.linkElement?.focus();
   }
 
   /*
@@ -87,6 +94,9 @@ export class GcdsNavLink {
 
     this.updateLang();
 
+    this.dataMode = !!this.el.closest('gcds-nav');
+    if (this.dataMode) return;
+
     if (this.el.closest('gcds-top-nav')) {
       if (this.el.parentNode.nodeName == 'GCDS-TOP-NAV') {
         this.navStyle = 'topnav';
@@ -100,6 +110,10 @@ export class GcdsNavLink {
 
   render() {
     const { current, href } = this;
+
+    if (this.dataMode) {
+      return <Host></Host>;
+    }
 
     const linkAttrs = {};
 

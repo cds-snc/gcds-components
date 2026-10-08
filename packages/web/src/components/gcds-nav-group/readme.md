@@ -9,6 +9,8 @@
 
 Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
 
+Inside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.
+
 ## Properties
 
 | Property                   | Attribute       | Description                            | Type      | Default     |

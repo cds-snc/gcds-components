@@ -1,0 +1,4 @@
+/* Angular components are inline by default. The root wraps block content (header, main, footer). */
+:host {
+  display: block;
+}

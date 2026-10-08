@@ -7,9 +7,10 @@ import '@gcds-core/components-vue/gcds.css';
 import App from './App.vue';
 
 const app = createApp(App);
-app.use(GcdsComponents);
 app.use(createPinia());
 app.use(router);
+// Connects gcds-nav to the router (link clicks and current page)
+app.use(GcdsComponents, { router });
 
 app.mount('#app');
 

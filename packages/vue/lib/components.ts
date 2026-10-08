@@ -30,6 +30,7 @@ import { defineCustomElement as defineGcdsInput } from '@gcds-core/components/di
 import { defineCustomElement as defineGcdsLabel } from '@gcds-core/components/dist/components/gcds-label.js';
 import { defineCustomElement as defineGcdsLangToggle } from '@gcds-core/components/dist/components/gcds-lang-toggle.js';
 import { defineCustomElement as defineGcdsLink } from '@gcds-core/components/dist/components/gcds-link.js';
+import { defineCustomElement as defineGcdsNav } from '@gcds-core/components/dist/components/gcds-nav.js';
 import { defineCustomElement as defineGcdsNavGroup } from '@gcds-core/components/dist/components/gcds-nav-group.js';
 import { defineCustomElement as defineGcdsNavLink } from '@gcds-core/components/dist/components/gcds-nav-link.js';
 import { defineCustomElement as defineGcdsNotice } from '@gcds-core/components/dist/components/gcds-notice.js';
@@ -444,6 +445,19 @@ export const GcdsLink: StencilVueComponent<JSX.GcdsLink> = /*@__PURE__*/ defineC
 ], [
   'gcdsFocus',
   'gcdsBlur',
+  'gcdsClick'
+]);
+
+
+export const GcdsNav: StencilVueComponent<JSX.GcdsNav> = /*@__PURE__*/ defineContainer<JSX.GcdsNav>('gcds-nav', defineGcdsNav, [
+  'variant',
+  'label',
+  'alignment',
+  'items',
+  'mobileMenu',
+  'currentHref',
+  'gcdsClick'
+], [
   'gcdsClick'
 ]);
 

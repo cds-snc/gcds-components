@@ -6833,6 +6833,7 @@
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-link",
+        "gcds-nav",
         "gcds-nav-group",
         "gcds-notice",
         "gcds-pagination",
@@ -6855,6 +6856,9 @@
           "gcds-icon"
         ],
         "gcds-link": [
+          "gcds-icon"
+        ],
+        "gcds-nav": [
           "gcds-icon"
         ],
         "gcds-nav-group": [
@@ -8477,11 +8481,255 @@
       }
     },
     {
+      "filePath": "src/components/gcds-nav/gcds-nav.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-nav",
+      "readme": "# gcds-nav\n\n\n",
+      "docs": "Navigation for a site or section. Use `variant=\"top\"` for a horizontal header navigation\nand `variant=\"side\"` for a vertical navigation next to the page content.\nOn small screens every gcds-nav on the page is combined into a single menu button.\n\nLinks can be passed as `<gcds-nav-link>` and `<gcds-nav-group>` children,\nas an `items` array (property or JSON attribute), or as a `<script type=\"application/json\">` child.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "alignment",
+          "type": "\"end\" | \"start\"",
+          "complexType": {
+            "original": "'start' | 'end'",
+            "resolved": "\"end\" | \"start\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "alignment",
+          "reflectToAttr": false,
+          "docs": "Alignment of the links in a top navigation",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'start'"
+            }
+          ],
+          "default": "'start'",
+          "values": [
+            {
+              "value": "end",
+              "type": "string"
+            },
+            {
+              "value": "start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "currentHref",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "current-href",
+          "reflectToAttr": false,
+          "docs": "URL of the current page. Defaults to the browser URL, or the value passed to setCurrentHref().",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "items",
+          "type": "NavItem[] | string",
+          "complexType": {
+            "original": "string | NavItem[]",
+            "resolved": "NavItem[] | string",
+            "references": {
+              "NavItem": {
+                "location": "import",
+                "path": "../../utils/nav/types",
+                "id": "src/utils/nav/types.ts::NavItem",
+                "referenceLocation": "NavItem"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "items",
+          "reflectToAttr": false,
+          "docs": "Navigation items. Accepts an array (JavaScript property) or a JSON string (HTML attribute).\nFormat: [{ \"label\": \"About\", \"href\": \"/about\" }, { \"label\": \"Group\", \"children\": [...] }]",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "NavItem[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Label for the navigation landmark",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "mobileMenu",
+          "type": "\"combined\" | \"separate\"",
+          "complexType": {
+            "original": "'combined' | 'separate'",
+            "resolved": "\"combined\" | \"separate\"",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "mobile-menu",
+          "reflectToAttr": false,
+          "docs": "On small screens, combine this navigation with the other navigations on the page\ninto one menu (\"combined\") or give it its own menu button (\"separate\").",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'combined'"
+            }
+          ],
+          "default": "'combined'",
+          "values": [
+            {
+              "value": "combined",
+              "type": "string"
+            },
+            {
+              "value": "separate",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "variant",
+          "type": "\"side\" | \"top\"",
+          "complexType": {
+            "original": "NavVariant",
+            "resolved": "\"side\" | \"top\"",
+            "references": {
+              "NavVariant": {
+                "location": "import",
+                "path": "../../utils/nav/types",
+                "id": "src/utils/nav/types.ts::NavVariant",
+                "referenceLocation": "NavVariant"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "Navigation style: horizontal top navigation or vertical side navigation",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'side'"
+            }
+          ],
+          "default": "'side'",
+          "values": [
+            {
+              "value": "side",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "gcdsClick",
+          "detail": "GcdsNavClickDetail",
+          "bubbles": true,
+          "complexType": {
+            "original": "GcdsNavClickDetail",
+            "resolved": "GcdsNavClickDetail",
+            "references": {
+              "GcdsNavClickDetail": {
+                "location": "import",
+                "path": "../../utils/nav/types",
+                "id": "src/utils/nav/types.ts::GcdsNavClickDetail",
+                "referenceLocation": "GcdsNavClickDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a link is clicked. Fired on the source `<gcds-nav-link>` when links are\npassed as children, otherwise on gcds-nav. Call preventDefault() to handle navigation yourself.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "states": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-icon"
+      ],
+      "dependencyGraph": {
+        "gcds-nav": [
+          "gcds-icon"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/gcds-nav-group/gcds-nav-group.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-nav-group",
       "readme": "# gcds-nav-group\n\n\n",
-      "docs": "Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.",
+      "docs": "Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.\n\nInside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.",
       "docsTags": [
         {
           "name": "slot",
@@ -8724,7 +8972,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-nav-link",
       "readme": "# gcds-nav-link\n\n\n",
-      "docs": "Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.",
+      "docs": "Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.\n\nInside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.",
       "docsTags": [
         {
           "name": "slot",
@@ -10858,7 +11106,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-side-nav",
       "readme": "# gcds-side-nav\n\n\n",
-      "docs": "A side navigation is a vertical list of page links on the left side of the screen.",
+      "docs": "A side navigation is a vertical list of page links on the left side of the screen.\n\nDeprecated: use <gcds-nav variant=\"side\"> instead. Keep the same child elements and rename the tag.",
       "docsTags": [
         {
           "name": "slot",
@@ -13119,7 +13367,7 @@
       "encapsulation": "shadow",
       "tag": "gcds-top-nav",
       "readme": "# gcds-top-nav\n\n\n",
-      "docs": "A top navigation is a horizontal list of page links.",
+      "docs": "A top navigation is a horizontal list of page links.\n\nDeprecated: use <gcds-nav variant=\"top\"> instead. Keep the same child elements and rename the tag.",
       "docsTags": [
         {
           "name": "slot",
@@ -13590,6 +13838,21 @@
       "declaration": "{\n  label: string;\n  value?: string;\n}",
       "docstring": "",
       "path": "src/components/gcds-input/suggestion-option.tsx"
+    },
+    "src/utils/nav/types.ts::NavVariant": {
+      "declaration": "export type NavVariant = 'top' | 'side';",
+      "docstring": "",
+      "path": "src/utils/nav/types.ts"
+    },
+    "src/utils/nav/types.ts::NavItem": {
+      "declaration": "export interface NavItem {\n  /** Visible text of the link or group trigger */\n  label: string;\n  /** Link destination. Omit to make the item a group. */\n  href?: string;\n  /** Marks the link as the current page. When any item sets this, automatic detection is turned off. */\n  current?: boolean;\n  /** Home link / site title. Only allowed at the top level. */\n  home?: boolean;\n  /** Link points outside of the application. Never handled by the router. */\n  external?: boolean;\n  /** Extra attributes for the rendered link, e.g. `data-*` analytics attributes */\n  attributes?: Record<string, string>;\n  /** Child items. Makes the item a group. */\n  children?: NavItem[];\n}",
+      "docstring": "Public item shape accepted by `<gcds-nav items=\"...\">`.",
+      "path": "src/utils/nav/types.ts"
+    },
+    "src/utils/nav/types.ts::GcdsNavClickDetail": {
+      "declaration": "export interface GcdsNavClickDetail {\n  /** href as authored */\n  href: string;\n  /** href converted to path + search + hash when same origin; what routers should navigate to */\n  path: string;\n  /** Label of the clicked item */\n  label: string;\n  /** The item object (items input) or the source element (child element input) */\n  item: NavItem | Element;\n  external: boolean;\n  /**\n   * True for a plain left click on an internal link without modifier keys.\n   * When false, the browser should be left to handle the click (new tab, external link, ...).\n   */\n  shouldRoute: boolean;\n}",
+      "docstring": "Detail of the `gcdsClick` event emitted by `gcds-nav`.",
+      "path": "src/utils/nav/types.ts"
     },
     "src/components/gcds-radios/radio.tsx::RadioObject": {
       "declaration": "{\n  id: string;\n  label: string;\n  value: string;\n  hint?: string;\n  checked?: boolean;\n}",

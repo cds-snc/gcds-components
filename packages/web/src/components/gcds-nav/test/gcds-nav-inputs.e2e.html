@@ -1,0 +1,52 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>gcds-nav: items and JSON script inputs</title>
+
+    <!-- Local components -->
+    <link rel="stylesheet" href="/build/gcds.css" />
+    <script type="module" src="/build/gcds.esm.js"></script>
+    <script nomodule src="/build/gcds.js"></script>
+  </head>
+
+  <body>
+    <!-- items attribute -->
+    <gcds-nav
+      id="items-nav"
+      variant="top"
+      label="Items navigation"
+      items='[
+        { "label": "Home", "href": "/", "home": true },
+        { "label": "About", "href": "/about/", "attributes": { "data-analytics": "about" } },
+        { "label": "Products", "children": [
+          { "label": "Notify", "href": "/notify/" },
+          { "label": "Forms", "href": "/forms/" }
+        ]},
+        { "label": "External", "href": "https://www.canada.ca/", "external": true, "attributes": { "target": "_blank" } }
+      ]'
+    ></gcds-nav>
+
+    <!-- JSON script -->
+    <gcds-nav id="script-nav" variant="side" label="Script navigation">
+      <script type="application/json">
+        [
+          { "label": "Start to use", "href": "/start/" },
+          {
+            "label": "Components",
+            "children": [
+              { "label": "Alert", "href": "/alert/" },
+              { "label": "Too deep", "children": [
+                { "label": "Level 3", "href": "/level-3/" }
+              ]}
+            ]
+          }
+        ]
+      </script>
+    </gcds-nav>
+  </body>
+</html>

@@ -9,6 +9,8 @@
 
 A side navigation is a vertical list of page links on the left side of the screen.
 
+Deprecated: use <gcds-nav variant="side"> instead. Keep the same child elements and rename the tag.
+
 ## Properties
 
 | Property             | Attribute | Description                   | Type     | Default     |

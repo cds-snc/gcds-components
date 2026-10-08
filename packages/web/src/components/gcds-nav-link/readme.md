@@ -9,6 +9,8 @@
 
 Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
 
+Inside gcds-nav the link only describes the item: gcds-nav renders it, and the visible text is used as the label.
+
 ## Properties
 
 | Property            | Attribute | Description       | Type      | Default     |

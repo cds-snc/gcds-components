@@ -1586,6 +1586,66 @@ export declare interface GcdsLink extends Components.GcdsLink {
 
 
 @ProxyCmp({
+  inputs: ['alignment', 'currentHref', 'items', 'label', 'mobileMenu', 'variant'],
+  outputs: ['gcdsClick']
+})
+@Component({
+  selector: 'gcds-nav',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['alignment', 'currentHref', 'items', 'label', 'mobileMenu', 'variant'],
+  outputs: ['gcdsClick'],
+  standalone: false,
+})
+export class GcdsNav {
+  protected el: HTMLGcdsNavElement;
+    /**
+   * Navigation style: horizontal top navigation or vertical side navigation @default 'side'
+   */
+  set variant(_: Components.GcdsNav['variant']) {};
+    /**
+   * Label for the navigation landmark
+   */
+  set label(_: Components.GcdsNav['label']) {};
+    /**
+   * Alignment of the links in a top navigation @default 'start'
+   */
+  set alignment(_: Components.GcdsNav['alignment']) {};
+    /**
+   * Navigation items. Accepts an array (JavaScript property) or a JSON string (HTML attribute).
+Format: [{ "label": "About", "href": "/about" }, { "label": "Group", "children": [...] }]
+   */
+  set items(_: Components.GcdsNav['items']) {};
+    /**
+   * On small screens, combine this navigation with the other navigations on the page
+into one menu ("combined") or give it its own menu button ("separate"). @default 'combined'
+   */
+  set mobileMenu(_: Components.GcdsNav['mobileMenu']) {};
+    /**
+   * URL of the current page. Defaults to the browser URL, or the value passed to setCurrentHref().
+   */
+  set currentHref(_: Components.GcdsNav['currentHref']) {};
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsClick']);
+  }
+}
+
+
+import type { GcdsNavClickDetail as IGcdsNavGcdsNavClickDetail } from '@gcds-core/components';
+
+export declare interface GcdsNav extends Components.GcdsNav {
+  /**
+   * Emitted when a link is clicked. Fired on the source `<gcds-nav-link>` when links are
+passed as children, otherwise on gcds-nav. Call preventDefault() to handle navigation yourself.
+   */
+  gcdsClick: EventEmitter<CustomEvent<IGcdsNavGcdsNavClickDetail>>;
+}
+
+
+@ProxyCmp({
   inputs: ['closeTrigger', 'menuLabel', 'open', 'openTrigger'],
   methods: ['focusTrigger', 'toggleNav'],
   outputs: ['gcdsClick', 'gcdsFocus', 'gcdsBlur']

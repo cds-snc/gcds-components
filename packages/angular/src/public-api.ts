@@ -8,6 +8,7 @@ export * from './lib/stencil-generated/components';
 export { SelectValueAccessor } from './lib/stencil-generated/select-value-accessor';
 export { TextValueAccessor } from './lib/stencil-generated/text-value-accessor';
 export { GcdsRouterDirective } from './lib/directives/gcds-router-link';
+export { provideGcdsRouting } from './lib/gcds-routing';
 export { GcdsCellDirective } from './lib/directives/gcds-cell.directive';
 export {
   GcdsTableWithSlotsComponent,

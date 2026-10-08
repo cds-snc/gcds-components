@@ -21,6 +21,8 @@ import { IconNames } from '../gcds-icon/gcds-icon';
 /**
  * Navigational group with expandable or dropdown functionality, allowing for better organization of navigation links.
  *
+ * Inside gcds-nav the group only describes the item: gcds-nav renders it and uses open-trigger as the label.
+ *
  * @slot default - Slot for the list of navigation links.
  */
 @Component({
@@ -83,9 +85,16 @@ export class GcdsNavGroup {
    */
   @State() navPosiiton: number;
 
+  /**
+   * Inside gcds-nav the group is only data: gcds-nav reads it and renders the group itself
+   */
+  private dataMode = false;
+
   // Close dropdowns on focusout when on desktop screen size
   @Listen('focusout', { target: 'document' })
   async focusOutListener(e) {
+    if (this.dataMode) return;
+
     if (
       (e.target === this.el || this.el.contains(e.target)) &&
       !this.el.contains(e.relatedTarget) &&
@@ -102,7 +111,7 @@ export class GcdsNavGroup {
    */
   @Method()
   async focusTrigger() {
-    this.triggerElement.focus();
+    this.triggerElement?.focus();
   }
 
   /**
@@ -110,6 +119,8 @@ export class GcdsNavGroup {
    */
   @Method()
   async toggleNav() {
+    if (this.dataMode) return;
+
     this.open = !this.open;
 
     // Close any child nav-groups
@@ -165,6 +176,9 @@ export class GcdsNavGroup {
 
     this.updateLang();
 
+    this.dataMode = !!this.el.closest('gcds-nav');
+    if (this.dataMode) return;
+
     if (this.el.parentNode.nodeName == 'GCDS-TOP-NAV') {
       // Set the navStyle to 'dropdown' and add a class for alignment if specified
       this.navStyle = 'dropdown';
@@ -198,6 +212,10 @@ export class GcdsNavGroup {
 
   render() {
     const { closeTrigger, menuLabel, open, openTrigger } = this;
+
+    if (this.dataMode) {
+      return <Host></Host>;
+    }
 
     return (
       <Host role="listitem" open={open}>

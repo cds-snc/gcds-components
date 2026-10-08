@@ -79,6 +79,18 @@ export default defineConfig({
 });
 ```
 
+## Navigation with Vue Router
+
+Pass your router to the plugin. Every `GcdsNav` then uses `router.push` for internal links (new tab clicks and external links are left to the browser) and highlights the current page.
+
+```js
+createApp(App).use(router).use(GcdsComponents, { router }).mount('#app');
+```
+
+```vue
+<GcdsNav variant="top" label="Main navigation" :items="navItems" />
+```
+
 ## How to contribute
 
 If you are interested in contributing to GC Design System Components, please read our [contributing guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).

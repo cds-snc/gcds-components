@@ -4,6 +4,7 @@ import { FormsComponent } from './components/forms/forms.component';
 import { NavComponent } from './components/navigation/navigation.components';
 import { FileUploaderComponent } from './components/fileuploader/file-uploader.component';
 import { TableComponent } from './components/table/table.component';
+import { GcdsNavDemoComponent } from './components/gcds-nav/gcds-nav-demo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,6 +12,8 @@ export const routes: Routes = [
   { path: 'forms', component: FormsComponent },
   { path: 'file-uploader', component: FileUploaderComponent },
   { path: 'table', component: TableComponent },
+  { path: 'navigation', component: GcdsNavDemoComponent },
+  { path: 'navigation/:page', component: GcdsNavDemoComponent },
   {
     path: 'nav-one',
     component: NavComponent,

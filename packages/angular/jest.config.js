@@ -17,7 +17,9 @@ module.exports = {
   ],
   coverageDirectory: '../../coverage/gcds-components-angular',
   moduleNameMapper: {
-    '^@gcds-core/components$': '<rootDir>/../../packages/web/dist'
+    // Only the navigation routing helpers are imported from the package root in this library.
+    // Map to their source so tests do not depend on how packages/web/dist was last built.
+    '^@gcds-core/components$': '<rootDir>/../../packages/web/src/utils/nav/registry.ts'
   },
   transform: {
     '^.+\\.(ts|js|html)$': [

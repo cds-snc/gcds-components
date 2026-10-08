@@ -83,6 +83,25 @@ To use `routerLink` with GC Design System components simply add the `routerLink`
 </gcds-pagination>
 ```
 
+## Navigation with the Angular router
+
+Add `provideGcdsRouting()` to your application providers. Every `gcds-nav` then uses the router for internal links (new tab clicks and external links are left to the browser) and highlights the current page, without adding `routerLink` to each link.
+
+```ts
+import { provideRouter } from '@angular/router';
+import { provideGcdsRouting } from '@gcds-core/components-angular';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes), provideGcdsRouting()],
+};
+```
+
+```html
+<gcds-nav variant="top" label="Main navigation" [items]="navItems"></gcds-nav>
+```
+
+`GcdsRouterDirective` is now standalone and can be imported directly in standalone components. Ctrl, Cmd and Shift clicks on components with `routerLink` now open a new tab or window as expected.
+
 ## How to contribute
 
 If you are interested in contributing to GC Design System Components, please read our [contributing guidelines](https://github.com/cds-snc/gcds-components/blob/main/CONTRIBUTING.md).
