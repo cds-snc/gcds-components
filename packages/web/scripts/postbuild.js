@@ -78,3 +78,71 @@ try {
 } catch (error) {
   console.error('❌ Error sanitizing paths:', error.message);
 }
+
+// ============================================================================
+// CUSTOM ELEMENTS MANIFEST: FLAG REQUIRED PROPS
+// ============================================================================
+// The Custom Elements Manifest schema has no "required" field, so IDEs can't
+// show which attributes are required. Stencil already knows (props declared
+// with `!`), so prefix those descriptions with "(required)" using the
+// `required` flag from components.json.
+
+const CEM_FILE = '../specs/custom-elements.json';
+const REQUIRED_PREFIX = '(required)';
+
+function markRequiredInManifest() {
+  const componentsPath = path.join(__dirname, COMPONENTS_FILE);
+  const manifestPath = path.join(__dirname, CEM_FILE);
+
+  if (!fs.existsSync(componentsPath) || !fs.existsSync(manifestPath)) {
+    console.log('⚠️  components.json or custom-elements.json not found, skipping');
+    return;
+  }
+
+  const { components } = JSON.parse(fs.readFileSync(componentsPath, 'utf8'));
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+
+  // Map of tag name -> Set of required prop names (camelCase)
+  const requiredByTag = new Map(
+    components.map(component => [
+      component.tag,
+      new Set(component.props.filter(prop => prop.required).map(prop => prop.name)),
+    ]),
+  );
+
+  const markRequired = item => {
+    const description = item.description || '';
+    if (!description.startsWith(REQUIRED_PREFIX)) {
+      item.description = `${REQUIRED_PREFIX} ${description}`.trim();
+    }
+  };
+
+  let count = 0;
+  manifest.modules.forEach(module => {
+    module.declarations?.forEach(declaration => {
+      const required = requiredByTag.get(declaration.tagName);
+      if (!required?.size) return;
+
+      declaration.attributes?.forEach(attribute => {
+        if (required.has(attribute.fieldName)) {
+          markRequired(attribute);
+          count++;
+        }
+      });
+      declaration.members?.forEach(member => {
+        if (member.kind === 'field' && required.has(member.name)) {
+          markRequired(member);
+        }
+      });
+    });
+  });
+
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+  console.log(`✅ Marked ${count} required attributes in custom-elements.json`);
+}
+
+try {
+  markRequiredInManifest();
+} catch (error) {
+  console.error('❌ Error marking required attributes:', error.message);
+}
