@@ -23,6 +23,19 @@ jobs:
       - name: Build gcds-components
         run: npm run build
 
+      - name: Check IDE data files are up to date
+        run: |
+          if ! git diff --exit-code -- packages/web/specs/custom-elements.json packages/web/specs/web-types.json packages/web/specs/vscode-data.json; then
+            echo "::error::custom-elements.json, web-types.json or vscode-data.json is out of date. Run 'npm run build:web' and commit the result."
+            exit 1
+          fi
+
+      - name: Check IDE data files ship in the package
+        working-directory: packages/web
+        run: |
+          npm pack --dry-run --ignore-scripts --json \
+            | node -e "const files = JSON.parse(require('fs').readFileSync(0))[0].files.map(f => f.path); const pkg = require('./package.json'); for (const target of [pkg.customElements, pkg['web-types'], 'specs/vscode-data.json']) { if (!files.includes(target)) { console.error('::error::' + target + ' is not in the npm package'); process.exit(1); } console.log(target + ' is included in the package'); }"
+
   build-storybook:
     name: Build storybook
     runs-on: ubuntu-latest

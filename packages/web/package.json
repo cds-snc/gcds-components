@@ -12,10 +12,15 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/gcds/gcds.esm.js",
+  "customElements": "specs/custom-elements.json",
+  "web-types": "specs/web-types.json",
   "files": [
     "dist/",
     "loader/",
-    "hydrate"
+    "hydrate",
+    "specs/custom-elements.json",
+    "specs/web-types.json",
+    "specs/vscode-data.json"
   ],
   "publishConfig": {
     "access": "public"
@@ -26,7 +31,7 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "postbuild": "node ./scripts/postbuild.js",
+    "postbuild": "node ./scripts/postbuild.js && node ./scripts/generate-web-types.js && node ./scripts/generate-vscode-data.js",
     "start": "stencil build --dev --watch --serve",
     "pretest": "cd ../.. && npm run patch:stenciljs && npm run build",
     "test": "npm run test:unit && npm run test:e2e",

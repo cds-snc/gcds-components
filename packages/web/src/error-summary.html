@@ -1,0 +1,26 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <meta
+      name="description"
+      content="Standalone preview of the GCDS error summary component."
+    />
+    <title>GCDS error summary</title>
+
+    <!-- Local components -->
+    <link rel="stylesheet" href="./build/gcds.css" />
+    <script type="module" src="./build/gcds.esm.js"></script>
+    <script nomodule src="./build/gcds.js"></script>
+  </head>
+
+  <body>
+    <gcds-error-summary
+      error-links='{"#error-href-1": "Error summary item.", "#error-href-2": "Error summary item.", "#error-href-3": "Error summary item."}'
+    ></gcds-error-summary>
+  </body>
+</html>
