@@ -23,7 +23,14 @@
     },
     "packages/web": {
       "component": "@gcds-core/components",
-      "changelog-path": ""
+      "changelog-path": "",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "specs/web-types.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "changelog-sections": [
