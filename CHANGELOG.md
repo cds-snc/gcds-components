@@ -1,21 +1,22 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) (2026-10-21)
+## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) 
+Released on: 2026-10-21
 
 
 ### :rocket: New Features
-
-* Add Custom Elements Manifest ([#1437](https://github.com/cds-snc/gcds-components/issues/1437)) ([289b7f3](https://github.com/cds-snc/gcds-components/commit/289b7f3457199db343730432b608322e21832596))
-* update error message icon ([96d30c9](https://github.com/cds-snc/gcds-components/commit/96d30c990afae671572bb4430d9b2859352d51a9))
+* **Developer tooling**: Added a Custom Elements Manifest (CEM) alongside the existing component manifest, following the CEM specification. This also powers new autocomplete support in JetBrains IDEs and VS Code. VS Code requires additional setup -- follow the [README instructions](https://github.com/cds-snc/gcds-components/blob/main/packages/web/README.md). ([#1437](https://github.com/cds-snc/gcds-components/issues/1437)) ([289b7f3](https://github.com/cds-snc/gcds-components/commit/289b7f3457199db343730432b608322e21832596))
 
 
 ### :bug: :wrench: Bug Fixes
 
-* **gcds-error-summary:** Adding missing styling to the markers on the error summary component ([#1421](https://github.com/cds-snc/gcds-components/issues/1421)) ([a688ca0](https://github.com/cds-snc/gcds-components/commit/a688ca0fd80fb62a76958ceeb1b95366ec57866a))
-* update error message icon ([#1430](https://github.com/cds-snc/gcds-components/issues/1430)) ([96d30c9](https://github.com/cds-snc/gcds-components/commit/96d30c990afae671572bb4430d9b2859352d51a9))
+* **gcds-error-message:** Changed the icon to exclamation-circle to indicate a critical warning, consistent with our guidance. ([#1430](https://github.com/cds-snc/gcds-components/issues/1430))([96d30c9](https://github.com/cds-snc/gcds-components/commit/96d30c990afae671572bb4430d9b2859352d51a9))
 
-## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) (2026-09-08)
+* **gcds-error-summary:** Adding missing styling to the list markers. ([#1421](https://github.com/cds-snc/gcds-components/issues/1421)) ([a688ca0](https://github.com/cds-snc/gcds-components/commit/a688ca0fd80fb62a76958ceeb1b95366ec57866a))
+
+## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) 
+Released on: 2026-09-08
 
 
 ### :rocket: New Features
@@ -31,7 +32,8 @@
 * **gcds-file-uploader:** add focus management when removing files ([#1407](https://github.com/cds-snc/gcds-components/issues/1407)) ([a99f7a0](https://github.com/cds-snc/gcds-components/commit/a99f7a030a1860115d2da9f2621cd18d8efbe083))
 * **gcds-header:** Responsive styling of account slot ([#1394](https://github.com/cds-snc/gcds-components/issues/1394)) ([9ce7927](https://github.com/cds-snc/gcds-components/commit/9ce79274f91d91a4dfad4670cf10f9a4b3560bfa))
 
-## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) (2026-08-12)
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) 
+Released on: 2026-08-12
 
 
 ### :rocket: New Features
@@ -48,7 +50,8 @@
 
 * **gcds-signature:** Adjusted signature sizing to align with FIP requirements ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
 
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) 
+Released on: 2026-07-27
 
 
 ### :rocket: New Features
@@ -65,7 +68,8 @@
   * Update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 * **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) 
+Released on: 2026-06-08
 
 
 ### :bug: :wrench: Bug Fixes
