@@ -11,6 +11,7 @@ import { defineCustomElement as defineGcdsBreadcrumbsItem } from '@gcds-core/com
 import { defineCustomElement as defineGcdsButton } from '@gcds-core/components/dist/components/gcds-button.js';
 import { defineCustomElement as defineGcdsCard } from '@gcds-core/components/dist/components/gcds-card.js';
 import { defineCustomElement as defineGcdsCheckboxes } from '@gcds-core/components/dist/components/gcds-checkboxes.js';
+import { defineCustomElement as defineGcdsCombobox } from '@gcds-core/components/dist/components/gcds-combobox.js';
 import { defineCustomElement as defineGcdsContainer } from '@gcds-core/components/dist/components/gcds-container.js';
 import { defineCustomElement as defineGcdsDateInput } from '@gcds-core/components/dist/components/gcds-date-input.js';
 import { defineCustomElement as defineGcdsDateModified } from '@gcds-core/components/dist/components/gcds-date-modified.js';
@@ -154,6 +155,40 @@ export const GcdsCheckboxes: StencilVueComponent<JSX.GcdsCheckboxes, JSX.GcdsChe
   'gcdsValid'
 ],
 'value', 'gcdsChange', undefined);
+
+
+export const GcdsCombobox: StencilVueComponent<JSX.GcdsCombobox> = /*@__PURE__*/ defineContainer<JSX.GcdsCombobox>('gcds-combobox', defineGcdsCombobox, [
+  'inputId',
+  'name',
+  'label',
+  'hideLabel',
+  'hint',
+  'options',
+  'required',
+  'disabled',
+  'autofocus',
+  'form',
+  'enableSelectAll',
+  'errorMessage',
+  'value',
+  'selectedOptions',
+  'validity',
+  'validator',
+  'validateOn',
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsError',
+  'gcdsValid'
+], [
+  'gcdsChange',
+  'gcdsInput',
+  'gcdsFocus',
+  'gcdsBlur',
+  'gcdsError',
+  'gcdsValid'
+]);
 
 
 export const GcdsContainer: StencilVueComponent<JSX.GcdsContainer> = /*@__PURE__*/ defineContainer<JSX.GcdsContainer>('gcds-container', defineGcdsContainer, [

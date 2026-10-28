@@ -876,6 +876,290 @@
           }
         },
         {
+          "name": "gcds-combobox",
+          "description": "A searchable multi-select field that displays selected options as removable tags.",
+          "attributes": [
+            {
+              "name": "autofocus",
+              "description": "Specifies if an input element should be focused on component render.",
+              "default": "false",
+              "value": {
+                "type": "boolean",
+                "required": false
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Specifies if an input element is disabled or not.",
+              "default": "false",
+              "value": {
+                "type": "boolean",
+                "required": false
+              }
+            },
+            {
+              "name": "enable-select-all",
+              "description": "If true, a \"Select All\" option will be displayed at the top of the list of options.",
+              "default": "false",
+              "value": {
+                "type": "boolean",
+                "required": false
+              }
+            },
+            {
+              "name": "error-message",
+              "description": "Error message for an invalid input element.",
+              "value": {
+                "type": "string",
+                "required": true
+              }
+            },
+            {
+              "name": "form",
+              "description": "The ID of the form that the input field belongs to.",
+              "value": {
+                "type": "string",
+                "required": true
+              }
+            },
+            {
+              "name": "hide-label",
+              "description": "If true, the label will be visually hidden but still accessible to screen readers.",
+              "default": "false",
+              "value": {
+                "type": "boolean",
+                "required": false
+              }
+            },
+            {
+              "name": "hint",
+              "description": "Hint displayed below the label and above the input field.",
+              "value": {
+                "type": "string",
+                "required": true
+              }
+            },
+            {
+              "name": "input-id",
+              "description": "(required) Id attribute for the combobox input element.",
+              "required": true,
+              "priority": "highest",
+              "value": {
+                "type": "string",
+                "required": true
+              }
+            },
+            {
+              "name": "label",
+              "description": "(required) Form field label",
+              "required": true,
+              "priority": "highest",
+              "value": {
+                "type": "string",
+                "required": true
+              }
+            },
+            {
+              "name": "name",
+              "description": "(required) Name attribute for the combobox input element.",
+              "required": true,
+              "priority": "highest",
+              "value": {
+                "type": "string",
+                "required": true
+              }
+            },
+            {
+              "name": "options",
+              "description": "JSON option array, or URL returning objects with `name` and `tag` fields.",
+              "value": {
+                "type": "SuggestionOption[] | string",
+                "required": true
+              }
+            },
+            {
+              "name": "required",
+              "description": "Specifies if a form field is required or not.",
+              "default": "false",
+              "value": {
+                "type": "boolean",
+                "required": false
+              }
+            },
+            {
+              "name": "validate-on",
+              "description": "Set event to call validator",
+              "default": "'blur'",
+              "value": {
+                "type": "\"blur\" | \"other\" | \"submit\"",
+                "required": true
+              },
+              "values": [
+                {
+                  "name": "blur"
+                },
+                {
+                  "name": "other"
+                },
+                {
+                  "name": "submit"
+                }
+              ]
+            },
+            {
+              "name": "value",
+              "description": "Initial selected values.",
+              "value": {
+                "type": "string | string[]",
+                "required": true
+              }
+            }
+          ],
+          "slots": [],
+          "js": {
+            "properties": [
+              {
+                "name": "autofocus",
+                "description": "Specifies if an input element should be focused on component render.",
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "name": "disabled",
+                "description": "Specifies if an input element is disabled or not.",
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "name": "enableSelectAll",
+                "description": "If true, a \"Select All\" option will be displayed at the top of the list of options.",
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "name": "errorMessage",
+                "description": "Error message for an invalid input element.",
+                "type": "string"
+              },
+              {
+                "name": "form",
+                "description": "The ID of the form that the input field belongs to.",
+                "type": "string"
+              },
+              {
+                "name": "hideLabel",
+                "description": "If true, the label will be visually hidden but still accessible to screen readers.",
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "name": "hint",
+                "description": "Hint displayed below the label and above the input field.",
+                "type": "string"
+              },
+              {
+                "name": "inputId",
+                "description": "(required) Id attribute for the combobox input element.",
+                "type": "string"
+              },
+              {
+                "name": "label",
+                "description": "(required) Form field label",
+                "type": "string"
+              },
+              {
+                "name": "name",
+                "description": "(required) Name attribute for the combobox input element.",
+                "type": "string"
+              },
+              {
+                "name": "options",
+                "description": "JSON option array, or URL returning objects with `name` and `tag` fields.",
+                "type": "SuggestionOption[] | string"
+              },
+              {
+                "name": "required",
+                "description": "Specifies if a form field is required or not.",
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "name": "selectedOptions",
+                "description": "Selected options, available for programmatic updates.",
+                "type": "SuggestionOption[]",
+                "default": "[]"
+              },
+              {
+                "name": "validateOn",
+                "description": "Set event to call validator",
+                "type": "\"blur\" | \"other\" | \"submit\"",
+                "default": "'blur'"
+              },
+              {
+                "name": "validator",
+                "description": "Array of validators",
+                "type": "(string | ValidatorEntry | Validator<string>)[]"
+              },
+              {
+                "name": "validity",
+                "description": "Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.",
+                "type": "ValidityState"
+              },
+              {
+                "name": "value",
+                "description": "Initial selected values.",
+                "type": "string | string[]"
+              }
+            ],
+            "events": [
+              {
+                "name": "gcdsBlur",
+                "description": "Emitted when the input loses focus.",
+                "type": "CustomEvent<void>"
+              },
+              {
+                "name": "gcdsChange",
+                "description": "Emitted when the input has changed.",
+                "type": "CustomEvent<SuggestionOption[]>"
+              },
+              {
+                "name": "gcdsError",
+                "description": "Emitted when the element is invalid.",
+                "type": "CustomEvent<object>"
+              },
+              {
+                "name": "gcdsFocus",
+                "description": "Emitted when the input has focus.",
+                "type": "CustomEvent<void>"
+              },
+              {
+                "name": "gcdsInput",
+                "description": "Emitted when the element has received input.",
+                "type": "CustomEvent<string>"
+              },
+              {
+                "name": "gcdsValid",
+                "description": "Emitted when the input has a validation error.",
+                "type": "CustomEvent<object>"
+              }
+            ]
+          },
+          "css": {
+            "parts": [
+              {
+                "name": "control"
+              },
+              {
+                "name": "listbox"
+              },
+              {
+                "name": "tag"
+              }
+            ],
+            "properties": []
+          }
+        },
+        {
           "name": "gcds-container",
           "description": "A container is a basic box layout with a set width for its contents.",
           "attributes": [
