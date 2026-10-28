@@ -26,6 +26,7 @@ An icon is a symbol that visually represents an action or idea.
 
  - [gcds-alert](../gcds-alert)
  - [gcds-button](../gcds-button)
+ - [gcds-combobox](../gcds-combobox)
  - [gcds-error-message](../gcds-error-message)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-link](../gcds-link)
@@ -41,6 +42,7 @@ An icon is a symbol that visually represents an action or idea.
 graph TD;
   gcds-alert --> gcds-icon
   gcds-button --> gcds-icon
+  gcds-combobox --> gcds-icon
   gcds-error-message --> gcds-icon
   gcds-file-uploader --> gcds-icon
   gcds-link --> gcds-icon

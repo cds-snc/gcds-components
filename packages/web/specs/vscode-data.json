@@ -449,6 +449,129 @@
       ]
     },
     {
+      "name": "gcds-combobox",
+      "description": {
+        "kind": "markdown",
+        "value": "A searchable multi-select field that displays selected options as removable tags.\n\n**Events**\n- `gcdsBlur`\n- `gcdsChange`\n- `gcdsError`\n- `gcdsFocus`\n- `gcdsInput`\n- `gcdsValid`"
+      },
+      "attributes": [
+        {
+          "name": "autofocus",
+          "description": {
+            "kind": "markdown",
+            "value": "Specifies if an input element should be focused on component render.\n\nType: `boolean`"
+          },
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": {
+            "kind": "markdown",
+            "value": "Specifies if an input element is disabled or not.\n\nType: `boolean`"
+          },
+          "valueSet": "v"
+        },
+        {
+          "name": "enable-select-all",
+          "description": {
+            "kind": "markdown",
+            "value": "If true, a \"Select All\" option will be displayed at the top of the list of options.\n\nType: `boolean`"
+          },
+          "valueSet": "v"
+        },
+        {
+          "name": "error-message",
+          "description": {
+            "kind": "markdown",
+            "value": "Error message for an invalid input element.\n\nType: `string`"
+          }
+        },
+        {
+          "name": "form",
+          "description": {
+            "kind": "markdown",
+            "value": "The ID of the form that the input field belongs to.\n\nType: `string`"
+          }
+        },
+        {
+          "name": "hide-label",
+          "description": {
+            "kind": "markdown",
+            "value": "If true, the label will be visually hidden but still accessible to screen readers.\n\nType: `boolean`"
+          },
+          "valueSet": "v"
+        },
+        {
+          "name": "hint",
+          "description": {
+            "kind": "markdown",
+            "value": "Hint displayed below the label and above the input field.\n\nType: `string`"
+          }
+        },
+        {
+          "name": "input-id",
+          "description": {
+            "kind": "markdown",
+            "value": "(required) Id attribute for the combobox input element.\n\nType: `string`"
+          }
+        },
+        {
+          "name": "label",
+          "description": {
+            "kind": "markdown",
+            "value": "(required) Form field label\n\nType: `string`"
+          }
+        },
+        {
+          "name": "name",
+          "description": {
+            "kind": "markdown",
+            "value": "(required) Name attribute for the combobox input element.\n\nType: `string`"
+          }
+        },
+        {
+          "name": "options",
+          "description": {
+            "kind": "markdown",
+            "value": "JSON option array, or URL returning objects with `name` and `tag` fields.\n\nType: `SuggestionOption[] | string`"
+          }
+        },
+        {
+          "name": "required",
+          "description": {
+            "kind": "markdown",
+            "value": "Specifies if a form field is required or not.\n\nType: `boolean`"
+          },
+          "valueSet": "v"
+        },
+        {
+          "name": "validate-on",
+          "description": {
+            "kind": "markdown",
+            "value": "Set event to call validator\n\nType: `\"blur\" | \"other\" | \"submit\"`"
+          },
+          "values": [
+            {
+              "name": "blur"
+            },
+            {
+              "name": "other"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": {
+            "kind": "markdown",
+            "value": "Initial selected values.\n\nType: `string | string[]`"
+          }
+        }
+      ]
+    },
+    {
       "name": "gcds-container",
       "description": {
         "kind": "markdown",

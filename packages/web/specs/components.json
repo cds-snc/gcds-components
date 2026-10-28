@@ -1815,6 +1815,930 @@
       }
     },
     {
+      "filePath": "src/components/gcds-combobox/gcds-combobox.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-combobox",
+      "docs": "A searchable multi-select field that displays selected options as removable tags.",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "autofocus",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "autofocus",
+          "reflectToAttr": true,
+          "docs": "Specifies if an input element should be focused on component render.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "Specifies if an input element is disabled or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "enableSelectAll",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "enable-select-all",
+          "reflectToAttr": false,
+          "docs": "If true, a \"Select All\" option will be displayed at the top of the list of options.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "error-message",
+          "reflectToAttr": false,
+          "docs": "Error message for an invalid input element.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "form",
+          "reflectToAttr": true,
+          "docs": "The ID of the form that the input field belongs to.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": false,
+          "docs": "If true, the label will be visually hidden but still accessible to screen readers.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "hint",
+          "reflectToAttr": false,
+          "docs": "Hint displayed below the label and above the input field.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "inputId",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "input-id",
+          "reflectToAttr": false,
+          "docs": "Id attribute for the combobox input element.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Form field label",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "Name attribute for the combobox input element.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "options",
+          "type": "SuggestionOption[] | string",
+          "complexType": {
+            "original": "string | SuggestionOption[]",
+            "resolved": "SuggestionOption[] | string",
+            "references": {
+              "SuggestionOption": {
+                "location": "import",
+                "path": "../gcds-input/suggestion-option",
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "options",
+          "reflectToAttr": false,
+          "docs": "JSON option array, or URL returning objects with `name` and `tag` fields.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "SuggestionOption[]"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "Specifies if a form field is required or not.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "selectedOptions",
+          "type": "SuggestionOption[]",
+          "complexType": {
+            "original": "SuggestionOption[]",
+            "resolved": "SuggestionOption[]",
+            "references": {
+              "SuggestionOption": {
+                "location": "import",
+                "path": "../gcds-input/suggestion-option",
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
+              }
+            }
+          },
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "Selected options, available for programmatic updates.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "[]"
+            }
+          ],
+          "default": "[]",
+          "values": [
+            {
+              "type": "SuggestionOption[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "validateOn",
+          "type": "\"blur\" | \"other\" | \"submit\"",
+          "complexType": {
+            "original": "'blur' | 'submit' | 'other'",
+            "resolved": "\"blur\" | \"other\" | \"submit\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "validate-on",
+          "reflectToAttr": false,
+          "docs": "Set event to call validator",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'blur'"
+            }
+          ],
+          "default": "'blur'",
+          "values": [
+            {
+              "value": "blur",
+              "type": "string"
+            },
+            {
+              "value": "other",
+              "type": "string"
+            },
+            {
+              "value": "submit",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "validator",
+          "type": "(string | ValidatorEntry | Validator<string>)[]",
+          "complexType": {
+            "original": "Array<\n    string | ValidatorEntry | Validator<string>\n  >",
+            "resolved": "(string | ValidatorEntry | Validator<string>)[]",
+            "references": {
+              "Array": {
+                "location": "global",
+                "id": "global::Array"
+              },
+              "ValidatorEntry": {
+                "location": "import",
+                "path": "../../validators",
+                "id": "src/validators/index.ts::ValidatorEntry",
+                "referenceLocation": "ValidatorEntry"
+              },
+              "Validator": {
+                "location": "import",
+                "path": "../../validators",
+                "id": "src/validators/index.ts::Validator",
+                "referenceLocation": "Validator"
+              }
+            }
+          },
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "Array of validators",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "(string"
+            },
+            {
+              "type": "ValidatorEntry"
+            },
+            {
+              "type": "Validator<string>)[]"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "validity",
+          "type": "ValidityState",
+          "complexType": {
+            "original": "ValidityState",
+            "resolved": "ValidityState",
+            "references": {
+              "ValidityState": {
+                "location": "global",
+                "id": "global::ValidityState"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.",
+          "docsTags": [
+            {
+              "name": "readonly",
+              "text": ""
+            }
+          ],
+          "values": [
+            {
+              "type": "ValidityState"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": true,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "string | string[]",
+          "complexType": {
+            "original": "string | string[]",
+            "resolved": "string | string[]",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Initial selected values.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string[]"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "returns": {
+            "type": "Promise<boolean>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<boolean>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<boolean>"
+          },
+          "signature": "checkValidity() => Promise<boolean>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "getSelectedOptions",
+          "returns": {
+            "type": "Promise<SuggestionOption[]>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<SuggestionOption[]>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "SuggestionOption": {
+                "location": "import",
+                "path": "../gcds-input/suggestion-option",
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
+              }
+            },
+            "return": "Promise<SuggestionOption[]>"
+          },
+          "signature": "getSelectedOptions() => Promise<SuggestionOption[]>",
+          "parameters": [],
+          "docs": "Return a copy of the selected option objects.",
+          "docsTags": []
+        },
+        {
+          "name": "getSelectedValues",
+          "returns": {
+            "type": "Promise<string[]>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string[]>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string[]>"
+          },
+          "signature": "getSelectedValues() => Promise<string[]>",
+          "parameters": [],
+          "docs": "Return the selected option values for form and application code.",
+          "docsTags": []
+        },
+        {
+          "name": "getValidationMessage",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<string>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<string>"
+          },
+          "signature": "getValidationMessage() => Promise<string>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "selectAll",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "selectAll() => Promise<void>",
+          "parameters": [],
+          "docs": "Select every option and collapse the list.",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Focus the search field and open its list of options.",
+          "docsTags": []
+        },
+        {
+          "name": "setOptions",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(options: Array<Record<string, unknown>>) => Promise<void>",
+            "parameters": [
+              {
+                "name": "options",
+                "type": "Record<string, unknown>[]",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "Array": {
+                "location": "global",
+                "id": "global::Array"
+              },
+              "Record": {
+                "location": "global",
+                "id": "global::Record"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setOptions(options: Array<Record<string, unknown>>) => Promise<void>",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "Record<string, unknown>[]",
+              "docs": ""
+            }
+          ],
+          "docs": "Replace the option list using objects whose keys are labels and values\nare option values, then retain selections that still exist.",
+          "docsTags": []
+        },
+        {
+          "name": "setSelectedOptions",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(items: SuggestionOption[]) => Promise<void>",
+            "parameters": [
+              {
+                "name": "items",
+                "type": "SuggestionOption[]",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "SuggestionOption": {
+                "location": "import",
+                "path": "../gcds-input/suggestion-option",
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setSelectedOptions(items: SuggestionOption[]) => Promise<void>",
+          "parameters": [
+            {
+              "name": "items",
+              "type": "SuggestionOption[]",
+              "docs": ""
+            }
+          ],
+          "docs": "Set selected options, ignoring values that are not in the option list.",
+          "docsTags": []
+        },
+        {
+          "name": "unselectAll",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "unselectAll() => Promise<void>",
+          "parameters": [],
+          "docs": "Clear all selected options.",
+          "docsTags": []
+        },
+        {
+          "name": "validate",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLGcdsSelectElement": {
+                "location": "global",
+                "id": "global::HTMLGcdsSelectElement"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "validate() => Promise<void>",
+          "parameters": [],
+          "docs": "Run configured validators against the selected values.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "gcdsBlur",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "gcdsChange",
+          "detail": "SuggestionOption[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "SuggestionOption[]",
+            "resolved": "SuggestionOption[]",
+            "references": {
+              "SuggestionOption": {
+                "location": "import",
+                "path": "../gcds-input/suggestion-option",
+                "id": "src/components/gcds-input/suggestion-option.tsx::SuggestionOption",
+                "referenceLocation": "SuggestionOption"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has changed.",
+          "docsTags": []
+        },
+        {
+          "event": "gcdsError",
+          "detail": "object",
+          "bubbles": true,
+          "complexType": {
+            "original": "object",
+            "resolved": "object",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the element is invalid.",
+          "docsTags": []
+        },
+        {
+          "event": "gcdsFocus",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has focus.",
+          "docsTags": []
+        },
+        {
+          "event": "gcdsInput",
+          "detail": "string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the element has received input.",
+          "docsTags": []
+        },
+        {
+          "event": "gcdsValid",
+          "detail": "object",
+          "bubbles": true,
+          "complexType": {
+            "original": "object",
+            "resolved": "object",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the input has a validation error.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "submit",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "invalid",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "click",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [
+        {
+          "name": "control",
+          "docs": ""
+        },
+        {
+          "name": "listbox",
+          "docs": ""
+        },
+        {
+          "name": "tag",
+          "docs": ""
+        }
+      ],
+      "states": [],
+      "dependents": [],
+      "dependencies": [
+        "gcds-icon",
+        "gcds-label",
+        "gcds-hint",
+        "gcds-error-message"
+      ],
+      "dependencyGraph": {
+        "gcds-combobox": [
+          "gcds-icon",
+          "gcds-label",
+          "gcds-hint",
+          "gcds-error-message"
+        ],
+        "gcds-hint": [
+          "gcds-text"
+        ],
+        "gcds-error-message": [
+          "gcds-text",
+          "gcds-icon"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/gcds-container/gcds-container.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-container",
@@ -3271,6 +4195,7 @@
       "states": [],
       "dependents": [
         "gcds-checkboxes",
+        "gcds-combobox",
         "gcds-date-input",
         "gcds-file-uploader",
         "gcds-input",
@@ -3288,6 +4213,9 @@
           "gcds-icon"
         ],
         "gcds-checkboxes": [
+          "gcds-error-message"
+        ],
+        "gcds-combobox": [
           "gcds-error-message"
         ],
         "gcds-date-input": [
@@ -6277,6 +7205,7 @@
       "states": [],
       "dependents": [
         "gcds-checkboxes",
+        "gcds-combobox",
         "gcds-date-input",
         "gcds-fieldset",
         "gcds-file-uploader",
@@ -6293,6 +7222,9 @@
           "gcds-text"
         ],
         "gcds-checkboxes": [
+          "gcds-hint"
+        ],
+        "gcds-combobox": [
           "gcds-hint"
         ],
         "gcds-date-input": [
@@ -6831,6 +7763,7 @@
       "dependents": [
         "gcds-alert",
         "gcds-button",
+        "gcds-combobox",
         "gcds-error-message",
         "gcds-file-uploader",
         "gcds-link",
@@ -6847,6 +7780,9 @@
           "gcds-icon"
         ],
         "gcds-button": [
+          "gcds-icon"
+        ],
+        "gcds-combobox": [
           "gcds-icon"
         ],
         "gcds-error-message": [
@@ -7981,6 +8917,7 @@
       "states": [],
       "dependents": [
         "gcds-checkboxes",
+        "gcds-combobox",
         "gcds-file-uploader",
         "gcds-input",
         "gcds-radios",
@@ -7991,6 +8928,9 @@
       "dependencies": [],
       "dependencyGraph": {
         "gcds-checkboxes": [
+          "gcds-label"
+        ],
+        "gcds-combobox": [
           "gcds-label"
         ],
         "gcds-file-uploader": [
@@ -10900,11 +11840,11 @@
         {
           "name": "getNavSize",
           "returns": {
-            "type": "Promise<\"desktop\" | \"mobile\">",
+            "type": "Promise<\"mobile\" | \"desktop\">",
             "docs": ""
           },
           "complexType": {
-            "signature": "() => Promise<\"desktop\" | \"mobile\">",
+            "signature": "() => Promise<\"mobile\" | \"desktop\">",
             "parameters": [],
             "references": {
               "Promise": {
@@ -10912,9 +11852,9 @@
                 "id": "global::Promise"
               }
             },
-            "return": "Promise<\"desktop\" | \"mobile\">"
+            "return": "Promise<\"mobile\" | \"desktop\">"
           },
-          "signature": "getNavSize() => Promise<\"desktop\" | \"mobile\">",
+          "signature": "getNavSize() => Promise<\"mobile\" | \"desktop\">",
           "parameters": [],
           "docs": "",
           "docsTags": []
@@ -13195,11 +14135,11 @@
         {
           "name": "getNavSize",
           "returns": {
-            "type": "Promise<\"desktop\" | \"mobile\">",
+            "type": "Promise<\"mobile\" | \"desktop\">",
             "docs": ""
           },
           "complexType": {
-            "signature": "() => Promise<\"desktop\" | \"mobile\">",
+            "signature": "() => Promise<\"mobile\" | \"desktop\">",
             "parameters": [],
             "references": {
               "Promise": {
@@ -13207,9 +14147,9 @@
                 "id": "global::Promise"
               }
             },
-            "return": "Promise<\"desktop\" | \"mobile\">"
+            "return": "Promise<\"mobile\" | \"desktop\">"
           },
-          "signature": "getNavSize() => Promise<\"desktop\" | \"mobile\">",
+          "signature": "getNavSize() => Promise<\"mobile\" | \"desktop\">",
           "parameters": [],
           "docs": "",
           "docsTags": []
@@ -13411,11 +14351,11 @@
         {
           "name": "getNavSize",
           "returns": {
-            "type": "Promise<\"desktop\" | \"mobile\">",
+            "type": "Promise<\"mobile\" | \"desktop\">",
             "docs": ""
           },
           "complexType": {
-            "signature": "() => Promise<\"desktop\" | \"mobile\">",
+            "signature": "() => Promise<\"mobile\" | \"desktop\">",
             "parameters": [],
             "references": {
               "Promise": {
@@ -13423,9 +14363,9 @@
                 "id": "global::Promise"
               }
             },
-            "return": "Promise<\"desktop\" | \"mobile\">"
+            "return": "Promise<\"mobile\" | \"desktop\">"
           },
-          "signature": "getNavSize() => Promise<\"desktop\" | \"mobile\">",
+          "signature": "getNavSize() => Promise<\"mobile\" | \"desktop\">",
           "parameters": [],
           "docs": "",
           "docsTags": []
