@@ -7,18 +7,18 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 import { Validator, ValidatorEntry } from "./validators";
+import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { SpacingValues } from "./utils/types/spacing";
 import { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 import { IconNames } from "./components/gcds-icon/gcds-icon";
-import { SuggestionOption } from "./components/gcds-input/suggestion-option";
 import { RadioObject } from "./components/gcds-radios/radio";
 import { GcdsTableStateChange, TableColumn } from "./components/gcds-table/utils/table-helpers";
 export { CheckboxObject } from "./components/gcds-checkboxes/checkbox";
 export { Validator, ValidatorEntry } from "./validators";
+export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { SpacingValues } from "./utils/types/spacing";
 export { ContentValues, GridGapValues } from "./components/gcds-grid/gcds-grid";
 export { IconNames } from "./components/gcds-icon/gcds-icon";
-export { SuggestionOption } from "./components/gcds-input/suggestion-option";
 export { RadioObject } from "./components/gcds-radios/radio";
 export { GcdsTableStateChange, TableColumn } from "./components/gcds-table/utils/table-helpers";
 export namespace Components {
@@ -254,6 +254,123 @@ export namespace Components {
           * @default []
          */
         "value": string | Array<string>;
+    }
+    /**
+     * A searchable multi-select field that displays selected options as removable tags.
+     */
+    interface GcdsCombobox {
+        /**
+          * Specifies if an input element should be focused on component render.
+          * @default false
+         */
+        "autofocus": boolean;
+        "checkValidity": () => Promise<boolean>;
+        /**
+          * Specifies if an input element is disabled or not.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If true, a "Select All" option will be displayed at the top of the list of options.
+          * @default false
+         */
+        "enableSelectAll": boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * The ID of the form that the input field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Return a copy of the selected option objects.
+         */
+        "getSelectedOptions": () => Promise<SuggestionOption[]>;
+        /**
+          * Return the selected option values for form and application code.
+         */
+        "getSelectedValues": () => Promise<string[]>;
+        "getValidationMessage": () => Promise<string>;
+        /**
+          * If true, the label will be visually hidden but still accessible to screen readers.
+          * @default false
+         */
+        "hideLabel": boolean;
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "hint"?: string;
+        /**
+          * Id attribute for the combobox input element.
+         */
+        "inputId": string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for the combobox input element.
+         */
+        "name": string;
+        /**
+          * JSON option array, or URL returning objects with `name` and `tag` fields.
+         */
+        "options"?: string | SuggestionOption[];
+        /**
+          * Specifies if a form field is required or not.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Select every option and collapse the list.
+         */
+        "selectAll": () => Promise<void>;
+        /**
+          * Selected options, available for programmatic updates.
+          * @default []
+         */
+        "selectedOptions": SuggestionOption[];
+        /**
+          * Focus the search field and open its list of options.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Replace the option list using objects whose keys are labels and values are option values, then retain selections that still exist.
+         */
+        "setOptions": (options: Array<Record<string, unknown>>) => Promise<void>;
+        /**
+          * Set selected options, ignoring values that are not in the option list.
+         */
+        "setSelectedOptions": (items: SuggestionOption[]) => Promise<void>;
+        /**
+          * Clear all selected options.
+         */
+        "unselectAll": () => Promise<void>;
+        /**
+          * Run configured validators against the selected values.
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+          * @default 'blur'
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
+        /**
+          * Initial selected values.
+         */
+        "value"?: string | string[];
     }
     /**
      * A container is a basic box layout with a set width for its contents.
@@ -1295,7 +1412,7 @@ export namespace Components {
      * A side navigation is a vertical list of page links on the left side of the screen.
      */
     interface GcdsSideNav {
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Label for navigation landmark
          */
@@ -1560,7 +1677,7 @@ export namespace Components {
           * @default 'start'
          */
         "alignment": 'start' | 'end';
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Label for navigation landmark
          */
@@ -1576,7 +1693,7 @@ export namespace Components {
           * Close all theme menus
          */
         "closeAllMenus": () => Promise<void>;
-        "getNavSize": () => Promise<"desktop" | "mobile">;
+        "getNavSize": () => Promise<"mobile" | "desktop">;
         /**
           * Sets the homepage styling
           * @default false
@@ -1612,6 +1729,10 @@ export interface GcdsCardCustomEvent<T> extends CustomEvent<T> {
 export interface GcdsCheckboxesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGcdsCheckboxesElement;
+}
+export interface GcdsComboboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsComboboxElement;
 }
 export interface GcdsDateInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1802,6 +1923,31 @@ declare global {
     var HTMLGcdsCheckboxesElement: {
         prototype: HTMLGcdsCheckboxesElement;
         new (): HTMLGcdsCheckboxesElement;
+    };
+    interface HTMLGcdsComboboxElementEventMap {
+        "gcdsChange": SuggestionOption[];
+        "gcdsInput": string;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
+    /**
+     * A searchable multi-select field that displays selected options as removable tags.
+     */
+    interface HTMLGcdsComboboxElement extends Components.GcdsCombobox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsComboboxElementEventMap>(type: K, listener: (this: HTMLGcdsComboboxElement, ev: GcdsComboboxCustomEvent<HTMLGcdsComboboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsComboboxElementEventMap>(type: K, listener: (this: HTMLGcdsComboboxElement, ev: GcdsComboboxCustomEvent<HTMLGcdsComboboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsComboboxElement: {
+        prototype: HTMLGcdsComboboxElement;
+        new (): HTMLGcdsComboboxElement;
     };
     /**
      * A container is a basic box layout with a set width for its contents.
@@ -2366,6 +2512,7 @@ declare global {
         "gcds-button": HTMLGcdsButtonElement;
         "gcds-card": HTMLGcdsCardElement;
         "gcds-checkboxes": HTMLGcdsCheckboxesElement;
+        "gcds-combobox": HTMLGcdsComboboxElement;
         "gcds-container": HTMLGcdsContainerElement;
         "gcds-date-input": HTMLGcdsDateInputElement;
         "gcds-date-modified": HTMLGcdsDateModifiedElement;
@@ -2694,6 +2841,113 @@ declare namespace LocalJSX {
           * @default []
          */
         "value"?: string | Array<string>;
+    }
+    /**
+     * A searchable multi-select field that displays selected options as removable tags.
+     */
+    interface GcdsCombobox {
+        /**
+          * Specifies if an input element should be focused on component render.
+          * @default false
+         */
+        "autofocus"?: boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If true, a "Select All" option will be displayed at the top of the list of options.
+          * @default false
+         */
+        "enableSelectAll"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * The ID of the form that the input field belongs to.
+         */
+        "form"?: string;
+        /**
+          * If true, the label will be visually hidden but still accessible to screen readers.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "hint"?: string;
+        /**
+          * Id attribute for the combobox input element.
+         */
+        "inputId": string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for the combobox input element.
+         */
+        "name": string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsComboboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onGcdsChange"?: (event: GcdsComboboxCustomEvent<SuggestionOption[]>) => void;
+        /**
+          * Emitted when the element is invalid.
+         */
+        "onGcdsError"?: (event: GcdsComboboxCustomEvent<object>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsComboboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the element has received input.
+         */
+        "onGcdsInput"?: (event: GcdsComboboxCustomEvent<string>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsComboboxCustomEvent<object>) => void;
+        /**
+          * JSON option array, or URL returning objects with `name` and `tag` fields.
+         */
+        "options"?: string | SuggestionOption[];
+        /**
+          * Specifies if a form field is required or not.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Selected options, available for programmatic updates.
+          * @default []
+         */
+        "selectedOptions"?: SuggestionOption[];
+        /**
+          * Set event to call validator
+          * @default 'blur'
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
+        /**
+          * Initial selected values.
+         */
+        "value"?: string | string[];
     }
     /**
      * A container is a basic box layout with a set width for its contents.
@@ -4261,6 +4515,22 @@ declare namespace LocalJSX {
         "hint": string;
         "validateOn": 'blur' | 'submit' | 'other';
     }
+    interface GcdsComboboxAttributes {
+        "inputId": string;
+        "name": string;
+        "label": string;
+        "hideLabel": boolean;
+        "hint": string;
+        "options": string | SuggestionOption[];
+        "required": boolean;
+        "disabled": boolean;
+        "autofocus": boolean;
+        "form": string;
+        "enableSelectAll": boolean;
+        "errorMessage": string;
+        "value": string | string[];
+        "validateOn": 'blur' | 'submit' | 'other';
+    }
     interface GcdsContainerAttributes {
         "alignment": 'start' | 'center' | 'end';
         "border": boolean;
@@ -4599,6 +4869,7 @@ declare namespace LocalJSX {
         "gcds-button": Omit<GcdsButton, keyof GcdsButtonAttributes> & { [K in keyof GcdsButton & keyof GcdsButtonAttributes]?: GcdsButton[K] } & { [K in keyof GcdsButton & keyof GcdsButtonAttributes as `attr:${K}`]?: GcdsButtonAttributes[K] } & { [K in keyof GcdsButton & keyof GcdsButtonAttributes as `prop:${K}`]?: GcdsButton[K] };
         "gcds-card": Omit<GcdsCard, keyof GcdsCardAttributes> & { [K in keyof GcdsCard & keyof GcdsCardAttributes]?: GcdsCard[K] } & { [K in keyof GcdsCard & keyof GcdsCardAttributes as `attr:${K}`]?: GcdsCardAttributes[K] } & { [K in keyof GcdsCard & keyof GcdsCardAttributes as `prop:${K}`]?: GcdsCard[K] } & OneOf<"cardTitle", GcdsCard["cardTitle"], GcdsCardAttributes["cardTitle"]> & OneOf<"href", GcdsCard["href"], GcdsCardAttributes["href"]>;
         "gcds-checkboxes": Omit<GcdsCheckboxes, keyof GcdsCheckboxesAttributes> & { [K in keyof GcdsCheckboxes & keyof GcdsCheckboxesAttributes]?: GcdsCheckboxes[K] } & { [K in keyof GcdsCheckboxes & keyof GcdsCheckboxesAttributes as `attr:${K}`]?: GcdsCheckboxesAttributes[K] } & { [K in keyof GcdsCheckboxes & keyof GcdsCheckboxesAttributes as `prop:${K}`]?: GcdsCheckboxes[K] } & OneOf<"name", GcdsCheckboxes["name"], GcdsCheckboxesAttributes["name"]> & OneOf<"options", GcdsCheckboxes["options"], GcdsCheckboxesAttributes["options"]>;
+        "gcds-combobox": Omit<GcdsCombobox, keyof GcdsComboboxAttributes> & { [K in keyof GcdsCombobox & keyof GcdsComboboxAttributes]?: GcdsCombobox[K] } & { [K in keyof GcdsCombobox & keyof GcdsComboboxAttributes as `attr:${K}`]?: GcdsComboboxAttributes[K] } & { [K in keyof GcdsCombobox & keyof GcdsComboboxAttributes as `prop:${K}`]?: GcdsCombobox[K] } & OneOf<"inputId", GcdsCombobox["inputId"], GcdsComboboxAttributes["inputId"]> & OneOf<"name", GcdsCombobox["name"], GcdsComboboxAttributes["name"]> & OneOf<"label", GcdsCombobox["label"], GcdsComboboxAttributes["label"]>;
         "gcds-container": Omit<GcdsContainer, keyof GcdsContainerAttributes> & { [K in keyof GcdsContainer & keyof GcdsContainerAttributes]?: GcdsContainer[K] } & { [K in keyof GcdsContainer & keyof GcdsContainerAttributes as `attr:${K}`]?: GcdsContainerAttributes[K] } & { [K in keyof GcdsContainer & keyof GcdsContainerAttributes as `prop:${K}`]?: GcdsContainer[K] };
         "gcds-date-input": Omit<GcdsDateInput, keyof GcdsDateInputAttributes> & { [K in keyof GcdsDateInput & keyof GcdsDateInputAttributes]?: GcdsDateInput[K] } & { [K in keyof GcdsDateInput & keyof GcdsDateInputAttributes as `attr:${K}`]?: GcdsDateInputAttributes[K] } & { [K in keyof GcdsDateInput & keyof GcdsDateInputAttributes as `prop:${K}`]?: GcdsDateInput[K] } & OneOf<"name", GcdsDateInput["name"], GcdsDateInputAttributes["name"]> & OneOf<"legend", GcdsDateInput["legend"], GcdsDateInputAttributes["legend"]> & OneOf<"format", GcdsDateInput["format"], GcdsDateInputAttributes["format"]>;
         "gcds-date-modified": Omit<GcdsDateModified, keyof GcdsDateModifiedAttributes> & { [K in keyof GcdsDateModified & keyof GcdsDateModifiedAttributes]?: GcdsDateModified[K] } & { [K in keyof GcdsDateModified & keyof GcdsDateModifiedAttributes as `attr:${K}`]?: GcdsDateModifiedAttributes[K] } & { [K in keyof GcdsDateModified & keyof GcdsDateModifiedAttributes as `prop:${K}`]?: GcdsDateModified[K] };
@@ -4664,6 +4935,10 @@ declare module "@stencil/core" {
              * Checkboxes provide a set of options for multiple responses.
              */
             "gcds-checkboxes": LocalJSX.IntrinsicElements["gcds-checkboxes"] & JSXBase.HTMLAttributes<HTMLGcdsCheckboxesElement>;
+            /**
+             * A searchable multi-select field that displays selected options as removable tags.
+             */
+            "gcds-combobox": LocalJSX.IntrinsicElements["gcds-combobox"] & JSXBase.HTMLAttributes<HTMLGcdsComboboxElement>;
             /**
              * A container is a basic box layout with a set width for its contents.
              */

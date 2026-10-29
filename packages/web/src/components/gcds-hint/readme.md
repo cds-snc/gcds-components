@@ -35,6 +35,7 @@ Hint provides additional information or context to help users understand the con
 ### Used by
 
  - [gcds-checkboxes](../gcds-checkboxes)
+ - [gcds-combobox](../gcds-combobox)
  - [gcds-date-input](../gcds-date-input)
  - [gcds-fieldset](../gcds-fieldset)
  - [gcds-file-uploader](../gcds-file-uploader)
@@ -52,6 +53,7 @@ Hint provides additional information or context to help users understand the con
 graph TD;
   gcds-hint --> gcds-text
   gcds-checkboxes --> gcds-hint
+  gcds-combobox --> gcds-hint
   gcds-date-input --> gcds-hint
   gcds-fieldset --> gcds-hint
   gcds-file-uploader --> gcds-hint

@@ -1255,6 +1255,647 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/gcds-combobox/gcds-combobox.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "customElement": true,
+          "tagName": "gcds-combobox",
+          "name": "GcdsCombobox",
+          "description": "A searchable multi-select field that displays selected options as removable tags.",
+          "attributes": [
+            {
+              "name": "autofocus",
+              "description": "Specifies if an input element should be focused on component render.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autofocus"
+            },
+            {
+              "name": "disabled",
+              "description": "Specifies if an input element is disabled or not.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "enable-select-all",
+              "description": "If true, a \"Select All\" option will be displayed at the top of the list of options.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "enableSelectAll"
+            },
+            {
+              "name": "error-message",
+              "description": "Error message for an invalid input element.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "errorMessage"
+            },
+            {
+              "name": "form",
+              "description": "The ID of the form that the input field belongs to.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "form"
+            },
+            {
+              "name": "hide-label",
+              "description": "If true, the label will be visually hidden but still accessible to screen readers.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideLabel"
+            },
+            {
+              "name": "hint",
+              "description": "Hint displayed below the label and above the input field.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "hint"
+            },
+            {
+              "name": "input-id",
+              "description": "(required) Id attribute for the combobox input element.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "inputId"
+            },
+            {
+              "name": "label",
+              "description": "(required) Form field label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label"
+            },
+            {
+              "name": "name",
+              "description": "(required) Name attribute for the combobox input element.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "name"
+            },
+            {
+              "name": "options",
+              "description": "JSON option array, or URL returning objects with `name` and `tag` fields.",
+              "type": {
+                "text": "SuggestionOption[] | string",
+                "references": [
+                  {
+                    "name": "SuggestionOption",
+                    "module": "../gcds-input/suggestion-option"
+                  }
+                ]
+              },
+              "fieldName": "options"
+            },
+            {
+              "name": "required",
+              "description": "Specifies if a form field is required or not.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "required"
+            },
+            {
+              "name": "validate-on",
+              "description": "Set event to call validator",
+              "type": {
+                "text": "\"blur\" | \"other\" | \"submit\""
+              },
+              "default": "'blur'",
+              "fieldName": "validateOn"
+            },
+            {
+              "name": "value",
+              "description": "Initial selected values.",
+              "type": {
+                "text": "string | string[]"
+              },
+              "fieldName": "value"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "description": "Specifies if an input element should be focused on component render.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "readonly": true,
+              "attribute": "autofocus",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "description": "Specifies if an input element is disabled or not.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "readonly": true,
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "enableSelectAll",
+              "description": "If true, a \"Select All\" option will be displayed at the top of the list of options.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "readonly": true,
+              "attribute": "enable-select-all"
+            },
+            {
+              "kind": "field",
+              "name": "errorMessage",
+              "description": "Error message for an invalid input element.",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "error-message"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "description": "The ID of the form that the input field belongs to.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "attribute": "form",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideLabel",
+              "description": "If true, the label will be visually hidden but still accessible to screen readers.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "readonly": true,
+              "attribute": "hide-label"
+            },
+            {
+              "kind": "field",
+              "name": "hint",
+              "description": "Hint displayed below the label and above the input field.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "attribute": "hint"
+            },
+            {
+              "kind": "field",
+              "name": "inputId",
+              "description": "(required) Id attribute for the combobox input element.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "attribute": "input-id"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "(required) Form field label",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "description": "(required) Name attribute for the combobox input element.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "description": "JSON option array, or URL returning objects with `name` and `tag` fields.",
+              "type": {
+                "text": "SuggestionOption[] | string",
+                "references": [
+                  {
+                    "name": "SuggestionOption",
+                    "module": "../gcds-input/suggestion-option"
+                  }
+                ]
+              },
+              "readonly": true,
+              "attribute": "options"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "description": "Specifies if a form field is required or not.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "readonly": true,
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "selectedOptions",
+              "description": "Selected options, available for programmatic updates.",
+              "type": {
+                "text": "SuggestionOption[]",
+                "references": [
+                  {
+                    "name": "SuggestionOption",
+                    "module": "../gcds-input/suggestion-option"
+                  }
+                ]
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "validateOn",
+              "description": "Set event to call validator",
+              "type": {
+                "text": "\"blur\" | \"other\" | \"submit\""
+              },
+              "default": "'blur'",
+              "attribute": "validate-on"
+            },
+            {
+              "kind": "field",
+              "name": "validator",
+              "description": "Array of validators",
+              "type": {
+                "text": "(string | ValidatorEntry | Validator<string>)[]",
+                "references": [
+                  {
+                    "name": "Array",
+                    "package": "global:"
+                  },
+                  {
+                    "name": "ValidatorEntry",
+                    "module": "../../validators"
+                  },
+                  {
+                    "name": "Validator",
+                    "module": "../../validators"
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "description": "Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.",
+              "type": {
+                "text": "ValidityState",
+                "references": [
+                  {
+                    "name": "ValidityState",
+                    "package": "global:"
+                  }
+                ]
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "description": "Initial selected values.",
+              "type": {
+                "text": "string | string[]"
+              },
+              "readonly": true,
+              "attribute": "value"
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "return": {
+                "type": {
+                  "text": "Promise<boolean>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSelectedOptions",
+              "description": "Return a copy of the selected option objects.",
+              "return": {
+                "type": {
+                  "text": "Promise<SuggestionOption[]>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    },
+                    {
+                      "name": "SuggestionOption",
+                      "module": "../gcds-input/suggestion-option"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSelectedValues",
+              "description": "Return the selected option values for form and application code.",
+              "return": {
+                "type": {
+                  "text": "Promise<string[]>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getValidationMessage",
+              "return": {
+                "type": {
+                  "text": "Promise<string>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "selectAll",
+              "description": "Select every option and collapse the list.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setFocus",
+              "description": "Focus the search field and open its list of options.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setOptions",
+              "description": "Replace the option list using objects whose keys are labels and values\nare option values, then retain selections that still exist.",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "Record<string, unknown>[]",
+                    "references": [
+                      {
+                        "name": "Promise",
+                        "package": "global:"
+                      },
+                      {
+                        "name": "Array",
+                        "package": "global:"
+                      },
+                      {
+                        "name": "Record",
+                        "package": "global:"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "Promise<void>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    },
+                    {
+                      "name": "Array",
+                      "package": "global:"
+                    },
+                    {
+                      "name": "Record",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setSelectedOptions",
+              "description": "Set selected options, ignoring values that are not in the option list.",
+              "parameters": [
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "SuggestionOption[]",
+                    "references": [
+                      {
+                        "name": "Promise",
+                        "package": "global:"
+                      },
+                      {
+                        "name": "SuggestionOption",
+                        "module": "../gcds-input/suggestion-option"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "Promise<void>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    },
+                    {
+                      "name": "SuggestionOption",
+                      "module": "../gcds-input/suggestion-option"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "unselectAll",
+              "description": "Clear all selected options.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "validate",
+              "description": "Run configured validators against the selected values.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>",
+                  "references": [
+                    {
+                      "name": "Promise",
+                      "package": "global:"
+                    },
+                    {
+                      "name": "HTMLGcdsSelectElement",
+                      "package": "global:"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "gcdsBlur",
+              "description": "Emitted when the input loses focus.",
+              "type": {
+                "text": "CustomEvent<void>"
+              }
+            },
+            {
+              "name": "gcdsChange",
+              "description": "Emitted when the input has changed.",
+              "type": {
+                "text": "CustomEvent<SuggestionOption[]>",
+                "references": [
+                  {
+                    "name": "SuggestionOption",
+                    "module": "../gcds-input/suggestion-option"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "gcdsError",
+              "description": "Emitted when the element is invalid.",
+              "type": {
+                "text": "CustomEvent<object>"
+              }
+            },
+            {
+              "name": "gcdsFocus",
+              "description": "Emitted when the input has focus.",
+              "type": {
+                "text": "CustomEvent<void>"
+              }
+            },
+            {
+              "name": "gcdsInput",
+              "description": "Emitted when the element has received input.",
+              "type": {
+                "text": "CustomEvent<string>"
+              }
+            },
+            {
+              "name": "gcdsValid",
+              "description": "Emitted when the input has a validation error.",
+              "type": {
+                "text": "CustomEvent<object>"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "control"
+            },
+            {
+              "name": "listbox"
+            },
+            {
+              "name": "tag"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GcdsCombobox",
+          "declaration": {
+            "name": "GcdsCombobox"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "gcds-combobox",
+          "declaration": {
+            "name": "GcdsCombobox"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/gcds-container/gcds-container.tsx",
       "declarations": [
         {
@@ -6664,7 +7305,7 @@
               "name": "getNavSize",
               "return": {
                 "type": {
-                  "text": "Promise<\"desktop\" | \"mobile\">",
+                  "text": "Promise<\"mobile\" | \"desktop\">",
                   "references": [
                     {
                       "name": "Promise",
@@ -8002,7 +8643,7 @@
               "name": "getNavSize",
               "return": {
                 "type": {
-                  "text": "Promise<\"desktop\" | \"mobile\">",
+                  "text": "Promise<\"mobile\" | \"desktop\">",
                   "references": [
                     {
                       "name": "Promise",
@@ -8166,7 +8807,7 @@
               "name": "getNavSize",
               "return": {
                 "type": {
-                  "text": "Promise<\"desktop\" | \"mobile\">",
+                  "text": "Promise<\"mobile\" | \"desktop\">",
                   "references": [
                     {
                       "name": "Promise",
