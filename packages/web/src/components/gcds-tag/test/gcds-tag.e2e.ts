@@ -64,7 +64,7 @@ test.describe('gcds-tag a11y tests', () => {
     expect(await isTruncated('short-label')).toBe(false);
     await expect(text('long-label')).toHaveCSS('text-overflow', 'ellipsis');
     await expect(page.locator('#long-label')).toContainText(
-      'This label is far longer than twenty characters',
+      'This label is longer than 20 characters',
     );
   });
 
