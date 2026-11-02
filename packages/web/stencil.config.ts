@@ -76,6 +76,13 @@ export const config: Config = {
       strict: true,
     },
     {
+      // Custom Elements Manifest (community standard) for IDEs, Storybook and other tooling.
+      // Committed so API changes show up in PR diffs, shipped in the npm package
+      // (see "files"), and referenced by "customElements" in package.json.
+      type: 'docs-custom-elements-manifest',
+      file: 'specs/custom-elements.json',
+    },
+    {
       type: 'dist-hydrate-script',
     },
     {

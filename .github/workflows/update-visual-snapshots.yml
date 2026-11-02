@@ -22,9 +22,10 @@ jobs:
           ref: ${{ inputs.branch }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 22
+          node-version-file: .nvmrc
+          check-latest: true
 
       - name: Install dependencies
         run: npm ci

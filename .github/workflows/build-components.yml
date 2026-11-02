@@ -13,15 +13,29 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - uses: actions/setup-node@dda4788290998366da86b6a4f497909644397bb2
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 18
+          node-version-file: .nvmrc
+          check-latest: true
 
       - name: Install repo
         run: npm install
 
       - name: Build gcds-components
         run: npm run build
+
+      - name: Check IDE data files are up to date
+        run: |
+          if ! git diff --exit-code -- packages/web/specs/custom-elements.json packages/web/specs/web-types.json packages/web/specs/vscode-data.json; then
+            echo "::error::custom-elements.json, web-types.json or vscode-data.json is out of date. Run 'npm run build:web' and commit the result."
+            exit 1
+          fi
+
+      - name: Check IDE data files ship in the package
+        working-directory: packages/web
+        run: |
+          npm pack --dry-run --ignore-scripts --json \
+            | node -e "const files = JSON.parse(require('fs').readFileSync(0))[0].files.map(f => f.path); const pkg = require('./package.json'); for (const target of [pkg.customElements, pkg['web-types'], 'specs/vscode-data.json']) { if (!files.includes(target)) { console.error('::error::' + target + ' is not in the npm package'); process.exit(1); } console.log(target + ' is included in the package'); }"
 
   build-storybook:
     name: Build storybook

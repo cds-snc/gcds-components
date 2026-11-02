@@ -1,6 +1,6 @@
 {
   "name": "@gcds-core/components",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "author": "Government of Canada / Gouvernement du Canada",
   "description": "Web components for the GCDS",
   "homepage": "https://design-system.canada.ca/",
@@ -12,10 +12,15 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/gcds/gcds.esm.js",
+  "customElements": "specs/custom-elements.json",
+  "web-types": "specs/web-types.json",
   "files": [
     "dist/",
     "loader/",
-    "hydrate"
+    "hydrate",
+    "specs/custom-elements.json",
+    "specs/web-types.json",
+    "specs/vscode-data.json"
   ],
   "publishConfig": {
     "access": "public"
@@ -26,7 +31,7 @@
   },
   "scripts": {
     "build": "stencil build --docs",
-    "postbuild": "node ./scripts/postbuild.js",
+    "postbuild": "node ./scripts/postbuild.js && node ./scripts/generate-web-types.js && node ./scripts/generate-vscode-data.js",
     "start": "stencil build --dev --watch --serve",
     "pretest": "cd ../.. && npm run patch:stenciljs && npm run build",
     "test": "npm run test:unit && npm run test:e2e",
@@ -97,7 +102,7 @@
     "sass": "^1.43.5",
     "serve": "^14.2.4",
     "stencil-inline-svg": "^1.1.0",
-    "storybook": "^8.6.17",
+    "storybook": "^8.6.19",
     "workbox-build": "^7.0.0"
   },
   "license": "MIT"
