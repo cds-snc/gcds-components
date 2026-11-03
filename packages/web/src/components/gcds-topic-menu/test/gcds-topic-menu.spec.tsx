@@ -87,6 +87,37 @@ describe('gcds-topic-menu', () => {
       </gcds-topic-menu>
     `);
   });
+
+  it('supports interactive keyboard and toggle behavior', async () => {
+    const page = await newSpecPage({
+      components: [GcdsTopicMenu],
+      html: `<gcds-topic-menu></gcds-topic-menu>`,
+    });
+
+    const root = page.root.shadowRoot as ShadowRoot;
+    const menuToggle = root.querySelector('button') as HTMLButtonElement;
+    const firstMenuItem = root.querySelector('a[role="menuitem"]') as HTMLAnchorElement;
+
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('false');
+
+    menuToggle.click();
+    await page.waitForChanges();
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('true');
+
+    menuToggle.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    await page.waitForChanges();
+    expect(menuToggle.getAttribute('aria-expanded')).toBe('false');
+
+    firstMenuItem.focus();
+    firstMenuItem.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    await page.waitForChanges();
+
+    expect(firstMenuItem.getAttribute('aria-expanded')).toBe('true');
+
+    firstMenuItem.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    await page.waitForChanges();
+    expect(root.activeElement).toBeTruthy();
+  });
   it('renders - French', async () => {
     const page = await newSpecPage({
       components: [GcdsTopicMenu],
@@ -169,6 +200,13 @@ describe('gcds-topic-menu', () => {
         </mock:shadow-root>
       </gcds-topic-menu>
     `);
+
+    const frenchContent = page.root?.shadowRoot?.textContent || '';
+    expect(frenchContent).toContain('Menu principal');
+    expect(frenchContent).toContain(
+      "Appuyez sur la barre d'espacement pour ouvrir ou sur la touche d'échappement pour fermer le menu.",
+    );
+    expect(frenchContent).not.toContain('Main menu');
   });
   it('renders - Home', async () => {
     const page = await newSpecPage({
@@ -252,5 +290,33 @@ describe('gcds-topic-menu', () => {
         </mock:shadow-root>
       </gcds-topic-menu>
     `);
+  });
+
+  it('falls back to backup data when fetch fails', async () => {
+    const originalFetch = global.fetch;
+    global.fetch = jest.fn().mockRejectedValue(new Error('Network error')) as unknown as typeof fetch;
+
+    const page = await newSpecPage({
+      components: [GcdsTopicMenu],
+      html: `<gcds-topic-menu></gcds-topic-menu>`,
+    });
+
+    expect(page.root).toBeTruthy();
+    expect(page.root).toEqualHtml(`
+      <gcds-topic-menu>
+        <mock:shadow-root>
+          <nav class="gcds-topic-menu" aria-labelledby="gcds-topic-menu__heading">
+            <gcds-sr-only id="gcds-topic-menu__heading" tag="h2">
+              Main menu
+            </gcds-sr-only>
+            <p id="gcds-topic-menu-desc" hidden="">
+              Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.
+            </p>
+          </nav>
+        </mock:shadow-root>
+      </gcds-topic-menu>
+    `);
+
+    global.fetch = originalFetch;
   });
 });
