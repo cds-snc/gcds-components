@@ -145,9 +145,6 @@
 
         gcds-signature {
           align-self: end;
-          width: var(--gcds-footer-sub-signature-width);
-          min-width: var(--gcds-footer-sub-signature-min-width);
-          max-height: var(--gcds-footer-sub-signature-max-height);
           margin: var(--gcds-footer-sub-signature-margin);
         }
       }
@@ -163,18 +160,6 @@
       .gcds-footer__main,
       .gcds-footer__sub {
         padding: var(--gcds-footer-band-padding-mobile);
-      }
-    }
-  }
-
-  @container sub (width <= 30em) {
-    :host .gcds-footer__sub .sub__container {
-      slot[name='wordmark'],
-      .sub__wordmark {
-        gcds-signature {
-          width: var(--gcds-footer-sub-signature-sm-width);
-          max-height: var(--gcds-footer-sub-signature-sm-max-height);
-        }
       }
     }
   }
