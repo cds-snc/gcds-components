@@ -409,6 +409,128 @@ export declare interface GcdsCheckboxes extends Components.GcdsCheckboxes {
 
 
 @ProxyCmp({
+  inputs: ['autofocus', 'disabled', 'enableSelectAll', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'options', 'required', 'selectedOptions', 'validateOn', 'validator', 'validity', 'value'],
+  methods: ['setFocus', 'validate', 'getSelectedValues', 'getSelectedOptions', 'setSelectedOptions', 'setOptions', 'selectAll', 'unselectAll', 'checkValidity', 'getValidationMessage'],
+  outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']
+})
+@Component({
+  selector: 'gcds-combobox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['autofocus', 'disabled', 'enableSelectAll', 'errorMessage', 'form', 'hideLabel', 'hint', 'inputId', 'label', 'name', 'options', 'required', 'selectedOptions', 'validateOn', 'validator', 'validity', 'value'],
+  outputs: ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid'],
+  standalone: false,
+})
+export class GcdsCombobox {
+  protected el: HTMLGcdsComboboxElement;
+    /**
+   * Id attribute for the combobox input element.
+   */
+  set inputId(_: Components.GcdsCombobox['inputId']) {};
+    /**
+   * Name attribute for the combobox input element.
+   */
+  set name(_: Components.GcdsCombobox['name']) {};
+    /**
+   * Form field label
+   */
+  set label(_: Components.GcdsCombobox['label']) {};
+    /**
+   * If true, the label will be visually hidden but still accessible to screen readers. @default false
+   */
+  set hideLabel(_: Components.GcdsCombobox['hideLabel']) {};
+    /**
+   * Hint displayed below the label and above the input field.
+   */
+  set hint(_: Components.GcdsCombobox['hint']) {};
+    /**
+   * JSON option array, or URL returning objects with `name` and `tag` fields.
+   */
+  set options(_: Components.GcdsCombobox['options']) {};
+    /**
+   * Specifies if a form field is required or not. @default false
+   */
+  set required(_: Components.GcdsCombobox['required']) {};
+    /**
+   * Specifies if an input element is disabled or not. @default false
+   */
+  set disabled(_: Components.GcdsCombobox['disabled']) {};
+    /**
+   * Specifies if an input element should be focused on component render. @default false
+   */
+  set autofocus(_: Components.GcdsCombobox['autofocus']) {};
+    /**
+   * The ID of the form that the input field belongs to.
+   */
+  set form(_: Components.GcdsCombobox['form']) {};
+    /**
+   * If true, a "Select All" option will be displayed at the top of the list of options. @default false
+   */
+  set enableSelectAll(_: Components.GcdsCombobox['enableSelectAll']) {};
+    /**
+   * Error message for an invalid input element.
+   */
+  set errorMessage(_: Components.GcdsCombobox['errorMessage']) {};
+    /**
+   * Initial selected values.
+   */
+  set value(_: Components.GcdsCombobox['value']) {};
+    /**
+   * Selected options, available for programmatic updates. @default []
+   */
+  set selectedOptions(_: Components.GcdsCombobox['selectedOptions']) {};
+    /**
+   * Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in. @readonly 
+   */
+  set validity(_: Components.GcdsCombobox['validity']) {};
+    /**
+   * Array of validators
+   */
+  set validator(_: Components.GcdsCombobox['validator']) {};
+    /**
+   * Set event to call validator @default 'blur'
+   */
+  set validateOn(_: Components.GcdsCombobox['validateOn']) {};
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, ['gcdsChange', 'gcdsInput', 'gcdsFocus', 'gcdsBlur', 'gcdsError', 'gcdsValid']);
+  }
+}
+
+
+import type { SuggestionOption as IGcdsComboboxSuggestionOption } from '@gcds-core/components';
+
+export declare interface GcdsCombobox extends Components.GcdsCombobox {
+  /**
+   * Emitted when the input has changed.
+   */
+  gcdsChange: EventEmitter<CustomEvent<IGcdsComboboxSuggestionOption[]>>;
+  /**
+   * Emitted when the element has received input.
+   */
+  gcdsInput: EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when the input has focus.
+   */
+  gcdsFocus: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  gcdsBlur: EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the element is invalid.
+   */
+  gcdsError: EventEmitter<CustomEvent<object>>;
+  /**
+   * Emitted when the input has a validation error.
+   */
+  gcdsValid: EventEmitter<CustomEvent<object>>;
+}
+
+
+@ProxyCmp({
   inputs: ['alignment', 'border', 'layout', 'margin', 'padding', 'size', 'tag']
 })
 @Component({

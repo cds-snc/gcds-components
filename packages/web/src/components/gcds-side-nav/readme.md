@@ -18,13 +18,13 @@ A side navigation is a vertical list of page links on the left side of the scree
 
 ## Methods
 
-### `getNavSize() => Promise<"desktop" | "mobile">`
+### `getNavSize() => Promise<"mobile" | "desktop">`
 
 
 
 #### Returns
 
-Type: `Promise<"desktop" | "mobile">`
+Type: `Promise<"mobile" | "desktop">`
 
 
 
