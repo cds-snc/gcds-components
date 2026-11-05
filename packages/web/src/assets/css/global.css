@@ -1,21 +1,124 @@
-/* Import GC Fonts (Lato + Noto Sans) */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+Mono:wght@100..900&display=swap');
-
-/* Import GC Design System Tokens */
-@import '~@gcds-core/tokens/build/web/css/tokens.css';
-
 /* Import GC Design System Icon Font */
 @font-face {
   font-family: 'gcds-icons';
   src:
-    url('https://cdn.design-system.canada.ca/@gcds-core/fonts@1.1.1/icons/gcds-icons.ttf')
-      format('truetype'),
-    url('https://cdn.design-system.canada.ca/@gcds-core/fonts@1.1.1/icons/gcds-icons.woff')
-      format('woff');
+  url('./assets/fonts/gcds-icons.ttf')
+  format('truetype'),
+  url('./assets/fonts/gcds-icons.woff')
+  format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
+
+/* Import GC Fonts (Lato + Noto Sans) */
+/* Lato Regular */
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/gcds-lato.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Lato Regular Italic */
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/gcds-lato-italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Noto Sans Light */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+/* Noto Sans Regular */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* Noto Sans Medium */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* Noto Sans SemiBold */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Noto Sans Bold */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Noto Sans Light Italic */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-light-italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+/* Noto Sans Regular Italic */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-regular-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+/* Noto Sans Medium Italic */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-medium-italic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+/* Noto Sans SemiBold Italic */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-semibold-italic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+/* Noto Sans Bold Italic */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/gcds-noto-sans-bold-italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  src: url('./assets/fonts/gcds-noto-sans-mono.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Import GC Design System Tokens */
+@import '~@gcds-core/tokens/build/web/css/tokens.css';
 
 /* Add fade-in animation to improve layout shift  */
 @keyframes fade {
