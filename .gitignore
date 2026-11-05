@@ -57,3 +57,5 @@ packages/react-ssr/gcds.css
 
 # Font files
 packages/web/assets
+packages/vue/assets
+packages/react/assets

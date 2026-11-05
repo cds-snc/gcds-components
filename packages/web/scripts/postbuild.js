@@ -4,7 +4,9 @@ const path = require('path');
 
 // Copy CSS files
 fs.copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');
+fs.cpSync('./assets', '../react/assets', { recursive: true });
 fs.copyFileSync('./dist/gcds/gcds.css', '../vue/gcds.css');
+fs.cpSync('./assets', '../vue/assets', { recursive: true });
 
 // ============================================================================
 // COMPONENTS.JSON PATH SANITIZATION
