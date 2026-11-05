@@ -159,6 +159,44 @@ export class GcdsCard {
     return true;
   }
 
+  /*
+   * The description sits above the card link's overlay so nested content,
+   * such as an abbr tooltip, stays reachable. Pass a click on its text to the
+   * card link so the whole card stays clickable, unless the click landed on
+   * something interactive, a modifier key is held or the user was selecting
+   * text. The original click stops here, so listeners get one click event.
+   */
+  private handleDescriptionClick = (e: MouseEvent) => {
+    for (const node of e.composedPath()) {
+      if (node === e.currentTarget) break;
+      if (
+        node instanceof HTMLElement &&
+        node.matches(
+          'a, button, input, select, textarea, label, summary, [role="button"], [tabindex]:not([tabindex="-1"]), [contenteditable]',
+        )
+      ) {
+        return;
+      }
+    }
+
+    if (
+      e.defaultPrevented ||
+      e.ctrlKey ||
+      e.metaKey ||
+      e.shiftKey ||
+      e.altKey ||
+      window.getSelection()?.toString()
+    ) {
+      return;
+    }
+
+    e.stopPropagation();
+    this.el.shadowRoot
+      .querySelector('gcds-link')
+      ?.shadowRoot?.querySelector('a')
+      ?.click();
+  };
+
   /**
    * Whether the consumer supplied their own title or description through a slot.
    * Captured once, before any mirror node is added, so that the mirrors this
@@ -293,13 +331,21 @@ export class GcdsCard {
   private get renderDescription() {
     if (this.hasSlottedDescription) {
       return (
-        <div class="gcds-card__description">
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        <div
+          class="gcds-card__description"
+          onClick={this.handleDescriptionClick}
+        >
           <slot></slot>
         </div>
       );
     } else if (this.description) {
       return (
-        <div class="gcds-card__description">
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        <div
+          class="gcds-card__description"
+          onClick={this.handleDescriptionClick}
+        >
           <gcds-text margin-bottom="0">
             <slot>{this.description}</slot>
           </gcds-text>
