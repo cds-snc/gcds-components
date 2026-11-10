@@ -141,6 +141,14 @@ test.describe('gcds-top-nav', () => {
       await expect(activeElementText).toBe(step.expected);
     }
   });
+  test('Tab leaves nav between 48em and 64em', async ({ page }) => {
+    await page.setViewportSize({ width: 800, height: 600 });
+    await page.locator('gcds-top-nav').waitFor({ state: 'visible' });
+    // focus "Contact" (last top-level item), then Tab out
+    await page.locator('gcds-nav-group').last().evaluate(el => (el as any).focusTrigger());
+    await page.keyboard.press('Tab');
+    await expect(page.locator('gcds-nav-group').last()).not.toBeFocused();
+  });
 });
 
 /**
