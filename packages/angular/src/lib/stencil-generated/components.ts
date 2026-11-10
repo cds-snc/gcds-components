@@ -2296,6 +2296,38 @@ export declare interface GcdsTable extends Components.GcdsTable {
 
 
 @ProxyCmp({
+  inputs: ['color', 'size']
+})
+@Component({
+  selector: 'gcds-tag',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'size'],
+  standalone: false,
+})
+export class GcdsTag {
+  protected el: HTMLGcdsTagElement;
+    /**
+   * Sets the colour of the tag.
+Tag colours are decorative and don't carry meaning. @default 'gray'
+   */
+  set color(_: Components.GcdsTag['color']) {};
+    /**
+   * Sets the size of the tag. @default 'regular'
+   */
+  set size(_: Components.GcdsTag['size']) {};
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface GcdsTag extends Components.GcdsTag {}
+
+
+@ProxyCmp({
   inputs: ['characterLimit', 'display', 'marginBottom', 'marginTop', 'size', 'textRole']
 })
 @Component({

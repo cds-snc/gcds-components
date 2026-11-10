@@ -3429,6 +3429,57 @@
       ]
     },
     {
+      "name": "gcds-tag",
+      "description": {
+        "kind": "markdown",
+        "value": "A tag is a static label used to categorize, identify, or describe content.\n\n**Slots**\n- `default`: Slot for the tag text. Text longer than 20 characters is truncated with an ellipsis."
+      },
+      "attributes": [
+        {
+          "name": "color",
+          "description": {
+            "kind": "markdown",
+            "value": "Sets the colour of the tag.\nTag colours are decorative and don't carry meaning.\n\nType: `\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"`"
+          },
+          "values": [
+            {
+              "name": "blue"
+            },
+            {
+              "name": "gray"
+            },
+            {
+              "name": "green"
+            },
+            {
+              "name": "purple"
+            },
+            {
+              "name": "red"
+            },
+            {
+              "name": "yellow"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": {
+            "kind": "markdown",
+            "value": "Sets the size of the tag.\n\nType: `\"regular\" | \"small\"`"
+          },
+          "values": [
+            {
+              "name": "regular"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "gcds-text",
       "description": {
         "kind": "markdown",
