@@ -1,8 +1,16 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
-## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) 
-Released on: 2026-10-21
+## [1.7.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.7.0...@gcds-core/components-v1.7.1) (2026-11-10)
+
+
+### :bug: :wrench: Bug Fixes
+
+* fix signature size for mobile footers ([#1473](https://github.com/cds-snc/gcds-components/issues/1473)) ([367c1c7](https://github.com/cds-snc/gcds-components/commit/367c1c744f1f43c36a237113df71b7514fc02112))
+* **gcds-card:** register clicks on the card description text ([#1471](https://github.com/cds-snc/gcds-components/issues/1471)) ([79a0d28](https://github.com/cds-snc/gcds-components/commit/79a0d28d02cc90b16a3c000c7da442acdcc80cec))
+* **gcds-top-nav + gcds-side-nav:** focus trap on specific window size ([#1479](https://github.com/cds-snc/gcds-components/issues/1479)) ([5bd57b5](https://github.com/cds-snc/gcds-components/commit/5bd57b543843858a6dc2b7bc8d66cce80a515178))
+
+## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) (2026-10-21)
 
 
 ### :rocket: New Features
@@ -15,8 +23,7 @@ Released on: 2026-10-21
 
 * **gcds-error-summary:** Adding missing styling to the list markers. ([#1421](https://github.com/cds-snc/gcds-components/issues/1421)) ([a688ca0](https://github.com/cds-snc/gcds-components/commit/a688ca0fd80fb62a76958ceeb1b95366ec57866a))
 
-## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) 
-Released on: 2026-09-08
+## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0) (2026-09-08)
 
 
 ### :rocket: New Features
@@ -32,8 +39,7 @@ Released on: 2026-09-08
 * **gcds-file-uploader:** add focus management when removing files ([#1407](https://github.com/cds-snc/gcds-components/issues/1407)) ([a99f7a0](https://github.com/cds-snc/gcds-components/commit/a99f7a030a1860115d2da9f2621cd18d8efbe083))
 * **gcds-header:** Responsive styling of account slot ([#1394](https://github.com/cds-snc/gcds-components/issues/1394)) ([9ce7927](https://github.com/cds-snc/gcds-components/commit/9ce79274f91d91a4dfad4670cf10f9a4b3560bfa))
 
-## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) 
-Released on: 2026-08-12
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0) (2026-08-12)
 
 
 ### :rocket: New Features
@@ -50,8 +56,7 @@ Released on: 2026-08-12
 
 * **gcds-signature:** Adjusted signature sizing to align with FIP requirements ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
 
-## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) 
-Released on: 2026-07-27
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
 
 
 ### :rocket: New Features
@@ -68,8 +73,7 @@ Released on: 2026-07-27
   * Update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 * **gcds-topic-menu:** update instructions in an aria-describedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
 
-## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) 
-Released on: 2026-06-08
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1) (2026-06-08)
 
 
 ### :bug: :wrench: Bug Fixes
