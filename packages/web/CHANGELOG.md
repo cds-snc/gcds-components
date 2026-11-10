@@ -1,6 +1,15 @@
 ([Français](#journal-des-modifications))
 # Changelog
 
+## [1.7.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.7.0...@gcds-core/components-v1.7.1) (2026-11-10)
+
+
+### :bug: :wrench: Bug Fixes
+
+* fix signature size for mobile footers ([#1473](https://github.com/cds-snc/gcds-components/issues/1473)) ([367c1c7](https://github.com/cds-snc/gcds-components/commit/367c1c744f1f43c36a237113df71b7514fc02112))
+* **gcds-card:** register clicks on the card description text ([#1471](https://github.com/cds-snc/gcds-components/issues/1471)) ([79a0d28](https://github.com/cds-snc/gcds-components/commit/79a0d28d02cc90b16a3c000c7da442acdcc80cec))
+* **gcds-top-nav + gcds-side-nav:** focus trap on specific window size ([#1479](https://github.com/cds-snc/gcds-components/issues/1479)) ([5bd57b5](https://github.com/cds-snc/gcds-components/commit/5bd57b543843858a6dc2b7bc8d66cce80a515178))
+
 ## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) (2026-10-21)
 
 
