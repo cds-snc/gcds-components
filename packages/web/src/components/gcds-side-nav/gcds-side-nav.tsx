@@ -56,7 +56,7 @@ export class GcdsSideNav {
   @Listen('focusin', { target: 'document' })
   async focusInListener(e) {
     if (this.el.contains(e.target) && !this.navSize) {
-      const mediaQuery = window.matchMedia('screen and (min-width: 64em)');
+      const mediaQuery = window.matchMedia('screen and (min-width: 48em)');
       const nav = this.el as HTMLGcdsSideNavElement;
       const mobileTrigger = this.mobile;
 
