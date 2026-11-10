@@ -27,6 +27,25 @@ test.describe('gcds-card', () => {
     expect(gcdsClick.events).toHaveLength(1);
     expect(click.events).toHaveLength(1);
   });
+
+  test('follows the card link when the description text is clicked', async ({
+    page,
+  }) => {
+    await page.goto('/components/gcds-card/test/gcds-card.e2e.html');
+
+    const gcdsClick = await page.spyOnEvent('gcdsClick');
+    const click = await page.spyOnEvent('click');
+
+    await page
+      .locator('gcds-card')
+      .getByText('This is a card with an img and possibly more')
+      .first()
+      .click();
+
+    expect(gcdsClick.events).toHaveLength(1);
+    expect(click.events).toHaveLength(1);
+    await expect(page).toHaveURL(/#red$/);
+  });
 });
 
 /*
