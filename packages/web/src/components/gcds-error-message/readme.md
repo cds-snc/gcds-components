@@ -28,6 +28,7 @@ An error message is a description of a problem blocking a user goal.
 ### Used by
 
  - [gcds-checkboxes](../gcds-checkboxes)
+ - [gcds-combobox](../gcds-combobox)
  - [gcds-date-input](../gcds-date-input)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
@@ -46,6 +47,7 @@ graph TD;
   gcds-error-message --> gcds-text
   gcds-error-message --> gcds-icon
   gcds-checkboxes --> gcds-error-message
+  gcds-combobox --> gcds-error-message
   gcds-date-input --> gcds-error-message
   gcds-file-uploader --> gcds-error-message
   gcds-input --> gcds-error-message

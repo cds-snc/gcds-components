@@ -19,13 +19,13 @@ A top navigation is a horizontal list of page links.
 
 ## Methods
 
-### `getNavSize() => Promise<"desktop" | "mobile">`
+### `getNavSize() => Promise<"mobile" | "desktop">`
 
 
 
 #### Returns
 
-Type: `Promise<"desktop" | "mobile">`
+Type: `Promise<"mobile" | "desktop">`
 
 
 

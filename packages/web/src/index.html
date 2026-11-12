@@ -503,6 +503,35 @@
           required
         ></gcds-file-uploader>
 
+        <gcds-combobox
+          label="Fruit(s)"
+          name="fruits-combobox"
+          input-id="fruits-combobox"
+          >
+          <select slot="options">
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="orange">Orange</option>
+            <option value="grape">Sweet Grape</option>
+          </select>
+        </gcds-combobox>
+
+        <gcds-combobox
+          label="Vegetable(s)"
+          name="vegetables-combobox"
+          input-id="vegetables-combobox"
+          hint="Select at least one vegetable."
+          required
+          enable-select-all
+          options='[
+            {"cucumber": "Cucumber"},
+            {"carrot": "Carrot"},
+            {"broccoli": "Broccoli"},
+            {"spinach": "Baby Spinach"}
+          ]'
+          >
+        </gcds-combobox>
+
         <br />
 
         <gcds-button type="submit"> Submit </gcds-button>
