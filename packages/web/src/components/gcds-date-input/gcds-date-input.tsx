@@ -160,6 +160,10 @@ export class GcdsDateInput {
    */
   @Prop({ reflect: true }) min?: string;
 
+  /**
+   * Visually hide the legend
+   */
+  @Prop({ reflect: true }) hideLegend?: boolean;
 
   /**
    * The ID of the form that the date-input field belongs to.
@@ -664,6 +668,7 @@ export class GcdsDateInput {
       hasError,
       autocomplete,
       form,
+      hideLegend,
     } = this;
 
     const requiredAttr = {};
@@ -814,7 +819,10 @@ export class GcdsDateInput {
             {...fieldsetAttrs}
             ref={el => (this.fieldset = el as HTMLFieldSetElement)}
           >
-            <legend id="date-input-legend">
+            <legend
+              id="date-input-legend"
+              class={`${hideLegend ? 'legend--hidden' : ''}`}
+            >
               {legend}
               {required ? (
                 <span class="legend__required">{i18n[lang].required}</span>
