@@ -329,6 +329,10 @@ export namespace Components {
          */
         "getValidationMessage": () => Promise<string>;
         /**
+          * Visually hide the legend
+         */
+        "hideLegend"?: boolean;
+        /**
           * Hint displayed below the legend and above form fields.
          */
         "hint"?: string;
@@ -2761,6 +2765,10 @@ declare namespace LocalJSX {
          */
         "format": 'full' | 'compact' | 'iso';
         /**
+          * Visually hide the legend
+         */
+        "hideLegend"?: boolean;
+        /**
           * Hint displayed below the legend and above form fields.
          */
         "hint"?: string;
@@ -4283,6 +4291,7 @@ declare namespace LocalJSX {
         "autofocus": boolean;
         "max": string;
         "min": string;
+        "hideLegend": boolean;
         "form": string;
         "validateOn": 'blur' | 'submit' | 'other';
     }

@@ -813,6 +813,14 @@
           ]
         },
         {
+          "name": "hide-legend",
+          "description": {
+            "kind": "markdown",
+            "value": "Visually hide the legend\n\nType: `boolean`"
+          },
+          "valueSet": "v"
+        },
+        {
           "name": "hint",
           "description": {
             "kind": "markdown",

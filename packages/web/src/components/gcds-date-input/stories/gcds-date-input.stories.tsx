@@ -64,6 +64,15 @@ export default {
         required: true,
       },
     },
+    hideLegend: {
+      name: 'hide-legend',
+      control: { type: 'select' },
+      options: [false, true],
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
     required: {
       control: { type: 'select' },
       options: [false, true],
@@ -161,6 +170,7 @@ const Template = args =>
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
@@ -181,6 +191,7 @@ const Template = args =>
   ${args.errorMessage ? `errorMessage="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
@@ -201,6 +212,7 @@ const TemplatePlayground = args => `
   ${args.errorMessage ? `error-message="${args.errorMessage}"` : null}
   ${args.required ? `required` : null}
   ${args.disabled ? `disabled` : null}
+  ${args.hideLegend ? `hide-legend` : null}
   ${args.form ? `form="${args.form}"` : null}
   ${args.max ? `max="${args.max}"` : null}
   ${args.min ? `min="${args.min}"` : null}
@@ -403,6 +415,24 @@ Disabled.args = {
   lang: 'en',
   validateOn: '',
 };
+
+// ------ Date input Hide Legend ------
+
+export const HideLegend = Template.bind({});
+HideLegend.args = {
+  name: 'hidelegend-default',
+  legend: 'Date input',
+  format: 'full',
+  value: '',
+  hint: '',
+  errorMessage: '',
+  required: false,
+  disabled: false,
+  hideLegend: true,
+  lang: 'en',
+  validateOn: '',
+};
+
 // ------ Date input Format Form ------
 
 export const Form = Template.bind({});
