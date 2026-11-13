@@ -2,6 +2,85 @@
 const fs = require('fs');
 const path = require('path');
 
+// ============================================================================
+// VERSION BANNER
+// ============================================================================
+// File names in dist/gcds aren't versioned, so teams hosting their own copy
+// (e.g. Canada.ca) can't tell releases apart. Prepend a license banner with
+// the package name, version and build date (UTC, ISO 8601) to the main
+// distribution files, in the same style as Vue, React and Bootstrap. "/*!"
+// tells minifiers (cssnano, terser) to keep it if the file is re-minified.
+// Runs before the CSS copy below so the react/vue copies get it too.
+//
+//   /*!
+//    * @gcds-core/components v1.7.0 (2026-11-12)
+//    * https://design-system.canada.ca/
+//    * (c) Canadian Digital Service – Service numérique canadien
+//    * @license MIT
+//    */
+
+const pkg = require('../package.json');
+const BANNER_FILES = ['./dist/gcds/gcds.css', './dist/gcds/gcds.esm.js'];
+// Same copyright holder as LICENSE (and the gcds-tokens/gcds-utility repos)
+const COPYRIGHT_HOLDER = 'Canadian Digital Service – Service numérique canadien';
+// CSS @charset must stay the very first thing in the file
+const CHARSET_PATTERN = /^@charset "[^"]*";\n?/i;
+
+// Matches a banner added by a previous run, so re-running doesn't stack them
+const escapedName = pkg.name.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
+const BANNER_PATTERN = new RegExp(
+  `^/\\*!\\n \\* ${escapedName} v.*\\n(?: \\*.*\\n)*? \\*/\\n`,
+);
+
+function buildBanner() {
+  const buildDate = new Date().toISOString().slice(0, 10);
+  return [
+    '/*!',
+    ` * ${pkg.name} v${pkg.version} (${buildDate})`,
+    ` * ${pkg.homepage}`,
+    ` * (c) ${COPYRIGHT_HOLDER}`,
+    ` * @license ${pkg.license}`,
+    ' */',
+    '',
+  ].join('\n');
+}
+
+const countLines = text => (text.match(/\n/g) || []).length;
+
+function addVersionBanner(filePath, banner) {
+  if (!fs.existsSync(filePath)) {
+    console.log(`⚠️  ${filePath} not found, skipping version banner`);
+    return;
+  }
+
+  const original = fs.readFileSync(filePath, 'utf8');
+  const charset = original.match(CHARSET_PATTERN)?.[0] || '';
+  const content = original.slice(charset.length);
+  const oldBanner = content.match(BANNER_PATTERN)?.[0] || '';
+  const prefix = charset && !charset.endsWith('\n') ? `${charset}\n` : charset;
+  fs.writeFileSync(filePath, prefix + banner + content.slice(oldBanner.length));
+
+  // The banner pushes the code down, so shift the source map to match
+  // (each ";" at the start of "mappings" is one empty generated line).
+  // Skipped after an @charset line, where the lines aren't at the start.
+  const mapPath = `${filePath}.map`;
+  const shift = countLines(banner) - countLines(oldBanner);
+  if (!charset && shift !== 0 && fs.existsSync(mapPath)) {
+    const map = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
+    map.mappings =
+      shift > 0 ? ';'.repeat(shift) + map.mappings : map.mappings.slice(-shift);
+    fs.writeFileSync(mapPath, JSON.stringify(map));
+  }
+}
+
+try {
+  const banner = buildBanner();
+  BANNER_FILES.forEach(file => addVersionBanner(file, banner));
+  console.log(`✅ Added version banner:\n${banner}`);
+} catch (error) {
+  console.error('❌ Error adding version banner:', error.message);
+}
+
 // Copy CSS files
 fs.copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');
 fs.copyFileSync('./dist/gcds/gcds.css', '../vue/gcds.css');
