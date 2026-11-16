@@ -10,7 +10,7 @@ import {
   EventEmitter,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
@@ -91,6 +91,10 @@ export class GcdsErrorSummary {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Queue of erros
@@ -178,23 +182,10 @@ export class GcdsErrorSummary {
     element.focus();
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
-    this.updateLang();
     this.listenChanged();
 
     // Format error-links string / object

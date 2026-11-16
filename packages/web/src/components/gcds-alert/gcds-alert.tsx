@@ -6,9 +6,10 @@ import {
   Host,
   Prop,
   State,
+  Watch,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
+import { assignLanguage, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 import { IconNames } from '../gcds-icon/gcds-icon';
 
@@ -72,6 +73,10 @@ export class GcdsAlert {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Events
@@ -120,23 +125,9 @@ export class GcdsAlert {
     }, 5000);
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
   }
 
   componentDidLoad() {

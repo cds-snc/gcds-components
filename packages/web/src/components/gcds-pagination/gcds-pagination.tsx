@@ -10,7 +10,7 @@ import {
   h,
 } from '@stencil/core';
 
-import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
+import { assignLanguage, emitEvent } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import { constructHref, constructClasses } from './utils/render';
 
@@ -110,10 +110,11 @@ export class GcdsPagination {
    */
   @State() lang: string;
   @Watch('lang')
-  watchLang() {
+  watchLang(newValue: string) {
     if (this.display == 'list') {
       this.configureListPagination();
     }
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
   }
 
   /**
@@ -333,23 +334,9 @@ export class GcdsPagination {
     }
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     if (this.url && typeof this.url == 'string') {
       this.urlObject = JSON.parse(this.url);

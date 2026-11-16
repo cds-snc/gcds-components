@@ -251,6 +251,10 @@ export class GcdsCheckboxes {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * State to track validation on properties
@@ -407,16 +411,6 @@ export class GcdsCheckboxes {
 
       // Set input title when HTML error occruring
       this.checkboxTitle = validationMessage;
-    }
-  }
-
-  /*
-   * Observe lang attribute change
-   */
-  @Watch('lang')
-  watchLang(newValue, oldValue) {
-    if (newValue !== oldValue) {
-      this.lang = newValue;
     }
   }
 

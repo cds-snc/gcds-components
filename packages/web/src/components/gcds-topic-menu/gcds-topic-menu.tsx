@@ -7,10 +7,11 @@ import {
   Listen,
   Fragment,
   Prop,
+  Watch,
   h,
 } from '@stencil/core';
 import createDOMPurify, { type DOMPurify } from 'dompurify';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import backup from './backup/backup.min';
 
@@ -68,6 +69,10 @@ export class GcdsTopicMenu {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Queue of nav items for keyboard navigation
@@ -411,24 +416,10 @@ export class GcdsTopicMenu {
     }
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = assignLanguage(this.el);
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
     const validatedLang = this.getValidatedLang();
-
-    this.updateLang();
 
     try {
       const response = await fetch(

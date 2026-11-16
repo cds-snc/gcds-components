@@ -14,7 +14,6 @@ import {
 } from '@stencil/core';
 import {
   assignLanguage,
-  observerConfig,
   isValidDate,
   logError,
   handleValidationResult,
@@ -228,6 +227,10 @@ export class GcdsDateInput {
    * Language of rendered date input
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Events
@@ -489,18 +492,6 @@ export class GcdsDateInput {
   }
 
   /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
-  /*
    * Block non-numeric keys in year and day inputs
    * This replicates how a number input would function
    */
@@ -616,8 +607,6 @@ export class GcdsDateInput {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     // Assign required validator if needed
     requiredValidator(this.el, 'date-input');

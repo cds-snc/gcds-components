@@ -8,8 +8,9 @@ import {
   Event,
   EventEmitter,
   Fragment,
+  Watch,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 /**
@@ -76,29 +77,19 @@ export class GcdsHeader {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Current size state based on widnow size
    */
   @State() navSize: 'desktop' | 'mobile' = 'mobile';
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     if (this.isBrowser) {
       this.mql = window.matchMedia('(max-width: 480px)');

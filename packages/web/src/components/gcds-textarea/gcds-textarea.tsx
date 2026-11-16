@@ -17,7 +17,6 @@ import {
   assignLanguage,
   handleValidationResult,
   inheritAttributes,
-  observerConfig,
   formatHTMLErrorMessage,
 } from '../../utils/utils';
 import {
@@ -218,6 +217,10 @@ export class GcdsTextarea {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Events
@@ -441,23 +444,9 @@ export class GcdsTextarea {
     this.textareaTitle = validationMessage;
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     this.validateDisabledTextarea();
     this.validateHasError();

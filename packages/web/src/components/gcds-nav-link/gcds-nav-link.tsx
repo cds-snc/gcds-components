@@ -7,9 +7,10 @@ import {
   Method,
   Event,
   EventEmitter,
+  Watch,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
+import { assignLanguage, emitEvent } from '../../utils/utils';
 
 /**
  * Navigation link within a navigation group or menu, allowing users to navigate to different sections of a website or application.
@@ -55,6 +56,10 @@ export class GcdsNavLink {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Style of nav to render based on parent
@@ -69,23 +74,9 @@ export class GcdsNavLink {
     this.linkElement.focus();
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     if (this.el.closest('gcds-top-nav')) {
       if (this.el.parentNode.nodeName == 'GCDS-TOP-NAV') {

@@ -16,7 +16,6 @@ import {
   assignLanguage,
   handleValidationResult,
   inheritAttributes,
-  observerConfig,
   formatHTMLErrorMessage,
   logError,
   handleErrors,
@@ -302,6 +301,10 @@ export class GcdsInput {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Watch HTML attributes to inherit changes
@@ -517,23 +520,9 @@ export class GcdsInput {
     this.inputTitle = validationMessage;
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     this.validateSuggestions();
     this.validateDisabledInput();

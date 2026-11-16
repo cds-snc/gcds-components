@@ -1,5 +1,5 @@
 import { Component, Host, Element, Watch, State, Prop, h } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
 import SignatureEn from './assets/sig-blk-en.svg';
@@ -57,17 +57,9 @@ export class GcdsSignature {
    * Language of rendered component
    */
   @State() lang: string;
-
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
   }
 
   async componentWillLoad() {
@@ -76,8 +68,6 @@ export class GcdsSignature {
 
     this.validateType;
     this.validateVariant;
-
-    this.updateLang();
   }
 
   private get selectSVG() {

@@ -8,11 +8,11 @@ import {
   Event,
   EventEmitter,
   Listen,
+  Watch,
   h,
 } from '@stencil/core';
 import {
   assignLanguage,
-  observerConfig,
   emitEvent,
   closestElement,
 } from '../../utils/utils';
@@ -72,6 +72,10 @@ export class GcdsNavGroup {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Style of nav to render based on parent
@@ -147,23 +151,9 @@ export class GcdsNavGroup {
     }
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     if (this.el.parentNode.nodeName == 'GCDS-TOP-NAV') {
       // Set the navStyle to 'dropdown' and add a class for alignment if specified

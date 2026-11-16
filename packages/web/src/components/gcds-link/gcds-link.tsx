@@ -9,7 +9,7 @@ import {
   State,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -110,6 +110,10 @@ export class GcdsLink {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Events
@@ -130,18 +134,6 @@ export class GcdsLink {
    */
   @Event() gcdsClick!: EventEmitter<string>;
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   componentWillLoad() {
     // Validate attributes and set defaults
     this.validateLinkRole(this.linkRole);
@@ -154,8 +146,6 @@ export class GcdsLink {
 
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
   }
 
   /**

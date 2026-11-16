@@ -249,9 +249,9 @@ export class GcdsTable {
   }
 
   @Watch('lang')
-  onLangChange(newVal: string) {
+  onLangChange(newValue: string) {
     if (this.isInitializing) return;
-    this.lang = newVal;
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
   }
 
   // ─── Helpers ──────────────────────────────────────────────────────────────

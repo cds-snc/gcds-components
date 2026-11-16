@@ -6,9 +6,10 @@ import {
   State,
   Listen,
   Method,
+  Watch,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import { handleKeyDownNav, getNavItems } from '../../utils/menus/utils';
 import I18N from './i18n/i18n';
 
@@ -47,6 +48,10 @@ export class GcdsTopNav {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Queue of nav items for keyboard navigation
@@ -149,18 +154,6 @@ export class GcdsTopNav {
   }
 
   /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
-  /*
    * Get current navSize state
    */
   @Method()
@@ -196,8 +189,6 @@ export class GcdsTopNav {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
   }
 
   render() {

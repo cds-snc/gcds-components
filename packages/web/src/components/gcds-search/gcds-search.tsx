@@ -9,7 +9,7 @@ import {
   h,
   Watch,
 } from '@stencil/core';
-import { assignLanguage, observerConfig, emitEvent } from '../../utils/utils';
+import { assignLanguage, emitEvent } from '../../utils/utils';
 import I18N from './i18n/I18N';
 
 /**
@@ -113,6 +113,10 @@ export class GcdsSearch {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Array of suggested search terms
@@ -126,26 +130,11 @@ export class GcdsSearch {
     customEvent.emit(this.value);
   };
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
 
     this.watchSuggestedHandler();
-
-    // Observe lang attribute changes
-    this.updateLang();
   }
 
   render() {

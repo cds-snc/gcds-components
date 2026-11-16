@@ -9,7 +9,7 @@ import {
   State,
   h,
 } from '@stencil/core';
-import { assignLanguage, observerConfig } from '../../utils/utils';
+import { assignLanguage } from '../../utils/utils';
 import { inheritAttributes, emitEvent } from '../../utils/utils';
 import i18n from './i18n/i18n';
 
@@ -140,6 +140,10 @@ export class GcdsButton {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * Events
@@ -160,18 +164,6 @@ export class GcdsButton {
    */
   @Event() gcdsBlur!: EventEmitter<void>;
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   componentWillLoad() {
     // Validate attributes and set defaults
     this.validateType(this.type);
@@ -183,8 +175,6 @@ export class GcdsButton {
 
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
   }
 
   private handleClick = (e: Event) => {

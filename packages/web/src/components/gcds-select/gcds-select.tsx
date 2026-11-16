@@ -16,7 +16,6 @@ import {
   assignLanguage,
   handleValidationResult,
   inheritAttributes,
-  observerConfig,
 } from '../../utils/utils';
 import {
   Validator,
@@ -197,6 +196,10 @@ export class GcdsSelect {
    * Language of rendered component
    */
   @State() lang: string;
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  }
 
   /**
    * List of passed options
@@ -414,23 +417,9 @@ export class GcdsSelect {
     observer.observe(this.el, config);
   }
 
-  /*
-   * Observe lang attribute change
-   */
-  updateLang() {
-    const observer = new MutationObserver(mutations => {
-      if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
-      }
-    });
-    observer.observe(this.el, observerConfig);
-  }
-
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
-
-    this.updateLang();
 
     this.validateDisabledSelect();
     this.validateHasError();

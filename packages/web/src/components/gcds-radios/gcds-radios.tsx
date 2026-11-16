@@ -378,10 +378,9 @@ export class GcdsRadios {
    * Observe lang attribute change
    */
   @Watch('lang')
-  watchLang(newValue, oldValue) {
-    if (newValue !== oldValue) {
-      this.lang = newValue;
-    }
+  @Watch('lang')
+  onLangChange(newValue: string) {
+    this.lang = newValue.toLowerCase().startsWith('fr') ? 'fr' : 'en';
   }
 
   private handleInput = (e, customEvent) => {

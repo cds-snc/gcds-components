@@ -73,12 +73,6 @@ export const closestElement = (selector, el) => {
   return null;
 };
 
-export const observerConfig = {
-  attributes: true,
-  attributeOldValue: true,
-  attributeFilter: ['lang'],
-};
-
 // For validation - check if element has a checked checkbox/radio sibling
 export const elementGroupCheck = name => {
   let hasCheck = false;
