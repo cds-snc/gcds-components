@@ -3,26 +3,19 @@ const fs = require('fs');
 const path = require('path');
 
 // ============================================================================
-// VERSION BANNER
+// VERSION BANNER (CSS only, JS files uses Stencil's preamble config)
 // ============================================================================
 // File names in dist/gcds aren't versioned, so teams hosting their own copy
-// (e.g. Canada.ca) can't tell releases apart. Prepend a license banner with
-// the package name, version and build date (UTC, ISO 8601) to the main
-// distribution files, in the same style as Vue, React and Bootstrap. "/*!"
-// tells minifiers (cssnano, terser) to keep it if the file is re-minified.
+// (e.g. Canada.ca) can't tell releases apart. The JS files get a version
+// banner from the `preamble` in stencil.config.ts, but Stencil doesn't add
+// it to the global stylesheet, so prepend the same banner (text from
+// scripts/version-banner.js) to gcds.css here. "/*!" tells minifiers
+// (cssnano) to keep it if the file is re-minified.
 // Runs before the CSS copy below so the react/vue copies get it too.
-//
-//   /*!
-//    * @gcds-core/components v1.7.0 (2026-11-12)
-//    * https://design-system.canada.ca/
-//    * (c) Canadian Digital Service – Service numérique canadien
-//    * @license MIT
-//    */
 
 const pkg = require('../package.json');
-const BANNER_FILES = ['./dist/gcds/gcds.css', './dist/gcds/gcds.esm.js'];
-// Same copyright holder as LICENSE (and the gcds-tokens/gcds-utility repos)
-const COPYRIGHT_HOLDER = 'Canadian Digital Service – Service numérique canadien';
+const { getBannerLines } = require('./version-banner');
+const BANNER_FILES = ['./dist/gcds/gcds.css'];
 // CSS @charset must stay the very first thing in the file
 const CHARSET_PATTERN = /^@charset "[^"]*";\n?/i;
 
@@ -33,24 +26,16 @@ const BANNER_PATTERN = new RegExp(
 );
 
 function buildBanner() {
-  const buildDate = new Date().toISOString().slice(0, 10);
-  return [
-    '/*!',
-    ` * ${pkg.name} v${pkg.version} (${buildDate})`,
-    ` * ${pkg.homepage}`,
-    ` * (c) ${COPYRIGHT_HOLDER}`,
-    ` * @license ${pkg.license}`,
-    ' */',
-    '',
-  ].join('\n');
+  return ['/*!', ...getBannerLines().map(line => ` * ${line}`), ' */', ''].join(
+    '\n',
+  );
 }
 
 const countLines = text => (text.match(/\n/g) || []).length;
 
 function addVersionBanner(filePath, banner) {
   if (!fs.existsSync(filePath)) {
-    console.log(`⚠️  ${filePath} not found, skipping version banner`);
-    return;
+    throw new Error(`${filePath} not found (required for version banner)`);
   }
 
   const original = fs.readFileSync(filePath, 'utf8');
@@ -62,7 +47,7 @@ function addVersionBanner(filePath, banner) {
 
   // The banner pushes the code down, so shift the source map to match
   // (each ";" at the start of "mappings" is one empty generated line).
-  // Skipped after an @charset line, where the lines aren't at the start.
+  // Skipped after a @charset line, where the lines aren't at the start.
   const mapPath = `${filePath}.map`;
   const shift = countLines(banner) - countLines(oldBanner);
   if (!charset && shift !== 0 && fs.existsSync(mapPath)) {
@@ -79,6 +64,7 @@ try {
   console.log(`✅ Added version banner:\n${banner}`);
 } catch (error) {
   console.error('❌ Error adding version banner:', error.message);
+  process.exitCode = 1;
 }
 
 // Copy CSS files

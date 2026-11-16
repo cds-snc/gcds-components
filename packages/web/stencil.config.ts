@@ -10,10 +10,15 @@ import {
   vueComponentModels,
   angularValueAccessorBindings,
 } from './src/utils/config/config';
+// @ts-ignore no types for this package, but it works fine
+import { getBannerLines } from './scripts/version-banner';
+
 const customElementsDir = 'dist/components';
 
 export const config: Config = {
   namespace: 'gcds',
+  // Version banner on every JS output (gcds.css gets it in scripts/postbuild.js)
+  preamble: getBannerLines().join('\n'),
   globalStyle: 'src/assets/css/global.css',
   srcDir: './src',
   outputTargets: [
