@@ -9,9 +9,25 @@ import {
   Prop,
   h,
 } from '@stencil/core';
+import createDOMPurify, { type DOMPurify } from 'dompurify';
 import { assignLanguage, observerConfig } from '../../utils/utils';
 import I18N from './i18n/i18n';
 import backup from './backup/backup.min';
+
+const SUPPORTED_LANGS = ['en', 'fr'] as const;
+const MENU_ALLOWED_TAGS = new Set(['UL', 'LI', 'A', 'SPAN']);
+const MENU_ALLOWED_ATTRS = new Set([
+  'aria-controls',
+  'aria-expanded',
+  'aria-haspopup',
+  'aria-orientation',
+  'class',
+  'data-keep-expanded',
+  'href',
+  'id',
+  'role',
+  'tabindex',
+]);
 
 /**
  * The theme and topic menu is a navigation to the top tasks of Government of Canada websites.
@@ -28,6 +44,7 @@ export class GcdsTopicMenu {
 
   private themeList?: HTMLElement;
   private menuButton?: HTMLElement;
+  private sanitizer?: DOMPurify;
 
   /**
    * Props
@@ -61,6 +78,44 @@ export class GcdsTopicMenu {
    * Current size based on window size
    */
   @State() navSize: 'desktop' | 'mobile';
+
+  private getValidatedLang(): (typeof SUPPORTED_LANGS)[number] {
+    return SUPPORTED_LANGS.includes(
+      this.lang as (typeof SUPPORTED_LANGS)[number],
+    )
+      ? (this.lang as (typeof SUPPORTED_LANGS)[number])
+      : 'en';
+  }
+
+  private sanitizeMenuMarkup(markup: string): string {
+    if (!this.sanitizer && typeof window !== 'undefined') {
+      this.sanitizer = createDOMPurify(window);
+    }
+
+    if (!this.sanitizer) {
+      return '';
+    }
+
+    const sanitized = this.sanitizer.sanitize(markup) as string;
+    const template = document.createElement('template');
+    template.innerHTML = sanitized;
+
+    template.content.querySelectorAll('*').forEach(element => {
+      if (!MENU_ALLOWED_TAGS.has(element.tagName)) {
+        const textNode = document.createTextNode(element.textContent || '');
+        element.parentNode?.replaceChild(textNode, element);
+        return;
+      }
+
+      [...element.attributes].forEach(attribute => {
+        if (!MENU_ALLOWED_ATTRS.has(attribute.name)) {
+          element.removeAttribute(attribute.name);
+        }
+      });
+    });
+
+    return template.innerHTML;
+  }
 
   /**
    * Keyboard controls of theme and topic menu
@@ -362,7 +417,7 @@ export class GcdsTopicMenu {
   updateLang() {
     const observer = new MutationObserver(mutations => {
       if (mutations[0].oldValue != this.el.lang) {
-        this.lang = this.el.lang;
+        this.lang = assignLanguage(this.el);
       }
     });
     observer.observe(this.el, observerConfig);
@@ -371,16 +426,23 @@ export class GcdsTopicMenu {
   async componentWillLoad() {
     // Define lang attribute
     this.lang = assignLanguage(this.el);
+    const validatedLang = this.getValidatedLang();
 
     this.updateLang();
 
     try {
       const response = await fetch(
-        `https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${this.lang}.html`,
+        `https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-${validatedLang}.html`,
       );
-      this.listItems = await response.text();
+
+      if (response.ok === false) {
+        this.listItems = this.sanitizeMenuMarkup(backup[validatedLang]);
+        return;
+      }
+
+      this.listItems = this.sanitizeMenuMarkup(await response.text());
     } catch (error) {
-      this.listItems = backup[this.lang];
+      this.listItems = this.sanitizeMenuMarkup(backup[validatedLang]);
     }
   }
 
@@ -458,7 +520,8 @@ export class GcdsTopicMenu {
   }
 
   render() {
-    const { home, lang } = this;
+    const { home } = this;
+    const lang = this.getValidatedLang();
     return (
       <Host>
         <nav class="gcds-topic-menu" aria-labelledby="gcds-topic-menu__heading">
@@ -476,7 +539,7 @@ export class GcdsTopicMenu {
             ref={element => (this.menuButton = element as HTMLElement)}
             class={home && 'gcds-topic-menu--home'}
           >
-            {this.lang == 'en' ? (
+            {lang == 'en' ? (
               <Fragment>
                 <gcds-sr-only tag="span">
                   {I18N[lang].menuLabelHidden}
