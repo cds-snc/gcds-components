@@ -20,6 +20,7 @@ An error message is a description of a problem blocking a user goal.
 
 | Slot        | Description                         |
 | ----------- | ----------------------------------- |
+|             | The default slot                    |
 | `"default"` | Slot for the error message content. |
 
 

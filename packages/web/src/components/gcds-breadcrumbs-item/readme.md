@@ -29,6 +29,7 @@ Breadcrumbs item represents a single link in the breadcrumbs navigation.
 
 | Slot        | Description                              |
 | ----------- | ---------------------------------------- |
+|             | The default slot                         |
 | `"default"` | Slot for the breadcrumb item link label. |
 
 

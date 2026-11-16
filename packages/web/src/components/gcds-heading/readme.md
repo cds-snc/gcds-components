@@ -24,6 +24,7 @@ A heading is a title that establishes levels of hierarchy to organize page conte
 
 | Slot        | Description                  |
 | ----------- | ---------------------------- |
+|             | The default slot             |
 | `"default"` | Slot for the heading content |
 
 

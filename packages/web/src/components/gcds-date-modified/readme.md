@@ -20,6 +20,7 @@ Date modified is an indicator of the last update to a webpage or application.
 
 | Slot        | Description                       |
 | ----------- | --------------------------------- |
+|             | The default slot                  |
 | `"default"` | Slot for the date/version number. |
 
 

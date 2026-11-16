@@ -2098,7 +2098,11 @@
               }
             }
           ],
-          "slots": [],
+          "slots": [
+            {
+              "name": "wordmark"
+            }
+          ],
           "js": {
             "properties": [
               {

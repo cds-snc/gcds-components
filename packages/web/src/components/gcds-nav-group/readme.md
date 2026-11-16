@@ -55,6 +55,7 @@ Type: `Promise<void>`
 
 | Slot        | Description                            |
 | ----------- | -------------------------------------- |
+|             | The default slot                       |
 | `"default"` | Slot for the list of navigation links. |
 
 

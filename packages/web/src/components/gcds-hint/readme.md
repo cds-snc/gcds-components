@@ -20,6 +20,7 @@ Hint provides additional information or context to help users understand the con
 
 | Slot        | Description                |
 | ----------- | -------------------------- |
+|             | The default slot           |
 | `"default"` | Slot for the hint content. |
 
 

@@ -25,6 +25,7 @@ Text is a styled and formatted paragraph that displays written content in an acc
 
 | Slot        | Description                               |
 | ----------- | ----------------------------------------- |
+|             | The default slot                          |
 | `"default"` | Slot for the content of the text element. |
 
 

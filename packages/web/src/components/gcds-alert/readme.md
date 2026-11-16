@@ -32,6 +32,7 @@ Alert displays an alert message with an optional heading, icon, and close button
 
 | Slot        | Description                             |
 | ----------- | --------------------------------------- |
+|             | The default slot                        |
 | `"default"` | Slot for the main content of the alert. |
 
 

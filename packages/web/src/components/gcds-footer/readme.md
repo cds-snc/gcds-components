@@ -26,6 +26,13 @@ The footer is the responsive Government of Canada branded footer landmark.
 | `gcdsFocus` | Emitted when the link has focus.                                               | `CustomEvent<void>`   |
 
 
+## Slots
+
+| Slot         | Description |
+| ------------ | ----------- |
+| `"wordmark"` |             |
+
+
 ## Dependencies
 
 ### Depends on

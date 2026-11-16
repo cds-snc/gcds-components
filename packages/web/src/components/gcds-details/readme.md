@@ -43,6 +43,7 @@ Type: `Promise<void>`
 
 | Slot        | Description                                     |
 | ----------- | ----------------------------------------------- |
+|             | The default slot                                |
 | `"default"` | Slot for the main content of the details panel. |
 
 

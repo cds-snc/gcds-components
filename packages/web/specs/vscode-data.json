@@ -1144,7 +1144,7 @@
       "name": "gcds-footer",
       "description": {
         "kind": "markdown",
-        "value": "The footer is the responsive Government of Canada branded footer landmark.\n\n**Events**\n- `gcdsBlur`\n- `gcdsClick`\n- `gcdsFocus`"
+        "value": "The footer is the responsive Government of Canada branded footer landmark.\n\n**Slots**\n- `wordmark`\n\n**Events**\n- `gcdsBlur`\n- `gcdsClick`\n- `gcdsFocus`"
       },
       "attributes": [
         {
