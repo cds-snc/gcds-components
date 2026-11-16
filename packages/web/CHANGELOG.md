@@ -14,7 +14,7 @@
 
 
 ### 📄 Others
-* add version, date and license to JS and CSS dist files ([#1485](https://github.com/cds-snc/gcds-components/pull/1485)) ([11ff5a2])(https://github.com/cds-snc/gcds-components/commit/11ff5a250323f94b34c24814efe9cd3052a76384)
+* add version, date and license to JS and CSS dist files ([#1485](https://github.com/cds-snc/gcds-components/pull/1485)) ([11ff5a2](https://github.com/cds-snc/gcds-components/commit/11ff5a250323f94b34c24814efe9cd3052a76384))
 
 ## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) (2026-10-21)
 
