@@ -3,12 +3,18 @@
 
 ## [1.7.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.7.0...@gcds-core/components-v1.7.1) (2026-11-16)
 
-
 ### :bug: :wrench: Bug Fixes
 
-* fix signature size for mobile footers ([#1473](https://github.com/cds-snc/gcds-components/issues/1473)) ([367c1c7](https://github.com/cds-snc/gcds-components/commit/367c1c744f1f43c36a237113df71b7514fc02112))
+* **gcds-footer:** signature size for mobile footers ([#1473](https://github.com/cds-snc/gcds-components/issues/1473)) ([367c1c7](https://github.com/cds-snc/gcds-components/commit/367c1c744f1f43c36a237113df71b7514fc02112))
 * **gcds-card:** register clicks on the card description text ([#1471](https://github.com/cds-snc/gcds-components/issues/1471)) ([79a0d28](https://github.com/cds-snc/gcds-components/commit/79a0d28d02cc90b16a3c000c7da442acdcc80cec))
 * **gcds-top-nav + gcds-side-nav:** focus trap on specific window size ([#1479](https://github.com/cds-snc/gcds-components/issues/1479)) ([5bd57b5](https://github.com/cds-snc/gcds-components/commit/5bd57b543843858a6dc2b7bc8d66cce80a515178))
+
+### :lock: Security
+* **gcds-topic-menu:** Fixed a security issue in how `gcds-topic-menu` handles menu content loaded from a remote source. The content is now sanitized before it is added to the page. All users of `gcds-topic-menu` should upgrade to this version. A security advisory with more details will follow. ([965a615](https://github.com/cds-snc/gcds-components/commit/965a61539367259633eddcdf4f6d3a18e7cf0957))
+
+
+### 📄 Others
+* add version, date and license to JS and CSS dist files ([#1485](https://github.com/cds-snc/gcds-components/pull/1485)) ([11ff5a2])(https://github.com/cds-snc/gcds-components/commit/11ff5a250323f94b34c24814efe9cd3052a76384)
 
 ## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0) (2026-10-21)
 
