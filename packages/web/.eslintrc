@@ -12,6 +12,19 @@
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended"
   ],
+  "overrides": [
+    {
+      "files": [
+        "scripts/**/*.js"
+      ],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    }
+  ],
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/ban-types": "off",

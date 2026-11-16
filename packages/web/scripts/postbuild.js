@@ -2,6 +2,71 @@
 const fs = require('fs');
 const path = require('path');
 
+// ============================================================================
+// VERSION BANNER (CSS only, JS files uses Stencil's preamble config)
+// ============================================================================
+// File names in dist/gcds aren't versioned, so teams hosting their own copy
+// (e.g. Canada.ca) can't tell releases apart. The JS files get a version
+// banner from the `preamble` in stencil.config.ts, but Stencil doesn't add
+// it to the global stylesheet, so prepend the same banner (text from
+// scripts/version-banner.js) to gcds.css here. "/*!" tells minifiers
+// (cssnano) to keep it if the file is re-minified.
+// Runs before the CSS copy below so the react/vue copies get it too.
+
+const pkg = require('../package.json');
+const { getBannerLines } = require('./version-banner');
+const BANNER_FILES = ['./dist/gcds/gcds.css'];
+// CSS @charset must stay the very first thing in the file
+const CHARSET_PATTERN = /^@charset "[^"]*";\n?/i;
+
+// Matches a banner added by a previous run, so re-running doesn't stack them
+const escapedName = pkg.name.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
+const BANNER_PATTERN = new RegExp(
+  `^/\\*!\\n \\* ${escapedName} v.*\\n(?: \\*.*\\n)*? \\*/\\n`,
+);
+
+function buildBanner() {
+  return ['/*!', ...getBannerLines().map(line => ` * ${line}`), ' */', ''].join(
+    '\n',
+  );
+}
+
+const countLines = text => (text.match(/\n/g) || []).length;
+
+function addVersionBanner(filePath, banner) {
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`${filePath} not found (required for version banner)`);
+  }
+
+  const original = fs.readFileSync(filePath, 'utf8');
+  const charset = original.match(CHARSET_PATTERN)?.[0] || '';
+  const content = original.slice(charset.length);
+  const oldBanner = content.match(BANNER_PATTERN)?.[0] || '';
+  const prefix = charset && !charset.endsWith('\n') ? `${charset}\n` : charset;
+  fs.writeFileSync(filePath, prefix + banner + content.slice(oldBanner.length));
+
+  // The banner pushes the code down, so shift the source map to match
+  // (each ";" at the start of "mappings" is one empty generated line).
+  // Skipped after a @charset line, where the lines aren't at the start.
+  const mapPath = `${filePath}.map`;
+  const shift = countLines(banner) - countLines(oldBanner);
+  if (!charset && shift !== 0 && fs.existsSync(mapPath)) {
+    const map = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
+    map.mappings =
+      shift > 0 ? ';'.repeat(shift) + map.mappings : map.mappings.slice(-shift);
+    fs.writeFileSync(mapPath, JSON.stringify(map));
+  }
+}
+
+try {
+  const banner = buildBanner();
+  BANNER_FILES.forEach(file => addVersionBanner(file, banner));
+  console.log(`✅ Added version banner:\n${banner}`);
+} catch (error) {
+  console.error('❌ Error adding version banner:', error.message);
+  process.exitCode = 1;
+}
+
 // Copy CSS files
 fs.copyFileSync('./dist/gcds/gcds.css', '../react/gcds.css');
 fs.copyFileSync('./dist/gcds/gcds.css', '../vue/gcds.css');
