@@ -244,6 +244,99 @@ The `@cdssnc/gcds-components` package has been deprecated on npm and will no lon
 
 # Journal des modifications
 
+## [1.7.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.7.0...@gcds-core/components-v1.7.1)
+Version publiée le : 2026-11-16
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-footer:** correction de la taille de signature pour les pieds de page mobiles ([#1473](https://github.com/cds-snc/gcds-components/issues/1473)) ([367c1c7](https://github.com/cds-snc/gcds-components/commit/367c1c744f1f43c36a237113df71b7514fc02112))
+* **gcds-card:** captage des clics sur le texte de description de la carte ([#1471](https://github.com/cds-snc/gcds-components/issues/1471)) ([79a0d28](https://github.com/cds-snc/gcds-components/commit/79a0d28d02cc90b16a3c000c7da442acdcc80cec))
+* **gcds-top-nav + gcds-side-nav:** verrouillage de la cible de saisie sur une taille de fenêtre spécifique ([#1479](https://github.com/cds-snc/gcds-components/issues/1479)) ([5bd57b5](https://github.com/cds-snc/gcds-components/commit/5bd57b543843858a6dc2b7bc8d66cce80a515178))
+
+### :lock: Sécurité
+* **gcds-topic-menu:** correction d'un problème de sécurité dans la façon dont `gcds-topic-menu` traite le contenu de menu chargé à partir d'une source à distance. Le contenu est maintenant nettoyé avant d'être ajouté à la page. Tous les utilisateurs de `gcds-topic-menu` doivent effectuer la mise à niveau vers cette version. Un avis de sécurité contenant plus de détails suivra. ([965a615](https://github.com/cds-snc/gcds-components/commit/965a61539367259633eddcdf4f6d3a18e7cf0957))
+
+
+### 📄 Autres
+* Ajout de la version, de la date et de la licence aux fichiers de distribution JS et CSS ([#1485](https://github.com/cds-snc/gcds-components/pull/1485)) ([11ff5a2](https://github.com/cds-snc/gcds-components/commit/11ff5a250323f94b34c24814efe9cd3052a76384))
+
+## [1.7.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.6.0...@gcds-core/components-v1.7.0)
+Version publiée le : 2026-10-21
+
+
+### :rocket: Nouvelles fonctionnalités
+* **Outillage des développeur·euse·s** : ajout d’un manifeste des éléments personnalisés (Custom Elements Manifest - CEM) conforme aux spécifications du CEM en complément au manifeste des composants existant. Cela permet également le remplissage automatique dans les IDE JetBrains et VS Code. VS Code nécessite une configuration supplémentaire -- suivez les instructions dans le [fichier LISEZ-MOI](https://github.com/cds-snc/gcds-components/blob/main/packages/web/README.md). ([#1437](https://github.com/cds-snc/gcds-components/issues/1437)) ([289b7f3](https://github.com/cds-snc/gcds-components/commit/289b7f3457199db343730432b608322e21832596))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-error-message :** l’icône a été remplacée par un cercle d’exclamation pour indiquer un avertissement critique, conformément à nos conseils d’utilisation. ([#1430](https://github.com/cds-snc/gcds-components/issues/1430))([96d30c9](https://github.com/cds-snc/gcds-components/commit/96d30c990afae671572bb4430d9b2859352d51a9))
+
+* **gcds-error-summary :** ajout de styles manquants aux marqueurs de liste. ([#1421](https://github.com/cds-snc/gcds-components/issues/1421)) ([a688ca0](https://github.com/cds-snc/gcds-components/commit/a688ca0fd80fb62a76958ceeb1b95366ec57866a))
+
+## [1.6.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.5.0...@gcds-core/components-v1.6.0)
+Version publiée le : 2026-09-08
+
+
+### :rocket: Nouvelles fonctionnalités
+
+* **gcds-card :** texte ignoré par la lecture d’écran sur Android et iOS (#1380) (747d289)([#1380](https://github.com/cds-snc/gcds-components/issues/1380)) ([747d289](https://github.com/cds-snc/gcds-components/commit/747d289a9dda9ee1a8c38537e433b117091f675a))
+* **gcds-date-input:** prise en charge de la fonctionnalité `autocomplete` ([#1299](https://github.com/cds-snc/gcds-components/issues/1299)) ([ab00260](https://github.com/cds-snc/gcds-components/commit/ab002601e99497eea8667860bb7ceb1c11e959dc))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-alert:** ajout d’une fonctionnalité pour annoncer les alertes de réussite/d’information ajoutées dynamiquement ([#1393](https://github.com/cds-snc/gcds-components/issues/1393)) ([d6a4701](https://github.com/cds-snc/gcds-components/commit/d6a4701ad3439c89393aa687ccde6e4f872c387a))
+* **gcds-card :** ajout d’une vérification de l’emplacement dans validateCardTitle ([#1392](https://github.com/cds-snc/gcds-components/issues/1392)) ([d7535e7](https://github.com/cds-snc/gcds-components/commit/d7535e731c189f58607e19b48d74d343dcba6b56))
+* **gcds-file-uploader:** ajout de la gestion de la cible de saisie lors de la suppression de fichiers ([#1407](https://github.com/cds-snc/gcds-components/issues/1407)) ([a99f7a0](https://github.com/cds-snc/gcds-components/commit/a99f7a030a1860115d2da9f2621cd18d8efbe083))
+* **gcds-header :** ajout du style réactif pour l’emplacement de compte ([#1394](https://github.com/cds-snc/gcds-components/issues/1394)) ([9ce7927](https://github.com/cds-snc/gcds-components/commit/9ce79274f91d91a4dfad4670cf10f9a4b3560bfa))
+
+## [1.5.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.4.0...@gcds-core/components-v1.5.0)
+Version publiée le : 2026-08-12
+
+
+### :rocket: Nouvelles fonctionnalités
+
+* **gcds-alert:** mise à jour du style des alertes et du comportement d’accessibilité, avec `role="status"` pour les alertes `info` et `success`, et `role="alert"` pour les alertes `warning` et `danger`, basées sur la propriété `alertRole`. ([#1373](https://github.com/cds-snc/gcds-components/issues/1373)) ([04a2de5](https://github.com/cds-snc/gcds-components/commit/04a2de5abca183609b49c7daf94c97d9013f001b))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-file-uploader :** correction d’un problème d’accessibilité qui empêchait la suppression de fichiers d’être annoncée aux lecteurs d’écran. ([#1386](https://github.com/cds-snc/gcds-components/issues/1386)) ([0536c3f](https://github.com/cds-snc/gcds-components/commit/0536c3f7eacfb08301ac6f1d94eb5da6ad431898)), closes [#1363](https://github.com/cds-snc/gcds-components/issues/1363)
+
+
+### :art: Styles
+
+* **gcds-signature :** ajustement de la taille de la signature pour se conformer aux exigences du Programme fédéral de l’image de marque ([#1346](https://github.com/cds-snc/gcds-components/issues/1346)) ([1725b29](https://github.com/cds-snc/gcds-components/commit/1725b299060121bf6cc3042713c5b0c810cfd0ad))
+
+## [1.4.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.1...@gcds-core/components-v1.4.0) (2026-07-27)
+
+
+### :rocket: Nouvelles fonctionnalités
+
+* Ajout de tests de régression visuelle pour tous les composants ([#1302](https://github.com/cds-snc/gcds-components/issues/1302)) ([095b170](https://github.com/cds-snc/gcds-components/commit/095b1708ebd06bf614bf9ae47b2d5d88147d4218))
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-table :** 
+  * ajout de l’état à la description du tableau ([#1323](https://github.com/cds-snc/gcds-components/issues/1323)) ([ad8174d](https://github.com/cds-snc/gcds-components/commit/ad8174d0166df29859fb507840c1b9545d2a2219))
+  * correction du comportement de la touche Entrée qui ouvre maintenant la boîte de dialogue de filtre ([#1320](https://github.com/cds-snc/gcds-components/issues/1320)) ([7607e62](https://github.com/cds-snc/gcds-components/commit/7607e62d195ea6586de7775f9f8b8593dd0efe5b))
+  * mise à jour de l’étiquette de saisie du filtre ([#1327](https://github.com/cds-snc/gcds-components/issues/1327)) ([fe493a5](https://github.com/cds-snc/gcds-components/commit/fe493a50682f65041d591b2e5068fb2832303fb1))
+  * mise à jour des instructions dans un Aria-descripbedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
+* **gcds-topic-menu :** mise à jour des instructions dans un Aria-descripbedby ([#1311](https://github.com/cds-snc/gcds-components/issues/1311)) ([f1253a2](https://github.com/cds-snc/gcds-components/commit/f1253a2f6ae31168922d8662b8ecd89c4c7d7617))
+
+## [1.3.1](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.3.0...@gcds-core/components-v1.3.1)
+Version publiée le : 2026-06-08
+
+
+### :bug: :wrench: Corrections de bogues
+
+* **gcds-table :** correction de l’état dans le filtre ([#1289](https://github.com/cds-snc/gcds-components/issues/1289)) ([d09e0f5](https://github.com/cds-snc/gcds-components/commit/d09e0f5012d5a85e7b50c22f9998b7791bdbd49a))
+* **gcds-table:** correction de problèmes liés à la cible de saisie, l’interaction et l’affichage ([#1295](https://github.com/cds-snc/gcds-components/issues/1295)) ([3fc8e31](https://github.com/cds-snc/gcds-components/commit/3fc8e31aeae2b843f072f48980260ab4a51d53b0))
+* chargement du langage approprié dans Vue et React en fonction de l’attribut lang ([#1290](https://github.com/cds-snc/gcds-components/issues/1290)) ([9778afe](https://github.com/cds-snc/gcds-components/commit/9778afeb4c365189b3e5a7886dbd2cc226657097))
+* mise à jour du fichier validation-errors.ts en français ([#1283](https://github.com/cds-snc/gcds-components/issues/1283)) ([2e45daa](https://github.com/cds-snc/gcds-components/commit/2e45daaaeda66dd9a6c91e55c45b93ae415569d8))
+
 ## [1.3.0](https://github.com/cds-snc/gcds-components/compare/@gcds-core/components-v1.2.0...@gcds-core/components-v1.3.0) 
 
 Version publiée le&nbsp;: 2026-05-27
