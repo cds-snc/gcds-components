@@ -469,7 +469,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hideLegend', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
   methods: ['validate', 'checkValidity', 'getValidationMessage'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid']
 })
@@ -478,7 +478,7 @@ export declare interface GcdsContainer extends Components.GcdsContainer {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
+  inputs: ['autocomplete', 'autofocus', 'disabled', 'errorMessage', 'form', 'format', 'hideLegend', 'hint', 'legend', 'max', 'min', 'name', 'required', 'validateOn', 'validator', 'validity', 'value'],
   outputs: ['gcdsFocus', 'gcdsBlur', 'gcdsInput', 'gcdsChange', 'gcdsError', 'gcdsValid'],
   standalone: false,
 })
@@ -534,6 +534,10 @@ Format: YYYY-MM-DD or YYYY-MM
 Format: YYYY-MM-DD or YYYY-MM
    */
   set min(_: Components.GcdsDateInput['min']) {};
+    /**
+   * Visually hide the legend
+   */
+  set hideLegend(_: Components.GcdsDateInput['hideLegend']) {};
     /**
    * The ID of the form that the date-input field belongs to.
    */

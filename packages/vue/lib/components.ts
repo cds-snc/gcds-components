@@ -180,6 +180,7 @@ export const GcdsDateInput: StencilVueComponent<JSX.GcdsDateInput, JSX.GcdsDateI
   'autofocus',
   'max',
   'min',
+  'hideLegend',
   'form',
   'validity',
   'validator',

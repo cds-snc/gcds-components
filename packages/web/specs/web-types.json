@@ -1298,6 +1298,14 @@
               ]
             },
             {
+              "name": "hide-legend",
+              "description": "Visually hide the legend",
+              "value": {
+                "type": "boolean",
+                "required": false
+              }
+            },
+            {
               "name": "hint",
               "description": "Hint displayed below the legend and above form fields.",
               "value": {
@@ -1412,6 +1420,11 @@
                 "name": "format",
                 "description": "(required) Set this property to full to show month, day, and year form elements. Set it to compact to show only the month and year form elements.  Set it to `iso` to use numeric month input and `YYYY-MM-DD` entry order.",
                 "type": "\"compact\" | \"full\" | \"iso\""
+              },
+              {
+                "name": "hideLegend",
+                "description": "Visually hide the legend",
+                "type": "boolean"
               },
               {
                 "name": "hint",

@@ -852,4 +852,31 @@ test.describe('gcds-date-input a11y tests', () => {
       .analyze();
     expect(results.violations).toHaveLength(0);
   });
+
+  /**
+   * Hide Legend
+   */
+  test('Hide Legend', async ({ page }) => {
+    const element = page.locator('gcds-date-input');
+
+    // Wait for element to attach and become visible, allowing up to 10s
+    await element.waitFor({ state: 'attached' });
+    await element.waitFor({ state: 'visible' });
+    await element.waitFor({ timeout: 10000 });
+
+    expect(element.locator('legend')).toBeVisible();
+
+    await element.evaluate((el: HTMLGcdsDateInputElement) =>
+      el.setAttribute('hide-legend', 'true'),
+    );
+
+    await page.waitForChanges();
+
+    expect(element.locator('legend')).toBeHidden();
+
+    const results = await new AxeBuilder({ page })
+      .include('gcds-date-input')
+      .analyze();
+    expect(results.violations).toHaveLength(0);
+  });
 });
