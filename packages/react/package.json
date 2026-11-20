@@ -38,6 +38,7 @@
   },
   "files": [
     "dist",
+    "assets",
     "gcds.css"
   ],
   "dependencies": {

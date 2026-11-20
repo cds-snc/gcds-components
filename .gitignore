@@ -54,3 +54,8 @@ packages/react/lib/components.ts
 packages/react/gcds.css
 packages/vue/gcds.css
 packages/react-ssr/gcds.css
+
+# Font files
+packages/web/assets
+packages/vue/assets
+packages/react/assets

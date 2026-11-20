@@ -57,6 +57,13 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       isPrimaryPackageOutputTarget: true,
+      copy: [
+        {
+          src: '../../../node_modules/@gcds-core/fonts/fonts/**/*.{woff2,woff,ttf}',
+          dest: 'assets/fonts',
+          warn: true,
+        },
+      ],
     },
     {
       // Copy font assets from 'assets' folder to 'dist' folder to ensure they are included in the build output.
@@ -66,8 +73,8 @@ export const config: Config = {
       externalRuntime: false,
       copy: [
         {
-          src: 'assets/fonts/**/*',
-          dest: 'dist/gcds/assets/fonts',
+          src: '../../../node_modules/@gcds-core/fonts/fonts/**/*.{woff2,woff,ttf}',
+          dest: 'assets/fonts',
           warn: true,
         },
       ],
@@ -93,7 +100,15 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      copy: [{ src: '**/*.e2e.html' }, { src: '**/*.visual.html' }],
+      copy: [
+        {src: '**/*.e2e.html' },
+        { src: '**/*.visual.html' },
+        {
+          src: '../../../node_modules/@gcds-core/fonts/fonts/**/*.{woff2,woff,ttf}',
+          dest: 'build/assets/fonts',
+          warn: true,
+        },
+      ],
     },
   ],
   docs: {
