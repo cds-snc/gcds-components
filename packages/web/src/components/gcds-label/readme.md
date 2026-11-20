@@ -31,6 +31,7 @@ Label for form fields, providing accessibility and context for users.
 ### Used by
 
  - [gcds-checkboxes](../gcds-checkboxes)
+ - [gcds-combobox](../gcds-combobox)
  - [gcds-file-uploader](../gcds-file-uploader)
  - [gcds-input](../gcds-input)
  - [gcds-radios](../gcds-radios)
@@ -42,6 +43,7 @@ Label for form fields, providing accessibility and context for users.
 ```mermaid
 graph TD;
   gcds-checkboxes --> gcds-label
+  gcds-combobox --> gcds-label
   gcds-file-uploader --> gcds-label
   gcds-input --> gcds-label
   gcds-radios --> gcds-label
