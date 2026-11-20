@@ -7281,6 +7281,83 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/gcds-tag/gcds-tag.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "customElement": true,
+          "tagName": "gcds-tag",
+          "name": "GcdsTag",
+          "description": "A tag is a static label used to categorize, identify, or describe content.",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "Sets the colour of the tag.\nTag colours are decorative and don't carry meaning.",
+              "type": {
+                "text": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\""
+              },
+              "default": "'gray'",
+              "fieldName": "color"
+            },
+            {
+              "name": "size",
+              "description": "Sets the size of the tag.",
+              "type": {
+                "text": "\"regular\" | \"small\""
+              },
+              "default": "'regular'",
+              "fieldName": "size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "description": "Sets the colour of the tag.\nTag colours are decorative and don't carry meaning.",
+              "type": {
+                "text": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\""
+              },
+              "default": "'gray'",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "description": "Sets the size of the tag.",
+              "type": {
+                "text": "\"regular\" | \"small\""
+              },
+              "default": "'regular'",
+              "attribute": "size"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Slot for the tag text. Text longer than 20 characters is truncated with an ellipsis."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GcdsTag",
+          "declaration": {
+            "name": "GcdsTag"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "gcds-tag",
+          "declaration": {
+            "name": "GcdsTag"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/gcds-text/gcds-text.tsx",
       "declarations": [
         {

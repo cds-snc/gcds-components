@@ -1410,6 +1410,26 @@ export namespace Components {
         "sort": boolean;
     }
     /**
+     * A tag is a static label used to categorize, identify, or describe content.
+     */
+    interface GcdsTag {
+        /**
+          * Sets the colour of the tag. Tag colours are decorative and don't carry meaning.
+          * @default 'gray'
+         */
+        "color"?: | 'blue'
+    | 'gray'
+    | 'green'
+    | 'purple'
+    | 'red'
+    | 'yellow';
+        /**
+          * Sets the size of the tag.
+          * @default 'regular'
+         */
+        "size"?: 'regular' | 'small';
+    }
+    /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface GcdsText {
@@ -2308,6 +2328,15 @@ declare global {
         new (): HTMLGcdsTableElement;
     };
     /**
+     * A tag is a static label used to categorize, identify, or describe content.
+     */
+    interface HTMLGcdsTagElement extends Components.GcdsTag, HTMLStencilElement {
+    }
+    var HTMLGcdsTagElement: {
+        prototype: HTMLGcdsTagElement;
+        new (): HTMLGcdsTagElement;
+    };
+    /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface HTMLGcdsTextElement extends Components.GcdsText, HTMLStencilElement {
@@ -2397,6 +2426,7 @@ declare global {
         "gcds-sr-only": HTMLGcdsSrOnlyElement;
         "gcds-stepper": HTMLGcdsStepperElement;
         "gcds-table": HTMLGcdsTableElement;
+        "gcds-tag": HTMLGcdsTagElement;
         "gcds-text": HTMLGcdsTextElement;
         "gcds-textarea": HTMLGcdsTextareaElement;
         "gcds-top-nav": HTMLGcdsTopNavElement;
@@ -4027,6 +4057,26 @@ declare namespace LocalJSX {
         "sort"?: boolean;
     }
     /**
+     * A tag is a static label used to categorize, identify, or describe content.
+     */
+    interface GcdsTag {
+        /**
+          * Sets the colour of the tag. Tag colours are decorative and don't carry meaning.
+          * @default 'gray'
+         */
+        "color"?: | 'blue'
+    | 'gray'
+    | 'green'
+    | 'purple'
+    | 'red'
+    | 'yellow';
+        /**
+          * Sets the size of the tag.
+          * @default 'regular'
+         */
+        "size"?: 'regular' | 'small';
+    }
+    /**
      * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
      */
     interface GcdsText {
@@ -4552,6 +4602,15 @@ declare namespace LocalJSX {
         "filter": boolean;
         "filterValue": string;
     }
+    interface GcdsTagAttributes {
+        "color": | 'blue'
+    | 'gray'
+    | 'green'
+    | 'purple'
+    | 'red'
+    | 'yellow';
+        "size": 'regular' | 'small';
+    }
     interface GcdsTextAttributes {
         "textRole": 'light' | 'primary' | 'secondary';
         "characterLimit": boolean;
@@ -4630,6 +4689,7 @@ declare namespace LocalJSX {
         "gcds-sr-only": Omit<GcdsSrOnly, keyof GcdsSrOnlyAttributes> & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes]?: GcdsSrOnly[K] } & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes as `attr:${K}`]?: GcdsSrOnlyAttributes[K] } & { [K in keyof GcdsSrOnly & keyof GcdsSrOnlyAttributes as `prop:${K}`]?: GcdsSrOnly[K] };
         "gcds-stepper": Omit<GcdsStepper, keyof GcdsStepperAttributes> & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes]?: GcdsStepper[K] } & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes as `attr:${K}`]?: GcdsStepperAttributes[K] } & { [K in keyof GcdsStepper & keyof GcdsStepperAttributes as `prop:${K}`]?: GcdsStepper[K] } & OneOf<"currentStep", GcdsStepper["currentStep"], GcdsStepperAttributes["currentStep"]> & OneOf<"totalSteps", GcdsStepper["totalSteps"], GcdsStepperAttributes["totalSteps"]>;
         "gcds-table": Omit<GcdsTable, keyof GcdsTableAttributes> & { [K in keyof GcdsTable & keyof GcdsTableAttributes]?: GcdsTable[K] } & { [K in keyof GcdsTable & keyof GcdsTableAttributes as `attr:${K}`]?: GcdsTableAttributes[K] } & { [K in keyof GcdsTable & keyof GcdsTableAttributes as `prop:${K}`]?: GcdsTable[K] };
+        "gcds-tag": Omit<GcdsTag, keyof GcdsTagAttributes> & { [K in keyof GcdsTag & keyof GcdsTagAttributes]?: GcdsTag[K] } & { [K in keyof GcdsTag & keyof GcdsTagAttributes as `attr:${K}`]?: GcdsTagAttributes[K] } & { [K in keyof GcdsTag & keyof GcdsTagAttributes as `prop:${K}`]?: GcdsTag[K] };
         "gcds-text": Omit<GcdsText, keyof GcdsTextAttributes> & { [K in keyof GcdsText & keyof GcdsTextAttributes]?: GcdsText[K] } & { [K in keyof GcdsText & keyof GcdsTextAttributes as `attr:${K}`]?: GcdsTextAttributes[K] } & { [K in keyof GcdsText & keyof GcdsTextAttributes as `prop:${K}`]?: GcdsText[K] };
         "gcds-textarea": Omit<GcdsTextarea, keyof GcdsTextareaAttributes> & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes]?: GcdsTextarea[K] } & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes as `attr:${K}`]?: GcdsTextareaAttributes[K] } & { [K in keyof GcdsTextarea & keyof GcdsTextareaAttributes as `prop:${K}`]?: GcdsTextarea[K] } & OneOf<"label", GcdsTextarea["label"], GcdsTextareaAttributes["label"]> & OneOf<"name", GcdsTextarea["name"], GcdsTextareaAttributes["name"]> & OneOf<"textareaId", GcdsTextarea["textareaId"], GcdsTextareaAttributes["textareaId"]>;
         "gcds-top-nav": Omit<GcdsTopNav, keyof GcdsTopNavAttributes> & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes]?: GcdsTopNav[K] } & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes as `attr:${K}`]?: GcdsTopNavAttributes[K] } & { [K in keyof GcdsTopNav & keyof GcdsTopNavAttributes as `prop:${K}`]?: GcdsTopNav[K] } & OneOf<"label", GcdsTopNav["label"], GcdsTopNavAttributes["label"]>;
@@ -4788,6 +4848,10 @@ declare module "@stencil/core" {
              * A table is a structured layout of related data in rows and columns.
              */
             "gcds-table": LocalJSX.IntrinsicElements["gcds-table"] & JSXBase.HTMLAttributes<HTMLGcdsTableElement>;
+            /**
+             * A tag is a static label used to categorize, identify, or describe content.
+             */
+            "gcds-tag": LocalJSX.IntrinsicElements["gcds-tag"] & JSXBase.HTMLAttributes<HTMLGcdsTagElement>;
             /**
              * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.
              */

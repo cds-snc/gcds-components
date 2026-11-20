@@ -5816,6 +5816,80 @@
           }
         },
         {
+          "name": "gcds-tag",
+          "description": "A tag is a static label used to categorize, identify, or describe content.",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "Sets the colour of the tag.\nTag colours are decorative and don't carry meaning.",
+              "default": "'gray'",
+              "value": {
+                "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+                "required": true
+              },
+              "values": [
+                {
+                  "name": "blue"
+                },
+                {
+                  "name": "gray"
+                },
+                {
+                  "name": "green"
+                },
+                {
+                  "name": "purple"
+                },
+                {
+                  "name": "red"
+                },
+                {
+                  "name": "yellow"
+                }
+              ]
+            },
+            {
+              "name": "size",
+              "description": "Sets the size of the tag.",
+              "default": "'regular'",
+              "value": {
+                "type": "\"regular\" | \"small\"",
+                "required": true
+              },
+              "values": [
+                {
+                  "name": "regular"
+                },
+                {
+                  "name": "small"
+                }
+              ]
+            }
+          ],
+          "slots": [],
+          "js": {
+            "properties": [
+              {
+                "name": "color",
+                "description": "Sets the colour of the tag.\nTag colours are decorative and don't carry meaning.",
+                "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+                "default": "'gray'"
+              },
+              {
+                "name": "size",
+                "description": "Sets the size of the tag.",
+                "type": "\"regular\" | \"small\"",
+                "default": "'regular'"
+              }
+            ],
+            "events": []
+          },
+          "css": {
+            "parts": [],
+            "properties": []
+          }
+        },
+        {
           "name": "gcds-text",
           "description": "Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.",
           "attributes": [

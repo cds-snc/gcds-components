@@ -42,6 +42,7 @@ import { defineCustomElement as defineGcdsSignature } from '@gcds-core/component
 import { defineCustomElement as defineGcdsSrOnly } from '@gcds-core/components/dist/components/gcds-sr-only.js';
 import { defineCustomElement as defineGcdsStepper } from '@gcds-core/components/dist/components/gcds-stepper.js';
 import { defineCustomElement as defineGcdsTable } from '@gcds-core/components/dist/components/gcds-table.js';
+import { defineCustomElement as defineGcdsTag } from '@gcds-core/components/dist/components/gcds-tag.js';
 import { defineCustomElement as defineGcdsText } from '@gcds-core/components/dist/components/gcds-text.js';
 import { defineCustomElement as defineGcdsTextarea } from '@gcds-core/components/dist/components/gcds-textarea.js';
 import { defineCustomElement as defineGcdsTopNav } from '@gcds-core/components/dist/components/gcds-top-nav.js';
@@ -628,6 +629,12 @@ export const GcdsTable: StencilVueComponent<JSX.GcdsTable> = /*@__PURE__*/ defin
   'gcdsTableStateChange'
 ], [
   'gcdsTableStateChange'
+]);
+
+
+export const GcdsTag: StencilVueComponent<JSX.GcdsTag> = /*@__PURE__*/ defineContainer<JSX.GcdsTag>('gcds-tag', defineGcdsTag, [
+  'color',
+  'size'
 ]);
 
 

@@ -1,0 +1,127 @@
+@layer reset, default, color, size;
+
+@layer reset {
+  :host {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: middle;
+
+    .gcds-tag {
+      box-sizing: border-box;
+      margin: 0;
+    }
+  }
+}
+
+@layer default {
+  :host .gcds-tag {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    border-radius: var(--gcds-tag-border-radius);
+
+    /* Decorative dot */
+    &::before {
+      content: '';
+      flex-shrink: 0;
+      width: var(--gcds-tag-dot-size);
+      height: var(--gcds-tag-dot-size);
+      border-radius: var(--gcds-tag-dot-border-radius);
+    }
+
+    /* Labels longer than 20 characters are truncated with an ellipsis */
+    .gcds-tag-text {
+      min-width: 0;
+      max-width: var(--gcds-tag-text-max-width);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+@layer color {
+  :host .gcds-tag {
+    &.color-blue {
+      background-color: var(--gcds-tag-blue-background);
+      color: var(--gcds-tag-blue-text);
+
+      &::before {
+        background-color: var(--gcds-tag-blue-dot);
+      }
+    }
+
+    &.color-gray {
+      background-color: var(--gcds-tag-gray-background);
+      color: var(--gcds-tag-gray-text);
+
+      &::before {
+        background-color: var(--gcds-tag-gray-dot);
+      }
+    }
+
+    &.color-green {
+      background-color: var(--gcds-tag-green-background);
+      color: var(--gcds-tag-green-text);
+
+      &::before {
+        background-color: var(--gcds-tag-green-dot);
+      }
+    }
+
+    &.color-purple {
+      background-color: var(--gcds-tag-purple-background);
+      color: var(--gcds-tag-purple-text);
+
+      &::before {
+        background-color: var(--gcds-tag-purple-dot);
+      }
+    }
+
+    &.color-red {
+      background-color: var(--gcds-tag-red-background);
+      color: var(--gcds-tag-red-text);
+
+      &::before {
+        background-color: var(--gcds-tag-red-dot);
+      }
+    }
+
+    &.color-yellow {
+      background-color: var(--gcds-tag-yellow-background);
+      color: var(--gcds-tag-yellow-text);
+
+      &::before {
+        background-color: var(--gcds-tag-yellow-dot);
+      }
+    }
+  }
+}
+
+@layer size {
+  :host .gcds-tag {
+    &.size-regular {
+      font: var(--gcds-tag-font-regular-desktop);
+      padding: var(--gcds-tag-padding-regular-desktop);
+      gap: var(--gcds-tag-gap-regular-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-tag-font-regular-mobile);
+        padding: var(--gcds-tag-padding-regular-mobile);
+        gap: var(--gcds-tag-gap-regular-mobile);
+      }
+    }
+
+    &.size-small {
+      font: var(--gcds-tag-font-small-desktop);
+      padding: var(--gcds-tag-padding-small-desktop);
+      gap: var(--gcds-tag-gap-small-desktop);
+
+      @media only screen and (width < 48em) {
+        font: var(--gcds-tag-font-small-mobile);
+        padding: var(--gcds-tag-padding-small-mobile);
+        gap: var(--gcds-tag-gap-small-mobile);
+      }
+    }
+  }
+}

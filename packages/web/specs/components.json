@@ -11867,6 +11867,121 @@
       }
     },
     {
+      "filePath": "src/components/gcds-tag/gcds-tag.tsx",
+      "encapsulation": "shadow",
+      "tag": "gcds-tag",
+      "readme": "# gcds-tag\n\n\n",
+      "docs": "A tag is a static label used to categorize, identify, or describe content.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "default - Slot for the tag text. Text longer than 20 characters is truncated with an ellipsis."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "complexType": {
+            "original": "| 'blue'\n    | 'gray'\n    | 'green'\n    | 'purple'\n    | 'red'\n    | 'yellow'",
+            "resolved": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Sets the colour of the tag.\nTag colours are decorative and don't carry meaning.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'gray'"
+            }
+          ],
+          "default": "'gray'",
+          "values": [
+            {
+              "value": "blue",
+              "type": "string"
+            },
+            {
+              "value": "gray",
+              "type": "string"
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "size",
+          "type": "\"regular\" | \"small\"",
+          "complexType": {
+            "original": "'regular' | 'small'",
+            "resolved": "\"regular\" | \"small\"",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Sets the size of the tag.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'regular'"
+            }
+          ],
+          "default": "'regular'",
+          "values": [
+            {
+              "value": "regular",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "default",
+          "docs": "Slot for the tag text. Text longer than 20 characters is truncated with an ellipsis."
+        }
+      ],
+      "parts": [],
+      "states": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/gcds-text/gcds-text.tsx",
       "encapsulation": "shadow",
       "tag": "gcds-text",
