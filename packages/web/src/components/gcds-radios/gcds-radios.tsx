@@ -186,6 +186,8 @@ export class GcdsRadios {
       if (!isValidValue) {
         this.value = null;
         this.internals.setFormValue(this.value);
+      } else {
+        this.internals.setFormValue(this.value, 'checked');
       }
 
       this.updateValidity();
@@ -414,6 +416,7 @@ export class GcdsRadios {
     this.lang = assignLanguage(this.el);
 
     this.validateOptions();
+    this.validateValue();
     this.validateRequiredProps();
     this.validateErrorMessage();
 

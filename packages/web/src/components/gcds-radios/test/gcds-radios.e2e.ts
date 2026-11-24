@@ -292,6 +292,92 @@ test.describe('gcds-radios', () => {
 
     expect(validity).toBe(true);
   });
+  /**
+   * Form data
+   */
+  test.describe('Form data', () => {
+    const renderForm = async (page, value) => {
+      await page.evaluate(value => {
+        document.body.innerHTML = `
+          <form>
+            <gcds-radios
+              name="formradio"
+              legend="Form radios"
+              value="${value}"
+              options='[{ "label": "Radio 1 label", "id": "form1", "value": "radio1"}, { "label": "Radio 2 label", "id": "form2", "value": "radio2"}]'
+            ></gcds-radios>
+          </form>
+        `;
+      }, value);
+
+      const element = page.locator('form gcds-radios');
+      await expect(element).toHaveClass('hydrated');
+
+      return element;
+    };
+
+    const getFormValue = page =>
+      page
+        .locator('form')
+        .evaluate(form =>
+          new FormData(form as HTMLFormElement).get('formradio'),
+        );
+
+    test('Preset value is submitted without interaction', async ({ page }) => {
+      await renderForm(page, 'radio2');
+
+      expect(await getFormValue(page)).toBe('radio2');
+    });
+    test('Using JS - assign value updates form value', async ({ page }) => {
+      const element = await renderForm(page, 'radio1');
+
+      await element.evaluate(el => {
+        (el as HTMLGcdsRadiosElement).value = 'radio2';
+      });
+
+      await page.waitForChanges();
+
+      expect(await getFormValue(page)).toBe('radio2');
+    });
+    test('Invalid value is not submitted', async ({ page }) => {
+      const element = await renderForm(page, 'invalid');
+
+      expect(await getFormValue(page)).toBeNull();
+
+      await element.evaluate(el => {
+        (el as HTMLGcdsRadiosElement).value = 'radio1';
+      });
+
+      await page.waitForChanges();
+
+      expect(await getFormValue(page)).toBe('radio1');
+
+      await element.evaluate(el => {
+        (el as HTMLGcdsRadiosElement).value = 'invalid';
+      });
+
+      await page.waitForChanges();
+
+      expect(await getFormValue(page)).toBeNull();
+    });
+    test('Form reset restores initial value', async ({ page }) => {
+      const element = await renderForm(page, 'radio1');
+
+      await element.evaluate(el => {
+        (el as HTMLGcdsRadiosElement).value = 'radio2';
+      });
+
+      await page.waitForChanges();
+
+      await page
+        .locator('form')
+        .evaluate(form => (form as HTMLFormElement).reset());
+
+      await page.waitForChanges();
+
+      expect(await getFormValue(page)).toBe('radio1');
+    });
+  });
 });
 
 /**
