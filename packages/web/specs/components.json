@@ -7866,12 +7866,7 @@
       "tag": "gcds-label",
       "readme": "# gcds-label\n\n\n",
       "docs": "Label for form fields, providing accessibility and context for users.",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "- Slot for the label content."
-        }
-      ],
+      "docsTags": [],
       "usage": {},
       "props": [
         {
@@ -7971,12 +7966,7 @@
       "events": [],
       "listeners": [],
       "styles": [],
-      "slots": [
-        {
-          "name": "",
-          "docs": "Slot for the label content."
-        }
-      ],
+      "slots": [],
       "parts": [],
       "states": [],
       "dependents": [
