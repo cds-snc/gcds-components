@@ -4,8 +4,6 @@ import i18n from './i18n/i18n';
 
 /**
  * Label for form fields, providing accessibility and context for users.
- *
- * @slot - Slot for the label content.
  */
 @Component({
   tag: 'gcds-label',

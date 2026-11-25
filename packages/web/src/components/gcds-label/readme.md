@@ -19,13 +19,6 @@ Label for form fields, providing accessibility and context for users.
 | `required`  | `required`   | Specifies if a form field is required or not. | `boolean` | `undefined` |
 
 
-## Slots
-
-| Slot | Description                 |
-| ---- | --------------------------- |
-|      | Slot for the label content. |
-
-
 ## Dependencies
 
 ### Used by

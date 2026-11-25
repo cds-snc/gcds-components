@@ -4634,12 +4634,6 @@
               "readonly": true,
               "attribute": "required"
             }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Slot for the label content."
-            }
           ]
         }
       ],
